@@ -8,6 +8,7 @@ const app = express();
 const port = process.env.PORT || 9000;
 
 app.use('/', producRouter)
+app.use(express.json());
 
 // Necesito contraseña de la URI
 mongoose.connect(process.env.MONGODB)
