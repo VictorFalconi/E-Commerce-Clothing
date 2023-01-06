@@ -1,14 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config(); 
-const producRouter = require('./routes/product.js')
+const productRouter = require('./routes/product')
 
 const app = express();
 // port va a buscar un puerto que nos de el servicio de hosting donde deployamos, si no, toma el que le pasemos
 const port = process.env.PORT || 9000;
 
-app.use('/', producRouter)
 app.use(express.json());
+app.use('/', productRouter)
+
 
 // Necesito contraseña de la URI
 mongoose.connect(process.env.MONGODB)
