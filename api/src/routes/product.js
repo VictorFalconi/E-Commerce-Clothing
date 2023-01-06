@@ -1,4 +1,5 @@
 const express = require('express');
+const productSchema = require('../models/product')
 
 const router = express.Router();
 
@@ -9,6 +10,10 @@ router.get("/products",(req, res) => {
 });
 
 router.post("/products", (req, res) => {
- res.send("Product Created")
-})
+ const product = productSchema(req.body);
+ product
+ .save()
+ .then((data) => res.json(data))
+ .catch((err)=> res.json({message: err}));
+});
 module.exports = router;
