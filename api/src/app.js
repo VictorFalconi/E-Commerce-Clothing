@@ -1,5 +1,6 @@
 const express = require('express');
 const productRouter = require('./routes/product')
+const categoryRouter = require('./routes/category')
 const morgan = require('morgan')
 
 
@@ -17,6 +18,8 @@ server.get("/people", (req, res) => {
 server.use(express.json());
 
 server.use('/', productRouter)
+
+server.use('/', categoryRouter)
 
 
 
