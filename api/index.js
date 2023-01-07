@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const server = require('./src/app')
 
+const dbConnect = require('./src/db')
+
 const morgan = require('morgan')
 
 server.use(morgan("dev"));
@@ -13,3 +15,5 @@ server.use(morgan("dev"));
 server.listen("9000", () => {
     console.log("listening on port 9000")
 })
+
+dbConnect();

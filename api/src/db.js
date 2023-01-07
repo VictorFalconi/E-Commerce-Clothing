@@ -3,15 +3,19 @@ const mongoose = require("mongoose");
 
 const dbConnect = () => {
   const MONGODB = process.env.MONGODB;
-  mongoose.connect(MONGODB, {
+  const connectionString = MONGODB
+  mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-    .then(() => console.log("Connected to DB"))
-    .catch((err) => {
-      console.error("ERROR:", err);
-    });
+  //devuelve promesa
+  .then(() => {
+      console.log('Database connected to ATLAS')
+  })
+  .catch((err) => {
+      console.error('Connection Error: ', err)
+  })
 };
 
-    module.export = dbConnect;
+    module.exports = dbConnect;
     
