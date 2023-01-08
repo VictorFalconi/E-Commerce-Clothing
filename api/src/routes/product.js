@@ -1,5 +1,6 @@
 const express = require('express');
-const productSchema = require('../models/product')
+const productSchema = require('../models/product');
+const { products } = require('../controllers/Product');
 
 const router = express.Router();
 
@@ -8,12 +9,7 @@ router.post("/products", (req, res) => {
     product.save().then((data) => res.json(data)).catch((err) => res.json({ message: err }));
 });
    
-router.get("/products",(req, res) => {
-    productSchema
-    .find()
-    .then((data)=>res.json(data))
-    .catch((err)=> res.json({message: err}));
-});
+router.get("/products", products);
 
 router.get("/products/:id",(req, res) => {
     const { id } = req.params;
