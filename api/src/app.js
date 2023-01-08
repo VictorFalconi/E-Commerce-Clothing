@@ -2,11 +2,12 @@ const express = require('express');
 const productRouter = require('./routes/product')
 const categoryRouter = require('./routes/category')
 const morgan = require('morgan')
+const cors = require('cors')
 
 
 const server = express();
 
-
+server.use(cors())
 server.use(morgan("dev"));
 
 //ruta de prueba

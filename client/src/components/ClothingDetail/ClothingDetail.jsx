@@ -12,7 +12,7 @@ const ClothingDetail = () => {
         dispatch(clothesDetail(param.id))
     },[])
 
-    console.log(clothes)
+    //console.log(clothes)
 
     return(
         <div>
@@ -21,8 +21,8 @@ const ClothingDetail = () => {
             <p>Temporada {clothes.season}</p>
             <p>Precio {clothes.price}</p>
             <p>Marca {clothes.brand}</p>
-            <p>Modelo1 {clothes.model}</p>
-            {/* <p>{clothes.sizes.map(e => e.name).join(',')}</p> */}
+            <p>Modelo {clothes.model}</p>
+            <p>Talles {clothes.sizes.map(e => e).join(', ')}</p>
 
         </div>
     )
