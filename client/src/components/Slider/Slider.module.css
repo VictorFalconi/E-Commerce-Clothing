@@ -11,13 +11,12 @@
 
 .slider {
     display: flex;
-    /* border: 1px solid red; */
 }
 
 .item {
-    min-height: 20rem;
-    min-width: 15rem;
-    padding: 2rem;
+    min-height: 10rem;
+    min-width: 5rem;
+    padding: 1rem;
 }
 
 .item img {

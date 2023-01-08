@@ -3,25 +3,18 @@ import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const images = [
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcelebmafia.com%2Fwp-content%2Fuploads%2F2021%2F04%2Fmegan-fox-street-style-west-hollywood-04-11-2021-6.jpg&f=1&nofb=1&ipt=58cf3291cab8615a8ccace1971ce4294f3f4bbc405dca033676d572364502dd8&ipo=images",
-];
-
-const Slider = () => {
+const Slider = ({allProduct, category}) => {
   const carouselRef = useRef();
   const [width, setWidth] = useState(0);
+  const [product, setProduct] = useState([])
+  
+  
+  
   useEffect(() => {
+    setProduct(allProduct.filter((e) => e.category === category))
     setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-  }, []);
+  }, [product.length === 0]);
+
   return (
     <div className={styles.contentSlider}>
       <motion.div ref={carouselRef} className={styles.sliderContainer}>
@@ -30,10 +23,10 @@ const Slider = () => {
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
         >
-          {images.map((image, index) => (
-            <motion.div className={styles.item} key={index}>
-              <Link to='/details'>
-                <img src={image} alt="Carousel-image" />
+          {product.map((image) => (
+            <motion.div className={styles.item} key={image._id}>
+              <Link to={`/`+image._id} >
+                <img src={image.image} alt="Carousel-image" />
               </Link>
             </motion.div>
           ))}
