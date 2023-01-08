@@ -1,7 +1,29 @@
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
+import { clothesDetail } from "../../redux/actions"
+
 const ClothingDetail = () => {
+    const dispatch = useDispatch()
+    const param = useParams()
+    const clothes = useSelector(state => state.clothesDetail)
+
+    useEffect(() => {
+        dispatch(clothesDetail(param.id))
+    },[])
+
+    console.log(clothes)
+
     return(
         <div>
-            Detalles del Producto
+            <h2>{clothes.name}</h2>
+            <img src={clothes.image}></img>
+            <p>Temporada {clothes.season}</p>
+            <p>Precio {clothes.price}</p>
+            <p>Marca {clothes.brand}</p>
+            <p>Modelo1 {clothes.model}</p>
+            {/* <p>{clothes.sizes.map(e => e.name).join(',')}</p> */}
+
         </div>
     )
 }
