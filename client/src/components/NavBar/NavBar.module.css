@@ -1,0 +1,6 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    column-gap: 2rem;
+    border: 1px solid red;
+}
