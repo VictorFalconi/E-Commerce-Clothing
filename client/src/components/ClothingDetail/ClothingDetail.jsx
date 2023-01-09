@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { clothesDetail } from "../../redux/actions"
-
+// import styles from "./clothesDetail.module.css"
 const ClothingDetail = () => {
     const dispatch = useDispatch()
     const param = useParams()
