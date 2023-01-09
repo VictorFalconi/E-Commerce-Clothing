@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SearchBar from "../Search Bar/SearchBar";
 
 const NavBar = () => {
+  const path = window.location.pathname;
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/");
@@ -11,8 +12,8 @@ const NavBar = () => {
   return (
     <div>
       <div className={styles.navbar}>
-        <button className={styles.button} onClick={handleClick}></button>
-        <SearchBar></SearchBar>
+        <button onClick={handleClick}>Logo que redirige hacia la Home</button>
+        {path !== '/' ? null : <SearchBar></SearchBar>}
         <Link to="/newProduct">New Product</Link>
         <Link to="/">Log In</Link>
       </div>

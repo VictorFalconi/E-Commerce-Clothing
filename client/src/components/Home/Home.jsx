@@ -5,7 +5,7 @@ import { allClothes, categories } from "../../redux/actions";
 
 const Home = () => {
   const dispatch = useDispatch()
-  const allProduct = useSelector(state => state.allCloshes)
+  const allProduct = useSelector(state => state.allClothes)
   const category = useSelector(state => state.category)
 
   useEffect(() => {

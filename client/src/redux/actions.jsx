@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES } from "./cases";
+import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT } from "./cases";
 
 export function searchClothes(name) {
   return async function (dispatch) {
@@ -58,5 +58,18 @@ export const categories = () => {
   }
 }
 
-
+export const createProduct = (product) => {
+  return async function (dispatch) {
+    try {
+      await axios.post('http://localhost:9000/products', product)
+      const allClothes = await axios('http://localhost:9000/products')
+      dispatch({
+        type: CREATE_PRODUCT,
+        payload: allClothes.data
+      })
+    } catch(error) {
+      alert("cannot create product")
+    }
+  }
+}
 

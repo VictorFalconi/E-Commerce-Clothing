@@ -6,14 +6,12 @@ import { Link } from "react-router-dom";
 const Slider = ({allProduct, category}) => {
   const carouselRef = useRef();
   const [width, setWidth] = useState(0);
-  const [product, setProduct] = useState([])
-  
-  
+  const [product, setProduct] = useState([]);
   
   useEffect(() => {
-    setProduct(allProduct.filter((e) => e.category === category))
+    setProduct(allProduct?.filter((e) => e.category === category))
     setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-  }, [product.length === 0]);
+  }, [product?.length === 0]);
 
   return (
     <div className={styles.contentSlider}>
@@ -23,7 +21,7 @@ const Slider = ({allProduct, category}) => {
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
         >
-          {product.map((image) => (
+          {product?.map((image) => (
             <motion.div className={styles.item} key={image._id}>
               <Link to={`/`+image._id} >
                 <img src={image.image} alt="Carousel-image" />
