@@ -9,20 +9,20 @@ const ClothingDetail = () => {
     const clothes = useSelector(state => state.clothesDetail)
 
     useEffect(() => {
-        dispatch(clothesDetail(param.id))
+        dispatch(clothesDetail(param?.id))
     },[])
 
     //console.log(clothes)
 
     return(
         <div>
-            <h2>{clothes.name}</h2>
-            <img src={clothes.image}></img>
-            <p>Temporada {clothes.season}</p>
-            <p>Precio {clothes.price}</p>
-            <p>Marca {clothes.brand}</p>
-            <p>Modelo {clothes.model}</p>
-            <p>Talles {clothes.sizes.map(e => e).join(', ')}</p>
+            <h2>{clothes?.name}</h2>
+            <img src={clothes?.image}></img>
+            <p>Temporada {clothes?.season}</p>
+            <p>Precio {clothes?.price}</p>
+            <p>Marca {clothes?.brand}</p>
+            <p>Modelo {clothes?.model}</p>
+            <p>Talles {clothes?.sizes?.map(e => e).join(', ')}</p>
 
         </div>
     )

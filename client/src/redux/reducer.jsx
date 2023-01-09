@@ -1,8 +1,8 @@
-import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES } from "./cases";
+import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES } from "./cases";
 
 const initialState = {
   loading: true,
-  allCloshes: [],
+  allClothes: [],
   category: [],
   clothesDetail: [],
 };
@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     case ALL_CLOTHES:
       return {
         ...state,
-        allCloshes: action.payload
+        allClothes: action.payload
       }
     
       case CATEGORIES: 
@@ -33,6 +33,12 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           clothesDetail: action.payload
+        }
+      
+      case CREATE_PRODUCT: 
+        return {
+          ...state,
+          allClothes: action.payload
         }
 
     default:
