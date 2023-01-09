@@ -1,6 +1,16 @@
 .navbar {
     display: flex;
-    justify-content: center;
-    column-gap: 2rem;
-    border: 1px solid red;
+    justify-content: space-between;
+    width: 98%;
+    height: 50px;
+    flex-direction: row;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-bottom: 60px;
+    
 }
+
+/* .logoProfile{
+    width: 20px;
+    height: 20px;
+} */
