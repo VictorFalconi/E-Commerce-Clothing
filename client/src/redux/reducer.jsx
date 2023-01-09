@@ -18,6 +18,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
 
     case SEARCH_CLOTHES:
+      console.log(action.payload)
       return {
         ...state,
         seartchClothes: action.payload,

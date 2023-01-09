@@ -10,6 +10,7 @@ export default function SearchBar() {
   const dispatch = useDispatch();
   let { name } = useParams();
   const searchClothesbyName = useSelector((state) => state.seartchClothes);
+    console.log(searchClothesbyName)
 
   useEffect(() => {
     dispatch(searchClothes(name));
