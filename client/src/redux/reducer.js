@@ -8,14 +8,15 @@ const initialState = {
   productsFiltered: [],
   currentOrder: "",
   brandFilteredMemory: [],
+  seartchClothes: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SEARCH_CLOTHES":
+    case 'SEARCH_CLOTHES':
       return {
         ...state,
-        clothes: action.payload,
+        seartchClothes: action.payload,
       };
 
     case "ALL_CLOTHES":

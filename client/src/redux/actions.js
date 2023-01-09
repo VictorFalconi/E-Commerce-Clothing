@@ -5,8 +5,8 @@ import axios from "axios";
 export function searchClothes(name) {
   return async function (dispatch) {
     try {
-      var clothes = await axios();
-      return dispatch({
+      const clothes = await axios(`http://localhost:9000/products?name=${name}`);
+      dispatch({
         type: 'SEARCH_CLOTHES',
         payload: clothes.data,
       });

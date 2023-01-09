@@ -5,6 +5,7 @@ import ClothingDetail from "./components/ClothingDetail/ClothingDetail"
 import Home from "./components/Home/Home"
 import NavBar from "./components/NavBar/NavBar"
 import NewProduct from "./components/NewProuct/NewProduct"
+import SearchBar from "./components/Search Bar/SearchBar"
 import { allClothes, categories } from "./redux/actions"
 import Filters from "./components/Filters/Filters";
 function App() {
@@ -21,7 +22,7 @@ function App() {
       <Filters></Filters>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/searchResults" element={<div>Resultados de la busqueda</div>}></Route>
+        <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
         <Route path="/:id" element={<ClothingDetail/>}></Route>
         <Route path="/newProduct" element={<NewProduct/>}/>
         <Route path="*" element={<Navigate to='/'/>}/>

@@ -7,13 +7,12 @@ import { allClothes, categories } from "../../redux/actions";
 import Filters from "../Filters/Filters";
 
 const Home = () => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const allProduct = useSelector(state => state.allClothes)
   const category = useSelector(state => state.category)
+  // console.log(allProduct, 'allProduct')
 
   useEffect(() => {
-    // dispatch(allClothes())
-    // dispatch(categories())
   },[])
 
     return(
