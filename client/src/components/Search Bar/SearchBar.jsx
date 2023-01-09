@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import { searchClothes } from '../../store/actions';
+import { searchClothes } from '../../redux/actions';
 
 
 export default function SearchBar() {
+    const dispatch = useDispatch()
+    const [name, setName] = useState("")
+    // console.log(name)
 
-    let dispatch = useDispatch()
-    const [input, setInput] = useState("")
+    useEffect(() => {
+        dispatch(searchClothes(name))
+    },[name])
 
     function handleChange(e) {
-        e.preventDefault()
-        setInput(e.target.value)
+        setName(e.target.value)
     }
-
+ 
     function handleSubmit(e) {   
         e.preventDefault()
-        // dispatch(searchClothes(input))
-        setInput("")
+        dispatch(searchClothes(name))
     }
 
     
@@ -28,9 +30,9 @@ export default function SearchBar() {
             autoComplete="off"
             onChange={(e) => handleChange(e)}
             placeholder='Search Clothes'
-            value={input}
+            value={name}
             />
-            <button type='submit'>Search</button>
+            <button>Search</button>
         </form>
     )
 }

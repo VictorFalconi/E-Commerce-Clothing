@@ -3,17 +3,10 @@ import axios from "axios";
 import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT } from "./cases";
 
 export function searchClothes(name) {
-  return async function (dispatch) {
-    try {
-      var clothes = await axios();
-      return dispatch({
-        type: SEARCH_CLOTHES,
-        payload: clothes.data,
-      });
-    } catch (error) {
-      alert("not found");
-    }
-  };
+  return {
+    type: SEARCH_CLOTHES,
+    payload: name
+  }
 }
 
 export const allClothes = () => {

@@ -4,13 +4,11 @@ import Slider from "../Slider/Slider";
 import { allClothes, categories } from "../../redux/actions";
 
 const Home = () => {
-  const dispatch = useDispatch()
-  const allProduct = useSelector(state => state.allClothes)
+  // const dispatch = useDispatch()
+  const allProduct = useSelector(state => state.productsFiltered)
   const category = useSelector(state => state.category)
 
   useEffect(() => {
-    // dispatch(allClothes())
-    // dispatch(categories())
   },[])
 
     return(
