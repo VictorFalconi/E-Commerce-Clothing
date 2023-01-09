@@ -6,7 +6,7 @@ import Home from "./components/Home/Home"
 import NavBar from "./components/NavBar/NavBar"
 import NewProduct from "./components/NewProuct/NewProduct"
 import { allClothes, categories } from "./redux/actions"
-
+import Filters from "./components/Filters/Filters";
 function App() {
   const dispatch = useDispatch()
 
@@ -17,7 +17,8 @@ function App() {
 
   return (
     <div>
-      <NavBar></NavBar>
+      <NavBar></NavBar> 
+      <Filters></Filters>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/searchResults" element={<div>Resultados de la busqueda</div>}></Route>

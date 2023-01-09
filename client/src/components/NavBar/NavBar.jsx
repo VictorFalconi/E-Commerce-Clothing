@@ -16,7 +16,7 @@ const NavBar = () => {
   return (
     <div>
       <div className={styles.navbar}>
-        <img src={logo} classname={styles.Icon} onClick={handleClick}></img>
+        <img src={logo}  onClick={handleClick}></img>
         {path !== '/' ? null : <SearchBar></SearchBar>}
         <Link to="/newProduct">
         <img src={formulario} className={styles.IconFormulario} />
