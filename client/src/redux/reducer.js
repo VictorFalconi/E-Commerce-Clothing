@@ -1,4 +1,4 @@
- import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES, FILTER, RESET_FILTERS, ORDER_BY } from "./cases";
+//  import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES, FILTER, RESET_FILTERS, ORDER_BY } from "./cases";
 
 const initialState = {
   loading: true,
@@ -8,14 +8,15 @@ const initialState = {
   productsFiltered: [],
   currentOrder: "",
   brandFilteredMemory: [],
+  seartchClothes: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case SEARCH_CLOTHES:
+    case 'SEARCH_CLOTHES':
       return {
         ...state,
-        clothes: action.payload,
+        seartchClothes: action.payload,
       };
 
     case "ALL_CLOTHES":
