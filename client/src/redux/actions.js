@@ -1,13 +1,13 @@
 import axios from "axios";
 
-import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT } from "./cases";
+// import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY } from "./cases";
 
 export function searchClothes(name) {
   return async function (dispatch) {
     try {
       var clothes = await axios();
       return dispatch({
-        type: SEARCH_CLOTHES,
+        type: 'SEARCH_CLOTHES',
         payload: clothes.data,
       });
     } catch (error) {
@@ -21,7 +21,7 @@ export const allClothes = () => {
     try {
       const allClothes = await axios('http://localhost:9000/products')
       dispatch({
-        type: ALL_CLOTHES,
+        type: 'ALL_CLOTHES',
         payload: allClothes.data
       })
     } catch (error) {
@@ -35,7 +35,7 @@ export const clothesDetail = (id) => {
     try {
       const clothesDetail = await axios(`http://localhost:9000/products/${id}`)
       dispatch({
-        type: CLOTHES_DETAIL,
+        type: 'CLOTHES_DETAIL',
         payload: clothesDetail.data
       })
     } catch (error) {
@@ -49,7 +49,7 @@ export const categories = () => {
     try {
       const category = await axios('http://localhost:9000/category')
       dispatch({
-        type: CATEGORIES,
+        type: 'CATEGORIES',
         payload: category.data
       })
     } catch (error) {
@@ -64,7 +64,7 @@ export const createProduct = (product) => {
       await axios.post('http://localhost:9000/products', product)
       const allClothes = await axios('http://localhost:9000/products')
       dispatch({
-        type: CREATE_PRODUCT,
+        type: 'CREATE_PRODUCT',
         payload: allClothes.data
       })
     } catch(error) {
@@ -73,3 +73,8 @@ export const createProduct = (product) => {
   }
 }
 
+// ------  filtros -------
+
+export function orderBy(payload) {
+  return { type: 'ORDER_BY', payload }
+}
