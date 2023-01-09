@@ -4,12 +4,13 @@ import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Slider = ({allProduct, category}) => {
+  // console.log(allProduct, 'AllProduct')
   const carouselRef = useRef();
   const [width, setWidth] = useState(0);
   const [product, setProduct] = useState([]);
   
   useEffect(() => {
-    setProduct(allProduct?.filter((e) => e.category === category))
+    setProduct(allProduct.filter((e) => e.category === category))
     setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
   }, [product?.length === 0]);
 

@@ -11,28 +11,22 @@ const initialState = {
   allClothes: [],
   category: [],
   clothesDetail: [],
-  seartchClothes: '',
-  productsFiltered: [],
+  seartchClothes: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
     case SEARCH_CLOTHES:
-      let filterNames = state.productsFiltered.filter((e) => {
-        return (e.name.toUpperCase().includes(action.payload.toUpperCase()));
-      });
       return {
         ...state,
-        productsFiltered: filterNames,
-        seartchclothes: action.payload,
+        seartchClothes: action.payload,
       };
 
     case ALL_CLOTHES:
       return {
         ...state,
         allClothes: action.payload,
-        productsFiltered: action.payload,
       };
 
     case CATEGORIES:

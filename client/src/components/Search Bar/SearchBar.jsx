@@ -1,42 +1,30 @@
 import styles from "./SearchBar.module.css";
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-// import { searchClothes } from '../../store/actions';
-import lupa from "./assets/lupa_negra.png"
-
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import lupa from "./assets/lupa_negra.png";
+import { searchClothes } from "../../redux/actions";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function SearchBar() {
-    const dispatch = useDispatch()
-    const [name, setName] = useState("")
-    // console.log(name)
+  const dispatch = useDispatch();
+  let { name } = useParams();
+  const searchClothesbyName = useSelector((state) => state.seartchClothes);
 
-    useEffect(() => {
-        dispatch(searchClothes(name))
-    },[name])
+  useEffect(() => {
+    dispatch(searchClothes(name));
+  }, [name]);
 
-    function handleChange(e) {
-        setName(e.target.value)
-    }
- 
-    function handleSubmit(e) {   
-        e.preventDefault()
-        dispatch(searchClothes(name))
-    }
-
-    
-    return (
-        <form onSubmit={(e) => handleSubmit(e)}>
-            <input 
-            type="text"
-            id="title"
-            autoComplete="off"
-            onChange={(e) => handleChange(e)}
-            placeholder='Search Clothes'
-            value={name}
-            />
-            <button type='submit'>
-            <img src={lupa} className={styles.IconLupa} />
-            </button>
-        </form>
-    )
+  return (
+    <div className={styles.productFilter}>
+      {searchClothesbyName.map((e) => (
+        <div key={e._id} className={styles.cardFilter} >
+          <h2>{e.name}</h2>
+          <Link to={`/` + e._id}>
+            <img src={e.image} alt="clothes" className={styles.image} />
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
 }
