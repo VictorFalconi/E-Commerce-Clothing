@@ -5,6 +5,10 @@ import { useState } from "react";
 import logo from "./assets/iconHome.jpeg";
 import logoProfile from "./assets/logoProfile.png";
 import formulario from "./assets/formulario.png";
+import { LoginButton } from "../Login/Login";
+import { LogoutButton } from "../Login/Logout";
+import { useAuth0 } from '@auth0/auth0-react'
+import { Profile } from "../Login/Profile";
 
 const NavBar = () => {
   const path = window.location.pathname;
@@ -19,6 +23,8 @@ const NavBar = () => {
       navigate(`/searchResults/${name}`)
       setName('')
   }
+
+  const { isAuthenticated } = useAuth0();
 
   return (
     <div>
@@ -37,11 +43,15 @@ const NavBar = () => {
           </form>
         </div>
         <Link to="/newProduct">
-          <img src={formulario} className={styles.IconFormulario} />
+          <img src={formulario} className={styles.IconFormulario} alt='Logo'/>
         </Link>
-        <Link to="/">
-          <img src={logoProfile} className={styles.IconProfile} />
-        </Link>
+        {/* <Link to="/">
+          <img src={logoProfile} className={styles.IconProfile} alt='LogIn' />
+        </Link> */}
+        {isAuthenticated ? <>
+          <Profile/>
+        <LogoutButton/>
+        </>: <LoginButton/> }
       </div>
     </div>
   );
