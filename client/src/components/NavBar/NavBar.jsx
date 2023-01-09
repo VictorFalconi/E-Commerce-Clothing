@@ -2,6 +2,10 @@ import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../Search Bar/SearchBar";
+import logo from "./assets/iconHome.jpeg"
+import logoProfile from "./assets/logoProfile.png"
+import formulario from "./assets/formulario.png"
+
 
 const NavBar = () => {
   const path = window.location.pathname;
@@ -12,10 +16,14 @@ const NavBar = () => {
   return (
     <div>
       <div className={styles.navbar}>
-        <button onClick={handleClick}>Logo que redirige hacia la Home</button>
+        <img src={logo} classname={styles.Icon} onClick={handleClick}></img>
         {path !== '/' ? null : <SearchBar></SearchBar>}
-        <Link to="/newProduct">New Product</Link>
-        <Link to="/">Log In</Link>
+        <Link to="/newProduct">
+        <img src={formulario} className={styles.IconFormulario} />
+        </Link>
+        <Link to="/"> 
+        <img src={logoProfile} className={styles.IconProfile} />
+        </Link>
       </div>
     </div>
   );

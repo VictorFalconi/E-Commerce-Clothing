@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import styles from "./SearchBar.module.css";
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { searchClothes } from '../../redux/actions';
+// import { searchClothes } from '../../store/actions';
+import lupa from "./assets/lupa_negra.png"
 
 
 export default function SearchBar() {
@@ -32,7 +34,9 @@ export default function SearchBar() {
             placeholder='Search Clothes'
             value={name}
             />
-            <button>Search</button>
+            <button type='submit'>
+            <img src={lupa} className={styles.IconLupa} />
+            </button>
         </form>
     )
 }
