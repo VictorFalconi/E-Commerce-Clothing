@@ -1,3 +1,4 @@
+import styles from "./SearchBar.module.css";
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 // import { searchClothes } from '../../store/actions';
@@ -30,7 +31,7 @@ export default function SearchBar() {
             placeholder='Search Clothes'
             value={input}
             />
-            <button type='submit'>Search</button>
+            <button type='submit'> className{styles.button}</button>
         </form>
     )
 }

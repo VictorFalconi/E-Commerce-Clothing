@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <div>
       <div className={styles.navbar}>
-        <button onClick={handleClick}>Logo que redirige hacia la Home</button>
+        <button className={styles.button} onClick={handleClick}></button>
         <SearchBar></SearchBar>
         <Link to="/newProduct">New Product</Link>
         <Link to="/">Log In</Link>
