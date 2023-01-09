@@ -172,7 +172,7 @@ const NewProduct = () => {
                                     dispatch(createProduct({name, description, model, season, price, sizes, image, brand, category}));
                                     resolve();
                                 });
-                                await create.then(() => navigate('/'));
+                                await create.then(() => {alert('producto creado'); navigate('/');});
                             }
                             else {
                                 alert('There should not be empty fields')
