@@ -30,10 +30,10 @@ const NavBar = () => {
             <input
               type="text"
               value={name}
-              placeholder="Search Videogame"
+              placeholder="Search"
               onChange={(e) => setName(e.target.value)}
             />
-            <button>Go</button>
+            <button disabled={name? false : true}>🔍</button>
           </form>
         </div>
         <Link to="/newProduct">
