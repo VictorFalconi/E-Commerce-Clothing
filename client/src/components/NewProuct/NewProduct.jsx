@@ -164,20 +164,21 @@ const NewProduct = () => {
                 <ButtonContainer>
                     <Button 
                         className={styles.savebtn}
-                        onClick={async(e) => {
-                            e.preventDefault();
-                            if(name && description && model && season && price && !!sizes.length && image[0] && brand && category) {
+                        onClick = { (e) => alert("Producto creado")}
+                        // onClick={async(e) => {
+                        //     e.preventDefault();
+                        //     if(name && description && model && season && price && !!sizes.length && image[0] && brand && category) {
 
-                                const create = new Promise((resolve, reject) => {
-                                    dispatch(createProduct({name, description, model, season, price, sizes, image, brand, category}));
-                                    resolve();
-                                });
-                                await create().then(() => navigate('/'));
-                            }
-                            else {
-                                alert('There should not be empty fields')
-                            }
-                        }}
+                        //         const create = new Promise((resolve, reject) => {
+                        //             dispatch(createProduct({name, description, model, season, price, sizes, image, brand, category}));
+                        //             resolve();
+                        //         });
+                        //         await create().then(() => navigate('/'));
+                        //     }
+                        //     else {
+                        //         alert('There should not be empty fields')
+                        //     }
+                        // }}
                     >
                         Save
                     </Button>
