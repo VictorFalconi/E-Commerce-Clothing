@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { clothesDetail } from "../../redux/actions"
-// import styles from "./clothesDetail.module.css"
+import styles from "./ClothingDetail.module.css"
 const ClothingDetail = () => {
     const dispatch = useDispatch()
     const param = useParams()
@@ -15,15 +15,18 @@ const ClothingDetail = () => {
     //console.log(clothes)
 
     return(
-        <div>
-            <h2>{clothes?.name}</h2>
-            <img src={clothes?.image}></img>
-            <p>Temporada {clothes?.season}</p>
-            <p>Precio {clothes?.price}</p>
-            <p>Marca {clothes?.brand}</p>
-            <p>Modelo {clothes?.model}</p>
-            <p>Talles {clothes?.sizes?.map(e => e).join(', ')}</p>
-
+        <div className={styles.container}>
+            <div className={styles.card}>
+                <h2>{clothes?.name}</h2>
+                <img src={clothes?.image}></img>
+                <p className={styles.price}>${clothes?.price}</p>
+                <p>Season: {clothes?.season}</p>
+                <h3>{clothes?.brand}</h3>
+                <p>Model: {clothes?.model}</p>
+                <p>Sizes:</p>
+                <p>{clothes?.sizes?.map(e => e).join(', ')}</p>
+                <button className={styles.btn}>Add to bag</button>
+            </div>
         </div>
     )
 }

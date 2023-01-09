@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { createProduct } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import styles from './NewProduct.module.css';
 
 const Container = styled.div`
     width: 100%;
@@ -94,31 +95,31 @@ const NewProduct = () => {
 
     return(
         <Container>
-            <Title>New Product</Title>
-            <Form>
-                <InputContainer>
+            <Title className={styles.title}>New Product</Title>
+            <Form className={styles.labels}>
+                <InputContainer className={styles.propertiesBox}>
                     <Label>Name: </Label>
-                    <Input type='text' name='name' id='name' value={name} onChange={e => {setName(e.target.value)}}/>
+                    <Input className={styles.input} type='text' name='name' id='name' value={name} onChange={e => {setName(e.target.value)}}/>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer className={styles.propertiesBox}>
                     <Label>Description: </Label>
-                    <Input type='text' name='description' id='description' value={description} onChange={e => {setDescription(e.target.value)}}/>
+                    <Input className={styles.input} type='text' name='description' id='description' value={description} onChange={e => {setDescription(e.target.value)}}/>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer className={styles.propertiesBox}>
                     <Label>Model: </Label>
-                    <Input type='text' name='model' id='model' value={model} onChange={e => {setModel(e.target.value)}}/>
+                    <Input className={styles.input} type='text' name='model' id='model' value={model} onChange={e => {setModel(e.target.value)}}/>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer className={styles.propertiesBox}>
                     <Label>Season: </Label>
-                    <Input type='text' name='season' id='season' value={season} onChange={e => {setSeason(e.target.value)}}/>
+                    <Input className={styles.input} type='text' name='season' id='season' value={season} onChange={e => {setSeason(e.target.value)}}/>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer className={styles.propertiesBox}>
                     <Label>Price: </Label>
-                    <Input type='number' name='price' id='price' value={price} onChange={e => {setPrice(parseFloat(e.target.value) || 0)}} onClick={e => {e.target.select()}}/>
+                    <Input className={styles.input} type='number' name='price' id='price' value={price} onChange={e => {setPrice(parseFloat(e.target.value) || 0)}} onClick={e => {e.target.select()}}/>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer className={styles.propertiesBox}>
                     <Label>Category: </Label>
-                    <Select name='category' id='category' value={category} onChange={e => setCategory(e.target.value)}>
+                    <Select className={styles.input} name='category' id='category' value={category} onChange={e => setCategory(e.target.value)}>
                         <option value='Pants'>Pants</option>
                         <option value='Shoes'>Shoes</option>
                         <option value='T-Shirts'>T-Shirts</option>
@@ -126,7 +127,7 @@ const NewProduct = () => {
                         <option value='Caps'>Caps</option>
                     </Select>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer className={styles.propertiesBox}>
                     <Label>Sizes: </Label>
                     <CheckboxContainer>
                         {
@@ -152,16 +153,17 @@ const NewProduct = () => {
                         }
                     </CheckboxContainer>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer className={styles.propertiesBox}>
                     <Label>Image: </Label>
-                    <Input type='text' name='image' id='image' value={image[0]} onChange={e => {setImage([e.target.value])}}/>
+                    <Input className={styles.input} type='text' name='image' id='image' value={image[0]} onChange={e => {setImage([e.target.value])}}/>
                 </InputContainer>
-                <InputContainer>
+                <InputContainer className={styles.propertiesBox}>
                     <Label>Brand: </Label>
-                    <Input type='text' name='brand' id='brand' value={brand} onChange={e => {setBrand(e.target.value)}}/>
+                    <Input className={styles.input} type='text' name='brand' id='brand' value={brand} onChange={e => {setBrand(e.target.value)}}/>
                 </InputContainer>
                 <ButtonContainer>
                     <Button 
+                        className={styles.savebtn}
                         onClick={async(e) => {
                             e.preventDefault();
                             if(name && description && model && season && price && !!sizes.length && image[0] && brand && category) {
@@ -179,7 +181,7 @@ const NewProduct = () => {
                     >
                         Save
                     </Button>
-                    <Button onClick={e => {e.preventDefault(); navigate('/');}}>Cancel</Button>
+                    <Button className={styles.cancelbtn} onClick={e => {e.preventDefault(); navigate('/');}}>Cancel</Button>
                 </ButtonContainer>
             </Form>
         </Container>

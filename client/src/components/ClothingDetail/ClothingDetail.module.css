@@ -1,0 +1,44 @@
+.container {
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3% auto;
+    margin-bottom: 10%;
+    justify-content: center;
+    background-color: rgb(246, 246, 246);
+    border: 10rem;
+    border-width:2px;
+    border-style: hidden;
+    box-shadow: 6px 7px 8px -6px rgba(69,69,69,0.7);
+    width: 50%;
+}
+
+.price {
+    font-size: xx-large;
+}
+
+.btn {
+    margin-top: 15%;
+    margin-bottom: 10%;
+    width: 250px;
+    background: #e06100;
+    background-image: -webkit-linear-gradient(top, #e06100, #f500b4);
+    background-image: -moz-linear-gradient(top, #e06100, #f500b4);
+    background-image: -ms-linear-gradient(top, #e06100, #f500b4);
+    background-image: -o-linear-gradient(top, #e06100, #f500b4);
+    background-image: linear-gradient(to bottom, #e06100, #f500b4);
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    text-shadow: 2px 1px 0px #666666;
+    font-family: Georgia;
+    color: #ffffff;
+    font-size: 21px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
