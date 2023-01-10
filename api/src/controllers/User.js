@@ -22,21 +22,48 @@ const createUser = async (req, res) => {
     }
 }
 
+const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    userModel.deleteOne({ _id: id }).then((data)=>res.json(data)).catch((err)=>res.json({ message: err }))
+    
+}
+
+const updateUser = async (req,res) =>{
+    const { id } = req.params;
+    const { active } = req.body;
+    userModel.updateOne({_id: id},{$set:{active}}).then((data)=>res.json(data)).catch((err)=> res.json({message: err}))
+}
+
 const getAllUsers = async (req, res) => {
     try{
+        const { name } = req.query;
         const allUsers = await userModel.find({});
     if(allUsers){
-        res.status(200).json(allUsers)
+
+        if(name){
+
+            const user = allUsers.filter((p)=>p.full_name.toLowerCase().includes(name.toLowerCase()))
+            user? res.status(200).json(user) : res.json('Not Found')
+        }else{
+            res.status(200).json(allUsers)
+        }        
     }else { 
         res.status(400).json('Request error!')
     }
     }catch(err){
-        res.status(400).json(err)
+        res.status(400).json('mal ahi')
     }
     
 }
 
+const getUserById = async (req,res)=>{
+    const { id } = req.params;
+    userModel.findById(id).then((data)=>res.json(data)).catch((err)=>res.json({message: err}));
+}
 module.exports = {
     createUser,
-    getAllUsers
+    getAllUsers,
+    deleteUser,
+    updateUser,
+    getUserById
 }
