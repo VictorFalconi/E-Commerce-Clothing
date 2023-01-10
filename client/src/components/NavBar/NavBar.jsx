@@ -24,7 +24,7 @@ const NavBar = () => {
       setName('')
   }
 
-  const { isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
 
   return (
     <div>
@@ -50,6 +50,7 @@ const NavBar = () => {
         </Link> */}
         {isAuthenticated ? <>
           <Profile/>
+          {console.log(user)}
         <LogoutButton/>
         </>: <LoginButton/> }
       </div>
