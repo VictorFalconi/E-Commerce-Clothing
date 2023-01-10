@@ -8,6 +8,8 @@ import NewProduct from "./components/NewProuct/NewProduct"
 import SearchBar from "./components/Search Bar/SearchBar"
 import { allClothes, categories } from "./redux/actions"
 import Filters from "./components/Filters/Filters";
+import { LoginButton } from "./components/Login/Login";
+import { useAuth0 } from "@auth0/auth0-react"
 function App() {
   const dispatch = useDispatch()
 
@@ -15,6 +17,7 @@ function App() {
     dispatch(allClothes())
     dispatch(categories())
   },[])
+  const { user }  = useAuth0();
 
   return (
     <div>
@@ -24,7 +27,7 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
         <Route path="/:id" element={<ClothingDetail/>}></Route>
-        <Route path="/newProduct" element={<NewProduct/>}/>
+        <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
         <Route path="*" element={<Navigate to='/'/>}/>
       </Routes>
     </div>
