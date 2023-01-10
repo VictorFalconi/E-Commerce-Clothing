@@ -1,6 +1,7 @@
 const express = require('express');
 const productRouter = require('./routes/product')
 const categoryRouter = require('./routes/category')
+const userRouter = require('./routes/user')
 const morgan = require('morgan')
 const cors = require('cors')
 
@@ -21,6 +22,8 @@ server.use(express.json());
 server.use('/', productRouter)
 
 server.use('/', categoryRouter)
+
+server.use('/', userRouter)
 
 
 
