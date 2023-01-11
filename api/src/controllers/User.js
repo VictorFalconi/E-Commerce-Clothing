@@ -31,7 +31,10 @@ const deleteUser = async (req, res) => {
 const updateUser = async (req,res) =>{
     const { id } = req.params;
     const { active } = req.body;
-    userModel.updateOne({_id: id},{$set:{active}}).then((data)=>res.json(data)).catch((err)=> res.json({message: err}))
+    userModel.findByIdAndUpdate(id, {
+        active: active
+    },{new: true}).then((data)=> res.status(200).json(data))
+    //userModel.updateOne({_id: id},{$set:{active}}).then((data)=>res.json(data)).catch((err)=> res.json({message: err}))
 }
 
 const getAllUsers = async (req, res) => {
