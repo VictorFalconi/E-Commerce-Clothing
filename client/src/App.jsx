@@ -15,8 +15,8 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(allClothes())
-    dispatch(categories())
+    // dispatch(allClothes())
+    // dispatch(categories())
   },[])
   const { user }  = useAuth0();
 

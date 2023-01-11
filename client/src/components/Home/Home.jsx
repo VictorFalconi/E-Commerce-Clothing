@@ -7,22 +7,26 @@ import { allClothes, categories } from "../../redux/actions";
 import Filters from "../Filters/Filters";
 
 const Home = () => {
-  // const dispatch = useDispatch()
+   const dispatch = useDispatch()
   const allProduct = useSelector(state => state.allClothes)
-  const category = useSelector(state => state.category)
-  // console.log(allProduct, 'allProduct')
+  const allCategory = allProduct.map((p)=> p.category)
+  const category = allCategory.filter((item,index)=>{
+    return allCategory.indexOf(item) === index;
+  })
+
 
   useEffect(() => {
+    dispatch(allClothes())
   },[])
 
     return(
       
         <div>
           
-          {category.map(categories => (
-            <div key={categories._id}>
-              {categories.name}
-              <Slider allProduct={allProduct} category={categories.name} ></Slider>
+          {category.map((categories, idx) => (
+            <div key={idx}>
+              {categories}
+              <Slider allProduct={allProduct} category={categories} ></Slider>
             </div>
           ))}
         </div>
