@@ -10,6 +10,7 @@ import { allClothes, categories } from "./redux/actions"
 import Filters from "./components/Filters/Filters";
 import { LoginButton } from "./components/Login/Login";
 import { useAuth0 } from "@auth0/auth0-react"
+import Admin from "./components/Admin/Admin"
 function App() {
   const dispatch = useDispatch()
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/:id" element={<ClothingDetail/>}></Route>
         <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
         <Route path="*" element={<Navigate to='/'/>}/>
+        <Route path="/admin" element={user? <Admin/> : <LoginButton/>}/>
       </Routes>
     </div>
   )

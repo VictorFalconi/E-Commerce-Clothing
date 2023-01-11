@@ -9,6 +9,7 @@ const initialState = {
   currentOrder: "",
   brandFilteredMemory: [],
   seartchClothes: [],
+  users: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -65,9 +66,23 @@ const reducer = (state = initialState, action) => {
         allClothes: action.payload,
       };
 
+    case "ALL_USERS":
+      return {
+        ...state,
+        users: action.payload,
+      };
+
+    case "UPDATE_USER_STATUS":
+      return {
+        ...state,
+        users: action.payload,
+      };
+
     default:
       return state;
   }
+
+  
 };
 
 export default reducer;

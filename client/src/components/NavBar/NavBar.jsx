@@ -9,6 +9,7 @@ import { LoginButton } from "../Login/Login";
 import { LogoutButton } from "../Login/Logout";
 import { useAuth0 } from '@auth0/auth0-react'
 import { Profile } from "../Login/Profile";
+import Admin from "../Admin/Admin";
 
 const NavBar = () => {
   const path = window.location.pathname;
@@ -18,6 +19,7 @@ const NavBar = () => {
   };
 
   const [name, setName] = useState('')
+
   const handleSubmit = (e) => {
       e.preventDefault()
       navigate(`/searchResults/${name}`)
@@ -26,6 +28,9 @@ const NavBar = () => {
 
   const { user, isAuthenticated } = useAuth0();
 
+  // con el email puedo buscar en la BDD si el usuario es Admin, y hacer un renderizado condicional para mostrar la dashboard
+  //   const userEmail = user.email  
+  
   return (
     <div>
       <div className={styles.navbar}>
@@ -42,17 +47,11 @@ const NavBar = () => {
             <button disabled={name? false : true}>🔍</button>
           </form>
         </div>
-        <Link to="/newProduct">
+        {isAuthenticated && <Link to="/newProduct">
           <img src={formulario} className={styles.IconFormulario} alt='Logo'/>
-        </Link>
-        {/* <Link to="/">
-          <img src={logoProfile} className={styles.IconProfile} alt='LogIn' />
-        </Link> */}
-        {isAuthenticated ? <>
-          <Profile/>
-          {console.log(user)}
-        <LogoutButton/>
-        </>: <LoginButton/> }
+        </Link>}
+        {isAuthenticated && <Link to='/admin'>Admin Dashboard</Link>  }      
+        {isAuthenticated ? <LogoutButton/> : <LoginButton/> }
       </div>
     </div>
   );

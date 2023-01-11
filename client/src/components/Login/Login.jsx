@@ -8,5 +8,5 @@ import styles from '../NavBar/NavBar.module.css'
 export const LoginButton = () =>{
     const { loginWithRedirect } = useAuth0();
     
-    return <button type="button" onClick={()=>loginWithRedirect()}><img src={logoProfile} className={styles.IconProfile} alt='LogIn'/></button>
+    return <button type="button" onClick={()=>loginWithRedirect()}><img src={logoProfile} className={styles.IconProfile} alt='LogIn'/>Login</button>
 }

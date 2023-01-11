@@ -78,3 +78,32 @@ export const createProduct = (product) => {
 export function orderBy(payload) {
   return { type: 'ORDER_BY', payload }
 }
+// ---------- users ---------------
+export const allUsers = () => {
+  return async function (dispatch) {
+    try {
+      const allUsers = await axios('http://localhost:9000/user')
+      dispatch({
+        type: 'ALL_USERS',
+        payload: allUsers.data
+      })
+    } catch (error) {
+      console.log('Error action allUsers',error);
+    }
+  }
+}
+
+export const updateUserStatus = (id, payload) => {
+  return async function (dispatch) {
+    try {
+      const update = await axios.put(`http://localhost:9000/user/${id}`, payload)
+      const allUsers = await axios('http://localhost:9000/user')
+      dispatch({
+        type: 'UPDATE_USER_STATUS',
+        payload: allUsers.data
+      })
+    } catch (error) {
+      console.log('error en action/updateUserStatus', error);
+    }
+  }
+}
