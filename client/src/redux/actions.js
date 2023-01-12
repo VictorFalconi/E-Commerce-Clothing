@@ -107,3 +107,19 @@ export const updateUserStatus = (id, payload) => {
     }
   }
 }
+
+//-----------------------Reviews-------------------------
+
+export function createProductReview(payload){
+  return async function(dispatch){
+    try {
+      let json = await axios.post('http://localhost:9000/reviews', payload)
+      dispatch({
+          type: CREATE_P_REVIEW,
+          payload: json.data
+      })
+    } catch (error) {
+      console.log('error en action createReviews', error)
+    }
+  }
+}
