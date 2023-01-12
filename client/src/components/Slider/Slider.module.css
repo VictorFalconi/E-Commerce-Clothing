@@ -1,0 +1,43 @@
+.contentSlider {
+    display: flex;
+    justify-content: center;
+}
+
+.sliderContainer {
+    overflow: hidden;
+    cursor: grab;
+    width: 80%;
+}
+
+.slider {
+    display: flex;
+}
+
+/* .item {
+    min-height: 10rem;
+    min-width: 5rem;
+    padding: 1rem;
+} */
+
+.item img {
+    overflow: hidden;
+    width: 300px;
+    height: auto;
+    border-radius: 2rem;
+    pointer-events: auto;
+} 
+
+.item {
+    margin: 10px 15px;
+      width: 300px;
+      height: auto;
+      /* border-radius: 12px; */
+      box-shadow: 6px 7px 8px -6px rgba(69,69,69,0.7);
+      position: relative;
+      /* border: 2px solid; */
+      /* border-color: #ef43ef ; */
+      padding: 10px;
+      padding-top: 3vh;
+      padding-bottom: 3vh;
+      transition: 1.5s;
+    }

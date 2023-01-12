@@ -1,0 +1,20 @@
+.productFilter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.image {
+    width: 300px;
+}
+
+.cardFilter {
+    width: 300px;
+    height: auto;
+    box-shadow: 6px 7px 8px -6px rgba(69,69,69,0.7);
+    position: relative;
+    padding: 10px;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    transition: 1.5s;
+}
