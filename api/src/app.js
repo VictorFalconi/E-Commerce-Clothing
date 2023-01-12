@@ -2,6 +2,7 @@ const express = require('express');
 const productRouter = require('./routes/product')
 const categoryRouter = require('./routes/category')
 const userRouter = require('./routes/user')
+const reviewsRouter = require('./routes/reviews')
 const morgan = require('morgan')
 const cors = require('cors')
 
@@ -24,6 +25,8 @@ server.use('/', productRouter)
 server.use('/', categoryRouter)
 
 server.use('/', userRouter)
+
+server.use('/', reviewsRouter)
 
 
 
