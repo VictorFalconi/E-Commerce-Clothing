@@ -107,3 +107,17 @@ export const updateUserStatus = (id, payload) => {
     }
   }
 }
+
+export const createUser = (payload) => {
+  return async function (dispatch) {
+    try {
+      const update = await axios.post(`http://localhost:9000/user/`, payload)
+      dispatch({
+        type: 'CREATE_USER',
+        payload: update.data
+      })
+    } catch (error) {
+      console.log('error en action/createUser', error);
+    }
+  }
+}
