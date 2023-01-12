@@ -11,7 +11,7 @@ const createUser = async (req, res) => {
             last_name: user.family_name,
             image: user.picture
         })
-        const result = await newUser.save().then((data) => res.json(data)).catch((err) => res.json({ error_code: err.code, message: 'Email address is already registered!' }));
+        const result = await newUser.save().then((data) => res.json(data));
         // res.status(200).json(result)
     }else{
         res.status(400).json('No se cumplio if')

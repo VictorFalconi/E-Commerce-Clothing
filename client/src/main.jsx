@@ -8,7 +8,7 @@ import { Auth0Provider } from '@auth0/auth0-react'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <Auth0Provider domain="dev-5we1lcxsfglip626.us.auth0.com" clientId="53NsM0kQZDqEuEbHQ8P03zeUsdCbDTgl" redirectUri={window.location.origin}>
+    <Auth0Provider domain="dev-5we1lcxsfglip626.us.auth0.com" clientId="eO0wwE57zCEmlLwPdthIFm1vLY11xnrh" redirectUri={window.location.origin}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
