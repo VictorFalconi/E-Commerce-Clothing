@@ -34,6 +34,7 @@ const Admin = () => {
         dispatch(updateUserStatus(id, value))        
         
     }
+    
     const verificacionadmin = ()=>{
         const email = user.email
         const check = users.filter((u)=> u.email === email)

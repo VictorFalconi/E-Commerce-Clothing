@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeCartProduct } from '../../redux/actions';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import ClothingDetail from '../ClothingDetail/ClothingDetail';
 
 function Cart() {
+
 const dispatch = useDispatch();
+const { user }  = useAuth0();
+const users = useSelector(state => state.users)
 const cart = useSelector((state)=> state.cart);
 
   // State to store the items in the cart
@@ -31,6 +35,15 @@ const cart = useSelector((state)=> state.cart);
     return total;
   }
 
+  const verificacionActive = ()=>{
+    const email = user.email
+    const check = users.filter((u)=> u.email === email)
+    //console.log(check)
+    if(check[0]?.active === false) {
+       return <button  onClick={() =>alert('Usuario banneado')}>Comprar</button>
+    }else{ return <button onClick={() =>alert('aca continuaria compra')}>Comprar</button>}
+}
+
   return (
     <div>
         
@@ -45,7 +58,9 @@ const cart = useSelector((state)=> state.cart);
         ))}
       </ul>
       <h3>Total: ${calculateTotal().toFixed(2)}</h3> 
+      {user? verificacionActive(): <p>Registrese señor</p> }
     </div>
+   
   );
 }
 
