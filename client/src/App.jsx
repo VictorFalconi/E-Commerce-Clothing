@@ -27,7 +27,6 @@ function App() {
     <div>
       <NavBar></NavBar> 
       <Filters></Filters>
-      <Cart />
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
@@ -35,6 +34,7 @@ function App() {
         <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
         <Route path="*" element={<Navigate to='/'/>}/>
         <Route path="/admin" element={user? <Admin/> : <LoginButton/>}/>
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
     </div>
   )
