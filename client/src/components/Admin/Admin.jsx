@@ -17,7 +17,7 @@ const Admin = () => {
 
     useEffect(()=>{
         dispatch(allUsers())
-    },[users])
+    },[])
 
     const handleActive = (e) =>{
 
