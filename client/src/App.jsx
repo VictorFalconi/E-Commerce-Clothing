@@ -11,6 +11,8 @@ import Filters from "./components/Filters/Filters";
 import { LoginButton } from "./components/Login/Login";
 import { useAuth0 } from "@auth0/auth0-react"
 import Admin from "./components/Admin/Admin"
+import Cart from "./components/Cart/Cart"
+
 function App() {
   const dispatch = useDispatch()
 
@@ -24,6 +26,7 @@ function App() {
     <div>
       <NavBar></NavBar> 
       <Filters></Filters>
+      <Cart />
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
