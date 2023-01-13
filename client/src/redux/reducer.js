@@ -77,6 +77,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
+      case 'CREATE_USER':
+        return{
+          ...state,
+          users: action.payload,
+        };
 
     default:
       return state;
