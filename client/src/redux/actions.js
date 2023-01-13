@@ -78,6 +78,11 @@ export const createProduct = (product) => {
 export function orderBy(payload) {
   return { type: 'ORDER_BY', payload }
 }
+
+export function filter(payload) {
+  return { type: 'FILTER', payload }
+}
+
 // ---------- users ---------------
 export const allUsers = () => {
   return async function (dispatch) {
@@ -120,6 +125,35 @@ export function createProductReview(payload){
       })
     } catch (error) {
       console.log('error en action createReviews', error)
+    }
+  }
+}
+
+
+//-----------------------cart-----------------------
+
+export const addCart = (prod) => {
+  return function (dispatch) {
+    try {
+      dispatch({
+        type: 'ADD_CART',
+        payload: prod
+      })
+    } catch (error) {
+      console.log("error en addCart action", error);
+    }
+  }
+}
+
+export const removeCartProduct = (prod) => {
+  return function (dispatch) {
+    try {
+      dispatch({
+        type: 'REMOVE_CART_PRODUCT',
+        payload: prod
+      })
+    } catch (error) {
+      console.log("error en removeCartProduct action", error);
     }
   }
 }
