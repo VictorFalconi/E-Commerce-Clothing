@@ -9,7 +9,8 @@ const initialState = {
   currentOrder: "",
   brandFilteredMemory: [],
   seartchClothes: [],
-  users: []
+  users: [],
+  cart: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -77,10 +78,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-      case 'CREATE_USER':
-        return{
+    case 'CREATE_USER':
+      return {
+        ...state,
+        users: action.payload,
+      };
+      case 'ADD_CART':
+        
+        return {
           ...state,
-          users: action.payload,
+          cart: [...state.cart, action.payload],
         };
 
     default:
