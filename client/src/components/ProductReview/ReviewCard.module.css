@@ -1,0 +1,77 @@
+.button {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    width: 40px;
+    border-radius: 1rem;
+    font-size: larger;
+    padding: 5px;
+}
+
+.Container {
+    /* color: black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    margin: 3% auto;
+    margin-bottom: 10%;
+    justify-content: center;
+    background-color: whitesmoke;
+    border: 10rem;
+    border-width:2px;
+    border-style: hidden;
+    box-shadow: -11px 11px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 2rem;
+    width: 60%;
+    /* object-fit: cover; */    
+}
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.filterContainer {
+    margin-left: 2px;
+}
+.filter {
+    color: white;
+    border: none;
+    width: 120px;
+    margin-right: 1px;
+    background-color:rgba(0, 0, 0, 0.807);
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.card {
+    display: flex;
+    flex-direction:column;
+    border-radius: 1rem;
+    margin: 3px;
+    width: 40rem;
+    height: auto;
+    padding: 10px;
+    align-items:flex-start;
+    background-color: rgba(0, 0, 0, 0.807);
+    color: white;
+    border: none;
+}
+
+.starsCont {
+    padding-bottom: 25px;
+}
+.stars {
+    width: 20%;
+    height: 30px;
+}
+.noResults {
+    display: flex;
+    flex-direction: column;
+    margin: 15%;
+}
+.noResDescription{
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.55);
+}
