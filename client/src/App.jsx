@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { Route, Routes, Navigate } from "react-router-dom"
 import ClothingDetail from "./components/ClothingDetail/ClothingDetail"
@@ -12,18 +12,19 @@ import { LoginButton } from "./components/Login/Login";
 import { useAuth0 } from "@auth0/auth0-react"
 import Admin from "./components/Admin/Admin"
 function App() {
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
+  const { user } = useAuth0();
 
   useEffect(() => {
     // dispatch(allClothes())
     // dispatch(categories())
-  },[])
-  const { user }  = useAuth0();
+  },[]);
 
   return (
     <div>
-      <NavBar></NavBar> 
-      <Filters></Filters>
+      <NavBar/>
+      <Filters/> 
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/searchResults/:name" element={<SearchBar/>}></Route>

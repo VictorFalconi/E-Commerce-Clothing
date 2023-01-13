@@ -78,6 +78,11 @@ export const createProduct = (product) => {
 export function orderBy(payload) {
   return { type: 'ORDER_BY', payload }
 }
+
+export function filter(payload) {
+  return { type: 'FILTER', payload }
+}
+
 // ---------- users ---------------
 export const allUsers = () => {
   return async function (dispatch) {
