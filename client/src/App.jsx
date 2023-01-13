@@ -25,14 +25,9 @@ function App() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <NavBar/>
-      <Filters/> 
-=======
       <NavBar></NavBar> 
       <Filters></Filters>
       <Cart />
->>>>>>> 36217a3f5c05ab723a53f3412d13d8c939207393
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
