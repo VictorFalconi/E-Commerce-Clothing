@@ -134,12 +134,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-      case 'ADD_CART':
-        
-        return {
-          ...state,
-          cart: [...state.cart, action.payload],
-        };
+    case 'ADD_CART':
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
+    case 'REMOVE_CART_PRODUCT':
+      const cart = state.cart;
+      const newCart = cart.filter((i)=> i.name !== action.payload.name);
+      return {
+        ...state,
+        cart: newCart,
+      };
 
     default:
       return state;

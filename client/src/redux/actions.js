@@ -144,3 +144,16 @@ export const addCart = (prod) => {
     }
   }
 }
+
+export const removeCartProduct = (prod) => {
+  return function (dispatch) {
+    try {
+      dispatch({
+        type: 'REMOVE_CART_PRODUCT',
+        payload: prod
+      })
+    } catch (error) {
+      console.log("error en removeCartProduct action", error);
+    }
+  }
+}

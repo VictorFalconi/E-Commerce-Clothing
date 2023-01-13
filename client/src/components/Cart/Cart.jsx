@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeCartProduct } from '../../redux/actions';
 
 import ClothingDetail from '../ClothingDetail/ClothingDetail';
 
 function Cart() {
-
+const dispatch = useDispatch();
 const cart = useSelector((state)=> state.cart);
 
   // State to store the items in the cart
  // const [cart, setCart] = useState([]);
 
   // Function to add an item to the cart
-  function addToCart(item) {
-    setCart([...cart, item]);
-  }
+  // function addToCart(item) {
+  //   setCart([...cart, item]);
+  // }
 
   // Function to remove an item from the cart
   function removeFromCart(item) {
-    setCart(cart.filter(i => i !== item));
+    dispatch(removeCartProduct(item));
+  
   }
 
   // Function to calculate the total of the cart
@@ -32,7 +34,7 @@ const cart = useSelector((state)=> state.cart);
   return (
     <div>
         
-        <ClothingDetail addToCart={addToCart} />
+      
       <h2>Cart</h2>
       <ul>
         {cart?.map(item => (
