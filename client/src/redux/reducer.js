@@ -13,7 +13,8 @@ const initialState = {
   users: [],
   azOrder: 'Default',
   catFilter: 'Default',
-  sizeFilter: 'Default'
+  sizeFilter: 'Default',
+  cart: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -128,10 +129,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-      case 'CREATE_USER':
-        return{
+    case 'CREATE_USER':
+      return {
+        ...state,
+        users: action.payload,
+      };
+      case 'ADD_CART':
+        
+        return {
           ...state,
-          users: action.payload,
+          cart: [...state.cart, action.payload],
         };
 
     default:
