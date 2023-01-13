@@ -2,6 +2,7 @@ import styles from './Admin.module.css';
 import { Profile } from "../Login/Profile";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import { allUsers, updateUserStatus } from '../../redux/actions';
 
 
@@ -10,6 +11,9 @@ const Admin = () => {
 
     const dispatch = useDispatch();
     const users = useSelector(state => state.users)
+    const { user }  = useAuth0();
+
+
 
     useEffect(()=>{
         dispatch(allUsers())
@@ -38,7 +42,7 @@ const Admin = () => {
         <Profile/>
         {users?.map((u, idx)=>
             <div key={idx} className={styles.user}>
-                <h2>User data</h2>
+            <h2>User data</h2>
             <h3>Fullname: {u.full_name}</h3>
             <img src={u.image} alt='profile_image'/>
             <p>Email: {u.email}</p>
@@ -48,6 +52,8 @@ const Admin = () => {
             </div>            
             </div>
         )}
+
+        
     </div>
 )
 
