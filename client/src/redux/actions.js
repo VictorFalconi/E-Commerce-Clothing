@@ -153,7 +153,7 @@ export const removeCartProduct = (prod) => {
         payload: prod
       })
     } catch (error) {
-      console.log("error en removeCartProduct action", error);
+      console.log("error en remove cart action", error);
     }
   }
 }
