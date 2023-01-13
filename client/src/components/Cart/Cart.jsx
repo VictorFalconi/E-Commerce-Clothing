@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import ClothingDetail from '../ClothingDetail/ClothingDetail';
 
 function Cart() {
+
+const cart = useSelector((state)=> state.cart);
+
   // State to store the items in the cart
-  const [cart, setCart] = useState([]);
+ // const [cart, setCart] = useState([]);
 
   // Function to add an item to the cart
   function addToCart(item) {
@@ -31,14 +35,14 @@ function Cart() {
         <ClothingDetail addToCart={addToCart} />
       <h2>Cart</h2>
       <ul>
-        {cart.map(item => (
+        {cart?.map(item => (
           <li key={item.name}>
             {item.name} - ${item.price}
             <button onClick={() => removeFromCart(item)}>Remove</button>
           </li>
         ))}
       </ul>
-      <h3>Total: ${calculateTotal().toFixed(2)}</h3>
+      <h3>Total: ${calculateTotal().toFixed(2)}</h3> 
     </div>
   );
 }

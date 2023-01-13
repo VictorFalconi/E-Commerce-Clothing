@@ -123,3 +123,19 @@ export function createProductReview(payload){
     }
   }
 }
+
+
+//-----------------------cart-----------------------
+
+export const addCart = (prod) => {
+  return function (dispatch) {
+    try {
+      dispatch({
+        type: 'ADD_CART',
+        payload: prod
+      })
+    } catch (error) {
+      console.log("error en addCart action", error);
+    }
+  }
+}

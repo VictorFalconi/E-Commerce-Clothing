@@ -1,13 +1,14 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { clothesDetail } from "../../redux/actions"
+import { addCart, clothesDetail } from "../../redux/actions"
 import Cart from "../Cart/Cart.jsx";
 
 import styles from "./ClothingDetail.module.css"
 
 const ClothingDetail = () => {
     const dispatch = useDispatch()
+
     const param = useParams()
     const clothes = useSelector(state => state.clothesDetail)
 
@@ -16,6 +17,10 @@ const ClothingDetail = () => {
     },[])
 
     //console.log(clothes)
+
+    const handleCart = (clothes) => {
+        dispatch(addCart(clothes))
+    }
 
     return(
         <div className={styles.container}>
@@ -29,7 +34,7 @@ const ClothingDetail = () => {
                 <p>Sizes:</p>
                 <p>{clothes?.sizes?.map(e => e).join(', ')}</p>
 
-            <button className={styles.btn} onClick={() => props.addToCart(clothes)}>Agregar a la bolsa</button> 
+            <button className={styles.btn} onClick={() => handleCart(clothes)}>Agregar a la bolsa</button> 
                          
             </div>
         </div>
