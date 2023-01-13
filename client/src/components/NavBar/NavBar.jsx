@@ -10,7 +10,6 @@ import { LoginButton } from "../Login/Login";
 import { LogoutButton } from "../Login/Logout";
 import { useAuth0 } from '@auth0/auth0-react'
 import { Profile } from "../Login/Profile";
-import Admin from "../Admin/Admin";
 
 const NavBar = () => {
   const path = window.location.pathname;
@@ -18,7 +17,7 @@ const NavBar = () => {
   const handleClick = () => {
     navigate("/");
   };
-
+  const users = useSelector((state)=>state.users)
   const cart = useSelector((state)=> state.cart);
   const [name, setName] = useState('')
 
@@ -52,12 +51,11 @@ const NavBar = () => {
         {isAuthenticated && <Link to="/newProduct">
           <img src={formulario} className={styles.IconFormulario} alt='Logo'/>
         </Link>}
-        {isAuthenticated && <Link to='/admin'>Admin Dashboard</Link>  }
+        {isAuthenticated && <Link to='/admin'>Dashboard</Link>  }
         <div>
         <Link to='/cart'>🛒</Link>
         { cart.length > 0 && cart.length }
-        </div>
-            
+        </div>        
         {isAuthenticated ? <LogoutButton/> : <LoginButton/> }
       </div>
     </div>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState, } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams,useNavigate  } from "react-router-dom"
-import { addCart, clothesDetail, getPReviews } from "../../redux/actions"
+import { useAuth0 } from '@auth0/auth0-react';
+import { addCart, clothesDetail, allUsers, getPReviews } from "../../redux/actions"
 import Cart from "../Cart/Cart.jsx";
 import StarIcon  from '../../icons/StarIcon.svg'
 import StarIconFill from '../../icons/starIconFill.svg'
@@ -39,6 +40,7 @@ function ClothingDetail (product){
             setPromedReviews(promedioReviews)
             setCountReviews(count)
         }
+        dispatch(allUsers())
         dispatch(clothesDetail(param?.id))
     },[])
 
@@ -50,6 +52,8 @@ function ClothingDetail (product){
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
     }
+
+   
 
     return(
         <div className={styles.container}>
