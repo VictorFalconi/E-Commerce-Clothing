@@ -2,6 +2,7 @@ import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux"
 import logo from "./assets/iconHome.jpeg";
 import logoProfile from "./assets/logoProfile.png";
 import formulario from "./assets/formulario.png";
@@ -9,7 +10,6 @@ import { LoginButton } from "../Login/Login";
 import { LogoutButton } from "../Login/Logout";
 import { useAuth0 } from '@auth0/auth0-react'
 import { Profile } from "../Login/Profile";
-import Admin from "../Admin/Admin";
 
 const NavBar = () => {
   const path = window.location.pathname;
@@ -17,7 +17,8 @@ const NavBar = () => {
   const handleClick = () => {
     navigate("/");
   };
-
+  const users = useSelector((state)=>state.users)
+  const cart = useSelector((state)=> state.cart);
   const [name, setName] = useState('')
 
   const handleSubmit = (e) => {
@@ -50,7 +51,11 @@ const NavBar = () => {
         {isAuthenticated && <Link to="/newProduct">
           <img src={formulario} className={styles.IconFormulario} alt='Logo'/>
         </Link>}
-        {isAuthenticated && <Link to='/admin'>Admin Dashboard</Link>  }      
+        {isAuthenticated && <Link to='/admin'>Dashboard</Link>  }
+        <div>
+        <Link to='/cart'>🛒</Link>
+        { cart.length > 0 && cart.length }
+        </div>        
         {isAuthenticated ? <LogoutButton/> : <LoginButton/> }
       </div>
     </div>

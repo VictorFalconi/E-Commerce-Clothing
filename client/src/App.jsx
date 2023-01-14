@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { Route, Routes, Navigate } from "react-router-dom"
 import ClothingDetail from "./components/ClothingDetail/ClothingDetail"
@@ -11,14 +11,19 @@ import Filters from "./components/Filters/Filters";
 import { LoginButton } from "./components/Login/Login";
 import { useAuth0 } from "@auth0/auth0-react"
 import Admin from "./components/Admin/Admin"
+import Cart from "./components/Cart/Cart"
+import ProductReview from './components/ProductReview/ProductReview'
+// import CreatePReview from './components/CreatePReview/CreatePReview'
+
 function App() {
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
+  const { user } = useAuth0();
 
   useEffect(() => {
     // dispatch(allClothes())
     // dispatch(categories())
-  },[])
-  const { user }  = useAuth0();
+  },[]);
 
   return (
     <div>
@@ -31,6 +36,8 @@ function App() {
         <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
         <Route path="*" element={<Navigate to='/'/>}/>
         <Route path="/admin" element={user? <Admin/> : <LoginButton/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path="/cardReviews" element={<ProductReview />}/>
       </Routes>
     </div>
   )
