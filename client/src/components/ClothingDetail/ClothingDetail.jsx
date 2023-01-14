@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import { addCart, clothesDetail } from "../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   addCart,
@@ -11,7 +10,7 @@ import {
 } from "../../redux/actions";
 import Cart from "../Cart/Cart.jsx";
 import StarIcon from "../../icons/StarIcon.svg";
-import StarIconFill from "../../icons/starIconFill.svg";
+import StarIconFill from "../../icons/StarIconFill.svg";
 
 import styles from "./ClothingDetail.module.css";
 

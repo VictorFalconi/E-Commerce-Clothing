@@ -168,12 +168,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-      case 'ADD_CART':
-        
-        return {
-          ...state,
-          cart: [...state.cart, action.payload],
-        };
+    case "ADD_CART":
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
+
+    case "CLOUDINARY_IMAGE":
+      return {
+        ...state,
+        imageCloudinary: action.payload
+      }
 
     default:
       return state;

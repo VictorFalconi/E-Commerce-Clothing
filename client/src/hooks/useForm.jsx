@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createProduct } from "../redux/actions";
+import { useNavigate } from "react-router";
 
 export const useForm = (initialForm) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -25,6 +27,7 @@ export const useForm = (initialForm) => {
     e.preventDefault();
     dispatch(createProduct(form))
     setForm(initialForm)
+    navigate('/')
   };
 
   return {
