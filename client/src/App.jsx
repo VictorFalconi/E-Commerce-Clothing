@@ -12,6 +12,8 @@ import { LoginButton } from "./components/Login/Login";
 import { useAuth0 } from "@auth0/auth0-react"
 import Admin from "./components/Admin/Admin"
 import Cart from "./components/Cart/Cart"
+import ProductReview from './components/ProductReview/ProductReview'
+// import CreatePReview from './components/CreatePReview/CreatePReview'
 
 function App() {
 
@@ -27,7 +29,6 @@ function App() {
     <div>
       <NavBar></NavBar> 
       <Filters></Filters>
-      <Cart />
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
@@ -35,6 +36,8 @@ function App() {
         <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
         <Route path="*" element={<Navigate to='/'/>}/>
         <Route path="/admin" element={user? <Admin/> : <LoginButton/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path="/cardReviews" element={<ProductReview />}/>
       </Routes>
     </div>
   )

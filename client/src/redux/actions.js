@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY } from "./cases";
+// import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
 export function searchClothes(name) {
   return async function (dispatch) {
@@ -118,7 +118,7 @@ export function createProductReview(payload){
     try {
       let json = await axios.post('http://localhost:9000/reviews', payload)
       dispatch({
-          type: CREATE_P_REVIEW,
+          type: 'CREATE_P_REVIEW',
           payload: json.data
       })
     } catch (error) {
@@ -126,7 +126,15 @@ export function createProductReview(payload){
     }
   }
 }
-
+export function reviewsFilter(payload) {
+  return { type: 'REVIEWS_FILTER', payload: payload }
+}
+export function getPReviews() {
+  return async function (dispatch) {
+      const allData = await axios.get('http://localhost:9000/reviews')
+      return dispatch({ type: 'GET_REVIEWS', payload: allData.data })
+  }
+}
 
 //-----------------------cart-----------------------
 
@@ -152,6 +160,18 @@ export const cloudinaryImage = (imagen) => {
       })
     } catch (error) {
       console.log("error en addCart action", error);
+    }
+  }
+}
+export const removeCartProduct = (prod) => {
+  return function (dispatch) {
+    try {
+      dispatch({
+        type: 'REMOVE_CART_PRODUCT',
+        payload: prod
+      })
+    } catch (error) {
+      console.log("error en remove cart action", error);
     }
   }
 }

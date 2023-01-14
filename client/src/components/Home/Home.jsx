@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import Slider from "../Slider/Slider";
-import { allClothes, categories, filter, orderBy } from "../../redux/actions";
+import { allClothes, categories, filter, orderBy, allUsers } from "../../redux/actions";
 import Filters from "../Filters/Filters";
 import ProductCards from "../ProductCards/ProductCards";
 
@@ -26,6 +26,7 @@ const Home = () => {
     dispatch(orderBy(azOrder));
     dispatch(filter(catFilter));
     dispatch(filter(sizeFilter));
+    dispatch(allUsers())
   },[]);
 
     return(

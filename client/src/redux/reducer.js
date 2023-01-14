@@ -1,4 +1,4 @@
-//  import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES, FILTER, RESET_FILTERS, ORDER_BY } from "./cases";
+//  import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES, FILTER, RESET_FILTERS, ORDER_BY, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
 const initialState = {
   loading: true,
@@ -15,6 +15,9 @@ const initialState = {
   catFilter: "Default",
   sizeFilter: "Default",
   cart: [],
+  reviews: [],
+  reviews_copy: [],
+  filteredReviews: [],
   imageCloudinary: [],
 };
 
@@ -165,16 +168,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-    case "ADD_CART":
-      return {
-        ...state,
-        cart: [...state.cart, action.payload],
-      };
-    case "CLOUDINARY_IMAGE":
-      return {
-        ...state,
-        imageCloudinary: action.payload
-      }
+      case 'ADD_CART':
+        
+        return {
+          ...state,
+          cart: [...state.cart, action.payload],
+        };
 
     default:
       return state;
