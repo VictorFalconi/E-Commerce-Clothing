@@ -151,6 +151,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         cart: [...state.cart, action.payload],
       };
+      case 'REMOVE_CART_PRODUCT':
+        const cart = state.cart;
+        const newCart = cart.filter((i)=> i.name !== action.payload.name);
+        return {
+          ...state,
+          cart: newCart,
+        };
 
     case "CLOUDINARY_IMAGE":
       return {
