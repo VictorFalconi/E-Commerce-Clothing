@@ -15,6 +15,8 @@ export default function ProductsList() {
 
     const allItems = useSelector((state) => state.allClothes)
 
+    
+
 
     // console.log('SOY TODOS LOS PRODUCTOS: ', allItems)
 
@@ -37,7 +39,7 @@ export default function ProductsList() {
             field: 'actions',
             headerName: 'Actions',
             width: 125,
-            renderCell: (params) => {
+            renderCell: () => {
                 return (
                     <>
             
