@@ -13,6 +13,7 @@ import StarIcon from "../../icons/StarIcon.svg";
 import StarIconFill from "../../icons/StarIconFill.svg";
 
 import styles from "./ClothingDetail.module.css";
+import ClothingEdit from "./ClothingEdit";
 
 function ClothingDetail(product) {
   const dispatch = useDispatch();
@@ -117,6 +118,8 @@ function ClothingDetail(product) {
         <button className={styles.btn} onClick={() => handleCart(clothes)}>
           Agregar a la bolsa
         </button>
+        MENSAJE : NO SE DONDE COLOCAR LA PARTE DEL EDID
+        <ClothingEdit></ClothingEdit>
       </div>
     </div>
   );

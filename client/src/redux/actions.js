@@ -176,6 +176,19 @@ export const removeCartProduct = (prod) => {
   }
 }
 
+export const editProductFromDataBase = (id, data) => {
+  return async function() {
+    try {
+      await axios.put(`http://localhost:9000/products/${id}`, data)
+      .then((response) => {
+        console.log(response)
+      })
+      
+    } catch (error) {
+      console.log("error edit Product From Data Base", error);
+    }
+  }
+}
 export const checkout = () => {
   return async function (dispatch) {
     try {
