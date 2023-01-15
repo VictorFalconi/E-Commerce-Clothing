@@ -13,9 +13,9 @@ export default function ProductsList() {
         dispatch(getClothesAdmin())
     }, [getClothesAdmin])
 
-
-
     const allItems = useSelector((state) => state.allClothes)
+
+
     // console.log('SOY TODOS LOS PRODUCTOS: ', allItems)
 
     const columns = [
@@ -40,14 +40,11 @@ export default function ProductsList() {
             renderCell: (params) => {
                 return (
                     <>
-                        <Link
-                            to={'/admin/products/' + params.row.idProd}
-                            className=' no-underline'
-                        >
-                            <button className={st.productListEdit}>
-                                Enable/Disable
-                            </button>
-                        </Link>
+            
+                        <button className={st.productListEdit} >
+                            Enable/Disable
+                        </button>
+                        
                     </>
                 )
             },

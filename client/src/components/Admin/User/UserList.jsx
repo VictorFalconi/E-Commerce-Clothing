@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { allUsers } from '../../../redux/actions'
+import { allUsers, updateUserStatus } from '../../../redux/actions'
 import st from './UserList.module.css'
 import { DataGrid } from '@mui/x-data-grid'
 import { Link } from 'react-router-dom'
@@ -8,14 +8,28 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 export default function UserList() {
     const {getAccessTokenSilently} = useAuth0()
-    const dispatch = useDispatch()
-
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(allUsers())
     }, [allUsers])
 
-    const Users = useSelector((state) => state.users)
+    const users = useSelector((state) => state.users)
+
+    const handleActive = (e) =>{
+
+        const id = e.target.name;
+        const bool = e.target.value
+        var nueva 
+        if(bool === 'false'){
+        nueva = true
+        }else{
+             nueva = false
+        }
+        const value = {'active': nueva}
+        dispatch(updateUserStatus(id, value))        
+        
+    }
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 92 },
@@ -39,9 +53,6 @@ export default function UserList() {
         { field: 'idUser', headerName: 'User ID', width: 130 },
         { field: 'fullName', headerName: 'Full Name', width: 150 },
         { field: 'email', headerName: 'Email', width: 180 },
-        { field: 'genre', headerName: 'Genre', width: 120 },
-        { field: 'country', headerName: 'Country', width: 130 },
-        { field: 'tel', headerName: 'Tel', type: 'number', width: 100 },
         { field: 'active', headerName: 'Active', width: 120 },
         {
             field: 'actions',
@@ -50,27 +61,23 @@ export default function UserList() {
             renderCell: (params) => {
                 return (
                     <>
-                        <Link
-                            to={'/admin/user/' + params.row.idUser}
-                            className=' no-underline'
-                        >
-                            <button className={st.userListEdit}>Detail</button>
-                        </Link>
+                        
+                        <div>
+                            <button src={params.row.active} className={st.userListEdit} onClick={(e) => handleActive(e)}>Enable/Disable</button>
+                        </div>
+                        
                     </>
                 )
             },
         },
     ]
 
-    const userRows = Users.map((us, index) => ({
+    const userRows = users.map((us, index) => ({
         id: index + 1,
         idUser: us.id,
         pic: us.image,
         fullName: us.fullName,
         email: us.email,
-        genre: us.genre,
-        country: us.country,
-        tel: us.tel,
         active: us.active,
     }))
 

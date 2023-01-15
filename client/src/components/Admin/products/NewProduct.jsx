@@ -187,5 +187,4 @@ const NewProduct = () => {
         </Container>
     )
 }
-
 export default NewProduct;
