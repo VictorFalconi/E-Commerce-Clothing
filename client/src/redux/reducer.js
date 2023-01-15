@@ -11,22 +11,11 @@ const initialState = {
   brandFilteredMemory: [],
   seartchClothes: [],
   users: [],
-<<<<<<< HEAD
   azOrder: 'Default',
   catFilter: 'Default',
   sizeFilter: 'Default',
   cart: [],
   redirectMP: '',
-=======
-  azOrder: "Default",
-  catFilter: "Default",
-  sizeFilter: "Default",
-  cart: [],
-  reviews: [],
-  reviews_copy: [],
-  filteredReviews: [],
-  imageCloudinary: [],
->>>>>>> main
 };
 
 const reducer = (state = initialState, action) => {
@@ -61,7 +50,6 @@ const reducer = (state = initialState, action) => {
 
     //-----------------------------------------------------------------------------------------
 
-<<<<<<< HEAD
     case 'catFilter': return {
       ...state,
       catFilter: action.payload
@@ -101,12 +89,6 @@ const reducer = (state = initialState, action) => {
           productsOrdered: [...state.allClothes],
           productsFiltered: [...state.allClothes]
         }
-=======
-    case "azOrder":
-      return {
-        ...state,
-        azOrder: action.payload,
->>>>>>> main
       };
 
     case "catFilter":
@@ -211,7 +193,6 @@ const reducer = (state = initialState, action) => {
     case "CLOUDINARY_IMAGE":
       return {
         ...state,
-<<<<<<< HEAD
         cart: newCart,
       };
       case 'CHECKOUT':
@@ -219,10 +200,6 @@ const reducer = (state = initialState, action) => {
           ...state,
           redirectMP: action.payload
         };
-=======
-        imageCloudinary: action.payload
-      }
->>>>>>> main
 
     default:
       return state;

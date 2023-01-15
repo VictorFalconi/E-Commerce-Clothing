@@ -175,7 +175,6 @@ export const removeCartProduct = (prod) => {
     }
   }
 }
-<<<<<<< HEAD
 
 export const checkout = () => {
   return async function (dispatch) {
@@ -190,5 +189,3 @@ export const checkout = () => {
     }
   }
 }
-=======
->>>>>>> main
