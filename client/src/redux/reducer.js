@@ -50,6 +50,10 @@ const reducer = (state = initialState, action) => {
 
     //-----------------------------------------------------------------------------------------
 
+    case 'azOrder': return {
+      ...state,
+      azOrder: action.payload
+    }
     case 'catFilter': return {
       ...state,
       catFilter: action.payload
@@ -90,48 +94,6 @@ const reducer = (state = initialState, action) => {
           productsFiltered: [...state.allClothes]
         }
       };
-
-    case "catFilter":
-      return {
-        ...state,
-        catFilter: action.payload,
-      };
-
-    case "sizeFilter":
-      return {
-        ...state,
-        sizeFilter: action.payload,
-      };
-
-    case "ORDER_BY":
-      switch (action.payload) {
-        case "AZ":
-          return {
-            ...state,
-            productsOrdered: [...state.allClothes].sort((a, b) =>
-              a.name.localeCompare(b.name)
-            ),
-            productsFiltered: [...state.allClothes].sort((a, b) =>
-              a.name.localeCompare(b.name)
-            ),
-          };
-        case "ZA":
-          return {
-            ...state,
-            productsOrdered: [...state.allClothes].sort((a, b) =>
-              b.name.localeCompare(a.name)
-            ),
-            productsFiltered: [...state.allClothes].sort((a, b) =>
-              b.name.localeCompare(a.name)
-            ),
-          };
-        default:
-          return {
-            ...state,
-            productsOrdered: [...state.allClothes],
-            productsFiltered: [...state.allClothes],
-          };
-      }
 
     case "FILTER":
       switch (action.payload) {
