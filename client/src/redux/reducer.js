@@ -98,17 +98,38 @@ const reducer = (state = initialState, action) => {
     case "FILTER":
       switch (action.payload) {
         case "T-shirts":
-          return {
-            ...state,
-            productsFiltered: [...state.productsFiltered].filter(
-              (p) => p.category === "T-shirts"
-            ),
-          };
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter(
+            (p) => p.category.toLowerCase() === "t-shirts"
+          ),
+        };
         case "Shoes":
-          return {
-            ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('L'))
-          }
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter(
+            (p) => p.category.toLowerCase() === "shoes"
+          ),
+        };
+        case "Shorts":
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter(
+            (p) => p.category.toLowerCase() === "shorts"
+          ),
+        };
+        case "Caps":
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter(
+            (p) => p.category.toLowerCase() === "caps"
+          ),
+        };
+        case "L":
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('L'))
+        }
           case 'S': return {
             ...state,
             productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('S'))
