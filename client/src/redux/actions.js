@@ -59,13 +59,11 @@ export const categories = () => {
 }
 
 export const createProduct = (product) => {
-  return async function (dispatch) {
+  return async function () {
     try {
       await axios.post('http://localhost:9000/products', product)
-      const allClothes = await axios('http://localhost:9000/products')
-      dispatch({
-        type: 'CREATE_PRODUCT',
-        payload: allClothes.data
+      .then((response) => {
+        console.log(response,'respuesta del post')
       })
     } catch(error) {
       alert("cannot create product")
@@ -153,6 +151,18 @@ export const addCart = (prod) => {
   }
 }
 
+export const cloudinaryImage = (imagen) => {
+  return function (dispatch) {
+    try {
+      dispatch({
+        type: 'CLOUDINARY_IMAGE',
+        payload: imagen
+      })
+    } catch (error) {
+      console.log("error en addCart action", error);
+    }
+  }
+}
 export const removeCartProduct = (prod) => {
   return function (dispatch) {
     try {
