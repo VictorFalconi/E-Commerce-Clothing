@@ -6,6 +6,7 @@
     display: flex;
     justify-content: flex-end;
     text-decoration: none;
+    margin: 10px;
 }
 
 .productListEdit {
@@ -37,6 +38,6 @@
 } */
 
 .IconFormulario{
-    width:40px;
-    height:40px;
+    width:50px;
+    height:50px;
 }

@@ -69,11 +69,6 @@ export default function ProductsList() {
 
     return (
         <div className={st.productList}>
-            <div className={st.productButtonContainer}>
-                <Link to="/admin/newproduct">
-                    <img src={formulario} className={st.IconFormulario} alt='Logo'/>
-                </Link>
-            </div>
 
             <DataGrid
                 rows={itemsRows}
@@ -83,6 +78,11 @@ export default function ProductsList() {
                 checkboxSelection
                 disableSelectionOnClick
             />
+            <div className={st.productButtonContainer}>
+                <Link to="/admin/newproduct">
+                    <img src={formulario} className={st.IconFormulario} alt='Logo'/>
+                </Link>
+            </div>
         </div>
     )
 }
