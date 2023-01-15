@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
@@ -6,6 +5,7 @@ import Slider from "../Slider/Slider";
 import { allClothes, categories, filter, orderBy, allUsers } from "../../redux/actions";
 import Filters from "../Filters/Filters";
 import ProductCards from "../ProductCards/ProductCards";
+import styles from './Home.module.css'
 
 const Home = () => {
    const dispatch = useDispatch()
@@ -30,15 +30,8 @@ const Home = () => {
   },[]);
 
     return(
-      
-        <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
+        <div className={styles.home} style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
           <ProductCards products={filteredProduct}/>
-          {/* {category.map((categories, idx) => (
-            <div key={idx}>
-              {categories}
-              <Slider allProduct={filteredProduct} category={categories}/>
-            </div>
-          ))} */}
         </div>
         
     );

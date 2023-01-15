@@ -13,6 +13,8 @@ import { useAuth0 } from "@auth0/auth0-react"
 import Admin from "./components/Admin/Admin"
 import Cart from "./components/Cart/Cart"
 import ProductReview from './components/ProductReview/ProductReview'
+import styles from './App.module.css'
+import Background from "./components/Background/Background"
 // import CreatePReview from './components/CreatePReview/CreatePReview'
 
 function App() {
@@ -26,7 +28,8 @@ function App() {
   },[]);
 
   return (
-    <div>
+    <div className={styles.appContainer}>
+      <Background></Background>
       <NavBar></NavBar> 
       <Filters></Filters>
       <Routes>

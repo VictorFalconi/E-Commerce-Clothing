@@ -1,0 +1,35 @@
+
+
+.containerCard {
+    position: relative;
+    display: flex;
+    border-radius: 20px;
+    width: 200px;
+    border: 1px solid rgba(225,225,225, 0.4);
+    border-right: 1px solid rgba(225,225,225, 0.2);
+    border-bottom: 1px solid rgba(225,225,225, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.containerCard:hover {
+    transform: translateY(-20px);
+}
+
+.containerCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 100%;
+    background: rgba(225,225,225, 0.5);
+    transform: skewX(45deg) translateX(500px);
+    transition: .8s;
+  }
+  
+  .containerCard:hover::before {
+    transform: skewX(45deg) translateX(-500px);
+  }

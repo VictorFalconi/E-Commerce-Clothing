@@ -32,7 +32,6 @@ const NewProduct = () => {
           required
         />
 
-
         <input
           type="text"
           name="description"
@@ -41,14 +40,13 @@ const NewProduct = () => {
           onBlur={handleBlur}
           value={form.description}
           required
-          />
-
+        />
 
         <button className={styles.button} disabled={loading}>
           {loading ? "Creando Producto Espere" : "Crear Producto"}
         </button>
       </form>
-          <Cloudinary></Cloudinary>
+      <Cloudinary></Cloudinary>
     </div>
   );
 };
