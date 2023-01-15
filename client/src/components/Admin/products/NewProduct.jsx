@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { createProduct } from '../../redux/actions';
+import { createProduct } from '../../../redux/actions';
 import { useDispatch } from 'react-redux';
 import styles from './NewProduct.module.css';
 

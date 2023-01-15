@@ -1,0 +1,38 @@
+.productList {
+    flex: 8;
+}
+
+.productButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+.productListEdit {
+    background-color: #f44336; /* Red */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: auto;
+    font-size: smaller;
+}
+
+/* .productListItem{
+    display: flex;
+    align-items: center;
+}
+
+.productListImg{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit:cover;
+    margin-right: 10px;
+} */
+
+.IconFormulario{
+    width:40px;
+    height:40px;
+}

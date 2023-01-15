@@ -29,11 +29,20 @@ const reducer = (state = initialState, action) => {
       };
 
     case "ALL_CLOTHES":
+      const result = action.payload.filter(f => f.active === true)
       return {
         ...state,
-        allClothes: action.payload,
-        productsFiltered: action.payload,
+        allClothes: [...result],
+        productsFiltered: [...result],
         productsOrdered: action.payload,
+      };
+
+    case 'GETCLOTHES_ADMIN':
+      return {
+        ...state,
+        allClothes: [...action.payload],
+        productsFiltered: [...action.payload],
+        productsOrdered: [...action.payload]
       };
 
     case "CATEGORIES":

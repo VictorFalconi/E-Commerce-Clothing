@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from "react-router-dom"
 import ClothingDetail from "./components/ClothingDetail/ClothingDetail"
 import Home from "./components/Home/Home"
 import NavBar from "./components/NavBar/NavBar"
-import NewProduct from "./components/NewProuct/NewProduct"
+import NewProduct from "./components/Admin/products/NewProduct"
 import SearchBar from "./components/Search Bar/SearchBar"
 import { allClothes, categories } from "./redux/actions"
 import Filters from "./components/Filters/Filters";
@@ -27,15 +27,18 @@ function App() {
 
   return (
     <div>
-      <NavBar></NavBar> 
-      <Filters></Filters>
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
-        <Route path="/:id" element={<ClothingDetail/>}></Route>
-        <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
-        <Route path="*" element={<Navigate to='/'/>}/>
-        <Route path="/admin" element={user? <Admin/> : <LoginButton/>}/>
+      
+        <Route path='/' element={<NavBar></NavBar>}>
+          <Route element={<Filters/>}></Route>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
+          <Route path="/:id" element={<ClothingDetail/>}></Route>
+          <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
+          <Route path="*" element={<Navigate to='/'/>}/>
+          <Route path='/cart' element={<Cart/>}/>
+        </Route>
+        <Route path="/admin//*" element={user? <Admin/> : <LoginButton/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path="/cardReviews" element={<ProductReview />}/>
       </Routes>

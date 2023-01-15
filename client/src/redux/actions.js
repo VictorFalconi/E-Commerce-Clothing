@@ -30,6 +30,20 @@ export const allClothes = () => {
   }
 }
 
+export const getClothesAdmin = () => {
+  return async function (dispatch) {
+    try {
+      const allClothes = await axios('http://localhost:9000/products')
+      dispatch({
+        type: 'GETCLOTHES_ADMIN',
+        payload: allClothes.data
+      })
+    } catch(error) {
+      alert('no products')
+    }
+  }
+}
+
 export const clothesDetail = (id) => {
   return async function (dispatch) {
     try {

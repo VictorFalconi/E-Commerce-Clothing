@@ -1,9 +1,16 @@
 import styles from './Admin.module.css';
+import { Routes, Route } from 'react-router-dom';
 import { Profile } from "../Login/Profile";
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { allUsers, updateUserStatus } from '../../redux/actions';
+import HomeAdmin from './HomeAdmin/HomeAdmin'
+import AdminNavBar from './components/AdminNavBar';
+import AdminSideBar from './components/AdminSideBar';
+import ProductList from './products/ProductsList';
+import NewProduct from './products/NewProduct';
+import UserList from './User/UserList';
 
 
 
@@ -39,21 +46,32 @@ const Admin = () => {
         const email = user.email
         const check = users.filter((u)=> u.email === email)
         if(check[0]?.admin) {
-            return <div>
-                <h1>Admin Dashboard </h1>
-                <Profile />
-                {users?.map((u, idx) =>
-                    <div key={idx} className={styles.user}>
-                        <h2>User data</h2>
-                        <h3>Fullname: {u.full_name}</h3>
-                        <p>Email: {u.email}</p>
-                        <div>
-                            <button value={u.active} name={u._id} onClick={(e) => handleActive(e)}>Cambiar estado</button>
-                            <p>{u.active ? 'activo ' : 'inactivo'}</p>
-                        </div>
+            return (
+                <React.Fragment>
+                    <AdminNavBar/>
+                    <div className={styles.container}>
+                        <AdminSideBar></AdminSideBar>
+                        <Routes>
+                            <Route exact path='/' element={<HomeAdmin />}></Route>
+                            <Route path="/products" element={<ProductList />}></Route>
+                            <Route path="/newproduct" element={<NewProduct />}></Route>
+                            <Route path="/users" element={<UserList />}></Route>
+                        </Routes>
                     </div>
-                )}
-            </div>
+                </React.Fragment>
+                    // {users?.map((u, idx) =>
+                    //     <div key={idx} className={styles.user}>
+                    //         <h2>User data</h2>
+                    //         <h3>Fullname: {u.full_name}</h3>
+                    //         <p>Email: {u.email}</p>
+                    //         <div>
+                    //             <button value={u.active} name={u._id} onClick={(e) => handleActive(e)}>Cambiar estado</button>
+                    //             <p>{u.active ? 'activo ' : 'inactivo'}</p>
+                    //         </div>
+                    //     </div>
+                    // )} 
+                    
+            )
         }else{
          return <div>
             {user && <div>                

@@ -1,8 +1,9 @@
 .title {
-    color: rgb(231, 100, 0);
+    color: #f44336;
     font-style: italic;
     display: flex;
     justify-content: center;
+    margin-left: 380px;
 }
 .labels {
     color: black;
