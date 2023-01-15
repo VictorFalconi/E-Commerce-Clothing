@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY } from "./cases";
+// import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
 export function searchClothes(name) {
   return async function (dispatch) {
@@ -59,13 +59,11 @@ export const categories = () => {
 }
 
 export const createProduct = (product) => {
-  return async function (dispatch) {
+  return async function () {
     try {
       await axios.post('http://localhost:9000/products', product)
-      const allClothes = await axios('http://localhost:9000/products')
-      dispatch({
-        type: 'CREATE_PRODUCT',
-        payload: allClothes.data
+      .then((response) => {
+        console.log(response,'respuesta del post')
       })
     } catch(error) {
       alert("cannot create product")
@@ -120,7 +118,7 @@ export function createProductReview(payload){
     try {
       let json = await axios.post('http://localhost:9000/reviews', payload)
       dispatch({
-          type: CREATE_P_REVIEW,
+          type: 'CREATE_P_REVIEW',
           payload: json.data
       })
     } catch (error) {
@@ -128,7 +126,15 @@ export function createProductReview(payload){
     }
   }
 }
-
+export function reviewsFilter(payload) {
+  return { type: 'REVIEWS_FILTER', payload: payload }
+}
+export function getPReviews() {
+  return async function (dispatch) {
+      const allData = await axios.get('http://localhost:9000/reviews')
+      return dispatch({ type: 'GET_REVIEWS', payload: allData.data })
+  }
+}
 
 //-----------------------cart-----------------------
 
@@ -145,6 +151,18 @@ export const addCart = (prod) => {
   }
 }
 
+export const cloudinaryImage = (imagen) => {
+  return function (dispatch) {
+    try {
+      dispatch({
+        type: 'CLOUDINARY_IMAGE',
+        payload: imagen
+      })
+    } catch (error) {
+      console.log("error en addCart action", error);
+    }
+  }
+}
 export const removeCartProduct = (prod) => {
   return function (dispatch) {
     try {
@@ -157,6 +175,7 @@ export const removeCartProduct = (prod) => {
     }
   }
 }
+<<<<<<< HEAD
 
 export const checkout = () => {
   return async function (dispatch) {
@@ -171,3 +190,5 @@ export const checkout = () => {
     }
   }
 }
+=======
+>>>>>>> main

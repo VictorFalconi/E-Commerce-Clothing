@@ -1,4 +1,4 @@
-//  import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES, FILTER, RESET_FILTERS, ORDER_BY } from "./cases";
+//  import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES, FILTER, RESET_FILTERS, ORDER_BY, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
 const initialState = {
   loading: true,
@@ -11,16 +11,27 @@ const initialState = {
   brandFilteredMemory: [],
   seartchClothes: [],
   users: [],
+<<<<<<< HEAD
   azOrder: 'Default',
   catFilter: 'Default',
   sizeFilter: 'Default',
   cart: [],
   redirectMP: '',
+=======
+  azOrder: "Default",
+  catFilter: "Default",
+  sizeFilter: "Default",
+  cart: [],
+  reviews: [],
+  reviews_copy: [],
+  filteredReviews: [],
+  imageCloudinary: [],
+>>>>>>> main
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SEARCH_CLOTHES':
+    case "SEARCH_CLOTHES":
       return {
         ...state,
         seartchClothes: action.payload,
@@ -49,12 +60,8 @@ const reducer = (state = initialState, action) => {
     // aqui el filtro
 
     //-----------------------------------------------------------------------------------------
-    
-    case 'azOrder': return {
-      ...state,
-      azOrder: action.payload
-    }
 
+<<<<<<< HEAD
     case 'catFilter': return {
       ...state,
       catFilter: action.payload
@@ -94,27 +101,67 @@ const reducer = (state = initialState, action) => {
           productsOrdered: [...state.allClothes],
           productsFiltered: [...state.allClothes]
         }
+=======
+    case "azOrder":
+      return {
+        ...state,
+        azOrder: action.payload,
+>>>>>>> main
       };
 
-      case "FILTER":
-        switch(action.payload) {
-          case 'T-shirts': return {
+    case "catFilter":
+      return {
+        ...state,
+        catFilter: action.payload,
+      };
+
+    case "sizeFilter":
+      return {
+        ...state,
+        sizeFilter: action.payload,
+      };
+
+    case "ORDER_BY":
+      switch (action.payload) {
+        case "AZ":
+          return {
             ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.category === 'T-shirts')
-          }
-          case 'Shoes': return {
+            productsOrdered: [...state.allClothes].sort((a, b) =>
+              a.name.localeCompare(b.name)
+            ),
+            productsFiltered: [...state.allClothes].sort((a, b) =>
+              a.name.localeCompare(b.name)
+            ),
+          };
+        case "ZA":
+          return {
             ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.category === 'Shoes')
-          }
-          case 'Shorts': return {
+            productsOrdered: [...state.allClothes].sort((a, b) =>
+              b.name.localeCompare(a.name)
+            ),
+            productsFiltered: [...state.allClothes].sort((a, b) =>
+              b.name.localeCompare(a.name)
+            ),
+          };
+        default:
+          return {
             ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.category === 'Shorts')
-          }
-          case 'Caps': return {
+            productsOrdered: [...state.allClothes],
+            productsFiltered: [...state.allClothes],
+          };
+      }
+
+    case "FILTER":
+      switch (action.payload) {
+        case "T-shirts":
+          return {
             ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.category === 'Caps')
-          }
-          case 'L': return {
+            productsFiltered: [...state.productsFiltered].filter(
+              (p) => p.category === "T-shirts"
+            ),
+          };
+        case "Shoes":
+          return {
             ...state,
             productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('L'))
           }
@@ -136,7 +183,7 @@ const reducer = (state = initialState, action) => {
     case "CREATE_PRODUCT":
       return {
         ...state,
-        allClothes: action.payload,
+        // allClothes: action.payload,
       };
 
     case "ALL_USERS":
@@ -150,21 +197,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-    case 'CREATE_USER':
+    case "CREATE_USER":
       return {
         ...state,
         users: action.payload,
       };
-    case 'ADD_CART':
+    case "ADD_CART":
       return {
         ...state,
         cart: [...state.cart, action.payload],
       };
-    case 'REMOVE_CART_PRODUCT':
-      const cart = state.cart;
-      const newCart = cart.filter((i)=> i.name !== action.payload.name);
+
+    case "CLOUDINARY_IMAGE":
       return {
         ...state,
+<<<<<<< HEAD
         cart: newCart,
       };
       case 'CHECKOUT':
@@ -172,12 +219,14 @@ const reducer = (state = initialState, action) => {
           ...state,
           redirectMP: action.payload
         };
+=======
+        imageCloudinary: action.payload
+      }
+>>>>>>> main
 
     default:
       return state;
   }
-
-  
 };
 
 export default reducer;
