@@ -36,8 +36,8 @@ export default function Filter() {
       ? <div>
         <select value={azOrder} className={styles.buttonFilter} onChange={(e) => {dispatch({type: 'azOrder', payload: e.target.value})}}>
           <option default value="">Default</option>
-          <option  style={{ fontFamily: 'Raleway'}} value="asc">A - Z</option>
-            <option  style={{ fontFamily: 'Raleway'}} value="desc">Z - A</option>
+          <option  style={{ fontFamily: 'Raleway'}} value="AZ">A - Z</option>
+            <option  style={{ fontFamily: 'Raleway'}} value="ZA">Z - A</option>
         </select>
         <select value={catFilter} className={styles.buttonFilter} onChange={(e) => {dispatch({type: 'catFilter', payload: e.target.value});}}>
           <option default value="">Default</option>
