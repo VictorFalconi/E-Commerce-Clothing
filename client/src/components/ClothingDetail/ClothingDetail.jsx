@@ -28,23 +28,23 @@ function ClothingDetail(product) {
     navigate(path);
   };
   useEffect(() => {
-    if (reviews.length === 0) {
-      dispatch(getPReviews());
-    }
-    let reviewsPId = reviews.filter((e) => e.productId === product.id);
-    // console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
+    // if (reviews.length === 0) {
+    //   dispatch(getPReviews());
+    // }
+    // let reviewsPId = reviews.filter((e) => e.productId === product.id);
+    // // console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
 
-    if (reviewsPId.length !== 0) {
-      // console.log('products reviews---------------/////////////////', product.reviews)
-      let count = reviewsPId.length;
-      let sumaReviews = 0;
-      reviewsPId.map((r) => {
-        sumaReviews += r.score;
-      });
-      let promedioReviews = sumaReviews / count;
-      setPromedReviews(promedioReviews);
-      setCountReviews(count);
-    }
+    // if (reviewsPId.length !== 0) {
+    //   // console.log('products reviews---------------/////////////////', product.reviews)
+    //   let count = reviewsPId.length;
+    //   let sumaReviews = 0;
+    //   reviewsPId.map((r) => {
+    //     sumaReviews += r.score;
+    //   });
+    //   let promedioReviews = sumaReviews / count;
+    //   setPromedReviews(promedioReviews);
+    //   setCountReviews(count);
+    // }
     dispatch(allUsers());
     dispatch(clothesDetail(param?.id));
   }, []);
