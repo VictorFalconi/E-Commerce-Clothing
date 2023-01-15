@@ -43,6 +43,8 @@ export default function Filter() {
         <select value={sizeFilter} onChange={(e) => {dispatch({type: 'sizeFilter', payload: e.target.value});}}>
           <option default value="">Default</option>
           <option value="L">L</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
         </select>
         <button onClick={() => {
           dispatch({type: 'azOrder', payload: ''})

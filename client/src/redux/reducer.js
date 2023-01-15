@@ -11,14 +11,11 @@ const initialState = {
   brandFilteredMemory: [],
   seartchClothes: [],
   users: [],
-  azOrder: "Default",
-  catFilter: "Default",
-  sizeFilter: "Default",
+  azOrder: 'Default',
+  catFilter: 'Default',
+  sizeFilter: 'Default',
   cart: [],
-  reviews: [],
-  reviews_copy: [],
-  filteredReviews: [],
-  imageCloudinary: [],
+  redirectMP: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -53,10 +50,45 @@ const reducer = (state = initialState, action) => {
 
     //-----------------------------------------------------------------------------------------
 
-    case "azOrder":
-      return {
-        ...state,
-        azOrder: action.payload,
+    case 'catFilter': return {
+      ...state,
+      catFilter: action.payload
+    }
+
+    case 'sizeFilter': return {
+      ...state,
+      sizeFilter: action.payload
+    }
+
+    case "ORDER_BY":
+      switch(action.payload) {
+        case 'AZ': return {
+          ...state,
+          productsOrdered: [...state.allClothes].sort(function (a, b){
+            if (a.name > b.name) return 1
+            else return -1
+        }),
+          productsFiltered: [...state.allClothes].sort(function (a, b){
+            if (a.name > b.name) return 1
+            else return -1
+        })
+        }
+        case 'ZA': return {
+          ...state,
+          productsOrdered: [...state.allClothes].sort(function(a, b) {
+            if (a.name < b.name) return 1;
+           else return -1
+          }),
+          productsFiltered: [...state.allClothes].sort(function(a, b) {
+            if (a.name < b.name) return 1;
+           else return -1
+          })
+        }
+        default: return {
+          ...state,
+          productsOrdered: [...state.allClothes],
+          productsFiltered: [...state.allClothes]
+        }
       };
 
     case "catFilter":
@@ -113,36 +145,20 @@ const reducer = (state = initialState, action) => {
         case "Shoes":
           return {
             ...state,
-            productsFiltered: [...state.productsFiltered].filter(
-              (p) => p.category === "Shoes"
-            ),
-          };
-        case "Shorts":
-          return {
+            productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('L'))
+          }
+          case 'S': return {
             ...state,
-            productsFiltered: [...state.productsFiltered].filter(
-              (p) => p.category === "Shorts"
-            ),
-          };
-        case "Caps":
-          return {
+            productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('S'))
+          }
+          case 'M': return {
             ...state,
-            productsFiltered: [...state.productsFiltered].filter(
-              (p) => p.category === "Caps"
-            ),
-          };
-        case "L":
-          return {
-            ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) =>
-              p.sizes.includes("L")
-            ),
-          };
-        default:
-          return {
-            ...state,
-          };
-      }
+            productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('M'))
+          }
+          default: return {
+            ...state
+          }
+        };
 
     //---------------------------------------------------------------------------------------------
 
@@ -177,8 +193,13 @@ const reducer = (state = initialState, action) => {
     case "CLOUDINARY_IMAGE":
       return {
         ...state,
-        imageCloudinary: action.payload
-      }
+        cart: newCart,
+      };
+      case 'CHECKOUT':
+        return {
+          ...state,
+          redirectMP: action.payload
+        };
 
     default:
       return state;
