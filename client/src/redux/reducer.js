@@ -69,22 +69,22 @@ const reducer = (state = initialState, action) => {
         case 'AZ': return {
           ...state,
           productsOrdered: [...state.allClothes].sort(function (a, b){
-            if (a.name > b.name) return 1
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
             else return -1
         }),
           productsFiltered: [...state.allClothes].sort(function (a, b){
-            if (a.name > b.name) return 1
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
             else return -1
         })
         }
         case 'ZA': return {
           ...state,
           productsOrdered: [...state.allClothes].sort(function(a, b) {
-            if (a.name < b.name) return 1;
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
            else return -1
           }),
           productsFiltered: [...state.allClothes].sort(function(a, b) {
-            if (a.name < b.name) return 1;
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
            else return -1
           })
         }
