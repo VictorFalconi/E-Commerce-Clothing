@@ -1,5 +1,7 @@
 //  import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES, FILTER, RESET_FILTERS, ORDER_BY, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
+import { allClothes } from "./actions";
+
 const initialState = {
   loading: true,
   allClothes: [],
@@ -27,12 +29,11 @@ const reducer = (state = initialState, action) => {
       };
 
     case "ALL_CLOTHES":
-      const result = action.payload.filter(f => f.active === true)
       return {
         ...state,
-        allClothes: [...result],
-        productsFiltered: [...result],
-        productsOrdered: action.payload,
+        allClothes: action.payload.filter(p => p.active === true),
+        productsFiltered: action.payload.filter(p => p.active === true),
+        productsOrdered: action.payload.filter(p=> p.active === true)
       };
 
     case 'GETCLOTHES_ADMIN':

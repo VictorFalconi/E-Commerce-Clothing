@@ -1,3 +1,4 @@
+import { AlternateEmail } from "@mui/icons-material";
 import axios from "axios";
 
 // import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
@@ -85,6 +86,7 @@ export const createProduct = (product) => {
   }
 }
 
+
 // ------  filtros -------
 
 export function orderBy(payload) {
@@ -106,6 +108,16 @@ export const allUsers = () => {
       })
     } catch (error) {
       console.log('Error action allUsers',error);
+    }
+  }
+}
+
+export const editUserActiveProp = (id, active) => {
+  return async function(){
+    try{
+      await axios.put(`http://localhost:9000/user/active/${id}`, {active: active})
+    } catch(error){
+      alert('no se pudo che')
     }
   }
 }
@@ -186,6 +198,43 @@ export const removeCartProduct = (prod) => {
       })
     } catch (error) {
       console.log("error en remove cart action", error);
+    }
+  }
+}
+
+export const editProductActiveProp = (id, active) => {
+  return async function(){
+    try{
+      await axios.put(`http://localhost:9000/products/active/${id}`, {active: active})
+    } catch(error){
+      alert('error')
+    }
+  }
+}
+
+export const editProductFromDataBase = (id, data) => {
+  return async function() {
+    try {
+      await axios.put(`http://localhost:9000/products/${id}`, data)
+      .then((response) => {
+        console.log(response)
+      })
+      
+    } catch (error) {
+      console.log("error edit Product From Data Base", error);
+    }
+  }
+}
+export const checkout = () => {
+  return async function (dispatch) {
+    try {
+      const compra = await axios('http://localhost:9000/generar')
+      dispatch({
+        type: 'CHECKOUT',
+        payload: compra.data
+      })
+    } catch (error) {
+      console.log('error en action/checkOut', error);
     }
   }
 }

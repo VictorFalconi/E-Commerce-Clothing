@@ -20,7 +20,7 @@ export default function SideBar() {
     return (
         <div className={st.sidebar}>
             <div className={st.sidebarWrapper}>
-                <div className={st.sidebarMenu}>
+                {/* <div className={st.sidebarMenu}>
                     <h3 className={st.sidebarTitle}>General</h3>
                     <ul className={st.sidebarList}>
                         <li className={st.sidebarListItem}>
@@ -29,16 +29,16 @@ export default function SideBar() {
                                 Home
                             </Link>
                         </li>
-                        {/* <li className={st.sidebarListItem}>
+                        <li className={st.sidebarListItem}>
                             <Timeline className={st.sidebarIcon} />
                             Analytics
-                        </li> */}
-                        {/* <li className={st.sidebarListItem}>
+                        </li>
+                        <li className={st.sidebarListItem}>
                             <TrendingUp className={st.sidebarIcon} />
                             Sales
-                        </li> */}
+                        </li>
                     </ul>
-                </div>
+                </div> */}
 
                 {/* <div className={st.sidebarMenu}>
                     <h3 className={st.sidebarTitle}>Notifications</h3>
@@ -68,14 +68,14 @@ export default function SideBar() {
                 <div className={st.sidebarMenu}>
                     <h3 className={st.sidebarTitle}>Users</h3>
                     <ul className={st.sidebarList}>
-                        <li className={st.sidebarListItem}>
+                        {/* <li className={st.sidebarListItem}>
                             <Link to="/admin/admins" className={st.link}>
                                 <AdminPanelSettings
                                     className={st.sidebarIcon}
                                 />
                                 Admins
                             </Link>
-                        </li>
+                        </li> */}
 
                         <li className={st.sidebarListItem}>
                             <Link to="/admin/users" className={st.link}>

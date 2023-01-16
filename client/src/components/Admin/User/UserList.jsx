@@ -1,33 +1,25 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { allUsers, updateUserStatus } from '../../../redux/actions'
+import { allUsers, editUserActiveProp } from '../../../redux/actions'
 import st from './UserList.module.css'
 import { DataGrid } from '@mui/x-data-grid'
-import { Link } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
 
-export default function UserList() {
-    const {getAccessTokenSilently} = useAuth0()
+
+export default function UserList({setLoad, load}) {
     const dispatch = useDispatch();
 
+    
     useEffect(() => {
         dispatch(allUsers())
     }, [allUsers])
 
     const users = useSelector((state) => state.users)
-
-    const handleActive = (e) =>{
-
-        const id = e.target.name;
-        const bool = e.target.value
-        var nueva 
-        if(bool === 'false'){
-        nueva = true
-        }else{
-             nueva = false
-        }
-        const value = {'active': nueva}
-        dispatch(updateUserStatus(id, value))        
+    console.log(users)
+    
+    const handleActive = (e, user) =>{
+        dispatch(editUserActiveProp(user.idUser, !user.active))
+        console.log(user)
+        setLoad(!load)
         
     }
 
@@ -63,7 +55,9 @@ export default function UserList() {
                     <>
                         
                         <div>
-                            <button src={params.row.active} className={st.userListEdit} onClick={(e) => handleActive(e)}>Enable/Disable</button>
+                            <button  className={st.userListEdit} onClick={(e) => handleActive(e, params.row)}>
+                                Enable/Disable
+                            </button>
                         </div>
                         
                     </>
@@ -74,7 +68,7 @@ export default function UserList() {
 
     const userRows = users.map((us, index) => ({
         id: index + 1,
-        idUser: us.id,
+        idUser: us._id,
         pic: us.image,
         fullName: us.fullName,
         email: us.email,

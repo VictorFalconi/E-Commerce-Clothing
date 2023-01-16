@@ -13,31 +13,33 @@ import { useAuth0 } from "@auth0/auth0-react"
 import Admin from "./components/Admin/Admin"
 import Cart from "./components/Cart/Cart"
 import ProductReview from './components/ProductReview/ProductReview'
+import styles from './App.module.css'
+import Background from "./components/Background/Background"
+import { useLocation } from "react-router-dom"
 // import CreatePReview from './components/CreatePReview/CreatePReview'
 
 function App() {
 
   const dispatch = useDispatch();
   const { user } = useAuth0();
+  const location = useLocation();
 
-  useEffect(() => {
-    // dispatch(allClothes())
-    // dispatch(categories())
-  },[]);
+ 
+
 
   return (
-    <div>
+    <div className={styles.appContainer}>
+      <Background></Background>
+      {!location.pathname.includes("/admin") && <NavBar></NavBar>}
+      {!location.pathname.includes("/admin") && <Filters></Filters>}
       <Routes>
       
-        <Route path='/' element={<NavBar></NavBar>}>
-          <Route element={<Filters/>}></Route>
           <Route path="/" element={<Home/>}></Route>
           <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
           <Route path="/:id" element={<ClothingDetail/>}></Route>
           <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
           <Route path="*" element={<Navigate to='/'/>}/>
           <Route path='/cart' element={<Cart/>}/>
-        </Route>
         <Route path="/admin//*" element={user? <Admin/> : <LoginButton/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path="/cardReviews" element={<ProductReview />}/>
@@ -45,5 +47,11 @@ function App() {
     </div>
   )
 }
+
+
+
+
+
+
 
 export default App

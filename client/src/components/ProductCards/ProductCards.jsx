@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./ProductCards.module.css";
 
 const ProductCards = ({ products }) => {
-
   return (
     <div
       style={{
@@ -10,12 +10,14 @@ const ProductCards = ({ products }) => {
         flexWrap: "wrap",
         justifyContent: "left",
         maxWidth: "1000px",
+        gap: '2em',
       }}
     >
       {products?.map((p, i) => {
         return (
           <div
             key={i}
+            className={styles.containerCard}
             style={{
               width: "200px",
               height: "300px",
@@ -24,14 +26,15 @@ const ProductCards = ({ products }) => {
               alignItems: "center",
             }}
           >
-            <Link to={`/` + p._id}>
+            <Link className={styles.card} to={`/` + p._id}>
               {typeof p.image[0] !== "string" ? (
                 <div>
                   {p.image.map((e) => (
                     <img
+                      className={styles.cardIMG}
                       key={e.public_id}
                       src={e.secure_url}
-                      style={{ width: "170px", height: "170px" }}
+                      style={{ width: "200px", height: "200px" }}
                     ></img>
                   ))}
                 </div>
@@ -39,9 +42,10 @@ const ProductCards = ({ products }) => {
                 <div>
                   {p.image.map((e, i) => (
                     <img
+                      className={styles.cardIMG}
                       key={i}
                       src={e}
-                      style={{ width: "170px", height: "170px" }}
+                      style={{ width: "200px", height: "200px" }}
                     ></img>
                   ))}
                 </div>

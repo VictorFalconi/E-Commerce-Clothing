@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import st from './ProductsList.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getClothesAdmin } from '../../../redux/actions'
+import { editProductActiveProp, getClothesAdmin } from '../../../redux/actions'
 import { DataGrid } from '@mui/x-data-grid'
 import { Link } from 'react-router-dom'
 import formulario from "../Assets/formulario.png"
 
-export default function ProductsList() {
+
+export default function ProductsList({setLoad, load}) {
     const dispatch = useDispatch()
+
 
     useEffect(() => {
         dispatch(getClothesAdmin())
@@ -15,6 +17,11 @@ export default function ProductsList() {
 
     const allItems = useSelector((state) => state.allClothes)
 
+    function handleActive (e, product) {
+        dispatch(editProductActiveProp(product.idProd, !product.active))
+        console.log(product)
+        setLoad(!load)
+    }
     
 
 
@@ -39,11 +46,10 @@ export default function ProductsList() {
             field: 'actions',
             headerName: 'Actions',
             width: 125,
-            renderCell: () => {
+            renderCell: (params) => {
                 return (
                     <>
-            
-                        <button className={st.productListEdit} >
+                        <button  className={st.productListEdit} onClick={(e) => handleActive(e, params.row)}>
                             Enable/Disable
                         </button>
                         
@@ -58,7 +64,6 @@ export default function ProductsList() {
         idProd: it._id,
         name: it.name,
         brand: it.brand,
-        stock: it.stock,
         category: it.category,
         active: it.active,
     }))
