@@ -226,10 +226,12 @@ export const editProductFromDataBase = (id, data) => {
   }
 }
 
-export const checkout = (id) => {
-  return async function () {
+export const checkout = (id, cart) => {
+  return async function (dispatch) {
     try {
-      await axios.post('http://localhost:9000/generar', id ).then((response) => console.log(response))
+      await axios.post('http://localhost:9000/buggy', {userId: id, products: cart})
+      const urlPago = await axios.post('http://localhost:9000/generar', {userId: id}).then((response) => response.data)
+      dispatch({type: 'SET_REDIRECTMP', payload: urlPago})
     } catch (error) {
       console.log('error en action/checkOut', error);
     }
