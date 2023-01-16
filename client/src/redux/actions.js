@@ -59,13 +59,11 @@ export const categories = () => {
 }
 
 export const createProduct = (product) => {
-  return async function (dispatch) {
+  return async function () {
     try {
       await axios.post('http://localhost:9000/products', product)
-      const allClothes = await axios('http://localhost:9000/products')
-      dispatch({
-        type: 'CREATE_PRODUCT',
-        payload: allClothes.data
+      .then((response) => {
+        console.log(response,'respuesta del post')
       })
     } catch(error) {
       alert("cannot create product")
@@ -153,6 +151,18 @@ export const addCart = (prod) => {
   }
 }
 
+export const cloudinaryImage = (imagen) => {
+  return function (dispatch) {
+    try {
+      dispatch({
+        type: 'CLOUDINARY_IMAGE',
+        payload: imagen
+      })
+    } catch (error) {
+      console.log("error en addCart action", error);
+    }
+  }
+}
 export const removeCartProduct = (prod) => {
   return function (dispatch) {
     try {
@@ -162,6 +172,33 @@ export const removeCartProduct = (prod) => {
       })
     } catch (error) {
       console.log("error en remove cart action", error);
+    }
+  }
+}
+
+export const editProductFromDataBase = (id, data) => {
+  return async function() {
+    try {
+      await axios.put(`http://localhost:9000/products/${id}`, data)
+      .then((response) => {
+        console.log(response)
+      })
+      
+    } catch (error) {
+      console.log("error edit Product From Data Base", error);
+    }
+  }
+}
+export const checkout = () => {
+  return async function (dispatch) {
+    try {
+      const compra = await axios('http://localhost:9000/generar')
+      dispatch({
+        type: 'CHECKOUT',
+        payload: compra.data
+      })
+    } catch (error) {
+      console.log('error en action/checkOut', error);
     }
   }
 }

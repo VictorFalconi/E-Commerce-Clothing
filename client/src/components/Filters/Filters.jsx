@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { orderBy, filter } from '../../redux/actions'
 import { useLocation } from 'react-router-dom';
+import styles from './Filters.module.css'
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -26,30 +27,39 @@ export default function Filter() {
 
   return (
     <>
+
+    <div className={styles.side} id="light">  
+      <div className={styles.sideBarHeader}>
+       
+       
       {location.pathname === '/'
       ? <div>
-        <select value={azOrder} onChange={(e) => {dispatch({type: 'azOrder', payload: e.target.value})}}>
+        <select value={azOrder} className={styles.buttonFilter} onChange={(e) => {dispatch({type: 'azOrder', payload: e.target.value})}}>
           <option default value="">Default</option>
-          <option value="AZ">A - Z</option>
-          <option value="ZA">Z - A</option>
+          <option  style={{ fontFamily: 'Raleway'}} value="AZ">A - Z</option>
+            <option  style={{ fontFamily: 'Raleway'}} value="ZA">Z - A</option>
         </select>
-        <select value={catFilter} onChange={(e) => {dispatch({type: 'catFilter', payload: e.target.value});}}>
+        <select value={catFilter} className={styles.buttonFilter} onChange={(e) => {dispatch({type: 'catFilter', payload: e.target.value});}}>
           <option default value="">Default</option>
           <option value="T-shirts">T-shirts</option>
           <option value="Shoes">Shoes</option>
           <option value="Shorts">Shorts</option>
           <option value="Caps">Caps</option>
         </select>
-        <select value={sizeFilter} onChange={(e) => {dispatch({type: 'sizeFilter', payload: e.target.value});}}>
+        <select value={sizeFilter} className={styles.buttonFilter} onChange={(e) => {dispatch({type: 'sizeFilter', payload: e.target.value});}}>
           <option default value="">Default</option>
           <option value="L">L</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
         </select>
         <button onClick={() => {
           dispatch({type: 'azOrder', payload: ''})
           dispatch({type: 'sizeFilter', payload: ''})
           dispatch({type: 'catFilter', payload: ''})
-          }}>Reset filters</button>
+          }} className={styles.buttonFilter} >Reset filters</button>
       </div> : null}
+      </div>
+    </div>
     </>
 
   //     <div>
@@ -83,6 +93,8 @@ export default function Filter() {
   //             </optgroup>
   //         </select>
   //     </div>
+          
+  // 
   )
-}
+};
 

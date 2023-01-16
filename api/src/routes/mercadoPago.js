@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createPreference } = require('../controllers/MercadoPago');
+const { createPreference } = require('../controllers/mercadoPago');
 
 router.get('/generar', createPreference);
 router.get('/success', (req, res) => {

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeCartProduct } from '../../redux/actions';
+import { checkout, removeCartProduct } from '../../redux/actions';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import ClothingDetail from '../ClothingDetail/ClothingDetail';
+import { Link } from 'react-router-dom';
 
 function Cart() {
 
@@ -11,6 +12,7 @@ const dispatch = useDispatch();
 const { user }  = useAuth0();
 const users = useSelector(state => state.users)
 const cart = useSelector((state)=> state.cart);
+const continueMP = useSelector((state)=> state.redirectMP)
 
   // State to store the items in the cart
  // const [cart, setCart] = useState([]);
@@ -40,8 +42,8 @@ const cart = useSelector((state)=> state.cart);
     const check = users.filter((u)=> u.email === email)
     //console.log(check)
     if(check[0]?.active === false) {
-       return <button  onClick={() =>alert('Usuario banneado')}>Comprar</button>
-    }else{ return <button onClick={() =>alert('aca continuaria compra')}>Comprar</button>}
+       return <button  onClick={() =>alert('Usuario banneado')}>Confirmar compra</button>
+    }else{ return <button onClick={() =>dispatch(checkout())}>Confirmar compra</button>}
 }
 
   return (
@@ -59,6 +61,7 @@ const cart = useSelector((state)=> state.cart);
       </ul>
       <h3>Total: ${calculateTotal().toFixed(2)}</h3> 
       {user? verificacionActive(): <p>Registrese señor</p> }
+      {continueMP && <a href={continueMP}>siguiente</a>}
     </div>
    
   );
