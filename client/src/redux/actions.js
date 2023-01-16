@@ -3,10 +3,12 @@ import axios from "axios";
 
 // import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
+const REQ_URL = 'https://e-commerce-clothing-production.up.railway.app';
+
 export function searchClothes(name) {
   return async function (dispatch) {
     try {
-      const clothes = await axios(`http://localhost:9000/products?name=${name}`);
+      const clothes = await axios(`${REQ_URL}/products?name=${name}`);
       dispatch({
         type: 'SEARCH_CLOTHES',
         payload: clothes.data,
@@ -20,7 +22,7 @@ export function searchClothes(name) {
 export const allClothes = () => {
   return async function (dispatch) {
     try {
-      const allClothes = await axios('http://localhost:9000/products')
+      const allClothes = await axios(`${REQ_URL}/products`)
       dispatch({
         type: 'ALL_CLOTHES',
         payload: allClothes.data
@@ -34,7 +36,7 @@ export const allClothes = () => {
 export const getClothesAdmin = () => {
   return async function (dispatch) {
     try {
-      const allClothes = await axios('http://localhost:9000/products')
+      const allClothes = await axios(`${REQ_URL}/products`)
       dispatch({
         type: 'GETCLOTHES_ADMIN',
         payload: allClothes.data
@@ -48,7 +50,7 @@ export const getClothesAdmin = () => {
 export const clothesDetail = (id) => {
   return async function (dispatch) {
     try {
-      const clothesDetail = await axios(`http://localhost:9000/products/${id}`)
+      const clothesDetail = await axios(`${REQ_URL}/products/${id}`)
       dispatch({
         type: 'CLOTHES_DETAIL',
         payload: clothesDetail.data
@@ -62,7 +64,7 @@ export const clothesDetail = (id) => {
 export const categories = () => {
   return async function (dispatch) {
     try {
-      const category = await axios('http://localhost:9000/category')
+      const category = await axios(`${REQ_URL}/category`)
       dispatch({
         type: 'CATEGORIES',
         payload: category.data
@@ -76,7 +78,7 @@ export const categories = () => {
 export const createProduct = (product) => {
   return async function () {
     try {
-      await axios.post('http://localhost:9000/products', product)
+      await axios.post(`${REQ_URL}/products`, product)
       .then((response) => {
         console.log(response,'respuesta del post')
       })
@@ -101,7 +103,7 @@ export function filter(payload) {
 export const allUsers = () => {
   return async function (dispatch) {
     try {
-      const allUsers = await axios('http://localhost:9000/user')
+      const allUsers = await axios(`${REQ_URL}/user`)
       dispatch({
         type: 'ALL_USERS',
         payload: allUsers.data
@@ -115,7 +117,7 @@ export const allUsers = () => {
 export const editUserActiveProp = (id, active) => {
   return async function(){
     try{
-      await axios.put(`http://localhost:9000/user/active/${id}`, {active: active})
+      await axios.put(`${REQ_URL}/user/active/${id}`, {active: active})
     } catch(error){
       alert('no se pudo che')
     }
@@ -125,8 +127,8 @@ export const editUserActiveProp = (id, active) => {
 export const updateUserStatus = (id, payload) => {
   return async function (dispatch) {
     try {
-      const update = await axios.put(`http://localhost:9000/user/${id}`, payload)
-      const allUsers = await axios('http://localhost:9000/user')
+      const update = await axios.put(`${REQ_URL}/user/${id}`, payload)
+      const allUsers = await axios(`${REQ_URL}/user`)
       dispatch({
         type: 'UPDATE_USER_STATUS',
         payload: allUsers.data
@@ -142,7 +144,7 @@ export const updateUserStatus = (id, payload) => {
 export function createProductReview(payload){
   return async function(dispatch){
     try {
-      let json = await axios.post('http://localhost:9000/reviews', payload)
+      let json = await axios.post(`${REQ_URL}/reviews`, payload)
       dispatch({
           type: 'CREATE_P_REVIEW',
           payload: json.data
@@ -157,7 +159,7 @@ export function reviewsFilter(payload) {
 }
 export function getPReviews() {
   return async function (dispatch) {
-      const allData = await axios.get('http://localhost:9000/reviews')
+      const allData = await axios.get(`${REQ_URL}/reviews`)
       return dispatch({ type: 'GET_REVIEWS', payload: allData.data })
   }
 }
@@ -205,7 +207,7 @@ export const removeCartProduct = (prod) => {
 export const editProductActiveProp = (id, active) => {
   return async function(){
     try{
-      await axios.put(`http://localhost:9000/products/active/${id}`, {active: active})
+      await axios.put(`${REQ_URL}/products/active/${id}`, {active: active})
     } catch(error){
       alert('error')
     }
@@ -215,7 +217,7 @@ export const editProductActiveProp = (id, active) => {
 export const editProductFromDataBase = (id, data) => {
   return async function() {
     try {
-      await axios.put(`http://localhost:9000/products/${id}`, data)
+      await axios.put(`${REQ_URL}/products/${id}`, data)
       .then((response) => {
         console.log(response)
       })
@@ -229,8 +231,8 @@ export const editProductFromDataBase = (id, data) => {
 export const checkout = (id, cart) => {
   return async function (dispatch) {
     try {
-      await axios.post('http://localhost:9000/buggy', {userId: id, products: cart})
-      const urlPago = await axios.post('http://localhost:9000/generar', {userId: id}).then((response) => response.data)
+      await axios.post(`${REQ_URL}/buggy`, {userId: id, products: cart})
+      const urlPago = await axios.post(`${REQ_URL}/generar`, {userId: id}).then((response) => response.data)
       dispatch({type: 'SET_REDIRECTMP', payload: urlPago})
     } catch (error) {
       console.log('error en action/checkOut', error);
