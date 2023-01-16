@@ -1,4 +1,3 @@
- const axios = require('axios');
  require('dotenv').config();
  const mercadopago = require('mercadopago');
  const { buggyModel, userModel } = require('../models/index.js');
