@@ -16,6 +16,7 @@ const initialState = {
   sizeFilter: 'Default',
   cart: [],
   redirectMP: '',
+  imageCloudinary: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -155,7 +156,8 @@ const reducer = (state = initialState, action) => {
     case "CLOUDINARY_IMAGE":
       return {
         ...state,
-        cart: newCart,
+        imageCloudinary: action.payload,
+        // cart: newCart,
       };
       case 'CHECKOUT':
         return {

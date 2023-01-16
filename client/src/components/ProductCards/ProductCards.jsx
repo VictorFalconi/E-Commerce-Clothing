@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import styles from "./ProductCards.module.css";
 
 const ProductCards = ({ products }) => {
+
   return (
     <div
       style={{
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "left",
-        maxWidth: "1000px",
+        justifyContent: "center",
+        maxWidth: "1300px",
+        // background: 'red',
         gap: '2em',
       }}
     >
