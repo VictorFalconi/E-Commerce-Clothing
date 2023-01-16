@@ -18,6 +18,7 @@ const initialState = {
   sizeFilter: 'Default',
   cart: [],
   redirectMP: '',
+  imageCloudinary: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -79,22 +80,22 @@ const reducer = (state = initialState, action) => {
         case 'AZ': return {
           ...state,
           productsOrdered: [...state.allClothes].sort(function (a, b){
-            if (a.name > b.name) return 1
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
             else return -1
         }),
           productsFiltered: [...state.allClothes].sort(function (a, b){
-            if (a.name > b.name) return 1
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
             else return -1
         })
         }
         case 'ZA': return {
           ...state,
           productsOrdered: [...state.allClothes].sort(function(a, b) {
-            if (a.name < b.name) return 1;
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
            else return -1
           }),
           productsFiltered: [...state.allClothes].sort(function(a, b) {
-            if (a.name < b.name) return 1;
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
            else return -1
           })
         }
@@ -108,17 +109,38 @@ const reducer = (state = initialState, action) => {
     case "FILTER":
       switch (action.payload) {
         case "T-shirts":
-          return {
-            ...state,
-            productsFiltered: [...state.productsFiltered].filter(
-              (p) => p.category === "T-shirts"
-            ),
-          };
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter(
+            (p) => p.category.toLowerCase() === "t-shirts"
+          ),
+        };
         case "Shoes":
-          return {
-            ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('L'))
-          }
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter(
+            (p) => p.category.toLowerCase() === "shoes"
+          ),
+        };
+        case "Shorts":
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter(
+            (p) => p.category.toLowerCase() === "shorts"
+          ),
+        };
+        case "Caps":
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter(
+            (p) => p.category.toLowerCase() === "caps"
+          ),
+        };
+        case "L":
+        return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('L'))
+        }
           case 'S': return {
             ...state,
             productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('S'))
@@ -161,11 +183,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         cart: [...state.cart, action.payload],
       };
+      case 'REMOVE_CART_PRODUCT':
+        const cart = state.cart;
+        const newCart = cart.filter((i)=> i.name !== action.payload.name);
+        return {
+          ...state,
+          cart: newCart,
+        };
 
     case "CLOUDINARY_IMAGE":
       return {
         ...state,
-        cart: newCart,
+        imageCloudinary: action.payload,
+        // cart: newCart,
       };
       case 'CHECKOUT':
         return {

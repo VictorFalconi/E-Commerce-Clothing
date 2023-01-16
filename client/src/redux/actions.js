@@ -225,6 +225,7 @@ export const editProductFromDataBase = (id, data) => {
     }
   }
 }
+
 export const checkout = () => {
   return async function (dispatch) {
     try {

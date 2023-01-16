@@ -1,3 +1,4 @@
+import styles from './Cloudinary.module.css'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -55,7 +56,7 @@ const Cloudinary = () => {
       <div className="images-preview-container">
         {images.map((image) => (
           <div key={image.public_id} className="image-preview">
-            <img src={image.secure_url} />
+            <img className={styles.image} src={image.secure_url} />
             {/* {imageToRemove != image.public_id && (
               <i className="close-icon" onClick={() => handleRemoveImg(image)}>
                 X
