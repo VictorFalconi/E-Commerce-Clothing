@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { createPreference } = require('../controllers/mercadoPago');
 
-router.get('/generar', createPreference);
+router.post('/generar', createPreference);
 router.get('/success', (req, res) => {
     res.send('Pago realizado con éxito');
 });

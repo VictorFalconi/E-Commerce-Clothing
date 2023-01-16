@@ -1,0 +1,60 @@
+.containerform {
+  display: grid;
+  place-content: center;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 40px repeat(2, 1fr);
+  grid-template-areas:
+    "a a"
+    "c b"
+    "c b";
+  padding: 1em;
+  gap: 1em;
+  background-color: transparent;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  width: 1300px;
+}
+
+.title {
+  grid-area: a;
+  text-align: center;
+}
+
+.forminput {
+  grid-area: c;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 1em;
+}
+
+.forminput button,
+.forminput input {
+  background-color: transparent;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  height: 70px;
+  font-size: 1.4em;
+}
+
+.cloudinary {
+  background-color: transparent;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  display: grid;
+  place-content: center;
+  grid-area: b;
+}

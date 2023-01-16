@@ -1,13 +1,23 @@
-.navbar {
+.navbarContainer {
+    /* margin-top: 30px; */
     display: flex;
-    justify-content: space-between;
-    width: 98%;
-    height: 50px;
-    flex-direction: row;
-    margin-left: 0%;
-    margin-right: 0%;
-    margin-bottom: 60px;
-    
+    justify-content: center;
+}
+
+.navbar {
+    max-width: 1300px;
+    display: flex;
+    border: 1px solid rgba(225,225,225, 0.4);
+    border-right: 1px solid rgba(225,225,225, 0.2);
+    border-bottom: 1px solid rgba(225,225,225, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(2px);
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%; 
+    height: 120px;
+    margin-top: 10px;
 }
 
 .IconProfile{
@@ -16,6 +26,39 @@
 }
 
 .IconFormulario{
-    width:40px;
-    height:40px;
+    width:65px;
+}
+
+.logo {
+    width: 200px;
+    border-radius: 20px;
+}
+
+.search {
+    font-size: 1.2em;
+    padding: 1em;
+    background-color: transparent;
+    border: 1px solid rgba(225,225,225, 0.4);
+    border-right: 1px solid rgba(225,225,225, 0.2);
+    border-bottom: 1px solid rgba(225,225,225, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.dashboard {
+    border: 1px solid rgba(225,225,225, 0.4);
+    border-right: 1px solid rgba(225,225,225, 0.2);
+    border-bottom: 1px solid rgba(225,225,225, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 1em;
+    font-size: 1.2em;
+    list-style: none;
+    color: black;
+    text-decoration: none;
+}
+
+.cart {
+    
+    font-size: 50px;
 }

@@ -62,64 +62,51 @@ function ClothingDetail(product) {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <h2>{clothes?.name}</h2>
-        <div>
+        <h2 className={styles.title}>{clothes?.name}</h2>
+        <div className={styles.cardimg}>
           {clothes?.image?.map((e, i) => (
             <div key={e.public_id}>
               {e.secure_url ? (
                 <img
+                  className={styles.image}
                   src={e.secure_url}
-                  style={{ width: "170px", height: "170px" }}
                 ></img>
               ) : (
-                <img src={e} style={{ width: "170px", height: "170px" }}></img>
+                <img
+                  className={styles.image}
+                  src={e}
+                ></img>
               )}
             </div>
           ))}
         </div>
-        {/* <img src={clothes?.image}></img> */}
-        <p className={styles.price}>${clothes?.price}</p>
-        <p>Season: {clothes?.season}</p>
-        <h3>{clothes?.brand}</h3>
-        <p>Model: {clothes?.model}</p>
-        <p>Sizes:</p>
-        <p>{clothes?.sizes?.map((e) => e).join(", ")}</p>
-        Reviews
-        <div className="mt-6">
+        <p className={styles.price}>Price: ${clothes?.price}</p>
+        <p className={styles.season}>Season: {clothes?.season}</p>
+        <p className={styles.brand}>Clothes: {clothes?.brand}</p>
+        <p className={styles.model}>Model: {clothes?.model}</p>
+        <p className={styles.sizes}>
+          Sizes: {clothes?.sizes?.map((e) => e).join(", ")}
+        </p>
+        <div className={styles.reviews}>
           <h4 className="sr-only">Reviews</h4>
           <div className="flex items-center">
             <div className="flex items-center">
               {[...Array(5)].map((rating, i) => {
                 return promedReviews > i ? (
-                  <img
-                    src={StarIconFill}
-                    key={i}
-                    className={classNames("h-5 w-5 flex-shrink-0")}
-                  />
+                  <img src={StarIconFill} key={i} className={styles.staricon} />
                 ) : (
-                  <img
-                    src={StarIcon}
-                    key={i}
-                    className={classNames("h-5 w-5 flex-shrink-0")}
-                  />
+                  <img src={StarIcon} key={i} className={styles.staricon} />
                 );
               })}
             </div>
-            <p className="sr-only">{promedReviews} out of 5 stars</p>
-            <button
-              type="button"
-              onClick={routeChange}
-              className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              {countReviews} reviews
-            </button>
+            
           </div>
         </div>
-        <button className={styles.btn} onClick={() => handleCart(clothes)}>
+        <button className={styles.button} onClick={() => handleCart(clothes)}>
           Agregar a la bolsa
         </button>
-        MENSAJE : NO SE DONDE COLOCAR LA PARTE DEL EDID
-        <ClothingEdit></ClothingEdit>
+        {/* MENSAJE : NO SE DONDE COLOCAR LA PARTE DEL EDID
+        <ClothingEdit></ClothingEdit> */}
       </div>
     </div>
   );
