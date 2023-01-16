@@ -99,13 +99,7 @@ function ClothingDetail(product) {
                 );
               })}
             </div>
-            <button
-              type="button"
-              onClick={routeChange}
-              className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              {countReviews} 
-            </button>
+            
           </div>
         </div>
         <button className={styles.button} onClick={() => handleCart(clothes)}>

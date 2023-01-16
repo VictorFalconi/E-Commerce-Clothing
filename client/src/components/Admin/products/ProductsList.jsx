@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { editProductActiveProp, getClothesAdmin } from '../../../redux/actions'
 import { DataGrid } from '@mui/x-data-grid'
 import { Link } from 'react-router-dom'
-import formulario from "../Assets/formulario.png"
+
 
 
 export default function ProductsList({setLoad, load}) {
@@ -19,7 +19,6 @@ export default function ProductsList({setLoad, load}) {
 
     function handleActive (e, product) {
         dispatch(editProductActiveProp(product.idProd, !product.active))
-        console.log(product)
         setLoad(!load)
     }
     
@@ -85,11 +84,6 @@ export default function ProductsList({setLoad, load}) {
                 checkboxSelection
                 disableSelectionOnClick
             />
-            <div className={st.productButtonContainer}>
-                <Link to="/admin/newproduct">
-                    <img src={formulario} className={st.IconFormulario} alt='Logo'/>
-                </Link>
-            </div>
         </div>
     )
 }

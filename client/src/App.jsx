@@ -16,7 +16,7 @@ import ProductReview from './components/ProductReview/ProductReview'
 import styles from './App.module.css'
 import Background from "./components/Background/Background"
 import { useLocation } from "react-router-dom"
-// import CreatePReview from './components/CreatePReview/CreatePReview'
+import CreatePReview from './components/CreatePReview/CreatePReview'
 
 function App() {
 
@@ -43,6 +43,7 @@ function App() {
         <Route path="/admin//*" element={user? <Admin/> : <LoginButton/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path="/cardReviews" element={<ProductReview />}/>
+        <Route path="/reviews/:id/:userId" element={<CreatePReview id='635ae766f530d18d68f103cb' userId='63615409b573f3a4a80dfc1f' />} />
       </Routes>
     </div>
   )

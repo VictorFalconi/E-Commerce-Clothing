@@ -60,7 +60,7 @@ function ProductReview() {
                     </select>
                 </div>
                 {
-                    (filteredReviews.length) ?
+                    (filteredReviews?.length) ?
                     <div>
                         {filteredReviews.filter(r => r.productId === pDetail)
                         ?.map((review) => {

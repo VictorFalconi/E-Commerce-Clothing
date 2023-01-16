@@ -39,7 +39,7 @@ export default function TopBar() {
                     </Link>
                 </div>
                 <div className={st.topRight}>
-                    <button src={logoProfile} className={st.logoutBtn}>Logout</button>
+                    <button src={logoProfile} className={st.logoutBtn} onClick={logout}>Logout</button>
                 </div>
             </div>
         </nav>

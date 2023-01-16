@@ -226,14 +226,10 @@ export const editProductFromDataBase = (id, data) => {
   }
 }
 
-export const checkout = () => {
-  return async function (dispatch) {
+export const checkout = (id) => {
+  return async function () {
     try {
-      const compra = await axios('http://localhost:9000/generar')
-      dispatch({
-        type: 'CHECKOUT',
-        payload: compra.data
-      })
+      await axios.post('http://localhost:9000/generar', id ).then((response) => console.log(response))
     } catch (error) {
       console.log('error en action/checkOut', error);
     }

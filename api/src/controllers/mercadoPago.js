@@ -11,6 +11,7 @@
  const createPreference = async (req, res) => {
    // buscar el usuario en la base de datos
    let user = await userModel.findOne({ _id: req.body.userId });
+   console.log(req.body)
    if (user) {
      let buggy = await buggyModel.findOne({ userId: req.body.userId });
      if (buggy) {

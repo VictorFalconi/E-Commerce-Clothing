@@ -1,5 +1,6 @@
 import Reac from 'react';
 import st from './AdminSideBar.module.css';
+import formulario from "../Assets/formulario.png";
 import {
     Home,
     Timeline,
@@ -93,6 +94,11 @@ export default function SideBar() {
                             <Link to="/admin/products" className={st.link}>
                                 <Insights className={st.sidebarIcon} />
                                 Products
+                            </Link>
+                        </li>
+                        <li className={st.sidebarListItem}>
+                            <Link to="/admin/newproduct">
+                                <img src={formulario} className={st.IconFormulario} alt='Logo'/>
                             </Link>
                         </li>
 

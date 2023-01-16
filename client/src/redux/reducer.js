@@ -1,6 +1,4 @@
-//  import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES, FILTER, RESET_FILTERS, ORDER_BY, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
-import { allClothes } from "./actions";
 
 const initialState = {
   loading: true,
@@ -19,6 +17,9 @@ const initialState = {
   cart: [],
   redirectMP: '',
   imageCloudinary: [],
+  reviews: [],
+  reviews_copy:[],
+  filteredReviews: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -202,7 +203,54 @@ const reducer = (state = initialState, action) => {
           ...state,
           redirectMP: action.payload
         };
+// ----------------------------------Reviews------------------------------------
+      case 'GET_REVIEWS':
+        return ({
+          ...state,
+          reviews: action.payload,
+          reviews_copy: action.payload
+      })
 
+      case "REVIEWS_FILTER":
+        const reviews = state.reviews_copy
+        if (action.payload === 'All rates') {
+            return ({
+                ...state,
+                filteredReviews: reviews
+            })
+        } else if (action.payload === '5') {
+            const filter = reviews.filter(r => r.score === 5)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+        } else if (action.payload === '4') {
+            const filter = reviews.filter(r => r.score === 4)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+
+        } else if (action.payload === '3') {
+            const filter = reviews.filter(r => r.score === 3)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+        } else if (action.payload === '2') {
+            const filter = reviews.filter(r => r.score === 2)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+
+        } else if (action.payload === '1') {
+            const filter = reviews.filter(r => r.score === 1)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+        }
     default:
       return state;
   }
