@@ -11,39 +11,30 @@ const buggyRouter = require('./routes/buggy')
 
 
 const server = express();
+server.use(express.json());
 
+//server.use(cors())
+//server.use(cors({origin: '*'}));
+//server.use(morgan("dev"));
 server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
-    //res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
 
-//server.use(cors())
-//server.use(cors({origin: '*'}));
-//server.use(morgan("dev"));
-
 //ruta de prueba
-server.get("/people", (req, res) => {
-    res.status(200).send("Estamos en la ruta /people");
-});
-
-
-server.use(express.json());
+// server.get("/people", (req, res) => {
+//     res.status(200).send("Estamos en la ruta /people");
+// });
 
 server.use('/', productRouter)
-
 server.use('/', categoryRouter)
-
 server.use('/', userRouter)
-
 server.use('/', reviewsRouter)
-
 server.use('/', cartRouter)
-
 server.use('/', mercadoPagoRouter)
-
 server.use('/', buggyRouter)
 
 module.exports = server;
