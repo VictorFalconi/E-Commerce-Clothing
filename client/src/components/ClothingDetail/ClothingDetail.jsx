@@ -103,7 +103,7 @@ function ClothingDetail(product) {
           </div>
         </div>
         <button className={styles.button} onClick={() => handleCart(clothes)}>
-          Agregar a la bolsa
+          Add to cart
         </button>
         {/* MENSAJE : NO SE DONDE COLOCAR LA PARTE DEL EDID
         <ClothingEdit></ClothingEdit> */}

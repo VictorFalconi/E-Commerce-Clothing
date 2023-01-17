@@ -75,7 +75,6 @@
 
 .button {
   grid-area: i;
-  padding: 2em;
   background-color: transparent;
   border: 1px solid rgba(225, 225, 225, 0.4);
   border-right: 1px solid rgba(225, 225, 225, 0.2);
@@ -83,6 +82,7 @@
   box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   font-size: 1em;
+  cursor: pointer;
 }
 
 .staricon {
