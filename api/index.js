@@ -2,7 +2,7 @@ require('dotenv').config();
 const cors = require('cors');
 const server = require('./src/app')
 const dbConnect = require('./src/db')
-//const morgan = require('morgan')
+const morgan = require('morgan')
 
 //server.use(morgan("dev"));
 //server.use(cors({origin: '*'}));

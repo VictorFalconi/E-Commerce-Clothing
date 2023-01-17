@@ -1,7 +1,6 @@
 const productSchema = require('../models/product')
 
 const products = async (req,res) => {
-    console.log(req);
     const { name } = req.query    
     const allProducts = await productSchema.find({})
     if(allProducts){
