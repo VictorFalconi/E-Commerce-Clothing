@@ -4,14 +4,6 @@ const { products } = require('../controllers/Product');
 
 const router = express.Router();
 
-router.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-});
-
 router.post("/products", (req, res) => {
     const product = productSchema(req.body);
     product.save().then((data) => res.json(data)).catch((err) => res.json({ message: err }));
