@@ -191,6 +191,11 @@ const reducer = (state = initialState, action) => {
           ...state,
           cart: newCart,
         };
+    case 'CLEAR_CART': 
+        return {
+          ...state,
+          cart: []
+        }
 
     case "CLOUDINARY_IMAGE":
       return {
@@ -250,6 +255,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 filteredReviews: filter
             })
+        }
+    case 'SET_REDIRECTMP': 
+        return {
+          ...state,
+          redirectMP: action.payload
         }
     default:
       return state;

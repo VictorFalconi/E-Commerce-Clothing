@@ -53,7 +53,7 @@ function ClothingDetail(product) {
   //console.log(clothes)
 
   const handleCart = (clothes) => {
-    dispatch(addCart(clothes));
+    dispatch(addCart({...clothes, quantity: 1}));
   };
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
