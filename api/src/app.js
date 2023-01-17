@@ -7,13 +7,13 @@ const cartRouter = require('./routes/cart')
 const mercadoPagoRouter = require('./routes/mercadoPago')
 const buggyRouter = require('./routes/buggy')
 //const morgan = require('morgan')
-const cors = require('cors')
+//const cors = require('cors');
 
 
 const server = express();
 
 //server.use(cors())
-server.use(cors({origin: '*'}));
+//server.use(cors({origin: '*'}));
 //server.use(morgan("dev"));
 
 //ruta de prueba
