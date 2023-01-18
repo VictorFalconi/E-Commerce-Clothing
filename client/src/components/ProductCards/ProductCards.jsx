@@ -58,7 +58,7 @@ const ProductCards = ({ products }) => {
             </p>
             <p style={{ margin: "0" }}>Category: {p.category}</p>
             <p style={{ margin: "0" }}>Price: ${p.price}</p>
-            <p style={{ margin: "0" }}>Sizes: {p.sizes.join(", ")}</p>
+            <p style={{ margin: "0" }}>Sizes: {Object.keys(p.stock).join(", ")}</p>
           </div>
         );
       })}
