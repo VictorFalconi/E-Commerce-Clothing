@@ -23,6 +23,7 @@ function ClothingDetail(product) {
   const reviews = useSelector((state) => state.reviews);
   const [promedReviews, setPromedReviews] = useState(0);
   const [countReviews, setCountReviews] = useState(0);
+  const [ cantidad, setCantidad] = useState(1)
   let navigate = useNavigate();
   const routeChange = () => {
     let path = "/cardReviews";
@@ -53,8 +54,11 @@ function ClothingDetail(product) {
   //console.log(clothes)
 
   const handleCart = (clothes) => {
-    dispatch(addCart({...clothes, quantity: 1}));
+    dispatch(addCart({...clothes, quantity: cantidad}));
   };
+  function handleCant(e) {
+    setCantidad(parseInt(e.target.value));
+  }
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -65,7 +69,7 @@ function ClothingDetail(product) {
         <h2 className={styles.title}>{clothes?.name}</h2>
         <div className={styles.cardimg}>
           {clothes?.image?.map((e, i) => (
-            <div key={e.public_id}>
+            <div key={i}>
               {e.secure_url ? (
                 <img
                   className={styles.image}
@@ -87,6 +91,9 @@ function ClothingDetail(product) {
         <p className={styles.sizes}>
           Sizes: {clothes?.sizes?.map((e) => e).join(", ")}
         </p>
+        <div>
+          <input name='qty' placeholder="ingrese cantidad" onChange={e => handleCant(e)} value={cantidad} type='number' />
+        </div>
         <div className={styles.reviews}>
           <h4 className="sr-only">Reviews</h4>
           <div className="flex items-center">
@@ -114,6 +121,6 @@ function ClothingDetail(product) {
 
 export default ClothingDetail;
 
-//LINEA 32 DEBE SER EL CAUSANTE DEL ERROR
+
 
 /* <button className={styles.btn} onClick={() => addToCart(clothes)}>Add to bag</button> */

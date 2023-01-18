@@ -11,9 +11,9 @@ function Cart() {
 const dispatch = useDispatch();
 const navigate = useNavigate();
 const { user }  = useAuth0();
-console.log(user)
+//console.log(user)
 const users = useSelector(state => state.users)
-console.log(users)
+//console.log(users)
 const cart = useSelector((state)=> state.cart);
 const continueMP = useSelector((state)=> state.redirectMP)
 
@@ -43,7 +43,7 @@ const continueMP = useSelector((state)=> state.redirectMP)
   const verificacionActive = ()=>{
     const email = user.email
     const check = users.filter((u)=> u.email === email)
-    console.log(check[0]?._id)
+   // console.log(check[0]?._id)
     if(check[0]?.active === false) {
        return <button  onClick={() =>alert('Usuario banneado')}>Confirmar compra</button>
     }else{ return <button disabled={cart.length === 0} onClick={() =>dispatch(checkout(check[0]._id, cart))}>Confirmar compra</button>}
@@ -64,7 +64,6 @@ const continueMP = useSelector((state)=> state.redirectMP)
       </ul>
       <h3>Total: ${calculateTotal().toFixed(2)}</h3> 
       {user? verificacionActive(): <p>Registrese señor</p> }
-      {console.log(continueMP)}
       {continueMP && <a href={continueMP} target='_blank' rel='noreferrer' onClick={() => {dispatch({type: 'CLEAR_CART'}); dispatch({type: 'SET_REDIRECTMP', payload: null}); navigate('/');}}>siguiente</a>}
     </div>
    
