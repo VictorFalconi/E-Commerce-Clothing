@@ -14,7 +14,7 @@ const server = express();
 server.use(express.json());
 server.use(morgan("dev"));
 
-//server.use(cors())
+server.use(cors())
 //server.use(cors({origin: '*'}));
 
 // server.use((req, res, next) => {
