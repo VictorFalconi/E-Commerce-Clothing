@@ -88,6 +88,13 @@ export const createProduct = (product) => {
   }
 }
 
+export function updateProduct(id, payload) {
+  return async function (dispatch) {
+      const json = await axios.put(`${REQ_URL}/products/${id}`, payload)
+      return dispatch({ type: "PRODUCT_UPDATE", payload: json.payload })
+  }
+}
+
 
 // ------  filtros -------
 

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export default function ProductsList({setLoad, load}) {
+export default function ProductsList() {
     const dispatch = useDispatch()
 
 
@@ -17,10 +17,6 @@ export default function ProductsList({setLoad, load}) {
 
     const allItems = useSelector((state) => state.allClothes)
 
-    function handleActive (e, product) {
-        dispatch(editProductActiveProp(product.idProd, !product.active))
-        setLoad(!load)
-    }
     
 
 
@@ -48,9 +44,14 @@ export default function ProductsList({setLoad, load}) {
             renderCell: (params) => {
                 return (
                     <>
-                        <button  className={st.productListEdit} onClick={(e) => handleActive(e, params.row)}>
-                            Enable/Disable
-                        </button>
+                        <Link
+                            to={'/admin/product/' + params.row.idProd}
+                            className=' no-underline'
+                        >
+                            <button className={st.productListEdit}>
+                                Details
+                            </button>
+                        </Link>
                         
                     </>
                 )
