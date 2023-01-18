@@ -12,10 +12,10 @@ const cors = require('cors');
 
 const server = express();
 server.use(express.json());
-
-server.use(cors())
-//server.use(cors({origin: '*'}));
 server.use(morgan("dev"));
+
+//server.use(cors())
+//server.use(cors({origin: '*'}));
 
 // server.use((req, res, next) => {
 //     res.header('Access-Control-Allow-Origin', '*');
