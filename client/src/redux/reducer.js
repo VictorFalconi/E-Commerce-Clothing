@@ -19,6 +19,7 @@ const initialState = {
   imageCloudinary: [],
   reviews: [],
   reviews_copy:[],
+  idprodreviews: '',
   filteredReviews: [],
 };
 
@@ -215,6 +216,12 @@ const reducer = (state = initialState, action) => {
           ...state,
           reviews: action.payload,
           reviews_copy: action.payload
+      })
+
+      case "OPEN_DETAIL":
+            return ({
+              ...state,
+              idprodreviews: action.payload,
       })
 
       case "REVIEWS_FILTER":

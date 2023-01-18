@@ -3,7 +3,7 @@ import axios from "axios";
 
 // import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
-const REQ_URL = 'https://e-commerce-clothing.onrender.com';
+const REQ_URL = 'http://localhost:9000';
 
 export function searchClothes(name) {
   return async function (dispatch) {
@@ -88,6 +88,13 @@ export const createProduct = (product) => {
   }
 }
 
+export function updateProduct(id, payload) {
+  return async function (dispatch) {
+      const json = await axios.put(`${REQ_URL}/products/${id}`, payload)
+      return dispatch({ type: "PRODUCT_UPDATE", payload: json.payload })
+  }
+}
+
 
 // ------  filtros -------
 
@@ -162,6 +169,10 @@ export function getPReviews() {
       const allData = await axios.get(`${REQ_URL}/reviews`)
       return dispatch({ type: 'GET_REVIEWS', payload: allData.data })
   }
+}
+
+export function getopenDetail(id) {
+  return { type: "OPEN_DETAIL", payload: id }
 }
 
 //-----------------------cart-----------------------

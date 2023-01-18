@@ -1,0 +1,100 @@
+.productUpdate {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.8);
+    margin-top: 10px;
+    border-radius: 20px;
+}
+
+.productUpdateTitle {
+    align-self: center;
+    font-size: 25px;
+    font-weight: 600;
+    /* margin-left: 10px; */
+}
+
+.productUpdateContainer {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    flex-direction: column;
+}
+
+.productUpdateForm{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.productUpdateItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 12px;
+    width: 50%;
+}
+
+.productUpdateItem > label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.productUpdateInput {
+    border: none;
+    width: 80%;
+    height: 40px;
+    border-bottom: 1px solid grey;
+}
+
+.productUpdateInputRadio {
+    margin: 5px 5px;
+}
+
+.productUpdateUpload {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.productUpdateImg {
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+}
+
+.productBackButton{
+    width: 120px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: rgb(250, 115, 61);
+    color: white;
+    font-weight: 600;
+}
+
+.productUpdateButton {
+    width: 120px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: rgb(250, 115, 61);
+    color: white;
+    font-weight: 600;
+}
