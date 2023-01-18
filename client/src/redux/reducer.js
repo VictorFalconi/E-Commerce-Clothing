@@ -35,6 +35,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allClothes: action.payload.filter(p => p.active === true),
+        clothesDetail: [],
         productsFiltered: action.payload.filter(p => p.active === true),
         productsOrdered: action.payload.filter(p=> p.active === true)
       };

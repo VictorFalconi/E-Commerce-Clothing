@@ -32,6 +32,9 @@ const productSchema = mongoose.Schema({
     active: {
         type: Boolean,
         default: true
+    },
+    stock: {
+        type: Object,
     }, 
 }
 );
