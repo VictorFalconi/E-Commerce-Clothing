@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Navigate, redirect } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   addCart,
@@ -21,10 +21,12 @@ function ClothingDetail(product) {
   const param = useParams();
   const clothes = useSelector((state) => state.clothesDetail);
   const reviews = useSelector((state) => state.reviews);
+  const cart = useSelector((state)=> state.cart)
   const [promedReviews, setPromedReviews] = useState(0);
   const [countReviews, setCountReviews] = useState(0);
+  const [ talleCondicional, setTalleCondicional ] = useState();
   const [ cantidad, setCantidad] = useState(1)
-  let navigate = useNavigate();
+  //let navigate = useNavigate();
   const routeChange = () => {
     let path = "/cardReviews";
     navigate(path);
@@ -51,14 +53,24 @@ function ClothingDetail(product) {
     dispatch(clothesDetail(param?.id));
   }, []);
 
-  //console.log(clothes)
-
   const handleCart = (clothes) => {
-    dispatch(addCart({...clothes, quantity: cantidad}));
+    const find = cart?.find(p => p._id === clothes._id)
+    if (find) {
+      alert('El producto ya existe en el carrito')
+    } else {
+      dispatch(addCart({ ...clothes, quantity: cantidad }));
+      <Navigate to="/" replace={true} />
+    }
+    
   };
   function handleCant(e) {
     setCantidad(parseInt(e.target.value));
+  };
+  function handleSelect(e) {
+    setTalleCondicional(e.target.value);
   }
+
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -89,10 +101,20 @@ function ClothingDetail(product) {
         <p className={styles.brand}>Clothes: {clothes?.brand}</p>
         <p className={styles.model}>Model: {clothes?.model}</p>
         <p className={styles.sizes}>
-          Sizes: {clothes?.sizes?.map((e) => e).join(", ")}
-        </p>
+          Sizes: {clothes?.stock? <select onChange={e=> handleSelect(e)}>
+            <option defaultValue value={8}>Select</option>
+            {
+              Object.getOwnPropertyNames(clothes?.stock).map(d => {
+                return (
+                  <option key={d} value={d}>{d}</option>
+                )
+              })
+            }
+          </select> : '' }                 
+        </p>     
         <div>
-          <input name='qty' placeholder="ingrese cantidad" onChange={e => handleCant(e)} value={cantidad} type='number' />
+          {talleCondicional? <input name='qty' placeholder="ingrese cantidad" onChange={e => handleCant(e)} value={cantidad} type='number' max={talleCondicional? clothes?.stock[talleCondicional] : 'Seleccione Talle '} />: 'nada' }
+           <p>{talleCondicional? clothes?.stock[talleCondicional] : 'Seleccione Talle '}</p>
         </div>
         <div className={styles.reviews}>
           <h4 className="sr-only">Reviews</h4>
@@ -108,8 +130,8 @@ function ClothingDetail(product) {
             </div>
             
           </div>
-        </div>
-        <button className={styles.button} onClick={() => handleCart(clothes)}>
+        </div>       
+        <button disabled= {talleCondicional ? cantidad > clothes?.stock[talleCondicional]: true} className={styles.button} onClick={() => handleCart(clothes)}>
           Agregar a la bolsa
         </button>
         {/* MENSAJE : NO SE DONDE COLOCAR LA PARTE DEL EDID
