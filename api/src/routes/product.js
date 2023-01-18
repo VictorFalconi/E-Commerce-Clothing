@@ -1,6 +1,7 @@
 const express = require('express');
 const productSchema = require('../models/product');
 const { products } = require('../controllers/Product');
+const cors = require('cors');
 
 const router = express.Router();
 
@@ -9,9 +10,9 @@ router.post("/products", (req, res) => {
     product.save().then((data) => res.json(data)).catch((err) => res.json({ message: err }));
 });
    
-router.get("/products", products);
+router.get("/products", cors(), products);
 
-router.get("/products/:id",(req, res) => {
+router.get("/products/:id", (req, res) => {
     const { id } = req.params;
     productSchema
     .findById(id)
