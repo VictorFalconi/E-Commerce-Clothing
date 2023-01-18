@@ -7,6 +7,7 @@ import {
   clothesDetail,
   allUsers,
   getPReviews,
+  getopenDetail,
 } from "../../redux/actions";
 import Cart from "../Cart/Cart.jsx";
 import StarIcon from "../../icons/StarIcon.svg";
@@ -29,23 +30,24 @@ function ClothingDetail(product) {
     navigate(path);
   };
   useEffect(() => {
-    // if (reviews.length === 0) {
-    //   dispatch(getPReviews());
-    // }
-    // let reviewsPId = reviews.filter((e) => e.productId === product.id);
-    // // console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
+    dispatch(getopenDetail(param?.id));
+    if (reviews.length === 0) {
+      dispatch(getPReviews());
+    }
+    let reviewsPId = reviews.filter((e) => e.productId === product._id);
+    // console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
 
-    // if (reviewsPId.length !== 0) {
-    //   // console.log('products reviews---------------/////////////////', product.reviews)
-    //   let count = reviewsPId.length;
-    //   let sumaReviews = 0;
-    //   reviewsPId.map((r) => {
-    //     sumaReviews += r.score;
-    //   });
-    //   let promedioReviews = sumaReviews / count;
-    //   setPromedReviews(promedioReviews);
-    //   setCountReviews(count);
-    // }
+    if (reviewsPId.length !== 0) {
+      // console.log('products reviews---------------/////////////////', product.reviews)
+      let count = reviewsPId.length;
+      let sumaReviews = 0;
+      reviewsPId.map((r) => {
+        sumaReviews += r.score;
+      });
+      let promedioReviews = sumaReviews / count;
+      setPromedReviews(promedioReviews);
+      setCountReviews(count);
+    }
     dispatch(allUsers());
     dispatch(clothesDetail(param?.id));
   }, []);
@@ -98,6 +100,9 @@ function ClothingDetail(product) {
                   <img src={StarIcon} key={i} className={styles.staricon} />
                 );
               })}
+              <button type="button" onClick={routeChange}>
+                {countReviews} reviews
+              </button>
             </div>
             
           </div>

@@ -35,15 +35,19 @@ const Reviews = async (req, res, next) => {
 
 const CreateReview = async(req, res) => {
     const {userId, score, comment, productId} = req.body;
-    const newReview = new reviewsModel({
-        userId: userId,
-        score: score,
-        comment: comment,
-        productId: productId
-    })
-    const review = await newReview.save();
-    console.log(review)
-    return res.status(200).json({msj: 'Review successfully created'})
+    try{
+        const newReview = new reviewsModel({
+            userId: userId,
+            score: score,
+            comment: comment,
+            productId: productId
+        })
+        const review = await newReview.save();
+        console.log(review)
+        return res.status(200).json({msj: 'Review successfully created'})
+    } catch(error){
+        console.log({msg:'no sepudo'})
+    }
 }
 
 const UpdateReview = async(req, res) => {
