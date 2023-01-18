@@ -10,7 +10,15 @@ router.post("/products", (req, res) => {
     product.save().then((data) => res.json(data)).catch((err) => res.json({ message: err }));
 });
    
-router.get("/products", cors({origin: '*'}), products);
+router.get("/products", 
+(req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+}, 
+products);
 
 router.get("/products/:id", (req, res) => {
     const { id } = req.params;
