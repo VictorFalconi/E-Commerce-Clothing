@@ -8,13 +8,14 @@ const mercadoPagoRouter = require('./routes/mercadoPago')
 const buggyRouter = require('./routes/buggy')
 const morgan = require('morgan')
 const cors = require('cors');
-
+const bodyParser = require('body-parser');
 
 const server = express();
+server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
+server.use(bodyParser.json({ limit: '50mb' }));
 server.use(express.json());
 server.use(morgan("dev"));
-
-server.use(cors())
+server.use(cors());
 //server.use(cors({origin: '*'}));
 
 // server.use((req, res, next) => {
