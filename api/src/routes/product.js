@@ -10,7 +10,7 @@ router.post("/products", (req, res) => {
     product.save().then((data) => res.json(data)).catch((err) => res.json({ message: err }));
 });
    
-router.get("/products", cors(), products);
+router.get("/products", cors({origin: '*'}), products);
 
 router.get("/products/:id", (req, res) => {
     const { id } = req.params;
