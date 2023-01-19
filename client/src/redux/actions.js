@@ -8,7 +8,7 @@ const REQ_URL = 'https://e-commerce-clothing.onrender.com';
 export function searchClothes(name) {
   return async function (dispatch) {
     try {
-      const clothes = await axios(`${REQ_URL}/products?name=${name}`);
+      const clothes = await axios.get(`${REQ_URL}/products?name=${name}`);
       dispatch({
         type: 'SEARCH_CLOTHES',
         payload: clothes.data,
@@ -22,7 +22,7 @@ export function searchClothes(name) {
 export const allClothes = () => {
   return async function (dispatch) {
     try {
-      const allClothes = await axios(`${REQ_URL}/products`)
+      const allClothes = await axios.get(`${REQ_URL}/products`)
       dispatch({
         type: 'ALL_CLOTHES',
         payload: allClothes.data
@@ -36,7 +36,7 @@ export const allClothes = () => {
 export const getClothesAdmin = () => {
   return async function (dispatch) {
     try {
-      const allClothes = await axios(`${REQ_URL}/products`)
+      const allClothes = await axios.get(`${REQ_URL}/products`)
       dispatch({
         type: 'GETCLOTHES_ADMIN',
         payload: allClothes.data
@@ -50,7 +50,7 @@ export const getClothesAdmin = () => {
 export const clothesDetail = (id) => {
   return async function (dispatch) {
     try {
-      const clothesDetail = await axios(`${REQ_URL}/products/${id}`)
+      const clothesDetail = await axios.get(`${REQ_URL}/products/${id}`)
       dispatch({
         type: 'CLOTHES_DETAIL',
         payload: clothesDetail.data
@@ -64,7 +64,7 @@ export const clothesDetail = (id) => {
 export const categories = () => {
   return async function (dispatch) {
     try {
-      const category = await axios(`${REQ_URL}/category`)
+      const category = await axios.get(`${REQ_URL}/category`)
       dispatch({
         type: 'CATEGORIES',
         payload: category.data
@@ -88,6 +88,13 @@ export const createProduct = (product) => {
   }
 }
 
+export function updateProduct(id, payload) {
+  return async function (dispatch) {
+      const json = await axios.put(`${REQ_URL}/products/${id}`, payload)
+      return dispatch({ type: "PRODUCT_UPDATE", payload: json.payload })
+  }
+}
+
 
 // ------  filtros -------
 
@@ -103,7 +110,7 @@ export function filter(payload) {
 export const allUsers = () => {
   return async function (dispatch) {
     try {
-      const allUsers = await axios(`${REQ_URL}/user`)
+      const allUsers = await axios.get(`${REQ_URL}/user`)
       dispatch({
         type: 'ALL_USERS',
         payload: allUsers.data
@@ -128,7 +135,7 @@ export const updateUserStatus = (id, payload) => {
   return async function (dispatch) {
     try {
       const update = await axios.put(`${REQ_URL}/user/${id}`, payload)
-      const allUsers = await axios(`${REQ_URL}/user`)
+      const allUsers = await axios.get(`${REQ_URL}/user`)
       dispatch({
         type: 'UPDATE_USER_STATUS',
         payload: allUsers.data
@@ -162,6 +169,10 @@ export function getPReviews() {
       const allData = await axios.get(`${REQ_URL}/reviews`)
       return dispatch({ type: 'GET_REVIEWS', payload: allData.data })
   }
+}
+
+export function getopenDetail(id) {
+  return { type: "OPEN_DETAIL", payload: id }
 }
 
 //-----------------------cart-----------------------

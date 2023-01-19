@@ -28,7 +28,7 @@
        // crear la preferencia con los items y las URLs de retorno
        let preference = {
          back_urls: {
-           success: `https://back-ecommerce.up.railway.app/success`,
+           success: `http://localhost:9000/success`,
          },
          items: items
        };
