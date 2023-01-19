@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import logo from "./assets/iconHome.jpeg";
 import logoProfile from "./assets/logoProfile.png";
-import formulario from "./assets/formulario.png";
 import { LoginButton } from "../Login/Login";
 import { LogoutButton } from "../Login/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -51,15 +50,6 @@ const NavBar = () => {
             {/* <button disabled={name ? false : true}>🔍</button> */}
           </form>
         </div>
-        {isAuthenticated && (
-          <Link to="/newProduct">
-            <img
-              src={formulario}
-              className={styles.IconFormulario}
-              alt="Logo"
-            />
-          </Link>
-        )}
         <div>
           <Link className={styles.cart} to="/cart">🛒</Link>
           {cart.length > 0 && cart.length}

@@ -1,6 +1,7 @@
 const express = require('express');
 const productSchema = require('../models/product');
 const { products } = require('../controllers/Product');
+const cors = require('cors');
 
 const router = express.Router();
 
@@ -9,9 +10,17 @@ router.post("/products", (req, res) => {
     product.save().then((data) => res.json(data)).catch((err) => res.json({ message: err }));
 });
    
-router.get("/products", products);
+router.get("/products", 
+(req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+}, 
+products);
 
-router.get("/products/:id",(req, res) => {
+router.get("/products/:id", (req, res) => {
     const { id } = req.params;
     productSchema
     .findById(id)
@@ -21,9 +30,18 @@ router.get("/products/:id",(req, res) => {
 
 router.put("/products/:id",(req, res) => {
     const { id } = req.params;
-    const { name, description, model, season, price, sizes, image, brand } = req.body;
+    const { name, description, model, season, price, sizes, image, brand, active } = req.body;
     productSchema
-    .updateOne({_id: id}, {$set: {name, description, model, season, price, sizes, image, brand}})
+    .updateOne({_id: id}, {$set: {name, description, model, season, price, sizes, image, brand, active}})
+    .then((data)=>res.json(data))
+    .catch((err)=> res.json({message: err}));
+});
+
+router.put("/products/active/:id",(req, res) => {
+    const { id } = req.params;
+    const { active } = req.body;
+    productSchema
+    .updateOne({_id: id}, {$set: { active }})
     .then((data)=>res.json(data))
     .catch((err)=> res.json({message: err}));
 });

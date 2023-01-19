@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from "react-router-dom"
 import ClothingDetail from "./components/ClothingDetail/ClothingDetail"
 import Home from "./components/Home/Home"
 import NavBar from "./components/NavBar/NavBar"
-import NewProduct from "./components/NewProuct/NewProduct"
+import NewProduct from "./components/Admin/products/NewProduct"
 import SearchBar from "./components/Search Bar/SearchBar"
 import { allClothes, categories } from "./redux/actions"
 import Filters from "./components/Filters/Filters";
@@ -15,35 +15,44 @@ import Cart from "./components/Cart/Cart"
 import ProductReview from './components/ProductReview/ProductReview'
 import styles from './App.module.css'
 import Background from "./components/Background/Background"
-// import CreatePReview from './components/CreatePReview/CreatePReview'
+import { useLocation } from "react-router-dom"
+import CreatePReview from './components/CreatePReview/CreatePReview'
 
 function App() {
 
   const dispatch = useDispatch();
   const { user } = useAuth0();
+  const location = useLocation();
 
-  useEffect(() => {
-    // dispatch(allClothes())
-    // dispatch(categories())
-  },[]);
+ 
+
 
   return (
     <div className={styles.appContainer}>
       <Background></Background>
-      <NavBar></NavBar> 
-      <Filters></Filters>
+      {!location.pathname.includes("/admin") && <NavBar></NavBar>}
+      {!location.pathname.includes("/admin") && <Filters></Filters>}
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
-        <Route path="/:id" element={<ClothingDetail/>}></Route>
-        <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
-        <Route path="*" element={<Navigate to='/'/>}/>
-        <Route path="/admin" element={user? <Admin/> : <LoginButton/>}/>
+      
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
+          <Route path="/:id" element={<ClothingDetail/>}></Route>
+          <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
+          <Route path="*" element={<Navigate to='/'/>}/>
+          <Route path='/cart' element={<Cart/>}/>
+        <Route path="/admin//*" element={user? <Admin/> : <LoginButton/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path="/cardReviews" element={<ProductReview />}/>
+        <Route path="/reviews/:id/:userId" element={<CreatePReview id='63b9ea2cc4bff6653d3dad41' userId='63c0cd30d15676001292ce90' />} />
       </Routes>
     </div>
   )
 }
+
+
+
+
+
+
 
 export default App

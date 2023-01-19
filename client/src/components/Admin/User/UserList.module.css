@@ -1,0 +1,50 @@
+.userList {
+    flex: 8;
+}
+
+.userButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    text-decoration: none;
+}
+
+.userAddButton {
+    width: 80px;
+    border: none;
+    padding: 10px;
+    background-color: rgb(250, 115, 61);
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.userListUser {
+    display: flex;
+    align-items: center;
+}
+
+.userListPic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.userListEdit {
+    background-color: #f44336; /* Red */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: auto;
+    font-size: smaller;
+}
+
+.userListEdit:hover {
+    background-color: #e57373 ;
+}

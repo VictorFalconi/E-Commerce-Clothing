@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import st from './CreateReviews.module.css';
-import { createProductReview, getProductDetail } from '../../redux/actions';
+import { createProductReview, clothesDetail } from '../../redux/actions';
 import { FaStar } from "react-icons/fa";
 import { Container, Radio, Rating } from "./CreateReviewsStyles";
 import { useParams } from 'react-router-dom';
@@ -11,9 +11,9 @@ import { useParams } from 'react-router-dom';
 function CreatePReviews(){
     const {id,userId}=useParams()
     const dispatch = useDispatch();
-    let productDetail= useSelector((state)=>state.details)
+    let productDetail= useSelector((state)=>state.clothesDetail)
     React.useEffect(()=>{
-        dispatch(getProductDetail(id))
+        dispatch(clothesDetail(id))
     },[])
 
     const [input, setInput] = useState({

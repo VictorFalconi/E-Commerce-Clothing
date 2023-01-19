@@ -22,7 +22,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    if(!allClothesState.length) dispatch(allClothes());
+    dispatch(allClothes());
     dispatch(orderBy(azOrder));
     dispatch(filter(catFilter));
     dispatch(filter(sizeFilter));

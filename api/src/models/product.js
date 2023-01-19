@@ -10,31 +10,32 @@ const productSchema = mongoose.Schema({
     },
     model: {
         type: String,
-        default: ":)"
     },
     season: {
         type: String,
-        default: 'InviErano'
     },
     price: {
         type: Number,
-        default: 99999999
     },
     sizes: {
         type: Array,
-        default: ['M']
     },
     image: {
         type: Array,
     },
     brand: {
         type: String,
-        default: 'abidas'
     },
     category: {
-        type: String,
-        default: '+18'
-    }
+        type: String,   
+    },
+    active: {
+        type: Boolean,
+        default: true
+    },
+    stock: {
+        type: Object,
+    }, 
 }
 );
 

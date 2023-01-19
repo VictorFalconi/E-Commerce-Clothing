@@ -1,4 +1,4 @@
-//  import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, CREATE_PRODUCT, SEARCH_CLOTHES, FILTER, RESET_FILTERS, ORDER_BY, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
+
 
 const initialState = {
   loading: true,
@@ -14,9 +14,14 @@ const initialState = {
   azOrder: 'Default',
   catFilter: 'Default',
   sizeFilter: 'Default',
+  brandFilter: 'Default',
   cart: [],
   redirectMP: '',
   imageCloudinary: [],
+  reviews: [],
+  reviews_copy:[],
+  idprodreviews: '',
+  filteredReviews: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,9 +35,18 @@ const reducer = (state = initialState, action) => {
     case "ALL_CLOTHES":
       return {
         ...state,
-        allClothes: action.payload,
-        productsFiltered: action.payload,
-        productsOrdered: action.payload,
+        allClothes: action.payload.filter(p => p.active === true),
+        clothesDetail: [],
+        productsFiltered: action.payload.filter(p => p.active === true),
+        productsOrdered: action.payload.filter(p=> p.active === true)
+      };
+
+    case 'GETCLOTHES_ADMIN':
+      return {
+        ...state,
+        allClothes: [...action.payload],
+        productsFiltered: [...action.payload],
+        productsOrdered: [...action.payload]
       };
 
     case "CATEGORIES":
@@ -65,6 +79,11 @@ const reducer = (state = initialState, action) => {
       sizeFilter: action.payload
     }
 
+    case 'brandFilter': return {
+      ...state,
+      brandFilter: action.payload
+    }
+
     case "ORDER_BY":
       switch(action.payload) {
         case 'AZ': return {
@@ -86,6 +105,28 @@ const reducer = (state = initialState, action) => {
           }),
           productsFiltered: [...state.allClothes].sort(function(a, b) {
             if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+           else return -1
+          })
+        }
+        case 'LH': return {
+          ...state,
+          productsOrdered: [...state.allClothes].sort(function (a, b){
+            if (a.price > b.price) return 1
+            else return -1
+        }),
+          productsFiltered: [...state.allClothes].sort(function (a, b){
+            if (a.price > b.price) return 1
+            else return -1
+        })
+        }
+        case 'HL': return {
+          ...state,
+          productsOrdered: [...state.allClothes].sort(function(a, b) {
+            if (a.price < b.price) return 1;
+           else return -1
+          }),
+          productsFiltered: [...state.allClothes].sort(function(a, b) {
+            if (a.price < b.price) return 1;
            else return -1
           })
         }
@@ -131,18 +172,70 @@ const reducer = (state = initialState, action) => {
           ...state,
           productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('L'))
         }
-          case 'S': return {
-            ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('S'))
-          }
-          case 'M': return {
-            ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('M'))
-          }
-          default: return {
-            ...state
-          }
-        };
+        case 'S': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('S'))
+        }
+        case 'M': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('M'))
+        }
+        case '8': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('8 US'))
+        }
+        case '8.5': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('8.5 US'))
+        }
+        case '9': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('9 US'))
+        }
+        case '9.5': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('9.5 US'))
+        }
+        case '10': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('10 US'))
+        }
+        case '38': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('38'))
+        }
+        case '39': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('39'))
+        }
+        case '40': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('40'))
+        }
+        case '41': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('41'))
+        }
+        case 'Adidas': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('adidas'))
+        }
+        case 'Nike': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('nike'))
+        }
+        case 'Gucci': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('gucci'))
+        }
+        case 'Tommy': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('tommy hilfiger'))
+        }
+        default: return {
+          ...state
+        }
+      };
 
     //---------------------------------------------------------------------------------------------
 
@@ -180,6 +273,11 @@ const reducer = (state = initialState, action) => {
           ...state,
           cart: newCart,
         };
+    case 'CLEAR_CART': 
+        return {
+          ...state,
+          cart: []
+        }
 
     case "CLOUDINARY_IMAGE":
       return {
@@ -192,7 +290,65 @@ const reducer = (state = initialState, action) => {
           ...state,
           redirectMP: action.payload
         };
+// ----------------------------------Reviews------------------------------------
+      case 'GET_REVIEWS':
+        return ({
+          ...state,
+          reviews: action.payload,
+          reviews_copy: action.payload
+      })
 
+      case "OPEN_DETAIL":
+            return ({
+              ...state,
+              idprodreviews: action.payload,
+      })
+
+      case "REVIEWS_FILTER":
+        const reviews = state.reviews_copy
+        if (action.payload === 'All rates') {
+            return ({
+                ...state,
+                filteredReviews: reviews
+            })
+        } else if (action.payload === '5') {
+            const filter = reviews.filter(r => r.score === 5)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+        } else if (action.payload === '4') {
+            const filter = reviews.filter(r => r.score === 4)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+
+        } else if (action.payload === '3') {
+            const filter = reviews.filter(r => r.score === 3)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+        } else if (action.payload === '2') {
+            const filter = reviews.filter(r => r.score === 2)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+
+        } else if (action.payload === '1') {
+            const filter = reviews.filter(r => r.score === 1)
+            return ({
+                ...state,
+                filteredReviews: filter
+            })
+        }
+    case 'SET_REDIRECTMP': 
+        return {
+          ...state,
+          redirectMP: action.payload
+        }
     default:
       return state;
   }

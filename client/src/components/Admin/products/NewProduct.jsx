@@ -1,8 +1,8 @@
-import { useForm } from "../../hooks/useForm";
-import Cloudinary from "../Cloudinary/Cloudinary";
+import Cloudinary from "../../../components/Cloudinary/Cloudinary";
 import styles from "./NewProduct.module.css";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useForm } from "../../../hooks/useForm";
 
 const initialForm = {
   name: "",

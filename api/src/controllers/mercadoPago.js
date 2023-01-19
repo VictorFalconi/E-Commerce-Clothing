@@ -11,6 +11,7 @@
  const createPreference = async (req, res) => {
    // buscar el usuario en la base de datos
    let user = await userModel.findOne({ _id: req.body.userId });
+   console.log(req.body)
    if (user) {
      let buggy = await buggyModel.findOne({ userId: req.body.userId });
      if (buggy) {
@@ -27,7 +28,7 @@
        // crear la preferencia con los items y las URLs de retorno
        let preference = {
          back_urls: {
-           success: `https://back-ecommerce.up.railway.app/success`,
+           success: `http://localhost:9000/success`,
          },
          items: items
        };
