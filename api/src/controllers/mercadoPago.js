@@ -11,7 +11,7 @@
  const createPreference = async (req, res) => {
    // buscar el usuario en la base de datos
    let user = await userModel.findOne({ _id: req.body.userId });
-   console.log(req.body)
+   //console.log(req.body)
    if (user) {
      let buggy = await buggyModel.findOne({ userId: req.body.userId });
      if (buggy) {
@@ -28,15 +28,16 @@
        // crear la preferencia con los items y las URLs de retorno
        let preference = {
          back_urls: {
-           success: `http://localhost:9000/success`,
+           success: `http://127.0.0.1:5173/pagado`,
          },
+         
          items: items
        };
        try {
          const response = await mercadopago.preferences.create(preference);
          res.send(response.body.init_point);
        } catch (error) {
-         console.log(error);
+         //console.log(error);
          res.status(500).send({ message: "Error al procesar la solicitud" });
        }
      } else {
