@@ -31,7 +31,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         seartchClothes: action.payload,
       };
-
+      case "CLEAN_SEARCH_CLOTHES":
+      return {
+        ...state,
+        seartchClothes: [],
+      };
     case "ALL_CLOTHES":
       return {
         ...state,
@@ -290,6 +294,12 @@ const reducer = (state = initialState, action) => {
           ...state,
           redirectMP: action.payload
         };
+        case 'SIZE_DELETE':
+          return {
+            ...state,
+            sizeDelete: action.payload
+          };
+
 // ----------------------------------Reviews------------------------------------
       case 'GET_REVIEWS':
         return ({
