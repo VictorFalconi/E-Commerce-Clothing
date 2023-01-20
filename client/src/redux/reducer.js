@@ -21,6 +21,7 @@ const initialState = {
   reviews_copy:[],
   idprodreviews: '',
   filteredReviews: [],
+  comments: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -268,6 +269,11 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           redirectMP: action.payload
+        }
+    case 'GET_COMMENTS':
+        return {
+          ...state,
+          comments: action.payload
         }
     default:
       return state;

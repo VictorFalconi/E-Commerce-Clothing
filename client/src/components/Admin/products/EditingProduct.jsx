@@ -10,7 +10,7 @@ function EditProduct ({changePage}) {
 
     const pInfo = useSelector(state => state.clothesDetail)
     const category = useSelector(state => state.category)
-
+    
     useEffect(() => {
         dispatch(categories())
     }, [])
@@ -123,6 +123,21 @@ function EditProduct ({changePage}) {
                                 onChange={(e) => handleChange(e)}
                             />
                         </div>
+                        {/* <div>
+                            {Object.keys(stockState || {}).map((key) => (
+                                <div key={key}>
+                                <label>
+                                    {key}:
+                                    <input
+                                    type="number"
+                                    name={key}
+                                    value={stockState[key]}
+                                    onChange={(e) => handleStockChange(e)}
+                                    />
+                                </label>
+                                </div>
+                            ))}
+                        </div> */}
                         <div className={st.productUpdateItem}>
                             <label>Active</label>
                             <select

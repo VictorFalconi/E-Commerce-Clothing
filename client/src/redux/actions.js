@@ -250,3 +250,28 @@ export const checkout = (id, cart) => {
     }
   }
 }
+
+// ------------------------comments------------------------
+export function getComments () {
+  return async function(dispatch){
+    const allData = await axios.get(`${REQ_URL}/comments`)
+    dispatch({
+      type: "GET_COMMENTS",
+      payload: allData.data
+    })
+  }
+}
+
+export function createComments(payload){
+  return async function(dispatch){
+    try {
+      let json = await axios.post(`${REQ_URL}/comments`, payload)
+      dispatch({
+          type: 'CREATE_COMMENTS',
+          payload: json.data
+      })
+    } catch (error) {
+      console.log('error en action crear comentarios', error)
+    }
+  }
+}

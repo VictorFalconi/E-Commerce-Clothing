@@ -28,10 +28,11 @@ export default function Product() {
         price: productInfo.price,
         sizes: productInfo.sizes,
         image: productInfo.image[0],
+        stock: productInfo.stock,
         active: String(productInfo.active),
         }
     : console.log('Algo esta pasando')
-
+        
 
     const [ editMode, setEditMode] = useState(false)
 
@@ -94,6 +95,20 @@ export default function Product() {
                                 <span className={st.productInfoValue}>
                                     {props.active}
                                 </span>
+                            </div>
+                            <div className={st.productInfoItem}>
+                                <div className={st.productInfoItemCont}>
+                                    <span className={st.productInfoKey}>
+                                        Sizes with stock:
+                                    </span>
+                                    <div>
+                                        <span className={st.productInfoValue} >
+                                        {Object.keys(props.stock || {}).map((key) => (
+                                            <div key={key}>{key}: {props.stock[key]}</div>
+                                        ))}
+                                        </span> 
+                                    </div>
+                                </div>
                             </div>
                             <div className={st.productInfoItem}>
                                 <button className={st.productEditButton} onClick={changePage}>

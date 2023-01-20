@@ -40,32 +40,6 @@ export default function SideBar() {
                         </li>
                     </ul>
                 </div> */}
-
-                {/* <div className={st.sidebarMenu}>
-                    <h3 className={st.sidebarTitle}>Notifications</h3>
-                    <ul className={st.sidebarList}>
-                        <li className={st.sidebarListItem}>
-                            <a href="http://www.gmail.com" className={st.link}>
-                                <MailOutline className={st.sidebarIcon} />
-                                Mail
-                            </a>
-                        </li>
-                        <li className={st.sidebarListItem}>
-                            <Link
-                                to="/adminView/helpusmail"
-                                className={st.link}
-                            >
-                                <MoveToInbox className={st.sidebarIcon} />
-                                Help us to improve
-                            </Link>
-                        </li>
-                        <li className={st.sidebarListItem}>
-                            <MarkChatUnread className={st.sidebarIcon} />
-                            Messages
-                        </li>
-                    </ul>
-                </div> */}
-
                 <div className={st.sidebarMenu}>
                     <h3 className={st.sidebarTitle}>Users</h3>
                     <ul className={st.sidebarList}>
@@ -101,24 +75,34 @@ export default function SideBar() {
                                 <img src={formulario} className={st.IconFormulario} alt='Logo'/>
                             </Link>
                         </li>
+                    </ul>
+                <div className={st.sidebarMenu}>
+                    <h3 className={st.sidebarTitle}>Notifications</h3>
+                    <ul className={st.sidebarList}>
+                        <li className={st.sidebarListItem}>
+                            <a href="https://outlook.live.com/mail/0/" className={st.link}>
+                                <MailOutline className={st.sidebarIcon} />
+                                Web Mail
+                            </a>
+                        </li>
+                        <li className={st.sidebarListItem}>
+                            <Link
+                                to="/admin/helpustoimprove"
+                                className={st.link}
+                                >
+                                <MoveToInbox className={st.sidebarIcon} />
+                                Help us to improve
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
 
                         {/* <li className={st.sidebarListItem}>
                             <Link to="/admin/sales" className={st.link}>
                                 <Storage className={st.sidebarIcon} />
                                 Sales history
                             </Link>
-                        </li>
-
-                        <li className={st.sidebarListItem}>
-                            <Link
-                                to="/adminView/categories"
-                                className={st.link}
-                            >
-                                <EventAvailable className={st.sidebarIcon} />
-                                Categories
-                            </Link>
-                        </li> */}
-                    </ul>
+                        </li>*/}
                 </div>
             </div>
         </div>

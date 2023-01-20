@@ -73,12 +73,14 @@
     flex-direction: column;
 }
 
-.productInfoKey,
-.productInfoValue {
+.productInfoKey {
     margin-right: 10px;
     font-size: 20px;
     font-weight: 400;
     text-align: center;
+}
+.productInfoValue {
+    color: #f44336;
 }
 
 .productEditButton {
