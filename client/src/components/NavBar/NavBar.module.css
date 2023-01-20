@@ -1,5 +1,4 @@
-.navbarContainer {
-    /* margin-top: 30px; */
+/* .navbarContainer {
     display: flex;
     justify-content: center;
 }
@@ -7,6 +6,7 @@
 .navbar {
     max-width: 1300px;
     display: flex;
+    flex-wrap: wrap;
     border: 1px solid rgba(225,225,225, 0.4);
     border-right: 1px solid rgba(225,225,225, 0.2);
     border-bottom: 1px solid rgba(225,225,225, 0.2);
@@ -43,6 +43,7 @@
     border-bottom: 1px solid rgba(225,225,225, 0.2);
     box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    width: 100px;
 }
 
 .dashboard {
@@ -61,4 +62,86 @@
 .cart {
     
     font-size: 50px;
+} */
+
+.navbarContainer {
+  display: flex;
+  justify-content: center;
+  padding: 1em 1em 0 1em;
+}
+
+.navbar {
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  grid-template-areas:
+    "a a a b c"
+    "d d d d d";
+  column-gap: 1em;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+}
+
+@media screen and (min-width: 960px) {
+  .navbar {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr;
+    gap: 2em;
+    grid-template-areas: "a a d d d d d d b c ";
+  }
+}
+
+.logo {
+  grid-area: a;
+}
+.cart {
+  grid-area: b;
+  font-size: 30px;
+  color: black;
+  text-align: center;
+}
+
+.login {
+  grid-area: c;
+  font-size: 30px;
+  text-align: center;
+}
+
+.search {
+  grid-area: d;
+}
+
+.logo {
+  width: 100%;
+  border-radius: 25px;
+}
+
+.loginButton {
+  padding: 1em;
+  background-color: transparent;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.searchInput {
+  font-size: 1.2em;
+  padding: 1em;
+  background-color: transparent;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  width: 100%;
 }
