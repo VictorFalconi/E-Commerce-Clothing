@@ -14,6 +14,7 @@ const initialState = {
   azOrder: 'Default',
   catFilter: 'Default',
   sizeFilter: 'Default',
+  brandFilter: 'Default',
   cart: [],
   redirectMP: '',
   imageCloudinary: [],
@@ -79,6 +80,11 @@ const reducer = (state = initialState, action) => {
       sizeFilter: action.payload
     }
 
+    case 'brandFilter': return {
+      ...state,
+      brandFilter: action.payload
+    }
+
     case "ORDER_BY":
       switch(action.payload) {
         case 'AZ': return {
@@ -100,6 +106,28 @@ const reducer = (state = initialState, action) => {
           }),
           productsFiltered: [...state.allClothes].sort(function(a, b) {
             if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+           else return -1
+          })
+        }
+        case 'LH': return {
+          ...state,
+          productsOrdered: [...state.allClothes].sort(function (a, b){
+            if (a.price > b.price) return 1
+            else return -1
+        }),
+          productsFiltered: [...state.allClothes].sort(function (a, b){
+            if (a.price > b.price) return 1
+            else return -1
+        })
+        }
+        case 'HL': return {
+          ...state,
+          productsOrdered: [...state.allClothes].sort(function(a, b) {
+            if (a.price < b.price) return 1;
+           else return -1
+          }),
+          productsFiltered: [...state.allClothes].sort(function(a, b) {
+            if (a.price < b.price) return 1;
            else return -1
           })
         }
@@ -145,18 +173,70 @@ const reducer = (state = initialState, action) => {
           ...state,
           productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('L'))
         }
-          case 'S': return {
-            ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('S'))
-          }
-          case 'M': return {
-            ...state,
-            productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('M'))
-          }
-          default: return {
-            ...state
-          }
-        };
+        case 'S': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('S'))
+        }
+        case 'M': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('M'))
+        }
+        case '8': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('8 US'))
+        }
+        case '8.5': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('8.5 US'))
+        }
+        case '9': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('9 US'))
+        }
+        case '9.5': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('9.5 US'))
+        }
+        case '10': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('10 US'))
+        }
+        case '38': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('38'))
+        }
+        case '39': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('39'))
+        }
+        case '40': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('40'))
+        }
+        case '41': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('41'))
+        }
+        case 'Adidas': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('adidas'))
+        }
+        case 'Nike': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('nike'))
+        }
+        case 'Gucci': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('gucci'))
+        }
+        case 'Tommy': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('tommy hilfiger'))
+        }
+        default: return {
+          ...state
+        }
+      };
 
     //---------------------------------------------------------------------------------------------
 
