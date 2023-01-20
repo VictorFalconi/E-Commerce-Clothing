@@ -10,8 +10,8 @@ const SuccessMP = () => {
         cart.map((p)=>{
             dispatch(updateStock(p));
         })
-        //probar con productos diferentes y despues probar descomentando aca.
-       // dispatch({ type: "CLEAR_CART" })
+    
+     dispatch({ type: "CLEAR_CART" })
     }, []);
     return (
         <h1>Gracias por tu compra!!!!! dejanos un comentario de la experiencia</h1>
