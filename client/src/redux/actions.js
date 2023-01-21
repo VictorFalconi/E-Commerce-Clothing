@@ -146,6 +146,26 @@ export const updateUserStatus = (id, payload) => {
   }
 }
 
+export function editUser(id, payload) { // Para que un User actualice su perfil
+  return async function (dispatch) {
+      let json = await axios.put(`${REQ_URL}/user/${id}`, payload)
+      return dispatch({
+          type: "UPDATE_USER",
+          payload: json.data,
+      })
+  }
+}
+
+export function getUsersDetails (id) {
+  return async function(dispatch){
+    let json = await axios.get(`${REQ_URL}/user/${id}`)
+    return dispatch({
+      type: "GET_USER_PROFILE",
+      payload: json.data,
+    })
+  }
+}
+
 //-----------------------Reviews-------------------------
 
 export function createProductReview(payload){

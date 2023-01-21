@@ -17,6 +17,7 @@ import styles from './App.module.css'
 import Background from "./components/Background/Background"
 import { useLocation } from "react-router-dom"
 import CreatePReview from './components/CreatePReview/CreatePReview'
+import UserProfile from "./components/User/UserProfile"
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/newProduct" element={user ? <NewProduct/> : <LoginButton/>}/>
           <Route path="*" element={<Navigate to='/'/>}/>
           <Route path='/cart' element={<Cart/>}/>
+          <Route path="/UserProfile" element={<UserProfile />}/>
         <Route path="/admin//*" element={user? <Admin/> : <LoginButton/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path="/cardReviews" element={<ProductReview />}/>

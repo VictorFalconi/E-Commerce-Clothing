@@ -1,0 +1,62 @@
+.userInfo{
+    margin: 3rem 0 4rem 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.accountDetails{
+    padding: 2%;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 70%;
+    background: rgb(235,40,10);
+    background: linear-gradient(270deg, rgba(235,40,10,0.8239670868347339) 0%, rgba(242,128,75,0.9556197478991597) 50%, rgba(255,244,76,0.9416141456582633) 100%);
+    -webkit-box-shadow: 8px 8px 0px 0px #000000; 
+    box-shadow: 8px 8px 0px 0px #000000;
+}
+
+.accountDetails>h4{
+    /* margin-top: 1rem; */
+    text-align: center;
+}
+
+.userDetails{
+    margin: 1rem 0 1rem 0;
+}
+
+.userShowIcon{
+    margin-right: 0.5em;
+}
+
+.userDetailsInfo{
+    font-size: 18px;
+}
+
+.userContactTitle{
+    /* margin-left: 2rem; */
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.leftSide{
+    display: flex;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+
+.userImg{
+    width: 250px;
+    border-radius: 20%;
+    border: 2px solid black;
+}
+
+.editButton{
+    margin-top: 3rem;
+    text-align: -webkit-center;
+}
+
+.userEditCont{
+    margin: 3rem 0 4rem 0;
+    display: flex;
+    justify-content: center;
+}

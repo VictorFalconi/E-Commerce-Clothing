@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Navigate, redirect } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   addCart,
@@ -27,7 +27,7 @@ function ClothingDetail(product) {
   const [countReviews, setCountReviews] = useState(0);
   const [ talleCondicional, setTalleCondicional ] = useState();
   const [ cantidad, setCantidad] = useState(1)
-  //let navigate = useNavigate();
+  let navigate = useNavigate();
   const routeChange = () => {
     let path = "/cardReviews";
     navigate(path);

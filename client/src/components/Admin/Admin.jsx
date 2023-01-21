@@ -13,6 +13,8 @@ import Product from './products/Product';
 import NewProduct from './products/NewProduct';
 import UserList from './User/UserList';
 import HelpUsToImprove from './HelpUsToImprove/HelpUsToImprove';
+import NavBar from '../NavBar/NavBar';
+import UserProfile from '../User/UserProfile';
 
 
 
@@ -45,16 +47,9 @@ const Admin = () => {
                 </React.Fragment>
             )
         }else{
-         return <div>
-            {user && <div>                
-                <h2>User dashboard</h2>
-                <img src={user.picture} alt='profile_picture'/>
-                <h3>User: {user.nickname}</h3>
-                <p>Email: {user.email}</p>
-                </div>
-            }
-         </div>
-        }
+         return ( 
+            <UserProfile></UserProfile>
+        )}
     
        } 
 

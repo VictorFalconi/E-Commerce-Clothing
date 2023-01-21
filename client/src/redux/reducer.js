@@ -11,6 +11,8 @@ const initialState = {
   brandFilteredMemory: [],
   seartchClothes: [],
   users: [],
+  usersDetails: [],
+  userProfileUpdate: '',
   azOrder: 'Default',
   catFilter: 'Default',
   sizeFilter: 'Default',
@@ -262,6 +264,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
+    case "GET_USER_PROFILE":
+      return {
+        ...state,
+        usersDetails: action.payload
+      }
+    case "UPDATE_USER":
+      return {
+          ...state,
+          userProfileUpdate: action.payload,
+      }
     case "ADD_CART":
       return {
         ...state,
