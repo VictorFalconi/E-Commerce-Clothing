@@ -18,6 +18,7 @@ import Background from "./components/Background/Background"
 import { useLocation } from "react-router-dom"
 import CreatePReview from './components/CreatePReview/CreatePReview'
 import SuccessMP from "./components/SuccessMP/SuccessMP"
+import AboutUs from './components/AboutUs/AboutUs'
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="/cardReviews" element={<ProductReview />}/>
         <Route path="/reviews/:id/:userId" element={<CreatePReview id='63b9ea2cc4bff6653d3dad41' userId='63c0cd30d15676001292ce90' />} />
         <Route path='/pagado' element={<SuccessMP/>}/>
+        <Route path='/aboutus' element={<AboutUs />} />
       </Routes>
     </div>
   )

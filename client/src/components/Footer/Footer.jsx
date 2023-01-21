@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="bg-black relative bottom-0 left-0 right-0 w-full h-48">
             <div className="flex justify-around ">
                 <div className="m-8">
-                    <h1 className="text-white text-sm text-center ">
+                    {/* <h1 className="text-white text-sm text-center ">
                         Find us at:git 
                     </h1>
                     <h3 className="text-white text-xs text-center">
@@ -16,7 +16,7 @@ export default function Footer() {
                             shine_clothes@hotmail.com
                             
                         </a>
-                    </h3>
+                    </h3> */}
                 </div>
                 <div className="m-8">
                     <h1 className="text-white text-sm text-center ">Contact</h1>

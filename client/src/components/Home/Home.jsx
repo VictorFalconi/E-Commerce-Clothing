@@ -6,6 +6,7 @@ import { allClothes, categories, filter, orderBy, allUsers } from "../../redux/a
 import Filters from "../Filters/Filters";
 import ProductCards from "../ProductCards/ProductCards";
 import styles from './Home.module.css'
+import Footer from '../Footer/Footer'
 
 const Home = () => {
    const dispatch = useDispatch()
@@ -32,6 +33,7 @@ const Home = () => {
     return(
         <div className={styles.home} style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
           <ProductCards products={filteredProduct}/>
+          <Footer/>
         </div>
         
     );
