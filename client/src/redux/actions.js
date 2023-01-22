@@ -3,7 +3,7 @@ import axios from "axios";
 
 // import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
-const REQ_URL = 'https://e-commerce-clothing.onrender.com';
+const REQ_URL = 'http://localhost:9000';
 
 export function searchClothes(name) {
   return async function (dispatch) {
@@ -156,9 +156,9 @@ export function editUser(id, payload) { // Para que un User actualice su perfil
   }
 }
 
-export function getUsersDetails (id) {
+export function getUsersDetails (email) {
   return async function(dispatch){
-    let json = await axios.get(`${REQ_URL}/user/${id}`)
+    let json = await axios.get(`${REQ_URL}/user/${email}`)
     return dispatch({
       type: "GET_USER_PROFILE",
       payload: json.data,
@@ -270,6 +270,20 @@ export const checkout = (id, cart) => {
     }
   }
 }
+
+export const updateStock = (p) => {
+  return async function () {
+    try {
+      await axios.put(`${REQ_URL}/products/${p._id}`, p)
+      .then((response) => {
+        console.log(response)
+      })
+    } catch (error) {
+      console.log('error en action/checkOut', error);
+    }
+  }
+}
+
 
 // ------------------------comments------------------------
 export function getComments () {

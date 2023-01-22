@@ -52,7 +52,7 @@ const Cloudinary = () => {
 
   return (
     <div className="App">
-      <button onClick={() => handleOpenWidget()}>Upload pictures</button>
+      <button className={styles.upload} onClick={() => handleOpenWidget()}>Upload pictures</button>
       <div className="images-preview-container">
         {images.map((image) => (
           <div key={image.public_id} className="image-preview">

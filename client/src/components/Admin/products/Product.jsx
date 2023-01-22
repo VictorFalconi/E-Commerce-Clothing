@@ -10,7 +10,7 @@ export default function Product() {
     const { productId } = useParams() //usar el mismo nombre de variable que en la ruta principal
     const dispatch = useDispatch()
     let productInfo = useSelector((state) => state.clothesDetail)
-    // console.log('SOY EL PRODUCT: ', productInfo)
+    console.log('SOY EL PRODUCT: ', productInfo)
     
     useEffect(() => {
         dispatch(clothesDetail(productId))
@@ -33,6 +33,7 @@ export default function Product() {
         }
     : console.log('Algo esta pasando')
         
+    console.log('SOY LAS PROPS: ', props)
 
     const [ editMode, setEditMode] = useState(false)
 
@@ -101,13 +102,6 @@ export default function Product() {
                                     <span className={st.productInfoKey}>
                                         Sizes with stock:
                                     </span>
-                                    <div>
-                                        <span className={st.productInfoValue} >
-                                        {Object.keys(props.stock || {}).map((key) => (
-                                            <div key={key}>{key}: {props.stock[key]}</div>
-                                        ))}
-                                        </span> 
-                                    </div>
                                 </div>
                             </div>
                             <div className={st.productInfoItem}>

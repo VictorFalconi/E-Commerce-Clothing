@@ -19,8 +19,8 @@ import {
 
 export default function UserProfile() {
 
-    const { userId } = useParams() //usar el mismo nombre de variable que en la ruta principal
-    console.log('SOY EL USER ID: ', userId)
+    const { user } = useAuth0() 
+    console.log('SOY EL USER ID: ', user)
     const dispatch = useDispatch()
 
     const userInfo = useSelector((state) => state.usersDetails)
@@ -28,7 +28,7 @@ export default function UserProfile() {
   
 
     useEffect(() => {
-        dispatch(getUsersDetails(userId))
+        dispatch(getUsersDetails(user.email))
     }, [])
 
     const [ editMode, setEditMode] = useState(false)

@@ -1,6 +1,7 @@
 .containerform {
   display: grid;
   place-content: center;
+  margin: auto;
 }
 
 .form {
@@ -45,7 +46,20 @@
   border-radius: 20px;
   height: 70px;
   font-size: 1.4em;
+  cursor: pointer;
 }
+
+.status {
+  background-color: rgb(98, 226, 255);
+  color: black;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.status:focus{
+  border: 2px solid rgb(253, 87, 214);
+}
+
 
 .cloudinary {
   background-color: transparent;

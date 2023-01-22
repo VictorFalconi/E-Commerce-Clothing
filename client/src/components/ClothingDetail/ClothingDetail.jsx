@@ -60,8 +60,8 @@ function ClothingDetail(product) {
     if (find) {
       alert('El producto ya existe en el carrito')
     } else {
-      dispatch(addCart({ ...clothes, quantity: cantidad }));
-      <Navigate to="/" replace={true} />
+       clothes.stock[talleCondicional] -= cantidad;
+      dispatch(addCart({ ...clothes, quantity: cantidad}));      
     }
     
   };
@@ -70,6 +70,7 @@ function ClothingDetail(product) {
   };
   function handleSelect(e) {
     setTalleCondicional(e.target.value);
+
   }
 
 
@@ -103,7 +104,7 @@ function ClothingDetail(product) {
         <p className={styles.brand}>Clothes: {clothes?.brand}</p>
         <p className={styles.model}>Model: {clothes?.model}</p>
         <p className={styles.sizes}>
-          Sizes: {clothes?.stock? <select onChange={e=> handleSelect(e)}>
+          Sizes: {clothes?.stock? <select title='select' onChange={e=> handleSelect(e)}>
             <option defaultValue value={8}>Select</option>
             {
               Object.getOwnPropertyNames(clothes?.stock).map(d => {
@@ -115,8 +116,8 @@ function ClothingDetail(product) {
           </select> : '' }                 
         </p>     
         <div>
-          {talleCondicional? <input name='qty' placeholder="ingrese cantidad" onChange={e => handleCant(e)} value={cantidad} type='number' max={talleCondicional? clothes?.stock[talleCondicional] : 'Seleccione Talle '} />: 'nada' }
-           <p>{talleCondicional? clothes?.stock[talleCondicional] : 'Seleccione Talle '}</p>
+          {talleCondicional? <input name='qty' placeholder="ingrese cantidad" onChange={e => handleCant(e)} value={cantidad} type='number' min={1} max={talleCondicional? clothes?.stock[talleCondicional] : 'Seleccione Talle '} />: 'Seleccione Talle' }
+           <p>{talleCondicional? clothes?.stock[talleCondicional] : ''}</p>
         </div>
         <div className={styles.reviews}>
           <h4 className="sr-only">Reviews</h4>
@@ -137,7 +138,7 @@ function ClothingDetail(product) {
           </div>
         </div>       
         <button disabled= {talleCondicional ? cantidad > clothes?.stock[talleCondicional]: true} className={styles.button} onClick={() => handleCart(clothes)}>
-          Add to cart
+         Add to cart
         </button>
         {/* MENSAJE : NO SE DONDE COLOCAR LA PARTE DEL EDID
         <ClothingEdit></ClothingEdit> */}

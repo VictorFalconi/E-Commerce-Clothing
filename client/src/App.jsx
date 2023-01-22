@@ -17,7 +17,10 @@ import styles from './App.module.css'
 import Background from "./components/Background/Background"
 import { useLocation } from "react-router-dom"
 import CreatePReview from './components/CreatePReview/CreatePReview'
+import SuccessMP from "./components/SuccessMP/SuccessMP"
+import AboutUs from './components/AboutUs/AboutUs'
 import UserProfile from "./components/User/UserProfile"
+import HelpUsImprove from "./components/HelpUsImprove/HelpUsImprove"
 
 function App() {
 
@@ -42,10 +45,13 @@ function App() {
           <Route path="*" element={<Navigate to='/'/>}/>
           <Route path='/cart' element={<Cart/>}/>
           <Route path="/UserProfile" element={<UserProfile />}/>
+          <Route path="/helpusimprove" element={<HelpUsImprove />}></Route>
         <Route path="/admin//*" element={user? <Admin/> : <LoginButton/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path="/cardReviews" element={<ProductReview />}/>
         <Route path="/reviews/:id/:userId" element={<CreatePReview id='63b9ea9cc4bff6653d3dad4b' userId='63c0cd30d15676001292ce90' />} />
+        <Route path='/pagado' element={<SuccessMP/>}/>
+        <Route path='/aboutus' element={<AboutUs />} />
       </Routes>
     </div>
   )

@@ -26,6 +26,7 @@ function EditProduct ({changePage}) {
             brand: pInfo.brand,
             price: pInfo.price,
             image: pInfo.image,
+            sizes: pInfo.sizes,
             stock: pInfo.stock,
             active: pInfo.active
         }
@@ -123,21 +124,6 @@ function EditProduct ({changePage}) {
                                 onChange={(e) => handleChange(e)}
                             />
                         </div>
-                        {/* <div>
-                            {Object.keys(stockState || {}).map((key) => (
-                                <div key={key}>
-                                <label>
-                                    {key}:
-                                    <input
-                                    type="number"
-                                    name={key}
-                                    value={stockState[key]}
-                                    onChange={(e) => handleStockChange(e)}
-                                    />
-                                </label>
-                                </div>
-                            ))}
-                        </div> */}
                         <div className={st.productUpdateItem}>
                             <label>Active</label>
                             <select

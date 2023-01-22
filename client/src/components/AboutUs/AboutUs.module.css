@@ -1,0 +1,59 @@
+.container{
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    width: 100%;
+    margin: 4% 0%;
+}
+
+.aboutUsContainer{
+    padding: 2% 4%;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 90%;
+    
+    background: rgb(235,40,10);
+    background: linear-gradient(270deg, rgba(235,40,10,0.8239670868347339) 0%, rgba(242,128,75,0.9556197478991597) 50%, rgba(255,244,76,0.9416141456582633) 100%);
+    -webkit-box-shadow: 8px 8px 0px 0px #000000; 
+    box-shadow: 8px 8px 0px 0px #000000;
+}
+
+.infoDiv{
+    margin: 3% 0%;
+}
+
+.infoDiv > p{
+    font-style: italic;
+    text-align: justify;
+    font-size: large;
+    font-weight: 400;
+}
+
+.devsDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
+.developer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    justify-content: space-between;
+}
+
+.developer > span{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.devImg{
+    width: 140px;
+    border-radius: 100%;
+    border: 2px solid black;
+}
+
+.linkedLogo{
+    width: 40px;
+    border-radius: 100%;
+}
