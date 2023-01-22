@@ -1,11 +1,13 @@
 .navbarContainer {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   display: flex;
   justify-content: center;
   padding: 1em 1em 0 1em;
 }
 
 .navbar {
-  max-width: 1300px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr 1fr;
@@ -21,14 +23,26 @@
   border-radius: 20px;
   backdrop-filter: blur(2px);
   padding: 1em;
+  background: rgb(255 255 255 / 50%);
+}
+
+.logo {
+  width: 100%;
+  border-radius: 25px;
 }
 
 @media screen and (min-width: 960px) {
   .navbar {
+    background: rgb(255 255 255 / 25%);
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: 1fr;
     gap: 2em;
     grid-template-areas: "a a d d d d d d b c ";
+  }
+
+  .logo {
+    width: 80%;
+    border-radius: 25px;
   }
 }
 
@@ -52,14 +66,9 @@
   grid-area: d;
 }
 
-.logo {
-  width: 100%;
-  border-radius: 25px;
-}
-
 .loginButton {
   padding: 1em;
-  background-color: transparent;
+  background: rgb(255 255 255 / 75%);
   border: 1px solid rgba(225, 225, 225, 0.4);
   border-right: 1px solid rgba(225, 225, 225, 0.2);
   border-bottom: 1px solid rgba(225, 225, 225, 0.2);
@@ -71,7 +80,7 @@
 .searchInput {
   font-size: 1.2em;
   padding: 1em;
-  background-color: transparent;
+  background: rgb(255 255 255 / 85%);
   border: 1px solid rgba(225, 225, 225, 0.4);
   border-right: 1px solid rgba(225, 225, 225, 0.2);
   border-bottom: 1px solid rgba(225, 225, 225, 0.2);
@@ -79,3 +88,4 @@
   border-radius: 20px;
   width: 100%;
 }
+

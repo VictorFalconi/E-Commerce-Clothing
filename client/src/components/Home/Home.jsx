@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import Slider from "../Slider/Slider";
 import { allClothes, categories, filter, orderBy, allUsers } from "../../redux/actions";
-import Filters from "../Filters/Filters";
+// import Filters from "../Filters/Filters";
 import ProductCards from "../ProductCards/ProductCards";
 import styles from './Home.module.css'
 

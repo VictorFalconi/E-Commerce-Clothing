@@ -10,7 +10,6 @@ import { LogoutButton } from "../Login/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-// import {  } from "@fortawesome/free-brands-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { style } from "@mui/system";
