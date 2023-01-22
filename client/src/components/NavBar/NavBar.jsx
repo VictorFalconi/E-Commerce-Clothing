@@ -26,14 +26,13 @@ const NavBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/searchResults/${name}`);
-    setName("");
+    if(name){
+      navigate(`/searchResults/${name}`);
+      setName("");
+    }//else{alert('insert name')}   
   };
 
   const { user, isAuthenticated } = useAuth0();
-
-  // con el email puedo buscar en la BDD si el usuario es Admin, y hacer un renderizado condicional para mostrar la dashboard
-  //   const userEmail = user.email
 
   return (
     <div className={styles.navbarContainer}>
