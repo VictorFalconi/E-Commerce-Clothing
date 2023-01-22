@@ -1,3 +1,19 @@
 .image {
     width: 250px;
 }
+
+.upload {
+    background-color: transparent;
+    border: 1px solid rgba(225, 225, 225, 0.4);
+    border-right: 1px solid rgba(225, 225, 225, 0.2);
+    border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    height: 30px;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
+.upload:hover {
+    background-color: beige;
+}

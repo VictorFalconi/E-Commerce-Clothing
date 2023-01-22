@@ -4,6 +4,7 @@ const models = {
     userModel: require('./user.js'),
     reviewsModel: require('./reviews.js'),
     buggyModel: require('./buggy.js'),
+    commentsModel: require('./comments.js'),
 }
 
 module.exports = models;

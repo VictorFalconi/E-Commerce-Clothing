@@ -14,7 +14,7 @@ const SuccessMP = () => {
      dispatch({ type: "CLEAR_CART" })
     }, []);
     return (
-        <h1>Gracias por tu compra!!!!! dejanos un comentario de la experiencia</h1>
+        <h1>Thank you for the purchase. Leave us a comment about your experience</h1>
     )
 }
 

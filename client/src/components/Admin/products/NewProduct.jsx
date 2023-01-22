@@ -7,6 +7,10 @@ import { useForm } from "../../../hooks/useForm";
 const initialForm = {
   name: "",
   description: "",
+  category: "",
+  brand: "",
+  price: "",
+  active: true,
   image: [],
 };
 
@@ -23,7 +27,7 @@ const NewProduct = () => {
   return (
     <div className={styles.containerform}>
       <div className={styles.form}>
-        <h2 className={styles.title}>NeW Product</h2>
+        <h2 className={styles.title}>New Product</h2>
         <form className={styles.forminput} onSubmit={handleSubmit}>
           <input
             type="text"
@@ -45,6 +49,56 @@ const NewProduct = () => {
             value={form.description}
             required
           />
+
+          <input
+            type="text"
+            name="category"
+            placeholder="Categoria"
+            onChange={handleChange}
+            onblur={handleBlur}
+            value={form.category}
+            required
+          />
+
+          <input
+            type="text"
+            name="brand"
+            placeholder="Brand"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.brand}
+            required
+          />
+
+          <input
+            type="number"
+            name="price"
+            placeholder="Price"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.price}
+            required
+          />
+
+          <select 
+            className={styles.status}
+            name="active"
+            placeholder="Enable/Disable"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={form.brand}
+            required
+          >
+            <option>
+              {String(form.active)}
+            </option>
+            <option name="true" value="true">
+              Enable
+            </option>
+            <option name="false" value="false">
+              Disable
+            </option>
+          </select>
 
           <button className={styles.button} disabled={loading}>
             {loading ? "Creando Producto Espere" : "Crear Producto"}

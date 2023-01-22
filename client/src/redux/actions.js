@@ -146,6 +146,26 @@ export const updateUserStatus = (id, payload) => {
   }
 }
 
+export function editUser(id, payload) { // Para que un User actualice su perfil
+  return async function (dispatch) {
+      let json = await axios.put(`${REQ_URL}/user/${id}`, payload)
+      return dispatch({
+          type: "UPDATE_USER",
+          payload: json.data,
+      })
+  }
+}
+
+export function getUsersDetails (email) {
+  return async function(dispatch){
+    let json = await axios.get(`${REQ_URL}/user/${email}`)
+    return dispatch({
+      type: "GET_USER_PROFILE",
+      payload: json.data,
+    })
+  }
+}
+
 //-----------------------Reviews-------------------------
 
 export function createProductReview(payload){
@@ -264,3 +284,28 @@ export const updateStock = (p) => {
   }
 }
 
+
+// ------------------------comments------------------------
+export function getComments () {
+  return async function(dispatch){
+    const allData = await axios.get(`${REQ_URL}/comments`)
+    dispatch({
+      type: "GET_COMMENTS",
+      payload: allData.data
+    })
+  }
+}
+
+export function createComments(payload){
+  return async function(dispatch){
+    try {
+      let json = await axios.post(`${REQ_URL}/comments`, payload)
+      dispatch({
+          type: 'CREATE_COMMENTS',
+          payload: json.data
+      })
+    } catch (error) {
+      console.log('error en action crear comentarios', error)
+    }
+  }
+}
