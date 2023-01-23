@@ -9,7 +9,7 @@ export default function Dropdown() {
   return (
     <div>
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={setOpen}>
+        <Dialog as="div" className="relative z-20" onClose={setOpen}>
           <Transition.Child
             as={Fragment}
             enter="ease-in-out duration-500"
@@ -34,7 +34,7 @@ export default function Dropdown() {
                   leaveFrom="translate-x-0"
                   leaveTo="translate-x-full"
                 >
-                  <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md">
+                  <Dialog.Panel className="pointer-events-auto relative w-screen max-w-sm">
                     <Transition.Child
                       as={Fragment}
                       enter="ease-in-out duration-500"
@@ -63,14 +63,11 @@ export default function Dropdown() {
                       </div>
                       <div className="relative mt-6 flex-1 px-4 sm:px-6 z-10">
                         {/* <Filter></Filter> */}
-                        <Filter></Filter>
-                        <div className="absolute inset-0 px-4 sm:px-6">
-                          <div
-                            className="h-full border-2 border-dashed border-gray-200"
-                            aria-hidden="true"
-                          />
+                        <div className="relative z-20" >
+                          <Filter></Filter>
                         </div>
-                        /End replace
+                        <div className="absolute inset-0 px-4 sm:px-6">
+                        </div>
                       </div>
                     </div>
                   </Dialog.Panel>
@@ -82,10 +79,10 @@ export default function Dropdown() {
       </Transition.Root>
       <div>
         <button
-          className="text-3xl font-bold underline"
+          className="text-3xl font-bold"
           onClick={() => setOpen(true)}
         >
-          No me funciona al Dropdown a traves de este botton
+          Filter
         </button>
       </div>
     </div>

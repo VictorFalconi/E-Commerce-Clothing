@@ -60,7 +60,6 @@ const Home = () => {
       className={styles.home}
       style={{ display: "flex", justifyContent: "center", width: "100%" }}
     >
-      <Dropdown></Dropdown>
       <div className={styles.containerSlider}>
         <Slider images={images}></Slider>
         <Slider images={images2}></Slider>

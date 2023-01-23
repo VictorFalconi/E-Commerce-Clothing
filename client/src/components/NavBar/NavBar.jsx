@@ -13,6 +13,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { style } from "@mui/system";
+import Dropdown from "../Dropdown/Dropdown";
 
 const NavBar = () => {
   const path = window.location.pathname;
@@ -46,6 +47,10 @@ const NavBar = () => {
           <FontAwesomeIcon className={styles.faCart} icon={faCartShopping}></FontAwesomeIcon>
         </Link>
         {cart.length > 0 && cart.length}
+
+        <div className={styles.dropdown}>
+          <Dropdown></Dropdown>
+        </div>
 
         <div className={styles.login}>
           {isAuthenticated && (

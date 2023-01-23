@@ -14,7 +14,7 @@
   align-items: center;
   grid-template-areas:
     "a a a b c"
-    "d d d d d";
+    "d d d d e";
   column-gap: 1em;
   border: 1px solid rgba(225, 225, 225, 0.4);
   border-right: 1px solid rgba(225, 225, 225, 0.2);
@@ -37,7 +37,7 @@
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: 1fr;
     gap: 2em;
-    grid-template-areas: "a a d d d d d d b c ";
+    grid-template-areas: "a a d d d d d e b c ";
   }
 
   .logo {
@@ -64,6 +64,11 @@
 
 .search {
   grid-area: d;
+}
+
+.dropdown {
+  grid-area: e;
+  text-align: center;
 }
 
 .loginButton {
