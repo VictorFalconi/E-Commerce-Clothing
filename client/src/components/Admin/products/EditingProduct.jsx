@@ -10,7 +10,7 @@ function EditProduct ({changePage}) {
 
     const pInfo = useSelector(state => state.clothesDetail)
     const category = useSelector(state => state.category)
-
+    
     useEffect(() => {
         dispatch(categories())
     }, [])
@@ -26,6 +26,7 @@ function EditProduct ({changePage}) {
             brand: pInfo.brand,
             price: pInfo.price,
             image: pInfo.image,
+            sizes: pInfo.sizes,
             stock: pInfo.stock,
             active: pInfo.active
         }

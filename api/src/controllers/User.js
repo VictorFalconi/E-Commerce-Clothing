@@ -59,14 +59,40 @@ const getAllUsers = async (req, res) => {
     
 }
 
-const getUserById = async (req,res)=>{
+const getUserByEmail = async (req,res)=>{
+    const { email } = req.params;
+    try{
+        if(email){
+        const user = await userModel.findOne({email: email})
+        res.status(200).json(user)
+        }else {
+            res.status(400).json('No se encontro usuario por ID')
+        }
+
+    } catch(err){
+        console.log(err)
+    }
+}
+
+const updateUsersProfile = async (req, res) => {
     const { id } = req.params;
-    userModel.findById(id).then((data)=>res.json(data)).catch((err)=>res.json({message: err}));
+    const { full_name, email, image } = req.body;
+    if(id) {
+        const user = await userModel.findByIdAndUpdate(id, {
+            full_name: full_name,
+            email: email,
+            image: image  
+        })
+        res.status(200).json(user)
+    }else {
+        res.status(400).json({msg:'hubo un error'})
+    }
 }
 module.exports = {
     createUser,
     getAllUsers,
     deleteUser,
     updateUser,
-    getUserById
+    getUserByEmail,
+    updateUsersProfile,
 }

@@ -11,11 +11,12 @@ import { useParams } from 'react-router-dom';
 function CreatePReviews(){
     const {id,userId}=useParams()
     const dispatch = useDispatch();
-    let productDetail= useSelector((state)=>state.clothesDetail)
     React.useEffect(()=>{
         dispatch(clothesDetail(id))
     },[])
-
+    const productDetail= useSelector((state)=>state.clothesDetail)
+    console.log(productDetail)
+    
     const [input, setInput] = useState({
         score: 5,
         comment: ''
@@ -71,7 +72,7 @@ function CreatePReviews(){
 
                 <div className={st.topInfo}>
 
-                        {productDetail.name?
+                {productDetail?.name?
                     <div className={st.productInfo}>
                         <h3>{productDetail.name}</h3>
                         <img className={st.productImg} src={productDetail?.image[0]}/>

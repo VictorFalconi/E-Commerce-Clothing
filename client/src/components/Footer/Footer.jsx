@@ -49,6 +49,12 @@ export default function Footer() {
                 <h1 className="text-white text-sm">
                     Shine All Rights Reserved © 2023
                 </h1>
+                <a  
+                    href='/helpusimprove'
+                    className="text-white text-xs text-center no-underline"
+                >
+                    Give us your feedback
+                </a>
             </div>
         </div>
     )
