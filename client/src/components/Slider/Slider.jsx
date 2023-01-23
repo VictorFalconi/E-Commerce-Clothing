@@ -48,10 +48,10 @@ const Slider = ({images}) => {
         className={styles.image}
         onLoad={() => setLoaded(true)}
       />
-      <div className={styles.carouserButton}>
-        {/* <button className={styles.button} onClick={previous}>{"<"}</button>
-        <button className={styles.button} onClick={next}>{">"}</button> */}
-      </div>
+      {/* <div className={styles.carouserButton}>
+        <button className={styles.button} onClick={previous}>{"<"}</button>
+        <button className={styles.button} onClick={next}>{">"}</button>
+      </div> */}
     </div>
   );
 };

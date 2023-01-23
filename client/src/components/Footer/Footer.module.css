@@ -1,0 +1,20 @@
+.footercontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: red;
+    width: 100%;
+    margin: 0 1em 1em;
+    border: 1px solid rgba(225, 225, 225, 0.4);
+    border-right: 1px solid rgba(225, 225, 225, 0.2);
+    border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(2px);
+    padding: 1em;
+    background: rgb(255 255 255 / 25%);
+    font-size: 12px;
+    row-gap: 2em;
+    text-align: center;
+}
+
