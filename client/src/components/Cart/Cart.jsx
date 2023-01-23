@@ -27,7 +27,7 @@ const continueMP = useSelector((state)=> state.redirectMP)
 
   // Function to remove an item from the cart
   function removeFromCart(item) {
-    dispatch(removeCartProduct(item));
+  dispatch(removeCartProduct(item));
   
   }
 
@@ -63,8 +63,8 @@ const continueMP = useSelector((state)=> state.redirectMP)
         ))}
       </ul>
       <h3>Total: ${calculateTotal().toFixed(2)}</h3> 
-      {user? verificacionActive(): <p>Registrese señor</p> }
-      {continueMP && <a href={continueMP} target='_blank' rel='noreferrer' onClick={() => {dispatch({type: 'CLEAR_CART'}); dispatch({type: 'SET_REDIRECTMP', payload: null}); navigate('/');}}>siguiente</a>}
+      {user? verificacionActive(): <p>Please Login to continue</p> }
+      {continueMP && <a href={continueMP} target='_blank' rel='noreferrer' onClick={() => {dispatch({type: 'SET_REDIRECTMP', payload: null}), window.close()}}>Confirm</a>}
     </div>
    
   );

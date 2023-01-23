@@ -11,6 +11,8 @@ const initialState = {
   brandFilteredMemory: [],
   seartchClothes: [],
   users: [],
+  usersDetails: [],
+  userProfileUpdate: '',
   azOrder: 'Default',
   catFilter: 'Default',
   sizeFilter: 'Default',
@@ -22,6 +24,7 @@ const initialState = {
   reviews_copy:[],
   idprodreviews: '',
   filteredReviews: [],
+  comments: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -31,7 +34,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         seartchClothes: action.payload,
       };
-
+      case "CLEAN_SEARCH_CLOTHES":
+      return {
+        ...state,
+        seartchClothes: [],
+      };
     case "ALL_CLOTHES":
       return {
         ...state,
@@ -261,6 +268,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
+    case "GET_USER_PROFILE":
+      return {
+        ...state,
+        usersDetails: action.payload
+      }
+    case "UPDATE_USER":
+      return {
+          ...state,
+          userProfileUpdate: action.payload,
+      }
     case "ADD_CART":
       return {
         ...state,
@@ -290,6 +307,12 @@ const reducer = (state = initialState, action) => {
           ...state,
           redirectMP: action.payload
         };
+        case 'SIZE_DELETE':
+          return {
+            ...state,
+            sizeDelete: action.payload
+          };
+
 // ----------------------------------Reviews------------------------------------
       case 'GET_REVIEWS':
         return ({
@@ -348,6 +371,11 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           redirectMP: action.payload
+        }
+    case 'GET_COMMENTS':
+        return {
+          ...state,
+          comments: action.payload
         }
     default:
       return state;

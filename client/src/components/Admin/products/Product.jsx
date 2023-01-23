@@ -10,7 +10,7 @@ export default function Product() {
     const { productId } = useParams() //usar el mismo nombre de variable que en la ruta principal
     const dispatch = useDispatch()
     let productInfo = useSelector((state) => state.clothesDetail)
-    // console.log('SOY EL PRODUCT: ', productInfo)
+    console.log('SOY EL PRODUCT: ', productInfo)
     
     useEffect(() => {
         dispatch(clothesDetail(productId))
@@ -28,10 +28,12 @@ export default function Product() {
         price: productInfo.price,
         sizes: productInfo.sizes,
         image: productInfo.image[0],
+        stock: productInfo.stock,
         active: String(productInfo.active),
         }
     : console.log('Algo esta pasando')
-
+        
+    console.log('SOY LAS PROPS: ', props)
 
     const [ editMode, setEditMode] = useState(false)
 
@@ -94,6 +96,13 @@ export default function Product() {
                                 <span className={st.productInfoValue}>
                                     {props.active}
                                 </span>
+                            </div>
+                            <div className={st.productInfoItem}>
+                                <div className={st.productInfoItemCont}>
+                                    <span className={st.productInfoKey}>
+                                        Sizes with stock:
+                                    </span>
+                                </div>
                             </div>
                             <div className={st.productInfoItem}>
                                 <button className={st.productEditButton} onClick={changePage}>

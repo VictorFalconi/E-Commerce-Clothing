@@ -1,12 +1,13 @@
 const express = require('express');
-const productRouter = require('./routes/product')
-const categoryRouter = require('./routes/category')
-const userRouter = require('./routes/user')
-const reviewsRouter = require('./routes/reviews')
-const cartRouter = require('./routes/cart')
-const mercadoPagoRouter = require('./routes/mercadoPago')
-const buggyRouter = require('./routes/buggy')
-const morgan = require('morgan')
+const productRouter = require('./routes/product');
+const categoryRouter = require('./routes/category');
+const userRouter = require('./routes/user');
+const reviewsRouter = require('./routes/reviews');
+const cartRouter = require('./routes/cart');
+const mercadoPagoRouter = require('./routes/mercadoPago');
+const buggyRouter = require('./routes/buggy');
+const commentsRouter = require('./routes/comments');
+const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
@@ -38,5 +39,6 @@ server.use('/', reviewsRouter)
 server.use('/', cartRouter)
 server.use('/', mercadoPagoRouter)
 server.use('/', buggyRouter)
+server.use('/', commentsRouter)
 
 module.exports = server;
