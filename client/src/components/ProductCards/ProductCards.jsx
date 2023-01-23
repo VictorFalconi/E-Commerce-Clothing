@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./ProductCards.module.css";
 
 const ProductCards = ({ products }) => {
+  console.log(products)
   return (
     <div className={styles.containercards}>
       {products?.map((p, i) => {
@@ -34,7 +35,7 @@ const ProductCards = ({ products }) => {
               <p>Category: {p.category}</p>
               <p>Price: ${p.price}</p>
               <p>
-                Sizes: {Object.keys(p.stock).join(", ")}
+                {/* Sizes: {Object.keys(p.stock).join(", ")} */}
               </p>
             </div>
 

@@ -1,36 +1,57 @@
-import styles from "./Slider.module.css";
-import { motion } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import styles from './Slider.module.css'
 
-const Slider = ({allProduct, category}) => {
-  // console.log(allProduct, 'AllProduct')
-  const carouselRef = useRef();
-  const [width, setWidth] = useState(0);
-  const [product, setProduct] = useState([]);
-  
+const Slider = ({images}) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(images[0]);
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
-    setProduct(allProduct.filter((e) => e.category === category))
-    setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth);
-  }, [product?.length === 0]);
+    const interval = setInterval(() => {
+      selectNewImage(selectedIndex, images);
+    }, 3000);
+    return () => clearInterval(interval);
+  });
+
+  const selectNewImage = (index, images, next = true) => {
+    setLoaded(false);
+    setTimeout(() => {
+      const condition = next
+        ? selectedIndex < images.length - 1
+        : selectedIndex > 0;
+      const nextIndex = next
+        ? condition
+          ? selectedIndex + 1
+          : 0
+        : condition
+        ? selectedIndex - 1
+        : images.length - 1;
+      setSelectedImage(images[nextIndex]);
+      setSelectedIndex(nextIndex);
+    }, 500);
+  };
+
+  const previous = () => {
+    selectNewImage(selectedIndex, images, false);
+  };
+
+  const next = () => {
+    selectNewImage(selectedIndex, images);
+  };
 
   return (
-    <div className={styles.contentSlider}>
-      <motion.div ref={carouselRef} className={styles.sliderContainer}>
-        <motion.div
-          className={styles.slider}
-          drag="x"
-          dragConstraints={{ right: 0, left: -width }}
-        >
-          {product?.map((image) => (
-            <motion.div className={styles.item} key={image._id}>
-              <Link to={`/`+image._id} >
-                <img src={image.image} alt="Carousel-image" />
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
+    <div>
+      <img
+        src={selectedImage}
+        // className={loaded ? "loaded" : ""}
+        className={styles.image}
+        onLoad={() => setLoaded(true)}
+      />
+      <div className={styles.carouserButton}>
+        {/* <button className={styles.button} onClick={previous}>{"<"}</button>
+        <button className={styles.button} onClick={next}>{">"}</button> */}
+      </div>
     </div>
   );
 };
