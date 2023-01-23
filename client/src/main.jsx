@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { persistor, store } from "./redux/store";
 import { Auth0Provider } from '@auth0/auth0-react'
 import { PersistGate } from "redux-persist/integration/react";
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
