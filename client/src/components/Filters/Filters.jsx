@@ -34,14 +34,6 @@ export default function Filter() {
         <div className={styles.sideBarHeader}>
           {location.pathname === "/" ? (
             <div>
-              <label>filtros</label>
-              <select>
-                <optgroup>
-                  
-                </optgroup>
-              </select>
-
-
               <label>Order: </label>
               <select
                 value={azOrder}

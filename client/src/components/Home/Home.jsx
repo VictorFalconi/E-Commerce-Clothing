@@ -13,6 +13,7 @@ import {
 import ProductCards from "../ProductCards/ProductCards";
 import styles from "./Home.module.css";
 import Footer from "../Footer/Footer";
+import Dropdown from "../Dropdown/Dropdown";
 
 const images = [
   "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffashionista.com%2F.image%2Ft_share%2FMTQwNTQyNzk1MDcxODkwNjY0%2Fsqgettyimages-469721122jpg.jpg&f=1&nofb=1&ipt=edbfb7e2ea12c375ceb258bec1653bd775d520eac004b0060318ca33d1eb39de&ipo=images",
@@ -59,6 +60,7 @@ const Home = () => {
       className={styles.home}
       style={{ display: "flex", justifyContent: "center", width: "100%" }}
     >
+      <Dropdown></Dropdown>
       <div className={styles.containerSlider}>
         <Slider images={images}></Slider>
         <Slider images={images2}></Slider>
