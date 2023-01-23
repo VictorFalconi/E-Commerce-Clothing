@@ -58,7 +58,11 @@ const ProductCards = ({ products }) => {
             </p>
             <p style={{ margin: "0" }}>Category: {p.category}</p>
             <p style={{ margin: "0" }}>Price: ${p.price}</p>
-            <p style={{ margin: "0" }}>Sizes: {Object.keys(p.stock).join(", ")}</p>
+            <p style={{ margin: "0" }}>Sizes: {p.stock? Object.getOwnPropertyNames(p?.stock).map(d => {
+                return (
+                  <span key={d} value={d}>{d}</span>
+                )
+              }):''}</p>
           </div>
         );
       })}

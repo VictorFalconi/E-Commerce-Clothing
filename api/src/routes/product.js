@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post("/products", (req, res) => {
     const product = productSchema(req.body);
+    console.log(product)
     product.save().then((data) => res.json(data)).catch((err) => res.json({ message: err }));
 });
    
