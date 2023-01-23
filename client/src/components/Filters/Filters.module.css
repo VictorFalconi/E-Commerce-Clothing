@@ -1,17 +1,14 @@
-.side{
-  /* background-color: red; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
-}
+
+
 
 .filterHeader{
   font-family: 'Raleway', sans-serif;
   padding: 5px;
 }
 
+.buttonFilterReset,
 .buttonFilter{
+  width: 200px;
   margin-left: 2rem;
   margin-right: 2rem;
   font-size: 1.2em;
@@ -25,7 +22,28 @@
   transition: .5s;
 }
 .buttonFilter:hover {
-  transform: translateY(-20px);
+  transform: translateX(20px);
+}
+
+.sideBarHeader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7em;
+  text-transform: uppercase;
+}
+
+.sideBarHeader div:nth-child(1),
+.sideBarHeader div:nth-child(2),
+.sideBarHeader div:nth-child(3),
+.sideBarHeader div:nth-child(4),
+.sideBarHeader div:nth-child(5) {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 
+.buttonFilterReset {
+  width: 100%;
+}

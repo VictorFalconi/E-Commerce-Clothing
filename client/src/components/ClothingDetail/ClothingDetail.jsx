@@ -84,7 +84,7 @@ function ClothingDetail(product) {
         <h2 className={styles.title}>{clothes?.name}</h2>
         <div className={styles.cardimg}>
           {clothes?.image?.map((e, i) => (
-            <div key={i}>
+            <div key={i} className={styles.imgContainer}>
               {e.secure_url ? (
                 <img
                   className={styles.image}
@@ -115,14 +115,14 @@ function ClothingDetail(product) {
             }
           </select> : '' }                 
         </p>     
-        <div>
+        <div className={styles.talla}>
           {talleCondicional? <input name='qty' placeholder="ingrese cantidad" onChange={e => handleCant(e)} value={cantidad} type='number' min={1} max={talleCondicional? clothes?.stock[talleCondicional] : 'Seleccione Talle '} />: 'Seleccione Talle' }
            <p>{talleCondicional? clothes?.stock[talleCondicional] : ''}</p>
         </div>
         <div className={styles.reviews}>
-          <h4 className="sr-only">Reviews</h4>
-          <div className="flex items-center">
-            <div className="flex items-center">
+          <h4>Reviews</h4>
+          <div>
+            <div className={styles.starContainer}>
               {[...Array(5)].map((rating, i) => {
                 return promedReviews > i ? (
                   <img src={StarIconFill} key={i} className={styles.staricon} />

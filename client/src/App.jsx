@@ -35,7 +35,7 @@ function App() {
     <div className={styles.appContainer}>
       <Background></Background>
       {!location.pathname.includes("/admin") && <NavBar></NavBar>}
-      {!location.pathname.includes("/admin") && <Filters></Filters>}
+      {/* {!location.pathname.includes("/admin") && <Filters></Filters>} */}
       <Routes>
       
           <Route path="/" element={<Home/>}></Route>

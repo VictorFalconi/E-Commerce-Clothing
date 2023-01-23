@@ -9,6 +9,11 @@ import { LoginButton } from "../Login/Login";
 import { LogoutButton } from "../Login/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { style } from "@mui/system";
+import Dropdown from "../Dropdown/Dropdown";
 
 const NavBar = () => {
   const path = window.location.pathname;
@@ -33,14 +38,33 @@ const NavBar = () => {
   return (
     <div className={styles.navbarContainer}>
       <div className={styles.navbar}>
-        <Link to="/">
+        <Link className={styles.logo} to="/">
           <img className={styles.logo} src={logo}></img>
         </Link>
         {/* {path !== '/' ? null : <SearchBar></SearchBar>} */}
-        <div>
-          <form onSubmit={(e)=>handleSubmit(e)}>
+
+        <Link className={styles.cart} to="/cart">
+          <FontAwesomeIcon className={styles.faCart} icon={faCartShopping}></FontAwesomeIcon>
+        </Link>
+        {cart.length > 0 && cart.length}
+
+        <div className={styles.dropdown}>
+          <Dropdown></Dropdown>
+        </div>
+
+        <div className={styles.login}>
+          {isAuthenticated && (
+            <Link className={styles.dashboard} to="/admin">
+              Dashboard
+            </Link>
+          )}
+          {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+        </div>
+
+        <div className={styles.search}>
+          <form onSubmit={handleSubmit}>
             <input
-              className={styles.search}
+              className={styles.searchInput}
               type="text"
               value={name}
               placeholder="Search"
@@ -49,12 +73,7 @@ const NavBar = () => {
             {/* <button disabled={name ? false : true}>🔍</button> */}
           </form>
         </div>
-        <div>
-          <Link className={styles.cart} to="/cart">🛒</Link>
-          {cart.length > 0 && cart.length}
-        </div>
-        {isAuthenticated && <Link className={styles.dashboard} to="/admin">Dashboard</Link>}
-        {isAuthenticated ? <LogoutButton /> : <LoginButton />}
+
       </div>
     </div>
   );
