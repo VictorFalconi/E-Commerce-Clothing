@@ -27,14 +27,14 @@ export const useForm = (initialForm) => {
     e.preventDefault()
     setForm({
       ...form,
-      stock: Object.defineProperty(form.stock,t,{value: c})
+      stock: Object.defineProperty(form.stock,t,{value: c, enumerable: true})
     })
+
 }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createProduct(form))
-   // console.log(form)
+   dispatch(createProduct(form))
     setForm(initialForm)
     navigate('/')
   };

@@ -109,7 +109,7 @@ function ClothingDetail(product) {
             {
               Object.getOwnPropertyNames(clothes?.stock).map(d => {
                 return (
-                  <p key={d} value={d}>{d}</p>
+                  <option key={d} value={d}>{d}</option>
                 )
               })
             }
