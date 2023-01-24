@@ -25,6 +25,7 @@ const initialState = {
   idprodreviews: '',
   filteredReviews: [],
   comments: [],
+  favorites: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -377,6 +378,27 @@ const reducer = (state = initialState, action) => {
           ...state,
           comments: action.payload
         }
+    case 'ADD_FAVORITE': {
+        const user = action.payload.userId;
+        const product = action.payload.productId;
+        const userFavorites = state.favorites[user];
+        if(userFavorites)
+        return {
+          ...state,
+          favorites: {...state.favorites, [user || 'invitado']: [...state.favorites[user], product]}
+        }
+        else 
+        return {
+          ...state,
+          favorites: {...state.favorites, [user || 'invitado']: [product]}
+        }}
+        case 'REMOVE_FAVORITE': {
+          const user = action.payload.userId;
+          const product = action.payload.productId;
+          return {
+            ...state,
+            favorites: {...state.favorites, [user || 'invitado']: state.favorites[user].filter(p => p !== product)}
+          }}
     default:
       return state;
   }

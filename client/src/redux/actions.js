@@ -310,3 +310,27 @@ export function createComments(payload){
     }
   }
 }
+
+export function addFavorite(userId, productId) {
+  return async function(dispatch) {
+    dispatch({
+      type: 'ADD_FAVORITE',
+      payload: {
+        userId,
+        productId
+      }
+    })
+  }
+}
+
+export function removeFavorite(userId, productId) {
+  return async function(dispatch) {
+    dispatch({
+      type: 'REMOVE_FAVORITE',
+      payload: {
+        userId,
+        productId
+      }
+    })
+  }
+}
