@@ -25,6 +25,7 @@ const initialState = {
   idprodreviews: '',
   filteredReviews: [],
   comments: [],
+  purchaseHistory: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -371,6 +372,11 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           redirectMP: action.payload
+        }
+        case 'GET_PURCHASE_HISTORY': 
+        return {
+          ...state,
+          purchaseHistory: action.payload
         }
     case 'GET_COMMENTS':
         return {

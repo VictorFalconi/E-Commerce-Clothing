@@ -20,11 +20,11 @@ import {
 export default function UserProfile() {
 
     const { user } = useAuth0() 
-    console.log('SOY EL USER ID: ', user)
+    console.log('SOY EL USER auth0 ', user)
     const dispatch = useDispatch()
 
     const userInfo = useSelector((state) => state.usersDetails)
-    console.log(userInfo)
+    console.log('user de bdd',userInfo.username)
   
 
     useEffect(() => {
@@ -45,7 +45,7 @@ export default function UserProfile() {
         }
     : console.log('Algo esta pasando')
 
-    // console.log('SOY LAS PROPS: ', props)
+     console.log('SOY userindo bdd: ', userInfo)
 
     const changePage = () => {
         console.log('SOY EL EDIT MODE', editMode)
