@@ -7,8 +7,11 @@ import { categories, updateProduct } from '../../../redux/actions';
 
 function EditProduct ({changePage}) {
     const dispatch = useDispatch();
+    const [ talleCondicional, setTalleCondicional ] = useState();
+    const [ cantidad, setCantidad] = useState()
 
     const pInfo = useSelector(state => state.clothesDetail)
+    //console.log('product',pInfo)
     const category = useSelector(state => state.category)
     
     useEffect(() => {
@@ -18,6 +21,7 @@ function EditProduct ({changePage}) {
     let info = {};
 
     if(pInfo.brand && pInfo.category && pInfo.sizes) {
+        //model y season?
         info = {
             id: pInfo._id,
             name: pInfo.name,
@@ -28,8 +32,11 @@ function EditProduct ({changePage}) {
             image: pInfo.image,
             sizes: pInfo.sizes,
             stock: pInfo.stock,
-            active: pInfo.active
+            active: pInfo.active,
+            model: pInfo.model,
+            season: pInfo.season
         }
+       // console.log('info 2', info)
     } else {
         console.log('ke pasoo')
     }
@@ -43,16 +50,21 @@ function EditProduct ({changePage}) {
             [e.target.name]: e.target.value,
         })
     }
+    function handleSelect(e) {
+        setTalleCondicional(e.target.value);
+      }
 
-    const handleChangeCategory = (e) => {
-        if(e.target.name === "category"){
-            const cat = category.filter((cate) => cate.name === e.target.value)
-            setInput({
-                ...input,
-                [e.target.name]: cat
-            })
-        }
-    }
+      function handleInputStock(e,t,c) {
+        e.preventDefault()
+        setInput({
+            ...input,
+            stock: Object.defineProperty(info.stock,t,{value: c, enumerable: true})
+        })
+        console.log('asi quedaria el input',input)
+      }
+      function handleCant(e) {
+        setCantidad(parseInt(e.target.value));
+      };
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -94,7 +106,7 @@ function EditProduct ({changePage}) {
                             name="category"
                             defaultValue=""
                             className={st.productUpdateInput}
-                            onChange={(e) => handleChangeCategory(e)}
+                            onChange={(e) => handleChange(e)}
                             >
                             <option hidden value=""> {info.category} </option>
                             {category && category.map(cat => (
@@ -124,6 +136,30 @@ function EditProduct ({changePage}) {
                                 onChange={(e) => handleChange(e)}
                             />
                         </div>
+                        <div className={st.productUpdateItem}>
+                            <label>Stock</label>
+                            <select
+                            name="talle"
+                            defaultValue=""
+                            className={st.productUpdateInput}
+                                onChange={(e) => handleSelect(e)}
+                            >
+                                <option hidden value="">Seleccione Talle</option>
+                                {info.stock && Object.getOwnPropertyNames(info?.stock).map(d => {
+                                    return (
+                                        <option key={d} value={d}>{d}</option>
+                                    )
+                                })
+                                }
+                            </select>
+                            <div>
+                                {talleCondicional ? <input name='qty' placeholder="ingrese cantidad"  onChange={e => handleCant(e)} value={info.stock.talleCondicional} type='number' min={1} /> : ''}
+                                <div>{talleCondicional ? <div><div>Cantidad actual:</div>{info?.stock[talleCondicional]}</div> : ''}</div>
+                            </div>
+                            <button onClick={(e)=>handleInputStock(e,talleCondicional, cantidad)}>Agregar</button>
+                        </div>
+                        
+
                         <div className={st.productUpdateItem}>
                             <label>Active</label>
                             <select

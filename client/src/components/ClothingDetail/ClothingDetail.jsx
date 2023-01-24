@@ -69,7 +69,6 @@ function ClothingDetail(product) {
   };
   function handleSelect(e) {
     setTalleCondicional(e.target.value);
-
   }
 
 
