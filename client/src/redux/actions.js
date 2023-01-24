@@ -76,7 +76,7 @@ export const categories = () => {
 }
 
 export const createProduct = (product) => {
-  console.log('product que llega a la action', product)
+ // console.log('product que llega a la action', product)
   return async function () {
     try {
       await axios.post(`${REQ_URL}/products`, product)
@@ -276,7 +276,7 @@ export const checkout = (id, cart) => {
   return async function (dispatch) {
     try {
       await axios.post(`${REQ_URL}/buggy`, {userId: id, products: cart})
-      const urlPago = await axios.post(`${REQ_URL}/generar`, {userId: id}).then((response) => response.data)
+      const urlPago = await axios.post(`${REQ_URL}/generar`, {userId: id, products: cart}).then((response) => response.data)
       dispatch({type: 'SET_REDIRECTMP', payload: urlPago})
     } catch (error) {
       console.log('error en action/checkOut', error);
@@ -293,6 +293,20 @@ export const updateStock = (p) => {
       })
     } catch (error) {
       console.log('error en action/checkOut', error);
+    }
+  }
+}
+export const purchaseHistory = () => {
+  return async function (dispatch) {
+    try {
+      //falta que pau me pase la ruta get
+      const purchaseh = await axios.get(`${REQ_URL}/buggy`)
+      dispatch({
+        type: 'GET_PURCHASE_HISTORY',
+        payload: purchaseh.data
+      })
+    } catch (error) {
+      console.log('error en action purchaseHistory');
     }
   }
 }

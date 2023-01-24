@@ -10,7 +10,8 @@ const SuccessMP = () => {
         cart.map((p)=>{
             dispatch(updateStock(p));
         })
-    
+    dispatch({type: "GET_PURCHASE_HISTORY"})
+    dispatch({type: 'SET_REDIRECTMP', payload: ''})
      dispatch({ type: "CLEAR_CART" })
     }, []);
     return (

@@ -27,9 +27,8 @@ export const useForm = (initialForm) => {
     e.preventDefault()
     setForm({
       ...form,
-      stock: Object.defineProperty(form.stock,t,{value: c, enumerable: true})
+      stock: Object.defineProperty(form.stock,t,{value: c, enumerable: true, writable: true})
     })
-
 }
 
   const handleSubmit = (e) => {
