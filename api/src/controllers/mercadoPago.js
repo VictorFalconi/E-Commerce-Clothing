@@ -10,14 +10,17 @@
  
  const createPreference = async (req, res) => {
    // buscar el usuario en la base de datos
-   let user = await userModel.findOne({ _id: req.body.userId });
-   //console.log(req.body)
-   if (user) {
-     let buggy = await buggyModel.findOne({ userId: req.body.userId });
-     if (buggy) {
+  //  let user = await userModel.findOne({ _id: req.body.userId });
+  //  //console.log(req.body)
+  //  if (user) {
+  //    let buggy = await buggyModel.findOne({ userId: req.body.userId });
+  //    if (buggy) {
        // crear un item para cada producto en el carrito
-       let items = buggy.products.map(product => {
+       let user = req.body.userId;
+       let cart = req.body.products;
+       let items = cart?.map(product => {
          return {
+           userId: user,
            title: product.name,
            unit_price: product.price,
            description: product.description,
@@ -40,12 +43,12 @@
          //console.log(error);
          res.status(500).send({ message: "Error al procesar la solicitud" });
        }
-     } else {
-       res.status(404).send({ message: "No se encontró el carrito del usuario" });
-     }
-   } else {
-     res.status(404).send({ message: "No se encontró el usuario" });
-   }
+  //    } else {
+  //      res.status(404).send({ message: "No se encontró el carrito del usuario" });
+  //    }
+  //  } else {
+  //    res.status(404).send({ message: "No se encontró el usuario" });
+  //  }
  }
  
  module.exports = { createPreference };
