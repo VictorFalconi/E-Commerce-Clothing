@@ -20,6 +20,7 @@ const initialState = {
   cart: [],
   redirectMP: '',
   imageCloudinary: [],
+  cloudinaryProfile: [],
   reviews: [],
   reviews_copy:[],
   idprodreviews: '',
@@ -274,11 +275,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         usersDetails: action.payload
       }
-    case "UPDATE_USER":
-      return {
-          ...state,
-          userProfileUpdate: action.payload,
-      }
     case "ADD_CART":
       return {
         ...state,
@@ -303,6 +299,12 @@ const reducer = (state = initialState, action) => {
         imageCloudinary: action.payload,
         // cart: newCart,
       };
+    case 'CLOUDINARY_PROFILE':
+      return{
+        ...state,
+        cloudinaryProfile: action.payload
+      }
+
       case 'CHECKOUT':
         return {
           ...state,

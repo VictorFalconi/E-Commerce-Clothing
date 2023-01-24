@@ -148,12 +148,10 @@ export const updateUserStatus = (id, payload) => {
 }
 
 export function editUser(id, payload) { // Para que un User actualice su perfil
+  console.log(payload, 'datos') 
   return async function (dispatch) {
-      let json = await axios.put(`${REQ_URL}/user/${id}`, payload)
-      return dispatch({
-          type: "UPDATE_USER",
-          payload: json.data,
-      })
+    await axios.put(`${REQ_URL}/user/${id}`, payload)
+    .then(response => console.log(response, 'respuesta'))
   }
 }
 
@@ -223,6 +221,20 @@ export const cloudinaryImage = (imagen) => {
     }
   }
 }
+
+export const cloudinaryProfile = (imagen) => {
+  return function(dispatch){
+    try {
+      dispatch({
+        type: 'CLOUDINARY_PROFILE',
+        payload: imagen
+      })
+    } catch(error){
+      console.log('error')
+    }
+  }
+}
+
 export const removeCartProduct = (prod) => {
   return function (dispatch) {
     try {

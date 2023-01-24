@@ -74,20 +74,33 @@ const getUserByEmail = async (req,res)=>{
     }
 }
 
-const updateUsersProfile = async (req, res) => {
-    const { id } = req.params;
-    const { full_name, email, image } = req.body;
-    if(id) {
-        const user = await userModel.findByIdAndUpdate(id, {
-            full_name: full_name,
-            email: email,
-            image: image  
+const updateUsersProfile = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        let {
+            fullName,
+            email,
+            image,
+        } = req.body
+
+        await userModel.findByIdAndUpdate(
+            id,
+            {
+                fullName: fullName,
+                email: email,
+                image: image,
+            },
+            { new: true } 
+        )
+        .then(() => {
+            res.status(200).send('User Successfully Updated')
         })
-        res.status(200).json(user)
-    }else {
-        res.status(400).json({msg:'hubo un error'})
+    } catch (error) {
+        console.error('Failed to update the user')
+        next(error)
     }
 }
+
 module.exports = {
     createUser,
     getAllUsers,
