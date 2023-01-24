@@ -412,3 +412,13 @@ export function addRate(payload){
     }
   }
 }
+
+export function gateRateById(id) {
+  return async function(dispatch){
+    const rate = await axios.get(`${REQ_URL}/feedback/${id}`)
+    dispatch({
+      type: "GET_RATE_BY_ID",
+      payload: rate.data
+    })
+  }
+}
