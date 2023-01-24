@@ -2,7 +2,7 @@ import styles from './Cloudinary.module.css'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { cloudinaryImage } from "../../redux/actions";
+import { cloudinaryImage, cloudinaryProfile } from "../../redux/actions";
 
 const Cloudinary = () => {
   const dispatch = useDispatch();
@@ -48,11 +48,13 @@ const Cloudinary = () => {
 
   useEffect(() => {
     dispatch(cloudinaryImage(images));
+    dispatch(cloudinaryProfile(images))
+    console.log(images, 'imagenes de cloudinary')
   }, [images]);
 
   return (
     <div className="App">
-      <button onClick={() => handleOpenWidget()}>Upload pictures</button>
+      <button className={styles.upload} onClick={() => handleOpenWidget()}>Upload pictures</button>
       <div className="images-preview-container">
         {images.map((image) => (
           <div key={image.public_id} className="image-preview">

@@ -14,7 +14,6 @@ export default function UserList({setLoad, load}) {
     }, [allUsers])
 
     const users = useSelector((state) => state.users)
-    console.log(users)
     
     const handleActive = (e, user) =>{
         dispatch(editUserActiveProp(user.idUser, !user.active))

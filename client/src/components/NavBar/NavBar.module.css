@@ -1,64 +1,96 @@
 .navbarContainer {
-    /* margin-top: 30px; */
-    display: flex;
-    justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: 1em 1em 0 1em;
 }
 
 .navbar {
-    max-width: 1300px;
-    display: flex;
-    border: 1px solid rgba(225,225,225, 0.4);
-    border-right: 1px solid rgba(225,225,225, 0.2);
-    border-bottom: 1px solid rgba(225,225,225, 0.2);
-    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(2px);
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%; 
-    height: 120px;
-    margin-top: 10px;
-}
-
-.IconProfile{
-     width:60px;
-    height:40px;
-}
-
-.IconFormulario{
-    width:65px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 80px 80px;
+  align-items: center;
+  grid-template-areas:
+    "a a a b c"
+    "d d d d e";
+  column-gap: 1em;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 50%);
 }
 
 .logo {
-    width: 200px;
-    border-radius: 20px;
+  width: 100%;
+  border-radius: 25px;
+}
+
+@media screen and (min-width: 960px) {
+  .navbar {
+    background: rgb(255 255 255 / 25%);
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 1fr;
+    gap: 2em;
+    grid-template-areas: "a a d d d d d e b c ";
+  }
+
+  .logo {
+    width: 80%;
+    border-radius: 25px;
+  }
+}
+
+.logo {
+  grid-area: a;
+}
+.cart {
+  grid-area: b;
+  font-size: 30px;
+  color: black;
+  text-align: center;
+}
+
+.login {
+  grid-area: c;
+  font-size: 30px;
+  text-align: center;
 }
 
 .search {
-    font-size: 1.2em;
-    padding: 1em;
-    background-color: transparent;
-    border: 1px solid rgba(225,225,225, 0.4);
-    border-right: 1px solid rgba(225,225,225, 0.2);
-    border-bottom: 1px solid rgba(225,225,225, 0.2);
-    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
+  grid-area: d;
 }
 
-.dashboard {
-    border: 1px solid rgba(225,225,225, 0.4);
-    border-right: 1px solid rgba(225,225,225, 0.2);
-    border-bottom: 1px solid rgba(225,225,225, 0.2);
-    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding: 1em;
-    font-size: 1.2em;
-    list-style: none;
-    color: black;
-    text-decoration: none;
+.dropdown {
+  grid-area: e;
+  text-align: center;
 }
 
-.cart {
-    
-    font-size: 50px;
+.loginButton {
+  padding: .7em;
+  background: rgb(255 255 255 / 75%);
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
 }
+
+.searchInput {
+  font-size: 1.2em;
+  padding: .7em;
+  background: rgb(255 255 255 / 85%);
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 13px;
+  width: 100%;
+}
+

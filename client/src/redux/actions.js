@@ -3,7 +3,7 @@ import axios from "axios";
 
 // import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
-const REQ_URL = 'https://e-commerce-clothing.onrender.com';
+const REQ_URL = 'http://localhost:9000';
 
 export function searchClothes(name) {
   return async function (dispatch) {
@@ -76,6 +76,7 @@ export const categories = () => {
 }
 
 export const createProduct = (product) => {
+  console.log('product que llega a la action', product)
   return async function () {
     try {
       await axios.post(`${REQ_URL}/products`, product)
@@ -85,6 +86,13 @@ export const createProduct = (product) => {
     } catch(error) {
       alert("cannot create product")
     }
+  }
+}
+
+export function updateProduct(id, payload) {
+  return async function (dispatch) {
+      const json = await axios.put(`${REQ_URL}/products/${id}`, payload)
+      return dispatch({ type: "PRODUCT_UPDATE", payload: json.payload })
   }
 }
 
@@ -139,6 +147,24 @@ export const updateUserStatus = (id, payload) => {
   }
 }
 
+export function editUser(id, payload) { // Para que un User actualice su perfil
+  console.log(payload, 'datos') 
+  return async function (dispatch) {
+    await axios.put(`${REQ_URL}/user/${id}`, payload)
+    .then(response => console.log(response, 'respuesta'))
+  }
+}
+
+export function getUsersDetails (email) {
+  return async function(dispatch){
+    let json = await axios.get(`${REQ_URL}/user/${email}`)
+    return dispatch({
+      type: "GET_USER_PROFILE",
+      payload: json.data,
+    })
+  }
+}
+
 //-----------------------Reviews-------------------------
 
 export function createProductReview(payload){
@@ -162,6 +188,10 @@ export function getPReviews() {
       const allData = await axios.get(`${REQ_URL}/reviews`)
       return dispatch({ type: 'GET_REVIEWS', payload: allData.data })
   }
+}
+
+export function getopenDetail(id) {
+  return { type: "OPEN_DETAIL", payload: id }
 }
 
 //-----------------------cart-----------------------
@@ -191,6 +221,20 @@ export const cloudinaryImage = (imagen) => {
     }
   }
 }
+
+export const cloudinaryProfile = (imagen) => {
+  return function(dispatch){
+    try {
+      dispatch({
+        type: 'CLOUDINARY_PROFILE',
+        payload: imagen
+      })
+    } catch(error){
+      console.log('error')
+    }
+  }
+}
+
 export const removeCartProduct = (prod) => {
   return function (dispatch) {
     try {
@@ -237,5 +281,68 @@ export const checkout = (id, cart) => {
     } catch (error) {
       console.log('error en action/checkOut', error);
     }
+  }
+}
+
+export const updateStock = (p) => {
+  return async function () {
+    try {
+      await axios.put(`${REQ_URL}/products/${p._id}`, p)
+      .then((response) => {
+        console.log(response)
+      })
+    } catch (error) {
+      console.log('error en action/checkOut', error);
+    }
+  }
+}
+
+
+// ------------------------comments------------------------
+export function getComments () {
+  return async function(dispatch){
+    const allData = await axios.get(`${REQ_URL}/comments`)
+    dispatch({
+      type: "GET_COMMENTS",
+      payload: allData.data
+    })
+  }
+}
+
+export function createComments(payload){
+  return async function(dispatch){
+    try {
+      let json = await axios.post(`${REQ_URL}/comments`, payload)
+      dispatch({
+          type: 'CREATE_COMMENTS',
+          payload: json.data
+      })
+    } catch (error) {
+      console.log('error en action crear comentarios', error)
+    }
+  }
+}
+
+export function addFavorite(userId, productId) {
+  return async function(dispatch) {
+    dispatch({
+      type: 'ADD_FAVORITE',
+      payload: {
+        userId,
+        productId
+      }
+    })
+  }
+}
+
+export function removeFavorite(userId, productId) {
+  return async function(dispatch) {
+    dispatch({
+      type: 'REMOVE_FAVORITE',
+      payload: {
+        userId,
+        productId
+      }
+    })
   }
 }

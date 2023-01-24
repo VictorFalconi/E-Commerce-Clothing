@@ -9,8 +9,12 @@ import HomeAdmin from './HomeAdmin/HomeAdmin'
 import AdminNavBar from './components/AdminNavBar';
 import AdminSideBar from './components/AdminSideBar';
 import ProductList from './products/ProductsList';
+import Product from './products/Product';
 import NewProduct from './products/NewProduct';
 import UserList from './User/UserList';
+import HelpUsToImprove from './HelpUsToImprove/HelpUsToImprove';
+import NavBar from '../NavBar/NavBar';
+import UserProfile from '../User/UserProfile';
 
 
 
@@ -33,36 +37,19 @@ const Admin = () => {
                         <AdminSideBar></AdminSideBar>
                         <Routes>
                             <Route exact path='/' element={<UserList setLoad={setLoad} load={load} />}></Route>
-                            <Route path="/products" element={<ProductList setLoad={setLoad} load={load}/>}></Route>
+                            <Route path="/helpustoimprove" element={<HelpUsToImprove />} />
+                            <Route path="/products" element={<ProductList />}></Route>
+                            <Route path="/product/:productId" element={<Product />} />
                             <Route path="/newProduct" element={<NewProduct />}></Route>
                             <Route path="/users" element={<UserList setLoad={setLoad} load={load}/>}></Route>
                         </Routes>
                     </div>
                 </React.Fragment>
-                    // {users?.map((u, idx) =>
-                    //     <div key={idx} className={styles.user}>
-                    //         <h2>User data</h2>
-                    //         <h3>Fullname: {u.full_name}</h3>
-                    //         <p>Email: {u.email}</p>
-                    //         <div>
-                    //             <button value={u.active} name={u._id} onClick={(e) => handleActive(e)}>Cambiar estado</button>
-                    //             <p>{u.active ? 'activo ' : 'inactivo'}</p>
-                    //         </div>
-                    //     </div>
-                    // )} 
-                    
             )
         }else{
-         return <div>
-            {user && <div>                
-                <h2>User dashboard</h2>
-                <img src={user.picture} alt='profile_picture'/>
-                <h3>User: {user.nickname}</h3>
-                <p>Email: {user.email}</p>
-                </div>
-            }
-         </div>
-        }
+         return ( 
+            <UserProfile></UserProfile>
+        )}
     
        } 
 

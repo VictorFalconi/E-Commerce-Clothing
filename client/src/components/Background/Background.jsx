@@ -1,13 +1,13 @@
-import styles  from "./Background.module.css"
+import styles from "./Background.module.css";
 
 const Background = () => {
-    return(
-        <section>
-            <div className={styles.color}></div>
-            <div className={styles.color}></div>
-            <div className={styles.color}></div>
-        </section>
-    )
-}
+  return (
+    <div className={styles.background}>
+      <div className={styles.wave}></div>
+      <div className={styles.wave}></div>
+      <div className={styles.wave}></div>
+    </div>
+  );
+};
 
-export default Background
+export default Background;

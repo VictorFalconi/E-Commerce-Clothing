@@ -7,6 +7,7 @@ import {
   clothesDetail,
   allUsers,
   getPReviews,
+  getopenDetail,
 } from "../../redux/actions";
 import Cart from "../Cart/Cart.jsx";
 import StarIcon from "../../icons/StarIcon.svg";
@@ -21,40 +22,57 @@ function ClothingDetail(product) {
   const param = useParams();
   const clothes = useSelector((state) => state.clothesDetail);
   const reviews = useSelector((state) => state.reviews);
+  console.log(reviews)
+  const cart = useSelector((state)=> state.cart)
   const [promedReviews, setPromedReviews] = useState(0);
   const [countReviews, setCountReviews] = useState(0);
+  const [ talleCondicional, setTalleCondicional ] = useState();
+  const [ cantidad, setCantidad] = useState(1)
   let navigate = useNavigate();
   const routeChange = () => {
     let path = "/cardReviews";
     navigate(path);
   };
   useEffect(() => {
-    // if (reviews.length === 0) {
-    //   dispatch(getPReviews());
-    // }
-    // let reviewsPId = reviews.filter((e) => e.productId === product.id);
-    // // console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
+    dispatch(getopenDetail(param?.id));
+    dispatch(getPReviews())
+    let reviewsPId = reviews.filter((e) => e.productId === product._id);
+    console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
 
-    // if (reviewsPId.length !== 0) {
-    //   // console.log('products reviews---------------/////////////////', product.reviews)
-    //   let count = reviewsPId.length;
-    //   let sumaReviews = 0;
-    //   reviewsPId.map((r) => {
-    //     sumaReviews += r.score;
-    //   });
-    //   let promedioReviews = sumaReviews / count;
-    //   setPromedReviews(promedioReviews);
-    //   setCountReviews(count);
-    // }
+    if (reviewsPId.length !== 0) {
+      // console.log('products reviews---------------/////////////////', product.reviews)
+      let count = reviewsPId.length;
+      let sumaReviews = 0;
+      reviewsPId.map((r) => {
+        sumaReviews += r.score;
+      });
+      let promedioReviews = sumaReviews / count;
+      setPromedReviews(promedioReviews);
+      setCountReviews(count);
+    }
     dispatch(allUsers());
     dispatch(clothesDetail(param?.id));
   }, []);
 
-  //console.log(clothes)
-
   const handleCart = (clothes) => {
-    dispatch(addCart({...clothes, quantity: 1}));
+    const find = cart?.find(p => p._id === clothes._id)
+    if (find) {
+      alert('El producto ya existe en el carrito')
+    } else {
+       clothes.stock[talleCondicional] -= cantidad;
+      dispatch(addCart({ ...clothes, quantity: cantidad}));      
+    }
+    
   };
+  function handleCant(e) {
+    setCantidad(parseInt(e.target.value));
+  };
+  function handleSelect(e) {
+    setTalleCondicional(e.target.value);
+
+  }
+
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -65,7 +83,7 @@ function ClothingDetail(product) {
         <h2 className={styles.title}>{clothes?.name}</h2>
         <div className={styles.cardimg}>
           {clothes?.image?.map((e, i) => (
-            <div key={e.public_id}>
+            <div key={i} className={styles.imgContainer}>
               {e.secure_url ? (
                 <img
                   className={styles.image}
@@ -85,12 +103,25 @@ function ClothingDetail(product) {
         <p className={styles.brand}>Clothes: {clothes?.brand}</p>
         <p className={styles.model}>Model: {clothes?.model}</p>
         <p className={styles.sizes}>
-          Sizes: {clothes?.sizes?.map((e) => e).join(", ")}
-        </p>
+          Sizes: {clothes?.stock? <select title='select' onChange={e=> handleSelect(e)}>
+            <option defaultValue value={8}>Select</option>
+            {
+              Object.getOwnPropertyNames(clothes?.stock).map(d => {
+                return (
+                  <option key={d} value={d}>{d}</option>
+                )
+              })
+            }
+          </select> : '' }                 
+        </p>     
+        <div className={styles.talla}>
+          {talleCondicional? <input name='qty' placeholder="ingrese cantidad" onChange={e => handleCant(e)} value={cantidad} type='number' min={1} max={talleCondicional? clothes?.stock[talleCondicional] : 'Seleccione Talle '} />: 'Seleccione Talle' }
+           <p>{talleCondicional? clothes?.stock[talleCondicional] : ''}</p>
+        </div>
         <div className={styles.reviews}>
-          <h4 className="sr-only">Reviews</h4>
-          <div className="flex items-center">
-            <div className="flex items-center">
+          <h4>Reviews</h4>
+          <div>
+            <div className={styles.starContainer}>
               {[...Array(5)].map((rating, i) => {
                 return promedReviews > i ? (
                   <img src={StarIconFill} key={i} className={styles.staricon} />
@@ -98,12 +129,15 @@ function ClothingDetail(product) {
                   <img src={StarIcon} key={i} className={styles.staricon} />
                 );
               })}
+              <button type="button" onClick={routeChange}>
+                {countReviews} reviews
+              </button>
             </div>
             
           </div>
-        </div>
-        <button className={styles.button} onClick={() => handleCart(clothes)}>
-          Agregar a la bolsa
+        </div>       
+        <button disabled= {talleCondicional ? cantidad > clothes?.stock[talleCondicional]: true} className={styles.button} onClick={() => handleCart(clothes)}>
+         Add to cart
         </button>
         {/* MENSAJE : NO SE DONDE COLOCAR LA PARTE DEL EDID
         <ClothingEdit></ClothingEdit> */}
@@ -114,6 +148,6 @@ function ClothingDetail(product) {
 
 export default ClothingDetail;
 
-//LINEA 32 DEBE SER EL CAUSANTE DEL ERROR
+
 
 /* <button className={styles.btn} onClick={() => addToCart(clothes)}>Add to bag</button> */
