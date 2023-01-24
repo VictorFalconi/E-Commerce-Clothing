@@ -408,6 +408,7 @@ const reducer = (state = initialState, action) => {
             ...state,
             favorites: {...state.favorites, [user || 'invitado']: state.favorites[user].filter(p => p !== product)}
           }}
+
          //-----------History Buggy-----------------------
 
          case 'GET_HISTORY_BUGGY':
@@ -432,6 +433,7 @@ const reducer = (state = initialState, action) => {
               ...state,
               rate_us: [...state.rate_us, action.payload],
             };
+
 
     default:
       return state;

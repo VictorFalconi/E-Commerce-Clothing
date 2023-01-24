@@ -372,6 +372,7 @@ export function historyBuggy() {
       payload: allBuggies.data
     })
   }
+
 }
 
 export function historyUser(id) {
@@ -411,4 +412,3 @@ export function addRate(payload){
     }
   }
 }
-
