@@ -383,3 +383,32 @@ export function historyUser(id) {
     })
   }
 }
+
+//-----------------------rateUs------------
+export const getRate = () => {
+  return async function (dispatch) {
+    try {
+      const rate = await axios.get(`${REQ_URL}/feedback`)
+      dispatch({
+        type: 'GET_RATE',
+        payload: rate.data
+      })
+    } catch (error) {
+      console.log('Error en action getRate');
+    }
+  }
+}
+export function addRate(payload){
+  return async function(dispatch){
+    try {
+      let rate = await axios.post(`${REQ_URL}/feedback`, payload)
+      dispatch({
+          type: 'ADD_RATE',
+          payload: rate.data
+      })
+    } catch (error) {
+      console.log('error en action addRate', error)
+    }
+  }
+}
+

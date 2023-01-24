@@ -28,6 +28,7 @@ const initialState = {
   comments: [],
   favorites: {},
   history: [],
+  rate_us: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -419,7 +420,18 @@ const reducer = (state = initialState, action) => {
           return {
             ...state,
             history: action.payload
-          }; 
+          };
+          //-------------rate us-------------------------
+          case 'GET_RATE':
+            return {
+              ...state,
+              rate_us: action.payload
+            };
+          case "ADD_RATE":
+            return {
+              ...state,
+              rate_us: [...state.rate_us, action.payload],
+            };
 
     default:
       return state;
