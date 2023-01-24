@@ -14,7 +14,7 @@ import ProductCards from "../ProductCards/ProductCards";
 import styles from "./Home.module.css";
 import Footer from "../Footer/Footer";
 import Dropdown from "../Dropdown/Dropdown";
-import nike from '../../icons/nike-logo.png';
+import nike from '../../icons/Nike-Logo.png';
 import adidas from '../../icons/adidas-logo.png';
 import gucci from '../../icons/gucci-logo.png';
 import allBrands from '../../icons/all-brands.png';
