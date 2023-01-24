@@ -7,9 +7,11 @@ const cartRouter = require('./routes/cart');
 const mercadoPagoRouter = require('./routes/mercadoPago');
 const buggyRouter = require('./routes/buggy');
 const commentsRouter = require('./routes/comments');
+const feedbackRouter = require('./routes/feedback');
 const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const feedback = require('./models/feedback');
 
 const server = express();
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
@@ -40,5 +42,6 @@ server.use('/', cartRouter)
 server.use('/', mercadoPagoRouter)
 server.use('/', buggyRouter)
 server.use('/', commentsRouter)
+server.use('/', feedbackRouter)
 
 module.exports = server;
