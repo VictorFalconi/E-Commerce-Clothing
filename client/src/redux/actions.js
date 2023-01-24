@@ -76,6 +76,7 @@ export const categories = () => {
 }
 
 export const createProduct = (product) => {
+ // console.log('product que llega a la action', product)
   return async function () {
     try {
       await axios.post(`${REQ_URL}/products`, product)
@@ -147,12 +148,10 @@ export const updateUserStatus = (id, payload) => {
 }
 
 export function editUser(id, payload) { // Para que un User actualice su perfil
+  console.log(payload, 'datos') 
   return async function (dispatch) {
-      let json = await axios.put(`${REQ_URL}/user/${id}`, payload)
-      return dispatch({
-          type: "UPDATE_USER",
-          payload: json.data,
-      })
+    await axios.put(`${REQ_URL}/user/${id}`, payload)
+    .then(response => console.log(response, 'respuesta'))
   }
 }
 
@@ -222,6 +221,20 @@ export const cloudinaryImage = (imagen) => {
     }
   }
 }
+
+export const cloudinaryProfile = (imagen) => {
+  return function(dispatch){
+    try {
+      dispatch({
+        type: 'CLOUDINARY_PROFILE',
+        payload: imagen
+      })
+    } catch(error){
+      console.log('error')
+    }
+  }
+}
+
 export const removeCartProduct = (prod) => {
   return function (dispatch) {
     try {
@@ -263,7 +276,7 @@ export const checkout = (id, cart) => {
   return async function (dispatch) {
     try {
       await axios.post(`${REQ_URL}/buggy`, {userId: id, products: cart})
-      const urlPago = await axios.post(`${REQ_URL}/generar`, {userId: id}).then((response) => response.data)
+      const urlPago = await axios.post(`${REQ_URL}/generar`, {userId: id, products: cart}).then((response) => response.data)
       dispatch({type: 'SET_REDIRECTMP', payload: urlPago})
     } catch (error) {
       console.log('error en action/checkOut', error);
@@ -280,6 +293,20 @@ export const updateStock = (p) => {
       })
     } catch (error) {
       console.log('error en action/checkOut', error);
+    }
+  }
+}
+export const purchaseHistory = () => {
+  return async function (dispatch) {
+    try {
+      //falta que pau me pase la ruta get
+      const purchaseh = await axios.get(`${REQ_URL}/buggy`)
+      dispatch({
+        type: 'GET_PURCHASE_HISTORY',
+        payload: purchaseh.data
+      })
+    } catch (error) {
+      console.log('error en action purchaseHistory');
     }
   }
 }
@@ -308,4 +335,53 @@ export function createComments(payload){
       console.log('error en action crear comentarios', error)
     }
   }
+}
+
+export function addFavorite(userId, productId) {
+  return async function(dispatch) {
+    dispatch({
+      type: 'ADD_FAVORITE',
+      payload: {
+        userId,
+        productId
+      }
+    })
+  }
+}
+
+export function removeFavorite(userId, productId) {
+  return async function(dispatch) {
+    dispatch({
+      type: 'REMOVE_FAVORITE',
+      payload: {
+        userId,
+        productId
+      }
+    })
+  }
+}
+
+
+// history buggy----------------------------------
+
+export function historyBuggy() {
+  return async function(dispatch){
+    const allBuggies = await axios.get(`${REQ_URL}/buggy`)
+    dispatch({
+      type: "GET_HISTORY_BUGGY",
+      payload: allBuggies.data
+    })
+  }
+
+}
+
+export function historyUser(id) {
+  return async function(dispatch){
+    const allBuggies = await axios.get(`${REQ_URL}/buggy/${id}`)
+    dispatch({
+      type: "GET_HISTORY_USER",
+      payload: allBuggies.data
+    })
+  }
+
 }

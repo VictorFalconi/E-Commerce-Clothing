@@ -34,11 +34,9 @@ function ClothingDetail(product) {
   };
   useEffect(() => {
     dispatch(getopenDetail(param?.id));
-    if (reviews.length === 0) {
-      dispatch(getPReviews());
-    }
+    dispatch(getPReviews())
     let reviewsPId = reviews.filter((e) => e.productId === product._id);
-    // console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
+    console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
 
     if (reviewsPId.length !== 0) {
       // console.log('products reviews---------------/////////////////', product.reviews)

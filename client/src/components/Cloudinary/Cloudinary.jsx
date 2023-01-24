@@ -2,7 +2,7 @@ import styles from './Cloudinary.module.css'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { cloudinaryImage } from "../../redux/actions";
+import { cloudinaryImage, cloudinaryProfile } from "../../redux/actions";
 
 const Cloudinary = () => {
   const dispatch = useDispatch();
@@ -48,6 +48,8 @@ const Cloudinary = () => {
 
   useEffect(() => {
     dispatch(cloudinaryImage(images));
+    dispatch(cloudinaryProfile(images))
+    console.log(images, 'imagenes de cloudinary')
   }, [images]);
 
   return (

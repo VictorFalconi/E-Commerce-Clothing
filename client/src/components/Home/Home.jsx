@@ -14,6 +14,10 @@ import ProductCards from "../ProductCards/ProductCards";
 import styles from "./Home.module.css";
 import Footer from "../Footer/Footer";
 import Dropdown from "../Dropdown/Dropdown";
+import nike from '../../icons/Nike-Logo.png';
+import adidas from '../../icons/Adidas-Logo.png';
+import gucci from '../../icons/gucci-logo.png';
+import allBrands from '../../icons/all-brands.png';
 
 const images = [
   "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffashionista.com%2F.image%2Ft_share%2FMTQwNTQyNzk1MDcxODkwNjY0%2Fsqgettyimages-469721122jpg.jpg&f=1&nofb=1&ipt=edbfb7e2ea12c375ceb258bec1653bd775d520eac004b0060318ca33d1eb39de&ipo=images",
@@ -42,6 +46,7 @@ const Home = () => {
   const azOrder = useSelector((state) => state.azOrder);
   const catFilter = useSelector((state) => state.catFilter);
   const sizeFilter = useSelector((state) => state.sizeFilter);
+  const brandFilter = useSelector((state) => state.brandFilter);
   const allClothesState = useSelector((state) => state.allClothes);
   const category = allCategory.filter((item, index) => {
     return allCategory.indexOf(item) === index;
@@ -52,8 +57,16 @@ const Home = () => {
     dispatch(orderBy(azOrder));
     dispatch(filter(catFilter));
     dispatch(filter(sizeFilter));
+    dispatch(filter(brandFilter));
     dispatch(allUsers());
   }, []);
+
+  useEffect(() => {
+    dispatch(orderBy(azOrder));
+    dispatch(filter(catFilter));
+    dispatch(filter(sizeFilter));
+    dispatch(filter(brandFilter));
+  }, [azOrder, catFilter, sizeFilter, brandFilter]);
 
   return (
     <div
@@ -65,7 +78,25 @@ const Home = () => {
         <Slider images={images2}></Slider>
         <Slider images={images3}></Slider>
       </div>
-      <ProductCards products={filteredProduct} />
+      <div style={{display: 'flex', margin: '20px 0 0 0', width: '100%', justifyContent: 'center', gap: '20px'}}>
+        <img src={allBrands} alt='all brands' style={{maxWidth: '300px', maxHeight: '100px', cursor: 'pointer'}}
+          onClick={_ => {
+            dispatch({type: 'brandFilter', payload: ''});
+          }}/>
+        <img src={nike} alt='nike' style={{maxWidth: '300px', maxHeight: '100px', cursor: 'pointer'}}
+          onClick={_ => {
+            dispatch({type: 'brandFilter', payload: 'Nike'});
+          }}/>
+        <img src={adidas} alt='adidas' style={{maxWidth: '300px', maxHeight: '100px', cursor: 'pointer'}}
+          onClick={_ => {
+            dispatch({type: 'brandFilter', payload: 'Adidas'});
+          }}/>
+        <img src={gucci} alt='gucci' style={{maxWidth: '300px', maxHeight: '100px', cursor: 'pointer'}}
+          onClick={_ => {
+            dispatch({type: 'brandFilter', payload: 'Gucci'});
+          }}/>
+      </div>
+      <ProductCards products={filteredProduct}/>
       <Footer />
     </div>
   );

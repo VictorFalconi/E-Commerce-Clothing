@@ -9,46 +9,47 @@ export default function UserEdit({changePage}) {
 
     const dispatch = useDispatch()
     const userInfo = useSelector((state) => state.usersDetails)
-    console.log(userInfo)
+    const images = useSelector((state) => state.cloudinaryProfile)
+
     let info = {}
 
     userInfo._id ?
         info = {
             id: userInfo._id,
-            fullName: userInfo.full_name,
+            fullName: userInfo.fullName,
             email: userInfo.email,
-            image: userInfo.image,
+           // image: userInfo.image[0].secure_url,
             active: String(userInfo.active),
         }
-    : console.log('Algo esta pasando')
-    console.log('SOY LA INFOOO: ', info)
+    : console.log('Algo esta pasando en user profile edit')
+
 
     const [input, setInput] = useState({})
 
     useEffect(()=>{
+        input.image = images
         userInfo._id?
         setInput({    
             ...userInfo
         })
         : console.log('Algo esta pasando en el useEffect')
-    }, [])
+    }, [images])
 
     console.log('SOY EL INPUT: ', input)
 
     const handleChange = (e) => {
         e.preventDefault()
-        setInput((prev) => ({
-            ...prev,
+        setInput({
+            ...input,
             [e.target.name]: e.target.value,
-        }))
+        })
     }
 
     const handleUpdate = (e) => {
         e.preventDefault()
-
         if (e.target.name === 'update') {
             dispatch(editUser(info.id, input))
-            window.location.reload(true)
+            // window.location.reload()
             changePage()
         }
     }
@@ -66,18 +67,8 @@ export default function UserEdit({changePage}) {
                         alt=""
                     />
                     <label htmlFor="file">
-                        <Cloudinary
-                        setEditInput={setInput}
-                        editInput={input}
-                    /> 
+                        <Cloudinary /> 
                     </label>
-                    <input
-                        name="image"
-                        type="file"
-                        id="file"
-                        style={{ display: 'none' }}
-                        onChange={(e) => handleChange(e)}
-                    />
                 </div>
 
                 <div className={st.userInputs}>
@@ -94,7 +85,7 @@ export default function UserEdit({changePage}) {
                     <div className={st.userUpdateItem}>
                         <label>Email</label>
                         <input
-                            type="text"
+                            type="email"
                             name="email"
                             placeholder={info.email}
                             className={st.userUpdateInput}

@@ -18,7 +18,7 @@ export default function SearchBar() {
 
   return (
     <div className={styles.productContainer}>
-      {products?.map((p, i) => {
+      {products.length? products?.map((p, i) => {
         return (
           <div
             key={i}
@@ -57,7 +57,8 @@ export default function SearchBar() {
             <p style={{ margin: "0" }}>Sizes: {Object.keys(p.stock).join(", ")}</p>
           </div>
         );
-      })}
+      }) : <h2>No encontrado</h2> }
+      {}
     </div>
   );
 }

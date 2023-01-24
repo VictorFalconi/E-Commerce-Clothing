@@ -23,14 +23,20 @@ export const useForm = (initialForm) => {
     // setErrors(validateForm(form));
   };
 
+  const agregarAStock = (e,t,c) =>{
+    e.preventDefault()
+    setForm({
+      ...form,
+      stock: Object.defineProperty(form.stock,t,{value: c, enumerable: true, writable: true})
+    })
+}
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createProduct(form))
+   dispatch(createProduct(form))
     setForm(initialForm)
     navigate('/')
   };
-
-  
 
   return {
     form,
@@ -39,5 +45,6 @@ export const useForm = (initialForm) => {
     handleChange,
     handleBlur,
     handleSubmit,
+    agregarAStock,
   };
 };
