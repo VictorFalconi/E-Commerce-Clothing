@@ -2,9 +2,12 @@ import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Filter from "../Filters/Filters";
+import { useLocation } from "react-router-dom";
 
 export default function Dropdown() {
+
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <div>
@@ -78,12 +81,12 @@ export default function Dropdown() {
         </Dialog>
       </Transition.Root>
       <div>
-        <button
+        {location.pathname === '/' ? <button
           className="text-3xl font-bold"
           onClick={() => setOpen(true)}
         >
           Filter
-        </button>
+        </button> : null}
       </div>
     </div>
   );
