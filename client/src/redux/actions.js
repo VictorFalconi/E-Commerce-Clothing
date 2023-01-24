@@ -372,6 +372,7 @@ export function historyBuggy() {
       payload: allBuggies.data
     })
   }
+
 }
 
 export function historyUser(id) {
@@ -382,4 +383,5 @@ export function historyUser(id) {
       payload: allBuggies.data
     })
   }
+
 }

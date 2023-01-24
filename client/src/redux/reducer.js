@@ -407,6 +407,7 @@ const reducer = (state = initialState, action) => {
             ...state,
             favorites: {...state.favorites, [user || 'invitado']: state.favorites[user].filter(p => p !== product)}
           }}
+
          //-----------History Buggy-----------------------
 
          case 'GET_HISTORY_BUGGY':
@@ -420,6 +421,7 @@ const reducer = (state = initialState, action) => {
             ...state,
             history: action.payload
           }; 
+
 
     default:
       return state;
