@@ -10,7 +10,7 @@ export default function Product() {
     const { productId } = useParams() //usar el mismo nombre de variable que en la ruta principal
     const dispatch = useDispatch()
     let productInfo = useSelector((state) => state.clothesDetail)
-    console.log('SOY EL PRODUCT: ', productInfo)
+   // console.log('SOY EL PRODUCT: ', productInfo)
     
     useEffect(() => {
         dispatch(clothesDetail(productId))
@@ -23,6 +23,7 @@ export default function Product() {
         id: productInfo._id,
         name: productInfo.name,
         brand: productInfo.brand,
+        model: productInfo.model,
         category: productInfo.category,
         description: productInfo.description,
         price: productInfo.price,
@@ -33,7 +34,7 @@ export default function Product() {
         }
     : console.log('Algo esta pasando')
         
-    console.log('SOY LAS PROPS: ', props)
+    //console.log('SOY LAS PROPS: ', props)
 
     const [ editMode, setEditMode] = useState(false)
 
@@ -72,6 +73,12 @@ export default function Product() {
                                 </span>
                             </div>
                             <div className={st.productInfoItem}>
+                                <span className={st.productInfoKey}>Model:</span>
+                                <span className={st.productInfoValue}>
+                                    {props.model}
+                                </span>
+                            </div>
+                            <div className={st.productInfoItem}>
                                 <span className={st.productInfoKey}>Category:</span>
                                 <span className={st.productInfoValue}>
                                     {props.category}
@@ -88,7 +95,7 @@ export default function Product() {
                             <div className={st.productInfoItem}>
                                 <span className={st.productInfoKey}>Price:</span>
                                 <span className={st.productInfoValue}>
-                                    USD {props.price}
+                                    $ {props.price}
                                 </span>
                             </div>
                             <div className={st.productInfoItem}>
@@ -99,9 +106,8 @@ export default function Product() {
                             </div>
                             <div className={st.productInfoItem}>
                                 <div className={st.productInfoItemCont}>
-                                    <span className={st.productInfoKey}>
-                                        Sizes with stock:
-                                    </span>
+                                    <span className={st.productInfoKey}>Sizes with stock:</span>
+                                    <span>{JSON.stringify(props.stock)}</span>
                                 </div>
                             </div>
                             <div className={st.productInfoItem}>

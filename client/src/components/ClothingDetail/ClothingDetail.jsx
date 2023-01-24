@@ -22,6 +22,7 @@ function ClothingDetail(product) {
   const param = useParams();
   const clothes = useSelector((state) => state.clothesDetail);
   const reviews = useSelector((state) => state.reviews);
+  console.log(reviews)
   const cart = useSelector((state)=> state.cart)
   const [promedReviews, setPromedReviews] = useState(0);
   const [countReviews, setCountReviews] = useState(0);
@@ -34,11 +35,9 @@ function ClothingDetail(product) {
   };
   useEffect(() => {
     dispatch(getopenDetail(param?.id));
-    if (reviews.length === 0) {
-      dispatch(getPReviews());
-    }
+    dispatch(getPReviews())
     let reviewsPId = reviews.filter((e) => e.productId === product._id);
-    // console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
+    console.log('reviewsPId***//////////------------++++++++++++', reviewsPId)
 
     if (reviewsPId.length !== 0) {
       // console.log('products reviews---------------/////////////////', product.reviews)
@@ -70,7 +69,6 @@ function ClothingDetail(product) {
   };
   function handleSelect(e) {
     setTalleCondicional(e.target.value);
-
   }
 
 

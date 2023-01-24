@@ -20,11 +20,9 @@ import {
 export default function UserProfile() {
 
     const { user } = useAuth0() 
-    console.log('SOY EL USER ID: ', user)
     const dispatch = useDispatch()
 
     const userInfo = useSelector((state) => state.usersDetails)
-    console.log(userInfo)
   
 
     useEffect(() => {
@@ -38,14 +36,14 @@ export default function UserProfile() {
     userInfo._id ? 
         props = {
             id: userInfo._id,
-            fullName: userInfo.full_name,
+            fullName: userInfo.fullName,
             email: userInfo.email,
-            image: userInfo.image,
+            //image: userInfo.image[0].secure_url,
             active: String(userInfo.active),
         }
     : console.log('Algo esta pasando')
 
-    // console.log('SOY LAS PROPS: ', props)
+     //console.log('SOY userinfo bdd: ', userInfo)
 
     const changePage = () => {
         console.log('SOY EL EDIT MODE', editMode)

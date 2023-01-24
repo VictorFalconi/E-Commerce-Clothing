@@ -20,11 +20,14 @@ const initialState = {
   cart: [],
   redirectMP: '',
   imageCloudinary: [],
+  cloudinaryProfile: [],
   reviews: [],
   reviews_copy:[],
   idprodreviews: '',
   filteredReviews: [],
   comments: [],
+  favorites: {},
+  purchaseHistory: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -96,44 +99,44 @@ const reducer = (state = initialState, action) => {
         case 'AZ': return {
           ...state,
           productsOrdered: [...state.allClothes].sort(function (a, b){
-            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
+            if (a?.name?.toLowerCase() > b?.name?.toLowerCase()) return 1
             else return -1
         }),
           productsFiltered: [...state.allClothes].sort(function (a, b){
-            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
+            if (a?.name?.toLowerCase() > b?.name?.toLowerCase()) return 1
             else return -1
         })
         }
         case 'ZA': return {
           ...state,
           productsOrdered: [...state.allClothes].sort(function(a, b) {
-            if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+            if (a?.name?.toLowerCase() < b?.name?.toLowerCase()) return 1;
            else return -1
           }),
           productsFiltered: [...state.allClothes].sort(function(a, b) {
-            if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+            if (a?.name?.toLowerCase() < b?.name?.toLowerCase()) return 1;
            else return -1
           })
         }
         case 'LH': return {
           ...state,
           productsOrdered: [...state.allClothes].sort(function (a, b){
-            if (a.price > b.price) return 1
+            if (a?.price > b?.price) return 1
             else return -1
         }),
           productsFiltered: [...state.allClothes].sort(function (a, b){
-            if (a.price > b.price) return 1
+            if (a?.price > b?.price) return 1
             else return -1
         })
         }
         case 'HL': return {
           ...state,
           productsOrdered: [...state.allClothes].sort(function(a, b) {
-            if (a.price < b.price) return 1;
+            if (a?.price < b?.price) return 1;
            else return -1
           }),
           productsFiltered: [...state.allClothes].sort(function(a, b) {
-            if (a.price < b.price) return 1;
+            if (a?.price < b?.price) return 1;
            else return -1
           })
         }
@@ -150,94 +153,94 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           productsFiltered: [...state.productsFiltered].filter(
-            (p) => p.category.toLowerCase() === "t-shirts"
+            (p) => p?.category?.toLowerCase() === "t-shirts"
           ),
         };
         case "Shoes":
         return {
           ...state,
           productsFiltered: [...state.productsFiltered].filter(
-            (p) => p.category.toLowerCase() === "shoes"
+            (p) => p?.category?.toLowerCase() === "shoes"
           ),
         };
         case "Shorts":
         return {
           ...state,
           productsFiltered: [...state.productsFiltered].filter(
-            (p) => p.category.toLowerCase() === "shorts"
+            (p) => p?.category?.toLowerCase() === "shorts"
           ),
         };
         case "Caps":
         return {
           ...state,
           productsFiltered: [...state.productsFiltered].filter(
-            (p) => p.category.toLowerCase() === "caps"
+            (p) => p?.category?.toLowerCase() === "caps"
           ),
         };
         case "L":
         return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('L'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('L'))
         }
         case 'S': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('S'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('S'))
         }
         case 'M': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('M'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('M'))
         }
         case '8': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('8 US'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('8 US'))
         }
         case '8.5': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('8.5 US'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('8.5 US'))
         }
         case '9': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('9 US'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('9 US'))
         }
         case '9.5': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('9.5 US'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('9.5 US'))
         }
         case '10': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('10 US'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('10 US'))
         }
         case '38': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('38'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('38'))
         }
         case '39': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('39'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('39'))
         }
         case '40': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('40'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('40'))
         }
         case '41': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.sizes.includes('41'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.sizes?.includes('41'))
         }
         case 'Adidas': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('adidas'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.brand?.toLowerCase().includes('adidas'))
         }
         case 'Nike': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('nike'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.brand?.toLowerCase().includes('nike'))
         }
         case 'Gucci': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('gucci'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.brand?.toLowerCase().includes('gucci'))
         }
         case 'Tommy': return {
           ...state,
-          productsFiltered: [...state.productsFiltered].filter((p) => p.brand.toLowerCase().includes('tommy hilfiger'))
+          productsFiltered: [...state.productsFiltered].filter((p) => p?.brand?.toLowerCase().includes('tommy hilfiger'))
         }
         default: return {
           ...state
@@ -273,11 +276,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         usersDetails: action.payload
       }
-    case "UPDATE_USER":
-      return {
-          ...state,
-          userProfileUpdate: action.payload,
-      }
     case "ADD_CART":
       return {
         ...state,
@@ -302,6 +300,12 @@ const reducer = (state = initialState, action) => {
         imageCloudinary: action.payload,
         // cart: newCart,
       };
+    case 'CLOUDINARY_PROFILE':
+      return{
+        ...state,
+        cloudinaryProfile: action.payload
+      }
+
       case 'CHECKOUT':
         return {
           ...state,
@@ -372,11 +376,37 @@ const reducer = (state = initialState, action) => {
           ...state,
           redirectMP: action.payload
         }
+        case 'GET_PURCHASE_HISTORY': 
+        return {
+          ...state,
+          purchaseHistory: action.payload
+        }
     case 'GET_COMMENTS':
         return {
           ...state,
           comments: action.payload
         }
+    case 'ADD_FAVORITE': {
+        const user = action.payload.userId;
+        const product = action.payload.productId;
+        const userFavorites = state.favorites[user];
+        if(userFavorites)
+        return {
+          ...state,
+          favorites: {...state.favorites, [user || 'invitado']: [...state.favorites[user], product]}
+        }
+        else 
+        return {
+          ...state,
+          favorites: {...state.favorites, [user || 'invitado']: [product]}
+        }}
+        case 'REMOVE_FAVORITE': {
+          const user = action.payload.userId;
+          const product = action.payload.productId;
+          return {
+            ...state,
+            favorites: {...state.favorites, [user || 'invitado']: state.favorites[user].filter(p => p !== product)}
+          }}
     default:
       return state;
   }

@@ -72,8 +72,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ProductCards2.module.css";
+import whiteHeart from '../../icons/white_heart.png';
+import redHeart from '../../icons/red_heart.png';
+import { useAuth0 } from '@auth0/auth0-react'
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorite, removeFavorite } from "../../redux/actions";
 
 const ProductCards = ({ products }) => {
+
+  const { user } = useAuth0();
+  const favorites = useSelector(state => state.favorites);
+  const userFavorites = favorites[user?._id || 'invitado'] || [];
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.productContainer}>
@@ -83,6 +93,16 @@ const ProductCards = ({ products }) => {
             key={i}
             className={styles.containerCard}
           >
+            <img 
+              src={userFavorites.includes(p._id) ? redHeart : whiteHeart} 
+              style={{
+                cursor: 'pointer',
+                position: 'absolute', 
+                right: '10px', 
+                top: '10px',
+              }}
+              onClick={_ => {userFavorites.includes(p._id) ? dispatch(removeFavorite(user?._id || 'invitado', p?._id)) : dispatch(addFavorite(user?._id || 'invitado', p?._id))}}
+            />
             <Link className={styles.card} to={`/` + p._id}>
               {typeof p.image[0] !== "string" ? (
                 <div>
@@ -115,7 +135,7 @@ const ProductCards = ({ products }) => {
             <p style={{ margin: "0" }}>Price: ${p.price}</p>
             <p style={{ margin: "0" }}>Sizes: {p.stock? Object.getOwnPropertyNames(p?.stock).map(d => {
                 return (
-                  <span key={d} value={d}>{d}</span>
+                  <span key={d} value={d}>{d} </span>
                 )
               }):''}</p>
           </div>
