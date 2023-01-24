@@ -28,7 +28,11 @@
 
 .logo {
   width: 100%;
-  border-radius: 25px;
+  /* filter: invert(1); */
+}
+
+.imglogo {
+  border-radius: 20px;
 }
 
 @media screen and (min-width: 960px) {
@@ -42,7 +46,7 @@
 
   .logo {
     width: 80%;
-    border-radius: 25px;
+    border-radius: 20px;
   }
 }
 

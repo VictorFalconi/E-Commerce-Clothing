@@ -43,7 +43,7 @@ const NavBar = () => {
     <div className={styles.navbarContainer}>
       <div className={styles.navbar}>
         <Link className={styles.logo} to="/">
-          <img className={styles.logo} src={logo}></img>
+          <img className={styles.imglogo} src={logo}></img>
         </Link>
         {/* {path !== '/' ? null : <SearchBar></SearchBar>} */}
 
