@@ -15,7 +15,7 @@ import UserList from './User/UserList';
 import HelpUsToImprove from './HelpUsToImprove/HelpUsToImprove';
 import NavBar from '../NavBar/NavBar';
 import UserProfile from '../User/UserProfile';
-
+import BuggyHistory from './HistoryBuggy/HistoryBuggy';
 
 
 const Admin = () => {
@@ -42,6 +42,7 @@ const Admin = () => {
                             <Route path="/product/:productId" element={<Product />} />
                             <Route path="/newProduct" element={<NewProduct />}></Route>
                             <Route path="/users" element={<UserList setLoad={setLoad} load={load}/>}></Route>
+                            <Route path="/buggy" element={<BuggyHistory/>}></Route>
                         </Routes>
                     </div>
                 </React.Fragment>
