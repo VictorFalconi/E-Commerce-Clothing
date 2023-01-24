@@ -31,10 +31,9 @@ router.delete('/buggy/:id', (req, res) => {
 });
 
 router.get("/buggy/", async (req, res) => {
-  
-    const buggy = await buggySchema.find({})
-        res.status(200).json(buggy)
-});
 
+    const buggy = await buggySchema.find({})
+    res.status(200).json(buggy)
+});
 
 module.exports = router;

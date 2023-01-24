@@ -361,6 +361,7 @@ export function removeFavorite(userId, productId) {
   }
 }
 
+
 // history buggy----------------------------------
 
 export function historyBuggy() {
@@ -371,4 +372,16 @@ export function historyBuggy() {
       payload: allBuggies.data
     })
   }
+
+}
+
+export function historyUser(id) {
+  return async function(dispatch){
+    const allBuggies = await axios.get(`${REQ_URL}/buggy/${id}`)
+    dispatch({
+      type: "GET_HISTORY_USER",
+      payload: allBuggies.data
+    })
+  }
+
 }

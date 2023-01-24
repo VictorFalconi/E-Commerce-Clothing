@@ -32,8 +32,7 @@
        let preference = {
          back_urls: {
            success: `http://127.0.0.1:5173/pagado`,
-         },
-         
+         },         
          items: items
        };
        try {

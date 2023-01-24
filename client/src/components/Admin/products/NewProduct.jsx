@@ -9,7 +9,6 @@ const initialForm = {
   name: "",
   description: "",
   category: "",
-  model:"",
   season:"",
   brand: "",
   price: "",
