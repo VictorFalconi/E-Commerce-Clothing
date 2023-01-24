@@ -20,4 +20,15 @@ router.delete('/buggy/:id', (req, res) => {
     .catch((err)=> res.json({message: err}));
 });
 
+
+  router.get("/buggy/:id", async (req, res) => {
+    const { id } = req.params;
+    // buggySchema.findById(id)
+
+    const buggy = await buggySchema.find({userId: id})
+        res.status(200).json(buggy)
+
+});
+
+
 module.exports = router;
