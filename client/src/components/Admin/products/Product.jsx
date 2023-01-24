@@ -106,9 +106,8 @@ export default function Product() {
                             </div>
                             <div className={st.productInfoItem}>
                                 <div className={st.productInfoItemCont}>
-                                    <span className={st.productInfoKey}>
-                                        Sizes with stock:
-                                    </span>
+                                    <span className={st.productInfoKey}>Sizes with stock:</span>
+                                    <span>{JSON.stringify(props.stock)}</span>
                                 </div>
                             </div>
                             <div className={st.productInfoItem}>
