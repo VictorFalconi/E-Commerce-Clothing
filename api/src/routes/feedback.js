@@ -34,5 +34,12 @@ router.get("/feedback/:id", async (req, res) => {
 
 });
 
+router.get("/feedback/", async (req, res) => {
+
+    const feedback = await feedbackSchema.find({})
+    res.status(200).json(feedback)
+});
+
+
 
 module.exports = router;
