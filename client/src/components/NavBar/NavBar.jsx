@@ -10,7 +10,11 @@ import { LogoutButton } from "../Login/Logout";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faG,
+  faGauge,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { style } from "@mui/system";
 import Dropdown from "../Dropdown/Dropdown";
@@ -27,10 +31,10 @@ const NavBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(name){
+    if (name) {
       navigate(`/searchResults/${name}`);
       setName("");
-    }//else{alert('insert name')}   
+    } //else{alert('insert name')}
   };
 
   const { user, isAuthenticated } = useAuth0();
@@ -44,20 +48,26 @@ const NavBar = () => {
         {/* {path !== '/' ? null : <SearchBar></SearchBar>} */}
 
         <Link className={styles.cart} to="/cart">
-          <FontAwesomeIcon className={styles.faCart} icon={faCartShopping}></FontAwesomeIcon>
+          <div>{cart.length > 0 && cart.length}</div>
+          <FontAwesomeIcon
+            className={styles.faCart}
+            icon={faCartShopping}
+          ></FontAwesomeIcon>
         </Link>
-        {cart.length > 0 && cart.length}
 
         <div className={styles.dropdown}>
           <Dropdown></Dropdown>
         </div>
 
-        <div className={styles.login}>
+        <div className={styles.dashboard}>
           {isAuthenticated && (
-            <Link className={styles.dashboard} to="/admin">
-              Dashboard
+            <Link to="/admin">
+              <FontAwesomeIcon icon={faGauge}></FontAwesomeIcon>
             </Link>
           )}
+        </div>
+
+        <div className={styles.login}>
           {isAuthenticated ? <LogoutButton /> : <LoginButton />}
         </div>
 
@@ -73,7 +83,6 @@ const NavBar = () => {
             {/* <button disabled={name ? false : true}>🔍</button> */}
           </form>
         </div>
-
       </div>
     </div>
   );

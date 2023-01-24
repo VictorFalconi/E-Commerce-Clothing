@@ -1,21 +1,79 @@
 .footercontainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    background-color: red;
-    width: 100%;
-    margin: 0 1em 1em;
-    border: 1px solid rgba(225, 225, 225, 0.4);
-    border-right: 1px solid rgba(225, 225, 225, 0.2);
-    border-bottom: 1px solid rgba(225, 225, 225, 0.2);
-    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(2px);
-    padding: 1em;
-    background: rgb(255 255 255 / 25%);
-    font-size: 1em;
-    row-gap: 2em;
-    text-align: center;
-    color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: red;
+  width: 100%;
+  margin: 0 1em 1em;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 25%);
+  font-size: 1em;
+  row-gap: 2em;
+  text-align: center;
+  color: black;
 }
 
+.aboutuscontainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5em;
+}
+
+.aboutus {
+    font-size: 1.5em;
+  background: linear-gradient(-45deg, #ff0000, #ffffff, #ff1eec, #23d5ab, #ffffff,#2f23d5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+  background-size: 400% 400%;
+  animation: gradient 5s linear infinite alternate;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.arrowiconright {
+    animation: animateright .7s linear infinite alternate;
+}
+
+@keyframes animateright {
+    0% {
+      transform: translateX(0px);
+    }
+
+    100% {
+      transform: translateX(-10px);
+    }
+  }
+
+  .arrowiconleft {
+    animation: animateleft .7s linear infinite alternate;
+}
+
+@keyframes animateleft {
+    0% {
+      transform: translateX(0px);
+    }
+
+    100% {
+      transform: translateX(10px);
+    }
+  }

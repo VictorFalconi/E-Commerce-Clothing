@@ -30,6 +30,7 @@ const NewProduct = () => {
         <h2 className={styles.title}>New Product</h2>
         <form className={styles.forminput} onSubmit={handleSubmit}>
           <input
+            className={`${styles.input} ${styles.inputname}`}
             type="text"
             name="name"
             autoComplete="none"
@@ -39,8 +40,8 @@ const NewProduct = () => {
             value={form.name}
             required
           />
-
           <input
+            className={`${styles.input} ${styles.inputdescription}`}
             type="text"
             name="description"
             placeholder="Description del producto"
@@ -49,8 +50,8 @@ const NewProduct = () => {
             value={form.description}
             required
           />
-
           <input
+            className={styles.input}
             type="text"
             name="category"
             placeholder="Categoria"
@@ -59,8 +60,8 @@ const NewProduct = () => {
             value={form.category}
             required
           />
-
           <input
+            className={styles.input}
             type="text"
             name="brand"
             placeholder="Brand"
@@ -71,6 +72,7 @@ const NewProduct = () => {
           />
 
           <input
+            className={styles.input}
             type="number"
             name="price"
             placeholder="Price"

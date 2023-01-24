@@ -1,7 +1,9 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, FunnelIcon } from "@heroicons/react/24/outline";
 import Filter from "../Filters/Filters";
+
+
 
 export default function Dropdown() {
   const [open, setOpen] = useState(false);
@@ -82,8 +84,9 @@ export default function Dropdown() {
           className="text-3xl font-bold"
           onClick={() => setOpen(true)}
         >
-          Filter
+          <FunnelIcon className="h-9 w-9" aria-hidden="true" />
         </button>
+          <div className="font-medium">filtro</div>
       </div>
     </div>
   );
