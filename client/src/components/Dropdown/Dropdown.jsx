@@ -84,11 +84,11 @@ export default function Dropdown() {
       </Transition.Root>
       <div>
         {location.pathname === '/' ? <button
-          className="text-3xl font-bold"
+          className="text-3xl flex "
           onClick={() => setOpen(true)}
         >
           <FunnelIcon className="h-9 w-9" aria-hidden="true" />
-          <div className="font-medium">Filtere</div>
+          <div className="font-medium">Filter</div>
         </button> : null}
       </div>
     </div>
