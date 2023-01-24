@@ -27,7 +27,7 @@ const initialState = {
   filteredReviews: [],
   comments: [],
   favorites: {},
-  purchaseHistory: [],
+  history: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -407,6 +407,20 @@ const reducer = (state = initialState, action) => {
             ...state,
             favorites: {...state.favorites, [user || 'invitado']: state.favorites[user].filter(p => p !== product)}
           }}
+         //-----------History Buggy-----------------------
+
+         case 'GET_HISTORY_BUGGY':
+          return {
+            ...state,
+            history: action.payload
+          };  
+
+          case 'GET_HISTORY_USER':
+          return {
+            ...state,
+            history: action.payload
+          }; 
+
     default:
       return state;
   }
