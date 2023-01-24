@@ -1,7 +1,8 @@
 .containerform {
   display: grid;
-  place-content: center;
-  margin: auto;
+  margin: 0 1em;
+  width: 100%;
+  height: 100%;
 }
 
 .form {
@@ -14,25 +15,27 @@
     "c b";
   padding: 1em;
   gap: 1em;
-  background-color: transparent;
   border: 1px solid rgba(225, 225, 225, 0.4);
   border-right: 1px solid rgba(225, 225, 225, 0.2);
   border-bottom: 1px solid rgba(225, 225, 225, 0.2);
   box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  width: 1300px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
 }
 
 .title {
   grid-area: a;
   text-align: center;
+  font-weight: 500;
+  font-size: 2em;
 }
 
 .forminput {
   grid-area: c;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  /* grid-template-rows: 1fr; */
   gap: 1em;
 }
 
@@ -71,4 +74,18 @@
   display: grid;
   place-content: center;
   grid-area: b;
+}
+
+.button:hover {
+  background: rgba(255, 231, 247, 25%);
+  transform: scale(1.1);
+
+}
+
+.button:active {
+  transform: scale(0.8);
+}
+
+.input {
+  padding-left: 1em;
 }

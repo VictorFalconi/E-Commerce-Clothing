@@ -1,6 +1,6 @@
 .sidebar {
-    flex:none;
-    height: 100%;
+    /* flex:none; */
+    /* height: 100%; */
     width: 15%;
     background-color: rgb(255, 253, 253);
     position: sticky;
