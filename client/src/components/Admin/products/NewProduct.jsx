@@ -10,6 +10,7 @@ const initialForm = {
   category: "",
   brand: "",
   price: "",
+  model:"",
   active: true,
   image: [],
 };
@@ -57,6 +58,16 @@ const NewProduct = () => {
             onChange={handleChange}
             onblur={handleBlur}
             value={form.category}
+            required
+          />
+
+          <input
+            type="text"
+            name="model"
+            placeholder="Model"
+            onChange={handleChange}
+            onblur={handleBlur}
+            value={form.model}
             required
           />
 

@@ -23,6 +23,7 @@ export default function Product() {
         id: productInfo._id,
         name: productInfo.name,
         brand: productInfo.brand,
+        model: productInfo.model,
         category: productInfo.category,
         description: productInfo.description,
         price: productInfo.price,
@@ -69,6 +70,12 @@ export default function Product() {
                                 <span className={st.productInfoKey}>Brand:</span>
                                 <span className={st.productInfoValue}>
                                     {props.brand}
+                                </span>
+                            </div>
+                            <div className={st.productInfoItem}>
+                                <span className={st.productInfoKey}>Model:</span>
+                                <span className={st.productInfoValue}>
+                                    {props.model}
                                 </span>
                             </div>
                             <div className={st.productInfoItem}>
