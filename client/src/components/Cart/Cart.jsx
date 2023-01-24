@@ -64,7 +64,7 @@ const continueMP = useSelector((state)=> state.redirectMP)
       </ul>
       <h3>Total: ${calculateTotal().toFixed(2)}</h3> 
       {user? verificacionActive(): <p>Please Login to continue</p> }
-      {continueMP && <a href={continueMP} target='_blank' rel='noreferrer' onClick={() => {dispatch({type: 'SET_REDIRECTMP', payload: null}); window.close()}}>Confirm</a>}
+      {continueMP && <a href={continueMP} target='_blank' rel='noreferrer' onClick={() => {dispatch({type: 'SET_REDIRECTMP', payload: null}), window.close()}}>Confirm</a>}
     </div>
    
   );

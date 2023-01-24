@@ -76,6 +76,7 @@ export const categories = () => {
 }
 
 export const createProduct = (product) => {
+  console.log('product que llega a la action', product)
   return async function () {
     try {
       await axios.post(`${REQ_URL}/products`, product)
