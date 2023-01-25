@@ -32,7 +32,7 @@ export default function UserList({setLoad, load}) {
                     <div className={st.userListUser}>
                         <img
                             className={st.userListPic}
-                            src={params.row.pic}
+                            src={params.row.pic[0]?.secure_url}
                             alt=""
                         />
                         {params.row.name}
