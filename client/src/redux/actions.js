@@ -121,6 +121,19 @@ export const allUsers = () => {
     }
   }
 }
+export const createUs = (payload) => {
+  return async function (dispatch) {
+    try {
+      const newUs = await axios.post(`${REQ_URL}/user`, payload)
+      dispatch({
+        type: 'CREATE_USER',
+        payload: newUs.data
+      })
+    } catch (error) {
+      console.log('error en action/createUser', error);
+    }
+  }
+}
 
 export const editUserActiveProp = (id, active) => {
   return async function(){
