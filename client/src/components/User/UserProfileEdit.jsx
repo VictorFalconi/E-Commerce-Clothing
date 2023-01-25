@@ -16,9 +16,9 @@ export default function UserEdit({changePage}) {
     userInfo._id ?
         info = {
             id: userInfo._id,
-            fullName: userInfo.fullName,
+            name: userInfo.name,
             email: userInfo.email,
-           // image: userInfo.image[0].secure_url,
+            image: userInfo.image,
             active: String(userInfo.active),
         }
     : console.log('Algo esta pasando en user profile edit')
@@ -66,7 +66,7 @@ export default function UserEdit({changePage}) {
                 <div className={st.userUpdateUpload}>
                     <img
                         className={st.userUpdateImg}
-                        src={userInfo.image[0]?.secure_url}
+                        src={info.image}
                         alt=""
                     />
                     <label htmlFor="file">
@@ -79,8 +79,8 @@ export default function UserEdit({changePage}) {
                         <label>Name</label>
                         <input
                             type="text"
-                            name="fullName"
-                            placeholder={info.fullName}
+                            name="name"
+                            placeholder={info.name}
                             className={st.userUpdateInput}
                             onChange={(e) => handleChange(e)}
                         />
