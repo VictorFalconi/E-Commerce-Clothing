@@ -17,8 +17,7 @@ export default function UserList({setLoad, load}) {
     
     const handleActive = (e, user) =>{
         dispatch(editUserActiveProp(user.idUser, !user.active))
-        setLoad(!load)
-        
+        setLoad(!load)        
     }
 
     const columns = [

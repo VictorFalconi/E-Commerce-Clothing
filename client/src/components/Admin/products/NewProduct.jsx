@@ -3,6 +3,7 @@ import styles from "./NewProduct.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState} from "react";
 import { useForm } from "../../../hooks/useForm";
+import Feedback from "../Feedback/Feedback";
 
 
 const initialForm = {
@@ -156,6 +157,7 @@ const handleCantidad=(e)=>{
           <Cloudinary></Cloudinary>
         </div>
       </div>
+      <Feedback/>
     </div>
   );
 };

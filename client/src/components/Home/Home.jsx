@@ -18,6 +18,7 @@ import nike from "../../icons/Nike-Logo.png";
 import adidas from "../../icons/Adidas-Logo.png";
 import gucci from "../../icons/gucci-logo.png";
 import allBrands from "../../icons/all-brands.png";
+import HomeFeedback from "../Admin/Feedback/HomeFeedback";
 
 const images = [
   "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffashionista.com%2F.image%2Ft_share%2FMTQwNTQyNzk1MDcxODkwNjY0%2Fsqgettyimages-469721122jpg.jpg&f=1&nofb=1&ipt=edbfb7e2ea12c375ceb258bec1653bd775d520eac004b0060318ca33d1eb39de&ipo=images",
@@ -117,6 +118,7 @@ const Home = () => {
         </div>
       </div>
       <ProductCards products={filteredProduct} />
+      <HomeFeedback/>
       <Footer />
     </div>
   );
