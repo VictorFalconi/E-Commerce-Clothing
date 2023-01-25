@@ -29,7 +29,7 @@ export default function UserProfile() {
     const email = user?.email;
     
     const userInfo = users?.filter((u) => u.email === user?.email);
-    console.log(user)
+    //console.log(user)
     
     useEffect(() => {
         userInfo&&dispatch(historyUser(userInfo._id))

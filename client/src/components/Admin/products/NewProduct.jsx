@@ -86,7 +86,7 @@ const handleCantidad=(e)=>{
             name="model"
             placeholder="Model"
             onChange={handleChange}
-            onblur={handleBlur}
+            onBlur={handleBlur}
             value={form.model}
             required
           />
