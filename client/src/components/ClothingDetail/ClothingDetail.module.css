@@ -43,10 +43,11 @@
     grid-template-rows: repeat(5, 70px);
     grid-template-areas:
       "a a a"
-      "b c f"
+      "b c g"
       "b d g"
-      "b e h"
-      "b i j";
+      "b e g"
+      "b i g"
+      'b f j';
     font-size: 1.5em;
     align-items: center;
   }
@@ -91,12 +92,18 @@
   grid-area: f;
 }
 
-.talla {
-  grid-area: g;
-}
-
 .sizes {
-  grid-area: h;
+  grid-area: g;
+  display: grid;
+  row-gap: 1em ;
+  background-color: transparent;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 1em;
+
 }
 
 .reviews {
@@ -114,9 +121,29 @@
   font-size: 1em;
   cursor: pointer;
   padding: 1em 0;
+  width: 300px;
 }
 
 .starContainer {
   display: flex;
   gap: .2em;
+}
+
+/* .button:hover {
+  background-color: red;
+} */
+
+.button:active {
+  /* background-color: green; */
+  transform: scale(.9);
+}
+
+.cantidad {
+  display: flex;
+  gap: 1em;
+}
+
+.talla {
+  display: flex;
+  gap: 1em;
 }

@@ -1,10 +1,15 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, FunnelIcon } from "@heroicons/react/24/outline";
 import Filter from "../Filters/Filters";
+import { useLocation } from "react-router-dom";
+
+
 
 export default function Dropdown() {
+
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <div>
@@ -78,12 +83,13 @@ export default function Dropdown() {
         </Dialog>
       </Transition.Root>
       <div>
-        <button
-          className="text-3xl font-bold"
+        {location.pathname === '/' ? <button
+          className="text-3xl flex "
           onClick={() => setOpen(true)}
         >
-          Filter
-        </button>
+          <FunnelIcon className="h-9 w-9" aria-hidden="true" />
+          <div className="font-medium">Filter</div>
+        </button> : null}
       </div>
     </div>
   );

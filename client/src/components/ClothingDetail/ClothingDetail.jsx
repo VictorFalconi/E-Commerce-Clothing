@@ -22,12 +22,11 @@ function ClothingDetail(product) {
   const param = useParams();
   const clothes = useSelector((state) => state.clothesDetail);
   const reviews = useSelector((state) => state.reviews);
-  console.log(reviews)
-  const cart = useSelector((state)=> state.cart)
+  const cart = useSelector((state) => state.cart);
   const [promedReviews, setPromedReviews] = useState(0);
   const [countReviews, setCountReviews] = useState(0);
-  const [ talleCondicional, setTalleCondicional ] = useState();
-  const [ cantidad, setCantidad] = useState(1)
+  const [talleCondicional, setTalleCondicional] = useState();
+  const [cantidad, setCantidad] = useState(1);
   let navigate = useNavigate();
   const routeChange = () => {
     let path = "/cardReviews";
@@ -55,23 +54,20 @@ function ClothingDetail(product) {
   }, []);
 
   const handleCart = (clothes) => {
-    const find = cart?.find(p => p._id === clothes._id)
+    const find = cart?.find((p) => p._id === clothes._id);
     if (find) {
-      alert('El producto ya existe en el carrito')
+      alert("El producto ya existe en el carrito");
     } else {
-       clothes.stock[talleCondicional] -= cantidad;
-      dispatch(addCart({ ...clothes, quantity: cantidad}));      
+      clothes.stock[talleCondicional] -= cantidad;
+      dispatch(addCart({ ...clothes, quantity: cantidad }));
     }
-    
   };
   function handleCant(e) {
     setCantidad(parseInt(e.target.value));
-  };
+  }
   function handleSelect(e) {
     setTalleCondicional(e.target.value);
-
   }
-
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -85,15 +81,9 @@ function ClothingDetail(product) {
           {clothes?.image?.map((e, i) => (
             <div key={i} className={styles.imgContainer}>
               {e.secure_url ? (
-                <img
-                  className={styles.image}
-                  src={e.secure_url}
-                ></img>
+                <img className={styles.image} src={e.secure_url}></img>
               ) : (
-                <img
-                  className={styles.image}
-                  src={e}
-                ></img>
+                <img className={styles.image} src={e}></img>
               )}
             </div>
           ))}
@@ -102,21 +92,62 @@ function ClothingDetail(product) {
         <p className={styles.season}>Season: {clothes?.season}</p>
         <p className={styles.brand}>Clothes: {clothes?.brand}</p>
         <p className={styles.model}>Model: {clothes?.model}</p>
-        <p className={styles.sizes}>
-          Sizes: {clothes?.stock? <select title='select' onChange={e=> handleSelect(e)}>
-            <option defaultValue value={8}>Select</option>
-            {
-              Object.getOwnPropertyNames(clothes?.stock).map(d => {
-                return (
-                  <option key={d} value={d}>{d}</option>
-                )
-              })
-            }
-          </select> : '' }                 
-        </p>     
-        <div className={styles.talla}>
-          {talleCondicional? <input name='qty' placeholder="ingrese cantidad" onChange={e => handleCant(e)} value={cantidad} type='number' min={1} max={talleCondicional? clothes?.stock[talleCondicional] : 'Seleccione Talle '} />: 'Seleccione Talle' }
-           <p>{talleCondicional? clothes?.stock[talleCondicional] : ''}</p>
+        <div className={styles.sizes}>
+          Sizes
+          <div>
+            {clothes?.stock ? (
+              <div className={styles.talla}>
+                Seleccione Talla:
+                <select title="select" onChange={(e) => handleSelect(e)}>
+                  <option defaultValue value={8}>
+                    Select
+                  </option>
+                  {Object.getOwnPropertyNames(clothes?.stock).map((d) => {
+                    return (
+                      <option key={d} value={d}>
+                        {d}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+          <div>
+            {talleCondicional ? (
+              <div className={styles.cantidad}>
+                <p>Cantidad: </p>
+                <input
+                  name="qty"
+                  placeholder="ingrese cantidad"
+                  onChange={(e) => handleCant(e)}
+                  value={cantidad}
+                  type="number"
+                  min={1}
+                  max={
+                    talleCondicional ? (
+                      <div>{clothes?.stock[talleCondicional]}</div>
+                    ) : (
+                      ""
+                    )
+                  }
+                />
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+          <div>
+            <p>
+              {talleCondicional ? (
+                <div>Stock Disponible: {clothes?.stock[talleCondicional]}</div>
+              ) : (
+                ""
+              )}
+            </p>
+          </div>
         </div>
         <div className={styles.reviews}>
           <h4>Reviews</h4>
@@ -133,11 +164,18 @@ function ClothingDetail(product) {
                 {countReviews} reviews
               </button>
             </div>
-            
           </div>
-        </div>       
-        <button disabled= {talleCondicional ? cantidad > clothes?.stock[talleCondicional]: true} className={styles.button} onClick={() => handleCart(clothes)}>
-         Add to cart
+        </div>
+        <button
+          disabled={
+            talleCondicional
+              ? cantidad > clothes?.stock[talleCondicional]
+              : true
+          }
+          className={styles.button}
+          onClick={() => handleCart(clothes)}
+        >
+          Add to cart
         </button>
         {/* MENSAJE : NO SE DONDE COLOCAR LA PARTE DEL EDID
         <ClothingEdit></ClothingEdit> */}
@@ -147,7 +185,5 @@ function ClothingDetail(product) {
 }
 
 export default ClothingDetail;
-
-
 
 /* <button className={styles.btn} onClick={() => addToCart(clothes)}>Add to bag</button> */

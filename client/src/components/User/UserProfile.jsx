@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import st from './UserProfile.module.css'
-import { getUsersDetails } from '../../redux/actions.js'
+import { getUsersDetails, historyUser } from '../../redux/actions.js'
 import UserProfileEdit from './UserProfileEdit'
 import { useAuth0 } from '@auth0/auth0-react'
 import {
@@ -23,10 +23,12 @@ export default function UserProfile() {
     const dispatch = useDispatch()
 
     const userInfo = useSelector((state) => state.usersDetails)
+    const buggies = useSelector((state) => state.history)
   
 
     useEffect(() => {
         dispatch(getUsersDetails(user.email))
+        dispatch(historyUser(userInfo._id))
     }, [])
 
     const [ editMode, setEditMode] = useState(false)
@@ -38,12 +40,12 @@ export default function UserProfile() {
             id: userInfo._id,
             fullName: userInfo.fullName,
             email: userInfo.email,
-            image: userInfo.image[0]?.secure_url,
+            image: userInfo.image[0].secure_url,
             active: String(userInfo.active),
         }
     : console.log('Algo esta pasando')
 
-    // console.log('SOY LAS PROPS: ', props)
+     //console.log('SOY userinfo bdd: ', userInfo)
 
     const changePage = () => {
         console.log('SOY EL EDIT MODE', editMode)
@@ -107,6 +109,14 @@ export default function UserProfile() {
                     <UserProfileEdit changePage={changePage} editMode={editMode}/>
                 </div>
             }
+            <div>
+                <h2><strong>Esto es el historial de compra</strong></h2>
+                {buggies?.map((b)=>{
+                return (<h4 key={b._id}>{b.products.map((p)=>{
+                        return (p.name)
+                })}</h4>)
+            })}
+            </div>
         </div>
     )
 }
