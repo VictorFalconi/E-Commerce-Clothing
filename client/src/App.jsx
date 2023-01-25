@@ -21,7 +21,6 @@ import SuccessMP from "./components/SuccessMP/SuccessMP"
 import AboutUs from './components/AboutUs/AboutUs'
 import UserProfile from "./components/User/UserProfile"
 import HelpUsImprove from "./components/HelpUsImprove/HelpUsImprove"
-import RateUs from "./components/RateUs/RateUs"
 
 function App() {
 
@@ -53,7 +52,6 @@ function App() {
         <Route path="/reviews/:id/:userId" element={<CreatePReview id='63b9ea9cc4bff6653d3dad4b' userId='63c0cd30d15676001292ce90' />} />
         <Route path='/pagado' element={<SuccessMP/>}/>
         <Route path='/aboutus' element={<AboutUs />} />
-        <Route path='/rateus' element={<RateUs/>} />
       </Routes>
     </div>
   )
