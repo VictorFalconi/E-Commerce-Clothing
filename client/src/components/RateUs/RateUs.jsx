@@ -10,8 +10,6 @@ function RateUs() {
     const email = user?.email;
     const logged = users?.filter((u) => u.email === email);
 
-
-    
     const [feedback, setFeedback] = useState({
         userId: logged[0]?._id,
         score:0,
