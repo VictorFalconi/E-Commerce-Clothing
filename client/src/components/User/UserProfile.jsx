@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import st from './UserProfile.module.css'
-import { getUsersDetails, historyUser } from '../../redux/actions.js'
+import { getUsersDetails, historyUser,createUs} from '../../redux/actions.js'
 import UserProfileEdit from './UserProfileEdit'
 import { useAuth0 } from '@auth0/auth0-react'
 import {
@@ -20,30 +20,33 @@ import {
 export default function UserProfile() {
 
     const { user } = useAuth0() 
+    //console.log(user)
     const dispatch = useDispatch()
 
-    const userInfo = useSelector((state) => state.usersDetails)
+    //const userInfo = useSelector((state) => state.usersDetails)
     const buggies = useSelector((state) => state.history)
-  
-
+    const users = useSelector(state => state.users);
+    const email = user?.email;
+    
+    const userInfo = users?.filter((u) => u.email === user?.email);
+    console.log(user)
+    
     useEffect(() => {
-        dispatch(getUsersDetails(user.email))
-        dispatch(historyUser(userInfo._id))
+        userInfo&&dispatch(historyUser(userInfo._id))
+        user&&dispatch(createUs(user))
     }, [])
 
     const [ editMode, setEditMode] = useState(false)
 
     let props = {}
-
-    userInfo._id ? 
-        props = {
+    userInfo? props = {
             id: userInfo._id,
             fullName: userInfo.fullName,
             email: userInfo.email,
-            image: userInfo.image[0].secure_url,
+            // image: userInfo.image[0].secure_url,
             active: String(userInfo.active),
         }
-    : console.log('Algo esta pasando')
+    : console.log(userInfo)
 
      //console.log('SOY userinfo bdd: ', userInfo)
 

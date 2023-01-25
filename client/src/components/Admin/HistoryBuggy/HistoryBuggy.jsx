@@ -12,7 +12,6 @@ export default function BuggyHistory() {
         dispatch(historyBuggy())
 
     },[])
-
    
     return (
             <div>

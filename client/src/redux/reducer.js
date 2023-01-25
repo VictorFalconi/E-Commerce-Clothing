@@ -270,7 +270,7 @@ const reducer = (state = initialState, action) => {
     case "CREATE_USER":
       return {
         ...state,
-        users: action.payload,
+        users: [...state.users,action.payload]
       };
     case "GET_USER_PROFILE":
       return {

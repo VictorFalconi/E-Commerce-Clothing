@@ -142,7 +142,7 @@ function ClothingDetail(product) {
           <div>
             <p>
               {talleCondicional ? (
-                <div>Stock Disponible: {clothes?.stock[talleCondicional]}</div>
+                <p>Stock Disponible: {clothes?.stock[talleCondicional]}</p>
               ) : (
                 ""
               )}
