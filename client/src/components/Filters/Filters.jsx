@@ -117,10 +117,6 @@ export default function Filter() {
                   <option value="9.5">9.5 US</option>
                   <option value="10">10 US</option>
                   <option value="10.5">10.5 US</option>
-                  <option value="38">38</option>
-                  <option value="39">39</option>
-                  <option value="40">40</option>
-                  <option value="41">41</option>
                   <option value="L">L</option>
                   <option value="S">S</option>
                   <option value="M">M</option>

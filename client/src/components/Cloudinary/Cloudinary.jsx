@@ -56,7 +56,7 @@ const Cloudinary = () => {
     <div className="App">
       <button className={styles.upload} onClick={() => handleOpenWidget()}>Upload pictures</button>
       <div className="images-preview-container">
-        {images.map((image) => (
+        {images?.map((image) => (
           <div key={image.public_id} className="image-preview">
             <img className={styles.image} src={image.secure_url} />
             {/* {imageToRemove != image.public_id && (

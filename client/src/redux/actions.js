@@ -121,6 +121,19 @@ export const allUsers = () => {
     }
   }
 }
+export const createUs = (payload) => {
+  return async function (dispatch) {
+    try {
+      const newUs = await axios.post(`${REQ_URL}/user`, payload)
+      dispatch({
+        type: 'CREATE_USER',
+        payload: newUs.data
+      })
+    } catch (error) {
+      console.log('error en action/createUser', error);
+    }
+  }
+}
 
 export const editUserActiveProp = (id, active) => {
   return async function(){
@@ -223,11 +236,12 @@ export const cloudinaryImage = (imagen) => {
 }
 
 export const cloudinaryProfile = (imagen) => {
+  const img = imagen[0]?.secure_url
   return function(dispatch){
     try {
       dispatch({
         type: 'CLOUDINARY_PROFILE',
-        payload: imagen
+        payload: img
       })
     } catch(error){
       console.log('error')
@@ -418,6 +432,17 @@ export function gateRateById(id) {
     const rate = await axios.get(`${REQ_URL}/feedback/${id}`)
     dispatch({
       type: "GET_RATE_BY_ID",
+      payload: rate.data
+    })
+  }
+}
+
+export function deleteRate(id) {
+  return async function(dispatch){
+    await axios.delete(`${REQ_URL}/feedback/${id}`)
+    const rate = await axios.get(`${REQ_URL}/feedback`)
+    dispatch({
+      type: "DELETE_FEEDBACK",
       payload: rate.data
     })
   }

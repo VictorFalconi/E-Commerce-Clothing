@@ -3,18 +3,19 @@ const { userModel } = require('../models/index')
 const createUser = async (req, res) => {
     try{
         const user = req.body;
-    if(user){
-        const newUser = new userModel({
-            full_name: user.name,
-            email: user.email,
-            name: user.given_name,
-            last_name: user.family_name,
-            image: user.picture
-        })
-        const result = await newUser.save().then((data) => res.json(data));
-        // res.status(200).json(result)
-    }else{
-        res.status(400).json('No se cumplio if')
+        let found = await userModel.findOne({ email: user.email});
+        if(!found){
+            if(user){
+                const newUser = new userModel({
+                    username: user.nickname,
+                    email: user.email,
+                    name: user.name,
+                    image: user.picture
+                })
+                const result = await newUser.save().then((data) => res.json(data));
+                // res.status(200).json(result)
+            }}else{
+            res.status(200).json(found)
     }
     
     }catch(err){
@@ -78,7 +79,7 @@ const updateUsersProfile = async (req, res, next) => {
     try {
         const { id } = req.params
         let {
-            fullName,
+            name,
             email,
             image,
         } = req.body
@@ -86,7 +87,7 @@ const updateUsersProfile = async (req, res, next) => {
         await userModel.findByIdAndUpdate(
             id,
             {
-                fullName: fullName,
+                name: name,
                 email: email,
                 image: image,
             },

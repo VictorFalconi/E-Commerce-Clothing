@@ -1,26 +1,23 @@
 import React, { useEffect, useState  } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from 'react-redux'
-import { addRate, getRate, gateRateById, getUsersDetails} from '../../redux/actions';
+import { addRate,getUsersDetails } from '../../redux/actions';
 
 function RateUs() {
-    const { user } = useAuth0();
-    const dispatch = useDispatch();
-    const users = useSelector(state => state.users);
-    const email = user?.email;
-    const logged = users?.filter((u) => u.email === email);
-
-
-    
+    const dispatch = useDispatch();   
+    const use = useSelector(state => state.usersDetails);
     const [feedback, setFeedback] = useState({
-        userId: logged[0]?._id,
+        userId:use._id,
         score:0,
         comment:''
     })
 
+  console.log('esto es use',feedback)
+
         
     function handleRate(e) {
         e.preventDefault()
+        console.log('feedback rate', feedback)
         setFeedback({
             ...feedback,
             score:e.target.value
@@ -28,6 +25,7 @@ function RateUs() {
     }
     function handleComment(e) {
         e.preventDefault()
+        console.log('feedback coment', feedback)
         setFeedback({
             ...feedback,
             comment:e.target.value
@@ -36,7 +34,6 @@ function RateUs() {
     function handleSubmit(e) {
         e.preventDefault()
        dispatch(addRate(feedback))
-       console.log(feedback)
     }
 
     
