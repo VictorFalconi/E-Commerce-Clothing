@@ -140,13 +140,15 @@ function ClothingDetail(product) {
             )}
           </div>
           <div>
-            <p>
+          <div>
+           
               {talleCondicional ? (
-                <div>Stock Disponible: {clothes?.stock[talleCondicional]}</div>
+                 <p>Stock Disponible: {clothes?.stock[talleCondicional]}</p>
               ) : (
                 ""
               )}
-            </p>
+              </div>
+           
           </div>
         </div>
         <div className={styles.reviews}>
