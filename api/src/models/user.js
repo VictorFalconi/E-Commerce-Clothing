@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema({
     image: {
         type: Array,
     },
-    isAdmin: {
+    admin: {
         type: Boolean,
         default: false,
     },
