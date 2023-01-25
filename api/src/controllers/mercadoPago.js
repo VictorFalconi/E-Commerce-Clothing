@@ -31,7 +31,7 @@
        // crear la preferencia con los items y las URLs de retorno
        let preference = {
          back_urls: {
-           success: `http://127.0.0.1:5173/pagado`,
+           success: `https://e-commerce-clothing-three.vercel.app/pagado`,
          },         
          items: items
        };
