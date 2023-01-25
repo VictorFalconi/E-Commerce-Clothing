@@ -80,7 +80,7 @@ export default function SideBar() {
                     <h3 className={st.sidebarTitle}>Notifications</h3>
                     <ul className={st.sidebarList}>
                         <li className={st.sidebarListItem}>
-                            <a href="https://outlook.live.com/mail/0/" className={st.link}>
+                            <a href="mailto:https://outlook.live.com/mail/0/" className={st.link}>
                                 <MailOutline className={st.sidebarIcon} />
                                 Web Mail
                             </a>
