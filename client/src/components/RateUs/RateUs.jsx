@@ -1,24 +1,23 @@
 import React, { useEffect, useState  } from 'react'
+import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from 'react-redux'
-import { addRate, getRate, gateRateById} from '../../redux/actions';
-
-// {
-//     id: 654654,
-//     score: 654,
-//     comment: ''
-// }
-
-   
+import { addRate, getRate, gateRateById, getUsersDetails} from '../../redux/actions';
 
 function RateUs() {
+    const { user } = useAuth0();
     const dispatch = useDispatch();
-    const user = useSelector(state => state.usersDetails);
-    const rate = useSelector(state => state.rate_us);
+    const users = useSelector(state => state.users);
+    const email = user?.email;
+    const logged = users?.filter((u) => u.email === email);
+
+
+    
     const [feedback, setFeedback] = useState({
-        userId: user._id,
+        userId: logged[0]?._id,
         score:0,
         comment:''
     })
+
         
     function handleRate(e) {
         e.preventDefault()
@@ -38,8 +37,8 @@ function RateUs() {
         e.preventDefault()
        dispatch(addRate(feedback))
        console.log(feedback)
-
     }
+
     
     return (
         <div>
