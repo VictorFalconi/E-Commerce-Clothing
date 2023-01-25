@@ -1,7 +1,7 @@
 import React, { useEffect, useState  } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from 'react-redux'
-import { addRate, getRate, gateRateById, getUsersDetails} from '../../redux/actions';
+import { addRate } from '../../redux/actions';
 
 function RateUs() {
     const { user } = useAuth0();
@@ -36,7 +36,6 @@ function RateUs() {
     function handleSubmit(e) {
         e.preventDefault()
        dispatch(addRate(feedback))
-       console.log(feedback)
     }
 
     

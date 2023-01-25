@@ -18,7 +18,7 @@ const SuccessMP = () => {
     return (
         <div>
         <h1>Thank you for the purchase. Leave us a comment about your experience</h1>
-        <h3>Deju un comentario</h3>
+        <h3>Deje un comentario</h3>
         <RateUs/>
         </div>
     )

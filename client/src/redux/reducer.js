@@ -433,6 +433,11 @@ const reducer = (state = initialState, action) => {
               ...state,
               rate_us: [...state.rate_us, action.payload],
             };
+            case "DELETE_FEEDBACK":
+            return {
+              ...state,
+              rate_us: action.payload,
+            };
 
 
     default:
