@@ -23,17 +23,18 @@ export default function UserProfile() {
     //console.log(user)
     const dispatch = useDispatch()
 
-    //const userInfo = useSelector((state) => state.usersDetails)
+    const userInfo = useSelector((state) => state.usersDetails)
     const buggies = useSelector((state) => state.history)
     const users = useSelector(state => state.users);
     const email = user?.email;
     
-    const userInfo = users?.filter((u) => u.email === user?.email);
+    // const userInfo = users?.filter((u) => u.email === user?.email);
     //console.log(user)
     
     useEffect(() => {
         userInfo&&dispatch(historyUser(userInfo._id))
-        user&&dispatch(createUs(user))
+        dispatch(getUsersDetails(user.email))
+        // user&&dispatch(createUs(user))
     }, [])
 
     const [ editMode, setEditMode] = useState(false)
@@ -41,14 +42,14 @@ export default function UserProfile() {
     let props = {}
     userInfo? props = {
             id: userInfo._id,
-            fullName: userInfo.fullName,
+            name: userInfo.name,
             email: userInfo.email,
-            // image: userInfo.image[0].secure_url,
+            image: userInfo.image,
             active: String(userInfo.active),
         }
     : console.log(userInfo)
 
-     //console.log('SOY userinfo bdd: ', userInfo)
+    console.log('SOY userinfo: ', userInfo)
 
     const changePage = () => {
         console.log('SOY EL EDIT MODE', editMode)
@@ -73,7 +74,7 @@ export default function UserProfile() {
                                 <div className={st.userDetails}>
                                     <AccountBox className={st.userShowIcon} />
                                     <span className={st.userDetailsInfo}>
-                                        Name: {props.fullName}
+                                        Name: {props.name}
                                     </span>
                                 </div>
                                 <div className={st.userDetails}>

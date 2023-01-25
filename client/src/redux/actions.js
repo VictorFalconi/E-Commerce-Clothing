@@ -236,11 +236,12 @@ export const cloudinaryImage = (imagen) => {
 }
 
 export const cloudinaryProfile = (imagen) => {
+  const img = imagen[0]?.secure_url
   return function(dispatch){
     try {
       dispatch({
         type: 'CLOUDINARY_PROFILE',
-        payload: imagen
+        payload: img
       })
     } catch(error){
       console.log('error')
