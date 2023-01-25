@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 import { updateStock } from "../../redux/actions";
+import RateUs from "../RateUs/RateUs";
 
 const SuccessMP = () => {
     const dispatch = useDispatch()
@@ -15,7 +16,11 @@ const SuccessMP = () => {
      dispatch({ type: "CLEAR_CART" })
     }, []);
     return (
+        <div>
         <h1>Thank you for the purchase. Leave us a comment about your experience</h1>
+        <h3>Deju un comentario</h3>
+        <RateUs/>
+        </div>
     )
 }
 
