@@ -1,14 +1,13 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import st from './HelpUsImprove.module.css'
 import { createComments } from '../../redux/actions.js';
 import Footer from '../Footer/Footer';
+import Swal from 'sweetalert2';
 
 
 
 export default function HelpUsImprove() {
-    const [show, setShow] = useState(false);
-    const target = useRef(null);
     const dispatch = useDispatch()
 
     const [Message, setMessage] = useState({
@@ -35,8 +34,17 @@ export default function HelpUsImprove() {
                 email: '',
                 message: '',
             })
-        alert('Thank you for your feedback')
+            Swal.fire({
+                title: '¡Thank you for your feedback!',
+                icon: 'success'
+            })
+            .then((willReload) => {
+                if (willReload) {
+                  window.location.reload();
+                }
+            });
         }
+    setMessage({})
     };
 
     return (
@@ -54,7 +62,8 @@ export default function HelpUsImprove() {
                         <label className=' font-bold whitespace-pre-wrap'>Name</label>
                         <input 
                         type="text" 
-                        name="name" 
+                        name="name"
+                        value={Message.name} 
                         onChange={handleChange} 
                         placeholder="Enter your name"
                         className={st.inputField} />
@@ -64,6 +73,7 @@ export default function HelpUsImprove() {
                         <input 
                         type={"email"} 
                         name="email" 
+                        value={Message.email}
                         onChange={handleChange} 
                         placeholder="Enter your email"
                         className={st.inputField} />
@@ -73,6 +83,7 @@ export default function HelpUsImprove() {
                         <textarea 
                         type="text" 
                         name="message" 
+                        value={Message.message}
                         onChange={handleChange} 
                         placeholder="Write your comment"
                         className={st.inputField} />
@@ -82,13 +93,9 @@ export default function HelpUsImprove() {
                         <button 
                         className={st.send}
                         disabled = {Message.message === ""}
-                        name='update' 
-                        ref={target} 
+                        name='update'  
                         type="submit" 
-                        onClick={(e) => {
-                            handleSubmit(e);
-                            setShow(!show);
-                        }}>
+                        onClick={(e) => {handleSubmit(e)}}>
                             Send
                         </button>
                     </div>
