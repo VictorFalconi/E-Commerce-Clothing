@@ -15,6 +15,7 @@ import UserList from './User/UserList';
 import HelpUsToImprove from './HelpUsToImprove/HelpUsToImprove';
 import NavBar from '../NavBar/NavBar';
 import UserProfile from '../User/UserProfile';
+import BuggyHistory from './HistoryBuggy/HistoryBuggy';
 
 
 
@@ -32,7 +33,7 @@ const Admin = () => {
         if(check[0]?.admin) {
             return (
                 <React.Fragment>
-                    <AdminNavBar/>
+                    <NavBar></NavBar>
                     <div key={load} className={styles.container}>
                         <AdminSideBar></AdminSideBar>
                         <Routes>
@@ -42,13 +43,17 @@ const Admin = () => {
                             <Route path="/product/:productId" element={<Product />} />
                             <Route path="/newProduct" element={<NewProduct />}></Route>
                             <Route path="/users" element={<UserList setLoad={setLoad} load={load}/>}></Route>
+                            <Route path="/buggy" element={<BuggyHistory/>}></Route>
                         </Routes>
                     </div>
                 </React.Fragment>
             )
         }else{
          return ( 
+            <div>
+            <NavBar></NavBar>
             <UserProfile></UserProfile>
+            </div>
         )}
     
        } 

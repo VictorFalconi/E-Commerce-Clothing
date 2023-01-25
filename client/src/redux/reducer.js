@@ -27,7 +27,8 @@ const initialState = {
   filteredReviews: [],
   comments: [],
   favorites: {},
-  purchaseHistory: [],
+  history: [],
+  rate_us: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -407,6 +408,38 @@ const reducer = (state = initialState, action) => {
             ...state,
             favorites: {...state.favorites, [user || 'invitado']: state.favorites[user].filter(p => p !== product)}
           }}
+
+         //-----------History Buggy-----------------------
+
+         case 'GET_HISTORY_BUGGY':
+          return {
+            ...state,
+            history: action.payload
+          };  
+
+          case 'GET_HISTORY_USER':
+          return {
+            ...state,
+            history: action.payload
+          };
+          //-------------rate us-------------------------
+          case 'GET_RATE':
+            return {
+              ...state,
+              rate_us: action.payload
+            };
+          case "ADD_RATE":
+            return {
+              ...state,
+              rate_us: [...state.rate_us, action.payload],
+            };
+            case "DELETE_FEEDBACK":
+            return {
+              ...state,
+              rate_us: action.payload,
+            };
+
+
     default:
       return state;
   }

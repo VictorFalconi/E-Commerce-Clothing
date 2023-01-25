@@ -5,6 +5,7 @@ const models = {
     reviewsModel: require('./reviews.js'),
     buggyModel: require('./buggy.js'),
     commentsModel: require('./comments.js'),
+    feedbakModel: require('./feedback.js'),
 }
 
 module.exports = models;

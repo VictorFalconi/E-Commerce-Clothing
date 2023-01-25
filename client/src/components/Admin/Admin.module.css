@@ -3,9 +3,9 @@ body {
 }
 
 .container {
-    height: 500px;
+    height: 86vh;
     display: flex;
-    margin-top: 1.5em;
+    margin: 1.5em;
 }
 
 .user {
