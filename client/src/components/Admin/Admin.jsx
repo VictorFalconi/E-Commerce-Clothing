@@ -16,6 +16,8 @@ import HelpUsToImprove from './HelpUsToImprove/HelpUsToImprove';
 import NavBar from '../NavBar/NavBar';
 import UserProfile from '../User/UserProfile';
 import BuggyHistory from './HistoryBuggy/HistoryBuggy';
+import Feedback from './Feedback/Feedback';
+
 
 
 
@@ -39,6 +41,7 @@ const Admin = () => {
                         <Routes>
                             <Route exact path='/' element={<UserList setLoad={setLoad} load={load} />}></Route>
                             <Route path="/helpustoimprove" element={<HelpUsToImprove />} />
+                            <Route path="/feedback" element={<Feedback />}></Route>
                             <Route path="/products" element={<ProductList />}></Route>
                             <Route path="/product/:productId" element={<Product />} />
                             <Route path="/newProduct" element={<NewProduct />}></Route>

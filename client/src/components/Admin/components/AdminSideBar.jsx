@@ -94,6 +94,15 @@ export default function SideBar() {
                                 Help us to improve
                             </Link>
                         </li>
+                        <li className={st.sidebarListItem}>
+                            <Link
+                                to="/admin/feedback"
+                                className={st.link}
+                                >
+                                <MoveToInbox className={st.sidebarIcon} />
+                                Feedbacks
+                            </Link>
+                        </li>
                     </ul>
                 </div>
 
