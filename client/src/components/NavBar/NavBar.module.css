@@ -14,7 +14,7 @@
   align-items: center;
   grid-template-areas:
     "a a a b c"
-    "d d d d e";
+    "d d d f e";
   column-gap: 1em;
   border: 1px solid rgba(225, 225, 225, 0.4);
   border-right: 1px solid rgba(225, 225, 225, 0.2);
@@ -28,7 +28,11 @@
 
 .logo {
   width: 100%;
-  border-radius: 25px;
+  /* filter: invert(1); */
+}
+
+.imglogo {
+  border-radius: 20px;
 }
 
 @media screen and (min-width: 960px) {
@@ -37,12 +41,12 @@
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: 1fr;
     gap: 2em;
-    grid-template-areas: "a a d d d d d e b c ";
+    grid-template-areas: "a a d d d d f e b c ";
   }
 
   .logo {
     width: 80%;
-    border-radius: 25px;
+    border-radius: 20px;
   }
 }
 
@@ -51,14 +55,17 @@
 }
 .cart {
   grid-area: b;
-  font-size: 30px;
+  font-size: 1.7em;
   color: black;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login {
   grid-area: c;
-  font-size: 30px;
+  /* font-size: 2.2em; */
   text-align: center;
 }
 
@@ -68,6 +75,13 @@
 
 .dropdown {
   grid-area: e;
+  text-align: center;
+}
+
+.dashboard {
+  grid-area: f;
+  font-size: 1.7em;
+  color: black;
   text-align: center;
 }
 

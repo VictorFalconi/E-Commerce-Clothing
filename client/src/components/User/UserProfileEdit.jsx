@@ -26,14 +26,17 @@ export default function UserEdit({changePage}) {
 
     const [input, setInput] = useState({})
 
-    useEffect(()=>{
+    useEffect(()=> {
         input.image = images
+    }, [images])
+
+    useEffect(()=>{
         userInfo._id?
         setInput({    
             ...userInfo
         })
         : console.log('Algo esta pasando en el useEffect')
-    }, [images])
+    }, [])
 
     console.log('SOY EL INPUT: ', input)
 
@@ -49,7 +52,7 @@ export default function UserEdit({changePage}) {
         e.preventDefault()
         if (e.target.name === 'update') {
             dispatch(editUser(info.id, input))
-            // window.location.reload()
+            window.location.reload()
             changePage()
         }
     }
@@ -63,7 +66,7 @@ export default function UserEdit({changePage}) {
                 <div className={st.userUpdateUpload}>
                     <img
                         className={st.userUpdateImg}
-                        src={info.image}
+                        src={userInfo.image[0]?.secure_url}
                         alt=""
                     />
                     <label htmlFor="file">
@@ -86,6 +89,7 @@ export default function UserEdit({changePage}) {
                         <label>Email</label>
                         <input
                             type="email"
+                            disabled
                             name="email"
                             placeholder={info.email}
                             className={st.userUpdateInput}

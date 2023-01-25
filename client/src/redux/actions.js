@@ -3,7 +3,7 @@ import axios from "axios";
 
 // import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
-const REQ_URL = 'https://e-commerce-clothing.onrender.com';
+const REQ_URL = 'http://localhost:9000';
 
 export function searchClothes(name) {
   return async function (dispatch) {
@@ -357,6 +357,79 @@ export function removeFavorite(userId, productId) {
         userId,
         productId
       }
+    })
+  }
+}
+
+
+// history buggy----------------------------------
+
+export function historyBuggy() {
+  return async function(dispatch){
+    const allBuggies = await axios.get(`${REQ_URL}/buggy`)
+    dispatch({
+      type: "GET_HISTORY_BUGGY",
+      payload: allBuggies.data
+    })
+  }
+
+}
+
+export function historyUser(id) {
+  return async function(dispatch){
+    const allBuggies = await axios.get(`${REQ_URL}/buggy/${id}`)
+    dispatch({
+      type: "GET_HISTORY_USER",
+      payload: allBuggies.data
+    })
+  }
+}
+
+//-----------------------rateUs------------
+export const getRate = () => {
+  return async function (dispatch) {
+    try {
+      const rate = await axios.get(`${REQ_URL}/feedback`)
+      dispatch({
+        type: 'GET_RATE',
+        payload: rate.data
+      })
+    } catch (error) {
+      console.log('Error en action getRate');
+    }
+  }
+}
+export function addRate(payload){
+  return async function(dispatch){
+    try {
+      let rate = await axios.post(`${REQ_URL}/feedback`, payload)
+      dispatch({
+          type: 'ADD_RATE',
+          payload: rate.data
+      })
+    } catch (error) {
+      console.log('error en action addRate', error)
+    }
+  }
+}
+
+export function gateRateById(id) {
+  return async function(dispatch){
+    const rate = await axios.get(`${REQ_URL}/feedback/${id}`)
+    dispatch({
+      type: "GET_RATE_BY_ID",
+      payload: rate.data
+    })
+  }
+}
+
+export function deleteRate(id) {
+  return async function(dispatch){
+    await axios.delete(`${REQ_URL}/feedback/${id}`)
+    const rate = await axios.get(`${REQ_URL}/feedback`)
+    dispatch({
+      type: "DELETE_FEEDBACK",
+      payload: rate.data
     })
   }
 }
