@@ -3,8 +3,12 @@ import React from "react";
 import styles from "./Footer.module.css";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+
+  const navigate = useNavigate();
+
   return (
     <div className={styles.footercontainer}>
       <div className={styles.footercontact}>
@@ -24,14 +28,14 @@ export default function Footer() {
         <h1>SHINE TEAM</h1>
         <h3 className={styles.aboutuscontainer}>
           <FontAwesomeIcon className={styles.arrowiconright} icon={faArrowRight}></FontAwesomeIcon>
-          <a className={styles.aboutus} href="/aboutus">About Us</a>
+          <p className={styles.aboutus} onClick={() => {navigate('/aboutus')}} style={{cursor: 'pointer'}}>About Us</p>
           <FontAwesomeIcon className={styles.arrowiconleft} icon={faArrowLeft}></FontAwesomeIcon>
         </h3>
         <h3>Henry - Final Project - FT31b Team 17</h3>
       </div>
       <div className={styles.footerrights}>
         <h1>Shine All Rights Reserved © 2023</h1>
-        <a href="/helpusimprove">Give us your feedback</a>
+        <p onClick={() => {navigate('/helpustoimprove')}} style={{cursor: 'pointer'}}>Give us your feedback</p>
       </div>
     </div>
   );
