@@ -19,4 +19,4 @@ function RateUs() {
     )
 }
 
-export default RateUs;
+export default RateUs; 
