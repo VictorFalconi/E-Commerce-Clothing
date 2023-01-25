@@ -35,7 +35,7 @@ export default function Footer() {
       </div>
       <div className={styles.footerrights}>
         <h1>Shine All Rights Reserved © 2023</h1>
-        <p onClick={() => {navigate('/helpustoimprove')}} style={{cursor: 'pointer'}}>Give us your feedback</p>
+        <p onClick={() => {navigate('/helpusimprove')}} style={{cursor: 'pointer'}}>Give us your feedback</p>
       </div>
     </div>
   );
