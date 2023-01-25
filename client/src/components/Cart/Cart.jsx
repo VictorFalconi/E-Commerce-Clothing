@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { checkout, removeCartProduct } from "../../redux/actions";
+import { checkout, getUsersDetails, removeCartProduct } from "../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import styles from "./Cart.module.css";
 import ClothingDetail from "../ClothingDetail/ClothingDetail";
 import { Link, useNavigate } from "react-router-dom";
 import { style } from "@mui/system";
+import { createUs} from '../../redux/actions.js'
 
 function Cart() {
   const dispatch = useDispatch();
@@ -41,8 +42,7 @@ function Cart() {
 
   const verificacionActive = () => {
     const email = user.email;
-    const check = users.filter((u) => u.email === email);
-    // console.log(check[0]?._id)
+    const check = users?.filter((u) => u.email === user.email);
     if (check[0]?.active === false) {
       return (
         <button onClick={() => alert("Usuario banneado")}>
@@ -54,13 +54,18 @@ function Cart() {
         <button
           className={styles.confirmarcompra}
           disabled={cart.length === 0}
-          onClick={() => dispatch(checkout(check[0]._id, cart))}
+          onClick={() => {dispatch(checkout(check[0]._id, cart))
+          dispatch(getUsersDetails(check[0].email))}}
         >
           Confirmar compra
         </button>
       );
     }
   };
+  useEffect(() => {
+    user&&dispatch(createUs(user))
+  }, [user])
+  
 
   return (
     <div className={styles.cartContainer}>

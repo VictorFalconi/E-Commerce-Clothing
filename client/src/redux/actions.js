@@ -3,6 +3,7 @@ import axios from "axios";
 
 // import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
+
 const REQ_URL = 'https://e-commerce-clothing.onrender.com';
 
 export function searchClothes(name) {
@@ -121,6 +122,19 @@ export const allUsers = () => {
     }
   }
 }
+export const createUs = (payload) => {
+  return async function (dispatch) {
+    try {
+      const newUs = await axios.post(`${REQ_URL}/user`, payload)
+      dispatch({
+        type: 'CREATE_USER',
+        payload: newUs.data
+      })
+    } catch (error) {
+      console.log('error en action/createUser', error);
+    }
+  }
+}
 
 export const editUserActiveProp = (id, active) => {
   return async function(){
@@ -223,11 +237,12 @@ export const cloudinaryImage = (imagen) => {
 }
 
 export const cloudinaryProfile = (imagen) => {
+  const img = imagen[0]?.secure_url
   return function(dispatch){
     try {
       dispatch({
         type: 'CLOUDINARY_PROFILE',
-        payload: imagen
+        payload: img
       })
     } catch(error){
       console.log('error')
