@@ -17,8 +17,7 @@ export default function UserList({setLoad, load}) {
     
     const handleActive = (e, user) =>{
         dispatch(editUserActiveProp(user.idUser, !user.active))
-        setLoad(!load)
-        
+        setLoad(!load)        
     }
 
     const columns = [
@@ -32,7 +31,7 @@ export default function UserList({setLoad, load}) {
                     <div className={st.userListUser}>
                         <img
                             className={st.userListPic}
-                            src={params.row.pic}
+                            src={params.row.pic[0]?.secure_url}
                             alt=""
                         />
                         {params.row.name}

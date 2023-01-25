@@ -40,7 +40,7 @@ export default function UserProfile() {
             id: userInfo._id,
             fullName: userInfo.fullName,
             email: userInfo.email,
-            //image: userInfo.image[0].secure_url,
+            image: userInfo.image[0].secure_url,
             active: String(userInfo.active),
         }
     : console.log('Algo esta pasando')

@@ -422,3 +422,14 @@ export function gateRateById(id) {
     })
   }
 }
+
+export function deleteRate(id) {
+  return async function(dispatch){
+    await axios.delete(`${REQ_URL}/feedback/${id}`)
+    const rate = await axios.get(`${REQ_URL}/feedback`)
+    dispatch({
+      type: "DELETE_FEEDBACK",
+      payload: rate.data
+    })
+  }
+}

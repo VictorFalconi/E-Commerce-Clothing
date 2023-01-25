@@ -33,7 +33,7 @@ const Admin = () => {
         if(check[0]?.admin) {
             return (
                 <React.Fragment>
-                    <AdminNavBar/>
+                    <NavBar></NavBar>
                     <div key={load} className={styles.container}>
                         <AdminSideBar></AdminSideBar>
                         <Routes>
@@ -50,7 +50,10 @@ const Admin = () => {
             )
         }else{
          return ( 
+            <div>
+            <NavBar></NavBar>
             <UserProfile></UserProfile>
+            </div>
         )}
     
        } 
