@@ -4,7 +4,9 @@ import axios from "axios";
 // import { ALL_CLOTHES, CATEGORIES, CLOTHES_DETAIL, SEARCH_CLOTHES, CREATE_PRODUCT, ORDER_BY, CREATE_P_REVIEW, GET_REVIEWS, REVIEWS_FILTER, } from "./cases";
 
 
-const REQ_URL = 'https://e-commerce-clothing.onrender.com';
+// const REQ_URL = 'https://e-commerce-clothing.onrender.com';
+const REQ_URL = 'http://localhost:9000/';
+
 
 export function searchClothes(name) {
   return async function (dispatch) {

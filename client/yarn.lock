@@ -11,20 +11,20 @@
     "@jridgewell/trace-mapping" "^0.3.9"
 
 "@auth0/auth0-react@^1.12.0":
-  "integrity" "sha512-8+ecK/4rE0AGsxLW2IDcr1oPbT55tuE6cQEzEIOkQjB6QGQxxWMzQy0D4nMKw3JUAc7nYcFVOABNFNbc471n9Q=="
-  "resolved" "https://registry.npmjs.org/@auth0/auth0-react/-/auth0-react-1.12.1.tgz"
-  "version" "1.12.1"
+  "integrity" "sha512-Cny2RyHvr0GrKKKV8PMh6GU0vkWNSgd6mp/YHYJynnYCs9yFduNo9hdpHPxXbdDX5CB6wc2PqK6aL8leDlnl/A=="
+  "resolved" "https://registry.npmjs.org/@auth0/auth0-react/-/auth0-react-1.12.0.tgz"
+  "version" "1.12.0"
   dependencies:
-    "@auth0/auth0-spa-js" "^1.22.6"
+    "@auth0/auth0-spa-js" "^1.22.4"
 
-"@auth0/auth0-spa-js@^1.22.6":
-  "integrity" "sha512-iL3O0vWanfKFVgy1J2ZHDPlAUK6EVHWEHWS6mUXwHEuPiK39tjlQtyUKQIJI1F5YsZB75ijGgRWMTawSDXlwCA=="
-  "resolved" "https://registry.npmjs.org/@auth0/auth0-spa-js/-/auth0-spa-js-1.22.6.tgz"
-  "version" "1.22.6"
+"@auth0/auth0-spa-js@^1.22.4":
+  "integrity" "sha512-6gaQcd+Eb8ZBcdQkrrm9undM7dY/rPvVdQN8s7rxxrviUCs7OopEygsfSkHf67IP4HtlCiE8dSW5/AipRUOw/A=="
+  "resolved" "https://registry.npmjs.org/@auth0/auth0-spa-js/-/auth0-spa-js-1.22.5.tgz"
+  "version" "1.22.5"
   dependencies:
     "abortcontroller-polyfill" "^1.7.3"
     "browser-tabs-lock" "^1.2.15"
-    "core-js" "^3.25.4"
+    "core-js" "^3.25.1"
     "es-cookie" "~1.3.2"
     "fast-text-encoding" "^1.0.6"
     "promise-polyfill" "^8.2.3"
@@ -42,7 +42,7 @@
   "resolved" "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.20.10.tgz"
   "version" "7.20.10"
 
-"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.20.7":
+"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.20.5":
   "integrity" "sha512-XsMfHovsUYHFMdrIHkZphTN/2Hzzi78R08NuHfDBehym2VsPDL6Zn/JAD/JQdnRvbSsbQc4mVaU1m6JgtTEElg=="
   "resolved" "https://registry.npmjs.org/@babel/core/-/core-7.20.12.tgz"
   "version" "7.20.12"
@@ -392,10 +392,10 @@
   "resolved" "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.3.0.tgz"
   "version" "0.3.0"
 
-"@esbuild/win32-x64@0.16.15":
-  "integrity" "sha512-27h5GCcbfomVAqAnMJWvR1LqEY0dFqIq4vTe5nY3becnZNu0SX8F0+gTk3JPvgWQHzaGc6VkPzlOiMkdSUunUA=="
-  "resolved" "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.16.15.tgz"
-  "version" "0.16.15"
+"@esbuild/linux-x64@0.16.13":
+  "integrity" "sha512-S4wn2BimuhPcoArRtVrdHUKIymCCZcYAXQE47kUiX4yrUrEX2/ifn5eKNbZ5c1jJKUlh1gC2ESIN+iw3wQax3g=="
+  "resolved" "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.16.13.tgz"
+  "version" "0.16.13"
 
 "@fortawesome/fontawesome-common-types@6.2.1":
   "integrity" "sha512-Sz07mnQrTekFWLz5BMjOzHl/+NooTdW8F8kDQxjWwbpOJcnoSg4vUDng8d/WR1wOxM0O+CY9Zw0nR054riNYtQ=="
@@ -552,10 +552,10 @@
     "hey-listen" "^1.0.8"
     "tslib" "^2.3.1"
 
-"@mui/base@5.0.0-alpha.113":
-  "integrity" "sha512-XSjvyQWATM8uk+EJZvYna8D21kOXC42lwb3q4K70btuGieKlCIQLaHTTDV2OfD4+JfT4o3NJy3I4Td2co31RZA=="
-  "resolved" "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.113.tgz"
-  "version" "5.0.0-alpha.113"
+"@mui/base@5.0.0-alpha.114":
+  "integrity" "sha512-ZpsG2I+zTOAnVTj3Un7TxD2zKRA2OhEPGMcWs/9ylPlS6VuGQSXowPooZiqarjT7TZ0+1bOe8titk/t8dLFiGw=="
+  "resolved" "https://registry.npmjs.org/@mui/base/-/base-5.0.0-alpha.114.tgz"
+  "version" "5.0.0-alpha.114"
   dependencies:
     "@babel/runtime" "^7.20.7"
     "@emotion/is-prop-valid" "^1.2.0"
@@ -566,10 +566,10 @@
     "prop-types" "^15.8.1"
     "react-is" "^18.2.0"
 
-"@mui/core-downloads-tracker@^5.11.4":
-  "integrity" "sha512-jWVwGM3vG4O0sXcW0VcIl+njCWbGCBF5vvjRpuKJajrz51AD7D6+fP1SkInZXVk5pRHf6Bnk/Yj9Of9gXxb/hA=="
-  "resolved" "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.4.tgz"
-  "version" "5.11.4"
+"@mui/core-downloads-tracker@^5.11.5":
+  "integrity" "sha512-MIuWGjitOsugpRhp64CQY3ZEVMIu9M/L9ioql6QLSkz73+bGIlC9FEhfi670/GZ8pQIIGmtiGGwofYzlwEWjig=="
+  "resolved" "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.5.tgz"
+  "version" "5.11.5"
 
 "@mui/icons-material@^5.11.0":
   "integrity" "sha512-I2LaOKqO8a0xcLGtIozC9xoXjZAto5G5gh0FYUMAlbsIHNHIjn4Xrw9rvjY20vZonyiGrZNMAlAXYkY6JvhF6A=="
@@ -579,14 +579,14 @@
     "@babel/runtime" "^7.20.6"
 
 "@mui/material@^5.0.0", "@mui/material@^5.11.4", "@mui/material@^5.4.1":
-  "integrity" "sha512-ZL/czK9ynrQJ6uyDwQgK+j7m1iKA1XKPON+rEPupwAu/bJ1XJxD+H/H2bkMM8UpOkzaucx/WuMbJJGQ60l7gBg=="
-  "resolved" "https://registry.npmjs.org/@mui/material/-/material-5.11.4.tgz"
-  "version" "5.11.4"
+  "integrity" "sha512-5fzjBbRYaB5MoEpvA32oalAWltOZ3/kSyuovuVmPc6UF6AG42lTtbdMLpdCygurFSGUMZYTg4Cjij52fKlDDgg=="
+  "resolved" "https://registry.npmjs.org/@mui/material/-/material-5.11.5.tgz"
+  "version" "5.11.5"
   dependencies:
     "@babel/runtime" "^7.20.7"
-    "@mui/base" "5.0.0-alpha.113"
-    "@mui/core-downloads-tracker" "^5.11.4"
-    "@mui/system" "^5.11.4"
+    "@mui/base" "5.0.0-alpha.114"
+    "@mui/core-downloads-tracker" "^5.11.5"
+    "@mui/system" "^5.11.5"
     "@mui/types" "^7.2.3"
     "@mui/utils" "^5.11.2"
     "@types/react-transition-group" "^4.4.5"
@@ -615,10 +615,10 @@
     "csstype" "^3.1.1"
     "prop-types" "^15.8.1"
 
-"@mui/system@^5.11.4", "@mui/system@^5.4.1":
-  "integrity" "sha512-fE2Ts33V5zh7ouciwXgMm/a6sLvjIj9OMeojuHNYY7BStTxparC/Fp9CNUZNJwt76U6ZJC59aYScFSRQKbW08g=="
-  "resolved" "https://registry.npmjs.org/@mui/system/-/system-5.11.4.tgz"
-  "version" "5.11.4"
+"@mui/system@^5.11.5", "@mui/system@^5.4.1":
+  "integrity" "sha512-KNVsJ0sgRRp2XBqhh4wPS5aacteqjwxgiYTVwVnll2fgkgunZKo3DsDiGMrFlCg25ZHA3Ax58txWGE9w58zp0w=="
+  "resolved" "https://registry.npmjs.org/@mui/system/-/system-5.11.5.tgz"
+  "version" "5.11.5"
   dependencies:
     "@babel/runtime" "^7.20.7"
     "@mui/private-theming" "^5.11.2"
@@ -646,9 +646,9 @@
     "react-is" "^18.2.0"
 
 "@mui/x-data-grid@^5.17.18":
-  "integrity" "sha512-0hWExrABXA03HQZoY/EaN6jiFMXdQWs7Y+3xtngiRzGQQl6kmLz1IjdKpNuwuc2g3xphnCpz9WSqTxVhJqdmAw=="
-  "resolved" "https://registry.npmjs.org/@mui/x-data-grid/-/x-data-grid-5.17.18.tgz"
-  "version" "5.17.18"
+  "integrity" "sha512-khOe5l2deUBxUCkY9qKzevjIcg0l2rab2GjVwRfpJ/FUlV9cEsTvA9fSv4ylo6BsPfENBH6GPjZwxkr5GsXYgw=="
+  "resolved" "https://registry.npmjs.org/@mui/x-data-grid/-/x-data-grid-5.17.20.tgz"
+  "version" "5.17.20"
   dependencies:
     "@babel/runtime" "^7.18.9"
     "@mui/utils" "^5.10.3"
@@ -914,11 +914,11 @@
   "version" "0.0.3"
 
 "@vitejs/plugin-react@^3.0.0":
-  "integrity" "sha512-mx+QvYwIbbpOIJw+hypjnW1lAbKDHtWK5ibkF/V1/oMBu8HU/chb+SnqJDAsLq1+7rGqjktCEomMTM5KShzUKQ=="
-  "resolved" "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-3.0.1.tgz"
-  "version" "3.0.1"
+  "integrity" "sha512-1mvyPc0xYW5G8CHQvJIJXLoMjl5Ct3q2g5Y2s6Ccfgwm45y48LBvsla7az+GkkAtYikWQ4Lxqcsq5RHLcZgtNQ=="
+  "resolved" "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-3.0.0.tgz"
+  "version" "3.0.0"
   dependencies:
-    "@babel/core" "^7.20.7"
+    "@babel/core" "^7.20.5"
     "@babel/plugin-transform-react-jsx-self" "^7.18.6"
     "@babel/plugin-transform-react-jsx-source" "^7.19.6"
     "magic-string" "^0.27.0"
@@ -1129,9 +1129,9 @@
   "version" "2.2.0"
 
 "bootstrap@^5.2.2":
-  "integrity" "sha512-dEtzMTV71n6Fhmbg4fYJzQsw1N29hJKO1js5ackCgIpDcGid2ETMGC6zwSYw09v05Y+oRdQ9loC54zB1La3hHQ=="
-  "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-5.2.2.tgz"
-  "version" "5.2.2"
+  "integrity" "sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ=="
+  "resolved" "https://registry.npmjs.org/bootstrap/-/bootstrap-5.2.3.tgz"
+  "version" "5.2.3"
 
 "brace-expansion@^1.1.7":
   "integrity" "sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA=="
@@ -1244,9 +1244,9 @@
   "version" "1.0.1"
 
 "caniuse-lite@^1.0.30001400", "caniuse-lite@^1.0.30001426":
-  "integrity" "sha512-239m03Pqy0hwxYPYR5JwOIxRJfLTWtle9FV8zosfV5pHg+/51uD4nxcUlM8+mWWGfwKtt8lJNHnD3cWw9VZ6ow=="
-  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001442.tgz"
-  "version" "1.0.30001442"
+  "integrity" "sha512-OyxRR4Vof59I3yGWXws6i908EtGbMzVUi3ganaZQHmydk1iwDhRnvaPG2WaR0KcqrDFKrxVZHULT396LEPhXfg=="
+  "resolved" "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001441.tgz"
+  "version" "1.0.30001441"
 
 "chalk@^2.0.0":
   "integrity" "sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ=="
@@ -1404,7 +1404,7 @@
   "resolved" "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.9.0.tgz"
   "version" "1.9.0"
 
-"core-js@^3.25.4":
+"core-js@^3.25.1":
   "integrity" "sha512-GutwJLBChfGCpwwhbYoqfv03LAfmiz7e7D/BNxzeMxwQf10GRSzqiOjx7AmtEk+heiD/JWmBuyBPgFtx0Sg1ww=="
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.27.1.tgz"
   "version" "3.27.1"
@@ -1548,32 +1548,32 @@
   "version" "1.3.2"
 
 "esbuild@^0.16.3":
-  "integrity" "sha512-v+3ozjy9wyj8cOElzx3//Lsb4TCxPfZxRmdsfm0YaEkvZu7y6rKH7Zi1UpDx4JI7dSQui+U1Qxhfij9KBbHfrA=="
-  "resolved" "https://registry.npmjs.org/esbuild/-/esbuild-0.16.15.tgz"
-  "version" "0.16.15"
+  "integrity" "sha512-oYwFdSEIoKM1oYzyem1osgKJAvg5447XF+05ava21fOtilyb2HeQQh26/74K4WeAk5dZmj/Mx10zUqUnI14jhA=="
+  "resolved" "https://registry.npmjs.org/esbuild/-/esbuild-0.16.13.tgz"
+  "version" "0.16.13"
   optionalDependencies:
-    "@esbuild/android-arm" "0.16.15"
-    "@esbuild/android-arm64" "0.16.15"
-    "@esbuild/android-x64" "0.16.15"
-    "@esbuild/darwin-arm64" "0.16.15"
-    "@esbuild/darwin-x64" "0.16.15"
-    "@esbuild/freebsd-arm64" "0.16.15"
-    "@esbuild/freebsd-x64" "0.16.15"
-    "@esbuild/linux-arm" "0.16.15"
-    "@esbuild/linux-arm64" "0.16.15"
-    "@esbuild/linux-ia32" "0.16.15"
-    "@esbuild/linux-loong64" "0.16.15"
-    "@esbuild/linux-mips64el" "0.16.15"
-    "@esbuild/linux-ppc64" "0.16.15"
-    "@esbuild/linux-riscv64" "0.16.15"
-    "@esbuild/linux-s390x" "0.16.15"
-    "@esbuild/linux-x64" "0.16.15"
-    "@esbuild/netbsd-x64" "0.16.15"
-    "@esbuild/openbsd-x64" "0.16.15"
-    "@esbuild/sunos-x64" "0.16.15"
-    "@esbuild/win32-arm64" "0.16.15"
-    "@esbuild/win32-ia32" "0.16.15"
-    "@esbuild/win32-x64" "0.16.15"
+    "@esbuild/android-arm" "0.16.13"
+    "@esbuild/android-arm64" "0.16.13"
+    "@esbuild/android-x64" "0.16.13"
+    "@esbuild/darwin-arm64" "0.16.13"
+    "@esbuild/darwin-x64" "0.16.13"
+    "@esbuild/freebsd-arm64" "0.16.13"
+    "@esbuild/freebsd-x64" "0.16.13"
+    "@esbuild/linux-arm" "0.16.13"
+    "@esbuild/linux-arm64" "0.16.13"
+    "@esbuild/linux-ia32" "0.16.13"
+    "@esbuild/linux-loong64" "0.16.13"
+    "@esbuild/linux-mips64el" "0.16.13"
+    "@esbuild/linux-ppc64" "0.16.13"
+    "@esbuild/linux-riscv64" "0.16.13"
+    "@esbuild/linux-s390x" "0.16.13"
+    "@esbuild/linux-x64" "0.16.13"
+    "@esbuild/netbsd-x64" "0.16.13"
+    "@esbuild/openbsd-x64" "0.16.13"
+    "@esbuild/sunos-x64" "0.16.13"
+    "@esbuild/win32-arm64" "0.16.13"
+    "@esbuild/win32-ia32" "0.16.13"
+    "@esbuild/win32-x64" "0.16.13"
 
 "escalade@^3.1.1":
   "integrity" "sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw=="

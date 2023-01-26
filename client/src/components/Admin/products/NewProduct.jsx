@@ -174,10 +174,6 @@ const NewProduct = () => {
           <Cloudinary></Cloudinary>
         </div>
       </div>
-<<<<<<< HEAD
-      <Feedback />
-=======
->>>>>>> 4c1fa95bede54221e2f2d6ce2c427aefb9011519
     </div>
   );
 };
