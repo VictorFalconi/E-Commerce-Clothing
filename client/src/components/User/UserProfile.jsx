@@ -118,7 +118,7 @@ export default function UserProfile() {
             }
             <h2><strong>Favorites</strong></h2>
             <div style={{width: '98%'}}>
-                <ProductCards products={products.filter(p => favorites[email].includes(p._id))}/>
+                <ProductCards products={products.filter(p => favorites[email]?.includes(p._id))}/>
             </div>
             <div>
                 <h2><strong>Purchase History</strong></h2>
