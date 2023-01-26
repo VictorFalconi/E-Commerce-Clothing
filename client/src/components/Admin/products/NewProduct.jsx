@@ -3,8 +3,13 @@ import styles from "./NewProduct.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useForm";
+<<<<<<< HEAD
 import Feedback from "../Feedback/Feedback";
 import { style } from "@mui/system";
+=======
+
+
+>>>>>>> 4c1fa95bede54221e2f2d6ce2c427aefb9011519
 
 const initialForm = {
   name: "",
@@ -91,7 +96,7 @@ const NewProduct = () => {
             name="model"
             placeholder="Model"
             onChange={handleChange}
-            onblur={handleBlur}
+            onBlur={handleBlur}
             value={form.model}
             required
           />
@@ -169,7 +174,10 @@ const NewProduct = () => {
           <Cloudinary></Cloudinary>
         </div>
       </div>
+<<<<<<< HEAD
       <Feedback />
+=======
+>>>>>>> 4c1fa95bede54221e2f2d6ce2c427aefb9011519
     </div>
   );
 };

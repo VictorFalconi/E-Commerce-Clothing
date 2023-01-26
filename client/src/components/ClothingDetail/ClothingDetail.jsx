@@ -141,28 +141,11 @@ function ClothingDetail(product) {
           <div>
             <p>
               {talleCondicional ? (
-                <div>Stock Disponible: {clothes?.stock[talleCondicional]}</div>
+                <span>Stock Disponible: {clothes?.stock[talleCondicional]}</span>
               ) : (
                 ""
               )}
             </p>
-          </div>
-        </div>
-        <div className={styles.reviews}>
-          <h4>Reviews</h4>
-          <div>
-            <div className={styles.starContainer}>
-              {[...Array(5)].map((rating, i) => {
-                return promedReviews > i ? (
-                  <img src={StarIconFill} key={i} className={styles.staricon} />
-                ) : (
-                  <img src={StarIcon} key={i} className={styles.staricon} />
-                );
-              })}
-              <button type="button" onClick={routeChange}>
-                {countReviews} reviews
-              </button>
-            </div>
           </div>
         </div>
         <button
