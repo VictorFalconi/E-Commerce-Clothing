@@ -13,7 +13,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 export const LoginButton = () => {
   const dispatch = useDispatch();
   const { loginWithPopup } = useAuth0();
-  const handlelogin = (user) => {
+  const handlelogin = () => {
     loginWithPopup();
     dispatch(allUsers);
   };

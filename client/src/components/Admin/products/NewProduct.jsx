@@ -118,7 +118,34 @@ const NewProduct = () => {
             required
           />
           <div className={styles.status}>
-            <label>Enable/Disable</label>
+            <label>Season</label>
+          <select
+           
+           className={styles.status}
+           name="season"
+           placeholder="Enable/Disable"
+           onChange={handleChange}
+           onBlur={handleBlur}
+           value={form.season}
+           required
+         >
+            <option name="All season" value="All season">
+              All Season
+            </option>
+            <option name="Summer" value="Summer">
+              Summer
+            </option>
+            <option name="Spring" value="Spring">
+              Spring
+            </option>
+            <option name="Winter" value="Winter">
+              Winter
+            </option>
+            <option name="Autumn" value="Autumn">
+              Autumn
+            </option>
+          </select>
+          <label>Enable/Disable</label>
             <select
               className={style.option}
               name="active"

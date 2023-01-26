@@ -6,37 +6,38 @@ import { getUsersDetails, historyUser, createUs } from "../../redux/actions.js";
 import UserProfileEdit from "./UserProfileEdit";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
-  ManageAccounts,
-  AlternateEmail,
-  Pin,
-  CalendarMonth,
-  Wc,
-  Public,
-  MyLocation,
-  PhoneInTalk,
-  AccountBox,
-} from "@mui/icons-material";
+    ManageAccounts,
+    AlternateEmail,
+    Pin,
+    CalendarMonth,
+    Wc,
+    Public,
+    MyLocation,
+    PhoneInTalk,
+    AccountBox,
+} from '@mui/icons-material'
+import ProductCards from '../ProductCards/ProductCards'
 
 export default function UserProfile() {
   const { user } = useAuth0();
   //console.log(user)
   const dispatch = useDispatch();
 
-  const userInfo = useSelector((state) => state.usersDetails);
-  const buggies = useSelector((state) => state.history);
-  const users = useSelector((state) => state.users);
-  const email = user?.email;
-
-  console.log(users);
-
-  // const userInfo = users?.filter((u) => u.email === user?.email);
-  //console.log(user)
-
-  useEffect(() => {
-    userInfo && dispatch(historyUser(userInfo._id));
-    dispatch(getUsersDetails(user.email));
-    user && dispatch(createUs(user));
-  }, []);
+    const userInfo = useSelector((state) => state.usersDetails)
+    const buggies = useSelector((state) => state.history)
+    const users = useSelector(state => state.users);
+    const email = user?.email;
+    const favorites = useSelector(state => state.favorites);
+    const products = useSelector(state => state.allClothes);
+    
+    // const userInfo = users?.filter((u) => u.email === user?.email);
+    //console.log(user)
+    
+    useEffect(() => {
+        userInfo&&dispatch(historyUser(userInfo._id))
+        dispatch(getUsersDetails(user.email))
+        user&&dispatch(createUs(user))
+    }, [])
 
   const [editMode, setEditMode] = useState(false);
 

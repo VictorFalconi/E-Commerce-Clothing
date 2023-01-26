@@ -3,15 +3,17 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRate, getUsersDetails } from "../../redux/actions";
 import styles from "./RateUs.module.css";
+import { useNavigate } from 'react-router-dom';
 
 function RateUs() {
-  const dispatch = useDispatch();
-  const use = useSelector((state) => state.usersDetails);
-  const [feedback, setFeedback] = useState({
-    userId: use._id,
-    score: 0,
-    comment: "",
-  });
+    const dispatch = useDispatch();   
+    const navigate = useNavigate();
+    const use = useSelector(state => state.usersDetails);
+    const [feedback, setFeedback] = useState({
+        userId:use._id,
+        score:0,
+        comment:''
+    })
 
   console.log("esto es use", feedback);
 
@@ -34,6 +36,7 @@ function RateUs() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(addRate(feedback));
+       navigate('/')
   }
 
   return (

@@ -1,5 +1,3 @@
-
-
 const initialState = {
   loading: true,
   allClothes: [],
@@ -17,6 +15,7 @@ const initialState = {
   catFilter: 'Default',
   sizeFilter: 'Default',
   brandFilter: 'Default',
+  favFilter: {value: 'Default', email: 'invitado'},
   cart: [],
   redirectMP: '',
   imageCloudinary: [],
@@ -93,6 +92,11 @@ const reducer = (state = initialState, action) => {
     case 'brandFilter': return {
       ...state,
       brandFilter: action.payload
+    }
+
+    case 'favFilter': return {
+      ...state,
+      favFilter: action.payload
     }
 
     case "ORDER_BY":
@@ -247,6 +251,17 @@ const reducer = (state = initialState, action) => {
           ...state
         }
       };
+
+    case 'FILTER_FAV':
+      switch(action.payload.value) {
+        case 'Favorites': return {
+          ...state,
+          productsFiltered: [...state.productsFiltered].filter((p) => state.favorites[action.payload.email].includes(p?._id))
+        }
+        default: return {
+          ...state
+        }
+      }
 
     //---------------------------------------------------------------------------------------------
 

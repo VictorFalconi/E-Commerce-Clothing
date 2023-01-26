@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { orderBy, filter } from "../../redux/actions";
+import { orderBy, filter, filterFav } from "../../redux/actions";
 import { useLocation } from "react-router-dom";
 import styles from "./Filters.module.css";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -12,6 +13,8 @@ export default function Filter() {
   const sizeFilter = useSelector((state) => state.sizeFilter);
   const brandFilter = useSelector((state) => state.brandFilter);
   const allClothes = useSelector((state) => state.allClothes);
+  const favFilter = useSelector((state) => state.favFilter);
+  const { user } = useAuth0();
 
   // const handleSelect = (e) => {
   //     var order = e.target.value
@@ -24,7 +27,8 @@ export default function Filter() {
     dispatch(filter(catFilter));
     dispatch(filter(sizeFilter));
     dispatch(filter(brandFilter));
-  }, [azOrder, catFilter, sizeFilter, brandFilter, allClothes]);
+    dispatch(filterFav(favFilter));
+  }, [azOrder, catFilter, sizeFilter, brandFilter, allClothes, favFilter.value]);
 
   //console.log("esto es de filtros " + productos?.name)
 
@@ -124,12 +128,29 @@ export default function Filter() {
               </div>
 
               <div>
+                <label>Favorites: </label>
+                <select
+                  value={favFilter.value}
+                  className={styles.buttonFilter}
+                  onChange={(e) => {
+                    dispatch({ type: "favFilter", payload: {value: e.target.value, email: user?.email || 'invitado'}});
+                  }}
+                >
+                  <option default value="">
+                    All products
+                  </option>
+                  <option value="Favorites">Only favorites</option>
+                </select>
+              </div>
+
+              <div>
                 <button
                   onClick={() => {
                     dispatch({ type: "azOrder", payload: "" });
                     dispatch({ type: "sizeFilter", payload: "" });
                     dispatch({ type: "catFilter", payload: "" });
                     dispatch({ type: "brandFilter", payload: "" });
+                    dispatch({ type: "favFilter", payload: {value: '', email: 'invitado'} });
                   }}
                   className={styles.buttonFilterReset}
                 >
