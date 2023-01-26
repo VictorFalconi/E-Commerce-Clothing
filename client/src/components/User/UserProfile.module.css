@@ -1,60 +1,65 @@
-.userInfo{
-    margin: 3rem 0 4rem 0;
-    display: flex;
-    justify-content: space-evenly;
+.Container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(1fr);
+  grid-template-areas:
+    "a a a"
+    "b c d";
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 25%);
+  margin: 1em;
+  gap: 1em;
 }
 
-.accountDetails{
-    padding: 2%;
-    border: 1px solid black;
-    border-radius: 20px;
-    width: 70%;
-    -webkit-box-shadow: 8px 8px 0px 0px #000000; 
-    box-shadow: 8px 8px 0px 0px #000000;
+.title {
+  grid-area: a;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 500;
 }
 
-.accountDetails>h4{
-    /* margin-top: 1rem; */
-    text-align: center;
+.userInfo {
+  grid-area: b;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 25%);
+  margin: 1em;
 }
 
-.userDetails{
-    margin: 1rem 0 1rem 0;
+.history {
+  grid-area: c;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 25%);
+  margin: 1em;
 }
 
-.userShowIcon{
-    margin-right: 0.5em;
+.favoritos {
+  grid-area: d;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 25%);
+  margin: 1em;
 }
 
-.userDetailsInfo{
-    font-size: 18px;
-}
-
-.userContactTitle{
-    /* margin-left: 2rem; */
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.leftSide{
-    display: flex;
-    align-items: center;
-    /* border: 1px solid black; */
-}
-
-.userImg{
-    width: 250px;
-    border-radius: 20%;
-    border: 2px solid black;
-}
-
-.editButton{
-    margin-top: 3rem;
-    text-align: -webkit-center;
-}
-
-.userEditCont{
-    margin: 3rem 0 4rem 0;
-    display: flex;
-    justify-content: center;
-}

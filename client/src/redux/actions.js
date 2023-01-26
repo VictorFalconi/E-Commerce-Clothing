@@ -5,7 +5,7 @@ import axios from "axios";
 
 
 // const REQ_URL = 'https://e-commerce-clothing.onrender.com';
-const REQ_URL = 'http://localhost:9000/';
+const REQ_URL = 'http://localhost:9000';
 
 
 export function searchClothes(name) {

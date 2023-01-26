@@ -1,0 +1,116 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "a a a"
+    "b c c"
+    "d d d";
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 25%);
+  margin: 1em;
+  gap: 1em;
+}
+
+.titletext {
+  grid-area: a;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2em;
+  /* font-weight: 500; */
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 25%);
+  margin: 1em;
+}
+
+.opciones {
+  grid-area: c;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 25%);
+  margin: 1em;
+}
+
+
+.opciones select {
+    background: rgb(255 255 255 / 25%);
+    border: 1px solid black;
+    padding: 0.2em;
+}
+
+.comentario {
+    min-width: 300px;
+    min-height: 200px;
+    width: 100%;
+    padding: 1em;
+}
+
+.button {
+    grid-area: d;
+  border: 1px solid black;
+  border: 1px solid rgba(225, 225, 225, 0.4);
+  border-right: 1px solid rgba(225, 225, 225, 0.2);
+  border-bottom: 1px solid rgba(225, 225, 225, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+  padding: 1em;
+  background: rgb(255 255 255 / 25%);
+  margin: 1em;
+  animation: animate 1s linear infinite alternate;
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(.97);
+        background-color: rgb(247, 229, 229);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.mensaje {
+    margin: 1em;
+    grid-area: b;
+  font-size: 2em;
+  /* font-weight: 500; */
+  text-transform: uppercase;
+    background: linear-gradient(315deg, rgb(48, 97, 22) 3%, rgb(42, 35, 178) 38%, rgb(154, 22, 22) 68%, rgb(99, 38, 131) 98%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400% 400%;
+  animation: gradient 5s linear infinite alternate;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+

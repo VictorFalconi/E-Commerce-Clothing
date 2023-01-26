@@ -39,7 +39,7 @@ function App() {
       {!location.pathname.includes("/admin") && <NavBar></NavBar>}
       {/* {!location.pathname.includes("/admin") && <Filters></Filters>} */}
       <Routes>
-          {/* <Route path="/rateus" element={<RateUs></RateUs>}></Route> */}
+          <Route path="/rateus" element={<RateUs></RateUs>}></Route>
           <Route path="/" element={<Home/>}></Route>
           <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
           <Route path="/:id" element={<ClothingDetail/>}></Route>
