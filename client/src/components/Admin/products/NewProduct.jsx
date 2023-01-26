@@ -3,13 +3,8 @@ import styles from "./NewProduct.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useForm";
-<<<<<<< HEAD
-import Feedback from "../Feedback/Feedback";
-import { style } from "@mui/system";
-=======
 
 
->>>>>>> 4c1fa95bede54221e2f2d6ce2c427aefb9011519
 
 const initialForm = {
   name: "",
