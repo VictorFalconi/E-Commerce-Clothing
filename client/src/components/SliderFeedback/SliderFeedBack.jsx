@@ -44,7 +44,7 @@ const SliderFeedBack = ({images}) => {
 
   return (
     <div>
-      <p className={styles.feedback}>{selectedImage.comment}</p>
+      <p className={styles.feedback}>{selectedImage?.comment}</p>
       <div>
         <FontAwesomeIcon className={styles.icon} icon={faStar}></FontAwesomeIcon>
         <FontAwesomeIcon className={styles.icon} icon={faStar}></FontAwesomeIcon>
