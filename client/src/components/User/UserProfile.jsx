@@ -112,7 +112,7 @@ export default function UserProfile() {
           </div>
         )}
       </div>
-      <div className={st.favoritos}>
+      <div className={st.favoritos}> 
         <h2>
           <p>Favorites</p>
         </h2>
