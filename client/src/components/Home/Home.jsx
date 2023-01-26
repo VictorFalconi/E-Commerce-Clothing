@@ -9,6 +9,7 @@ import {
   orderBy,
   allUsers,
   filterFav,
+  getRate,
 } from "../../redux/actions";
 // import Filters from "../Filters/Filters";
 import ProductCards from "../ProductCards/ProductCards";
@@ -62,6 +63,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(allClothes());
+    dispatch(getRate());
     dispatch(orderBy(azOrder));
     dispatch(filter(catFilter));
     dispatch(filter(sizeFilter));
