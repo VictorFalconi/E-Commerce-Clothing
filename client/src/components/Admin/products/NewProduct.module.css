@@ -39,6 +39,7 @@
   gap: .7em;
 }
 
+.season,
 .tallaycantidad,
 .status,
 .forminput button,
@@ -54,6 +55,7 @@
   cursor: pointer;
 }
 
+.season,
 .status {
   display: flex;
   justify-content: space-between;
@@ -92,6 +94,7 @@
   justify-content: space-evenly;
 }
 
+.season select,
 .status select {
   background-color: transparent;
   border-radius: 10px;

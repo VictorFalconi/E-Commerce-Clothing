@@ -105,8 +105,8 @@ export default function HelpUsImprove() {
         </div>
         <div className={st.mensaje}>
           <p>
-            Gracias por confiar en Shine y su equipo le agradecemos si deja su
-            comentario para seguir mejorando en la construccion de shine
+            Thank you for trusting Shine and his team. We appreciate it if you
+            leave your comment to continue improving the construction of shine.
           </p>
           <div className={st.gear}>
             <FontAwesomeIcon

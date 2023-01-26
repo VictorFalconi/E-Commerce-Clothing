@@ -6,38 +6,38 @@ import { getUsersDetails, historyUser, createUs } from "../../redux/actions.js";
 import UserProfileEdit from "./UserProfileEdit";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
-    ManageAccounts,
-    AlternateEmail,
-    Pin,
-    CalendarMonth,
-    Wc,
-    Public,
-    MyLocation,
-    PhoneInTalk,
-    AccountBox,
-} from '@mui/icons-material'
-import ProductCards from '../ProductCards/ProductCards'
+  ManageAccounts,
+  AlternateEmail,
+  Pin,
+  CalendarMonth,
+  Wc,
+  Public,
+  MyLocation,
+  PhoneInTalk,
+  AccountBox,
+} from "@mui/icons-material";
+import ProductCards from "../ProductCards/ProductCards";
 
 export default function UserProfile() {
   const { user } = useAuth0();
-  //console.log(user)
   const dispatch = useDispatch();
 
-    const userInfo = useSelector((state) => state.usersDetails)
-    const buggies = useSelector((state) => state.history)
-    const users = useSelector(state => state.users);
-    const email = user?.email;
-    const favorites = useSelector(state => state.favorites);
-    const products = useSelector(state => state.allClothes);
-    
-    // const userInfo = users?.filter((u) => u.email === user?.email);
-    //console.log(user)
-    
-    useEffect(() => {
-        userInfo&&dispatch(historyUser(userInfo._id))
-        dispatch(getUsersDetails(user.email))
-        user&&dispatch(createUs(user))
-    }, [])
+  const userInfo = useSelector((state) => state.usersDetails);
+  const buggies = useSelector((state) => state.history);
+  const users = useSelector((state) => state.users);
+  const email = user?.email;
+  const favorites = useSelector((state) => state.favorites);
+  const products = useSelector((state) => state.allClothes);
+
+
+  // const userInfo = users?.filter((u) => u.email === user?.email);
+  //console.log(user)
+
+  useEffect(() => {
+    userInfo && dispatch(historyUser(userInfo._id));
+    dispatch(getUsersDetails(user.email));
+    user && dispatch(createUs(user));
+  }, []);
 
   const [editMode, setEditMode] = useState(false);
 
@@ -52,7 +52,6 @@ export default function UserProfile() {
       })
     : console.log(userInfo);
 
-  console.log("SOY userinfo: ", userInfo);
 
   const changePage = () => {
     console.log("SOY EL EDIT MODE", editMode);
@@ -65,10 +64,11 @@ export default function UserProfile() {
 
       <div className={st.userInfo}>
         {!editMode ? (
-          <div>
+          <div className={st.userInfo}>
             <div className={st.accountDetails}>
-              <h2>Account information</h2>
-              <div>
+              <h4>Account information</h4>
+
+              <div className=" mt-4 flex justify-around">
                 <div className={st.rightSide}>
                   <div className={st.userDetails}>
                     <AccountBox className={st.userShowIcon} />
@@ -90,25 +90,20 @@ export default function UserProfile() {
                   </div>
                 </div>
                 {/* 
-                <div className={st.leftSide}>
-                  <img
-                    src={props.image}
-                    alt="Profile Pict"
-                    className={st.userImg}
-                  />
-                </div> */}
+                            <div className={st.leftSide}>
+                                <img src={props.image} alt="Profile Pict" className={st.userImg} />
+                            </div> */}
               </div>
-              {/* 
-              <div className={st.editButton}>
-                <button
-                  className=" w-28 h-14 p-2 bg-slate-900 text-slate-50 rounded-lg flex justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900"
-                  name="edit"
-                  // ref={target}
-                  onClick={changePage}
-                >
-                  Edit profile
-                </button>
-              </div> */}
+
+              {/* <div className={st.editButton}>
+                            <button 
+                            className=' w-28 h-14 p-2 bg-slate-900 text-slate-50 rounded-lg flex justify-center items-center transition hover:bg-slate-50 hover:text-slate-900 hover:border-2 hover:border-slate-900'
+                            name='edit' 
+                            // ref={target}
+                            onClick={changePage}>
+                                Edit profile
+                            </button>
+                        </div> */}
             </div>
           </div>
         ) : (
@@ -117,9 +112,20 @@ export default function UserProfile() {
           </div>
         )}
       </div>
-
+      <div className={st.favoritos}>
+        <h2>
+          <p>Favorites</p>
+        </h2>
+        <div style={{ width: "98%" }}>
+          <ProductCards
+            products={products.filter((p) => favorites[email]?.includes(p._id))}
+          />
+        </div>
+      </div>
       <div className={st.history}>
-        <h2>Historial de compra</h2>
+        <h2>
+          <strong>Purchase History</strong>
+        </h2>
         {buggies?.map((b) => {
           return (
             <h4 key={b._id}>
@@ -130,7 +136,6 @@ export default function UserProfile() {
           );
         })}
       </div>
-      <div className={st.favoritos}>Favoritos</div>
     </div>
   );
 }

@@ -3,17 +3,17 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRate, getUsersDetails } from "../../redux/actions";
 import styles from "./RateUs.module.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function RateUs() {
-    const dispatch = useDispatch();   
-    const navigate = useNavigate();
-    const use = useSelector(state => state.usersDetails);
-    const [feedback, setFeedback] = useState({
-        userId:use._id,
-        score:0,
-        comment:''
-    })
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const use = useSelector((state) => state.usersDetails);
+  const [feedback, setFeedback] = useState({
+    userId: use._id,
+    score: 0,
+    comment: "",
+  });
 
   console.log("esto es use", feedback);
 
@@ -36,17 +36,17 @@ function RateUs() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(addRate(feedback));
-       navigate('/')
+    navigate("/");
   }
 
   return (
     <div className={styles.container}>
       <h2 className={styles.titletext}>
-        Cuentanos como fue tu experiencia de tu compra!
+        Tell us how your shopping experience was!
       </h2>
       <div className={styles.mensaje}>
-        Gracias por confiar en <strong>SHINE</strong> es importante para
-        nosotros saber tu opinion y seguir mejorando.
+        Thank you for trusting in <strong>SHINE</strong> it is important for We
+        know your opinion and continue to improve.
       </div>
       <div className={styles.opciones}>
         <select onChange={handleRate}>
@@ -67,7 +67,7 @@ function RateUs() {
         </div>
       </div>
       <button className={styles.button} type="submit" onClick={handleSubmit}>
-        Gracias por tu Compra
+        Thanks for your purchase
       </button>
     </div>
   );

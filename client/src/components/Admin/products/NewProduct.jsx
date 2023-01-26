@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useForm";
 
-
-
 const initialForm = {
   name: "",
   description: "",
@@ -50,7 +48,7 @@ const NewProduct = () => {
   return (
     <div className={styles.containerform}>
       <div className={styles.form}>
-        <h2 className={styles.title}>New Product</h2>
+        {/* <h2 className={styles.title}>New Product</h2> */}
         <form className={styles.forminput} onSubmit={handleSubmit}>
           <input
             className={`${styles.input} ${styles.inputname}`}
@@ -117,37 +115,38 @@ const NewProduct = () => {
             min={0}
             required
           />
-          <div className={styles.status}>
+          <div className={styles.season}>
             <label>Season</label>
-          <select
-           
-           className={styles.status}
-           name="season"
-           placeholder="Enable/Disable"
-           onChange={handleChange}
-           onBlur={handleBlur}
-           value={form.season}
-           required
-         >
-            <option name="All season" value="All season">
-              All Season
-            </option>
-            <option name="Summer" value="Summer">
-              Summer
-            </option>
-            <option name="Spring" value="Spring">
-              Spring
-            </option>
-            <option name="Winter" value="Winter">
-              Winter
-            </option>
-            <option name="Autumn" value="Autumn">
-              Autumn
-            </option>
-          </select>
-          <label>Enable/Disable</label>
             <select
-              className={style.option}
+              className={styles.option}
+              name="season"
+              placeholder="Enable/Disable"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={form.season}
+              required
+            >
+              <option name="All season" value="All season">
+                All Season
+              </option>
+              <option name="Summer" value="Summer">
+                Summer
+              </option>
+              <option name="Spring" value="Spring">
+                Spring
+              </option>
+              <option name="Winter" value="Winter">
+                Winter
+              </option>
+              <option name="Autumn" value="Autumn">
+                Autumn
+              </option>
+            </select>
+          </div>
+          <div className={styles.status}>
+            <label>Enable/Disable</label>
+            <select
+              className={styles.option}
               name="active"
               placeholder="Enable/Disable"
               onChange={handleChange}
@@ -155,7 +154,7 @@ const NewProduct = () => {
               value={form.active}
               required
             >
-              <option name="true" value="true" >
+              <option name="true" value="true">
                 Enable
               </option>
               <option name="false" value="false">
@@ -184,7 +183,10 @@ const NewProduct = () => {
                 );
               })}
             </select>
-            <button onClick={(e) => agregarAStock(e, talleSelected, cantidad)} className={styles.button}>
+            <button
+              onClick={(e) => agregarAStock(e, talleSelected, cantidad)}
+              className={styles.button}
+            >
               Agregar
             </button>
           </div>
