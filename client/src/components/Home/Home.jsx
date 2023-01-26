@@ -8,6 +8,7 @@ import {
   filter,
   orderBy,
   allUsers,
+  filterFav,
 } from "../../redux/actions";
 // import Filters from "../Filters/Filters";
 import ProductCards from "../ProductCards/ProductCards";
@@ -48,6 +49,7 @@ const Home = () => {
   const catFilter = useSelector((state) => state.catFilter);
   const sizeFilter = useSelector((state) => state.sizeFilter);
   const brandFilter = useSelector((state) => state.brandFilter);
+  const favFilter = useSelector((state) => state.favFilter);
   const allClothesState = useSelector((state) => state.allClothes);
   const category = allCategory.filter((item, index) => {
     return allCategory.indexOf(item) === index;
@@ -59,6 +61,7 @@ const Home = () => {
     dispatch(filter(catFilter));
     dispatch(filter(sizeFilter));
     dispatch(filter(brandFilter));
+    dispatch(filterFav(favFilter));
     dispatch(allUsers());
   }, []);
 
@@ -67,7 +70,8 @@ const Home = () => {
     dispatch(filter(catFilter));
     dispatch(filter(sizeFilter));
     dispatch(filter(brandFilter));
-  }, [azOrder, catFilter, sizeFilter, brandFilter]);
+    dispatch(filterFav(favFilter));
+  }, [azOrder, catFilter, sizeFilter, brandFilter, favFilter.value]);
 
   return (
     <div
@@ -79,7 +83,7 @@ const Home = () => {
         <Slider images={images2}></Slider>
         <Slider images={images3}></Slider>
       </div>
-      <div>
+      <div style={{width: '100%', margin: '20px 0'}}>
         <div
           className="flex flex-wrap justify-center gap-3"
         >
