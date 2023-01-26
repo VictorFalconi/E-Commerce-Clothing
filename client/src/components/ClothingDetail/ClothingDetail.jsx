@@ -93,7 +93,6 @@ function ClothingDetail(product) {
         <p className={styles.brand}>Clothes: {clothes?.brand}</p>
         <p className={styles.model}>Model: {clothes?.model}</p>
         <div className={styles.sizes}>
-          Sizes
           <div>
             {clothes?.stock ? (
               <div className={styles.talla}>

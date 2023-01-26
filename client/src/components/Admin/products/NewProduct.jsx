@@ -1,48 +1,51 @@
 import Cloudinary from "../../../components/Cloudinary/Cloudinary";
 import styles from "./NewProduct.module.css";
 import { useSelector } from "react-redux";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "../../../hooks/useForm";
 import Feedback from "../Feedback/Feedback";
-
+import { style } from "@mui/system";
 
 const initialForm = {
   name: "",
   description: "",
   category: "",
-  season:"",
+  season: "",
   brand: "",
   price: "",
-  model:"",
+  model: "",
   active: true,
   image: [],
-  stock:{},
+  stock: {},
 };
 
-
-
-
 const NewProduct = () => {
-
-const talles = ['S','M','L','8','9','10']
-const stck = [1,2,3,4,5,6,7,8,9,10];
-const [stock, setStock]=useState({})
-const [talleSelected, setTalleSelected]=useState('')
-const [cantidad, setCantidad]=useState('');
+  const talles = ["S", "M", "L", "8", "9", "10"];
+  const stck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [stock, setStock] = useState({});
+  const [talleSelected, setTalleSelected] = useState("");
+  const [cantidad, setCantidad] = useState("");
 
   const image = useSelector((state) => state.imageCloudinary);
-  const { form, errors, loading, handleChange, handleBlur, handleSubmit, agregarAStock } = useForm(initialForm);
+  const {
+    form,
+    errors,
+    loading,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    agregarAStock,
+  } = useForm(initialForm);
   useEffect(() => {
     form.image = image;
   }, [image]);
 
-  const handleTalle=(e)=>{
-    setTalleSelected(e.target.value)
-}
-const handleCantidad=(e)=>{
-    setCantidad(parseInt(e.target.value))
-}
-
+  const handleTalle = (e) => {
+    setTalleSelected(e.target.value);
+  };
+  const handleCantidad = (e) => {
+    setCantidad(parseInt(e.target.value));
+  };
 
   return (
     <div className={styles.containerform}>
@@ -53,7 +56,7 @@ const handleCantidad=(e)=>{
             className={`${styles.input} ${styles.inputname}`}
             type="text"
             name="name"
-            autoComplete="none"
+            autoComplete="off"
             placeholder="Product name"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -69,6 +72,7 @@ const handleCantidad=(e)=>{
             onBlur={handleBlur}
             value={form.description}
             required
+            autoComplete="off"
           />
           <input
             className={styles.input}
@@ -82,6 +86,7 @@ const handleCantidad=(e)=>{
           />
 
           <input
+            className={styles.input}
             type="text"
             name="model"
             placeholder="Model"
@@ -112,43 +117,50 @@ const handleCantidad=(e)=>{
             min={0}
             required
           />
-          <label>Enable/Disable</label>
-          <select
-           
-            className={styles.status}
-            name="active"
-            placeholder="Enable/Disable"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={form.active}
-            required
-          >
-            <option name="true" value="true">
-              Enable
-            </option>
-            <option name="false" value="false">
-              Disable
-            </option>
-          </select>  
-          <div>
-              <select name="sele" onChange={(e)=>handleTalle(e)}>
-                <option>Seleccione talle</option>
-                {talles.map(e => {
-                  return (
-                    <option name={e} key={e} value={e}>{e}</option>
-                  )
-                })}
-              </select>
-              <select name="cant" onChange={(c)=>handleCantidad(c)}>
-                <option>Seleccione cantidad</option>
-                {stck.map(c => {
-                  return (
-                    <option name={c} key={c} value={c}>{c}</option>
-                  )
-                })}
-              </select>
-              <button onClick={(e)=>agregarAStock(e,talleSelected, cantidad)}>Agregar</button>
-          </div>     
+          <div className={styles.status}>
+            <label>Enable/Disable</label>
+            <select
+              className={style.option}
+              name="active"
+              placeholder="Enable/Disable"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={form.active}
+              required
+            >
+              <option name="true" value="true" >
+                Enable
+              </option>
+              <option name="false" value="false">
+                Disable
+              </option>
+            </select>
+          </div>
+          <div className={styles.tallaycantidad}>
+            <select name="sele" onChange={(e) => handleTalle(e)}>
+              <option>Seleccione talla</option>
+              {talles.map((e) => {
+                return (
+                  <option name={e} key={e} value={e}>
+                    {e}
+                  </option>
+                );
+              })}
+            </select>
+            <select name="cant" onChange={(c) => handleCantidad(c)}>
+              <option>Seleccione cantidad</option>
+              {stck.map((c) => {
+                return (
+                  <option name={c} key={c} value={c}>
+                    {c}
+                  </option>
+                );
+              })}
+            </select>
+            <button onClick={(e) => agregarAStock(e, talleSelected, cantidad)} className={styles.button}>
+              Agregar
+            </button>
+          </div>
           <button className={styles.button} disabled={loading}>
             {loading ? "Creando Producto Espere" : "Create"}
           </button>
@@ -157,7 +169,7 @@ const handleCantidad=(e)=>{
           <Cloudinary></Cloudinary>
         </div>
       </div>
-      <Feedback/>
+      <Feedback />
     </div>
   );
 };
