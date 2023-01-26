@@ -1,0 +1,19 @@
+.feedback {
+    font-size: 1.5em;
+}
+
+.icon {
+    font-size: 1.4em;
+    color: yellow;
+    animation: 5s infinite linear alternate animate;
+}
+
+@keyframes animate {
+    0% {
+        color: yellow;
+    }
+
+    100% {
+        color: orange;
+    }
+}

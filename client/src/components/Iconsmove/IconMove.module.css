@@ -1,0 +1,87 @@
+.icon {
+    font-size: 2em;
+    padding: 0 34px; 
+    user-select: none; 
+    color: black;
+}
+
+
+.iconFish {
+    animation: animate1 10s linear infinite;
+}
+@keyframes animate1 {
+    0% {
+        transform: translateY(0%);
+        opacity: 0%;
+    }
+
+    50% {
+        transform: translateY(50%);
+        opacity: 30%;
+    }
+
+    100% {
+        transform: translateY(100%); 
+        opacity: 0%;  
+    }
+}
+
+.iconOtter {
+    animation: animate2 9s linear infinite;
+}
+@keyframes animate2 {
+    0% {
+        transform: translateY(90%);
+        opacity: 0%;
+    }
+
+    50% {
+        transform: translateY(85%);
+        opacity: 30%;
+    }
+
+    100% {
+        transform: translateY(60%); 
+        opacity: 0%;  
+    }
+}
+
+.iconWater {
+    animation: animate3 8s linear infinite;
+}
+@keyframes animate3 {
+    0% {
+        transform: translateY(50%);
+        opacity: 0%;
+    }
+
+    50% {
+        transform: translateY(25%);
+        opacity: 30%;
+    }
+
+    100% {
+        transform: translateY(5%); 
+        opacity: 0%;  
+    }
+}
+
+.iconShrimp {
+    animation: animate3 7s linear infinite;
+}
+@keyframes animate3 {
+    0% {
+        transform: translateY(50%);
+        opacity: 0%;
+    }
+
+    50% {
+        transform: translateY(25%);
+        opacity: 30%;
+    }
+
+    100% {
+        transform: translateY(5%); 
+        opacity: 0%;  
+    }
+}

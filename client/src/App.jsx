@@ -21,6 +21,7 @@ import SuccessMP from "./components/SuccessMP/SuccessMP"
 import AboutUs from './components/AboutUs/AboutUs'
 import UserProfile from "./components/User/UserProfile"
 import HelpUsImprove from "./components/HelpUsImprove/HelpUsImprove"
+import RateUs from "./components/RateUs/RateUs"
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
       {!location.pathname.includes("/admin") && <NavBar></NavBar>}
       {/* {!location.pathname.includes("/admin") && <Filters></Filters>} */}
       <Routes>
-      
+          {/* <Route path="/rateus" element={<RateUs></RateUs>}></Route> */}
           <Route path="/" element={<Home/>}></Route>
           <Route path="/searchResults/:name" element={<SearchBar/>}></Route>
           <Route path="/:id" element={<ClothingDetail/>}></Route>

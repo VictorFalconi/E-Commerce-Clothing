@@ -20,6 +20,10 @@ import adidas from "../../icons/Adidas-Logo.png";
 import gucci from "../../icons/gucci-logo.png";
 import allBrands from "../../icons/all-brands.png";
 import HomeFeedback from "../Admin/Feedback/HomeFeedback";
+import SliderFeedBack from "../SliderFeedback/SliderFeedBack";
+import IconsMove from "../Iconsmove/IconsMove";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const images = [
   "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffashionista.com%2F.image%2Ft_share%2FMTQwNTQyNzk1MDcxODkwNjY0%2Fsqgettyimages-469721122jpg.jpg&f=1&nofb=1&ipt=edbfb7e2ea12c375ceb258bec1653bd775d520eac004b0060318ca33d1eb39de&ipo=images",
@@ -43,6 +47,7 @@ const images3 = [
 const Home = () => {
   const dispatch = useDispatch();
   const allProduct = useSelector((state) => state.allClothes);
+  const rate = useSelector((state) => state.rate_us);
   const filteredProduct = useSelector((state) => state.productsFiltered);
   const allCategory = allProduct.map((p) => p.category);
   const azOrder = useSelector((state) => state.azOrder);
@@ -83,10 +88,8 @@ const Home = () => {
         <Slider images={images2}></Slider>
         <Slider images={images3}></Slider>
       </div>
-      <div style={{width: '100%', margin: '20px 0'}}>
-        <div
-          className="flex flex-wrap justify-center gap-3"
-        >
+      <div style={{ width: "100%", margin: "20px 0" }}>
+        <div className="flex flex-wrap justify-center gap-3">
           <img
             src={allBrands}
             alt="all brands"
@@ -122,7 +125,17 @@ const Home = () => {
         </div>
       </div>
       <ProductCards products={filteredProduct} />
-      <HomeFeedback/>
+      <div className={styles.containerFeedBack}>
+        <div>
+          <p className={styles.mensajeFeedBack}>
+            Some comments from our thousands of satisfied customers
+          </p>
+          <SliderFeedBack images={rate}></SliderFeedBack>
+        </div>
+        <div>
+          <IconsMove></IconsMove>
+        </div>
+      </div>
       <Footer />
     </div>
   );

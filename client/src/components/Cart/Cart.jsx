@@ -6,6 +6,8 @@ import styles from "./Cart.module.css";
 import ClothingDetail from "../ClothingDetail/ClothingDetail";
 import { Link, useNavigate } from "react-router-dom";
 import { style } from "@mui/system";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createUs} from '../../redux/actions.js'
 
 function Cart() {
@@ -57,7 +59,7 @@ function Cart() {
           onClick={() => {dispatch(checkout(check[0]._id, cart))
           dispatch(getUsersDetails(check[0].email))}}
         >
-          Confirmar compra
+          confirm purchase
         </button>
       );
     }
@@ -89,19 +91,31 @@ function Cart() {
           {user ? verificacionActive() : <p>Please Login to continue</p>}
         </div>
       </div>
-      {continueMP && (
-        <a
-          href={continueMP}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => {
-            dispatch({ type: "SET_REDIRECTMP", payload: null });
-            window.close();
-          }}
-        >
-          Confirm
-        </a>
-      )}
+      <div className={styles.redirec}>
+        <FontAwesomeIcon
+          className={styles.arrowiconright}
+          icon={faArrowRight}
+        ></FontAwesomeIcon>
+        <div>
+          {continueMP && (
+            <a
+              href={continueMP}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => {
+                dispatch({ type: "SET_REDIRECTMP", payload: null });
+                window.close();
+              }}
+            >
+              redirect to payment market
+            </a>
+          )}
+        </div>
+        <FontAwesomeIcon
+          className={styles.arrowiconleft}
+          icon={faArrowLeft}
+        ></FontAwesomeIcon>
+      </div>
     </div>
   );
 }

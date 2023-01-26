@@ -2,7 +2,7 @@
   display: grid;
   margin: 0 1em;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .form {
@@ -35,10 +35,13 @@
   grid-area: c;
   display: grid;
   grid-template-columns: 1fr;
-  /* grid-template-rows: 1fr; */
-  gap: 1em;
+  grid-template-rows: 1fr;
+  gap: .7em;
 }
 
+.season,
+.tallaycantidad,
+.status,
 .forminput button,
 .forminput input {
   background-color: transparent;
@@ -52,17 +55,13 @@
   cursor: pointer;
 }
 
+.season,
 .status {
-  background-color: rgb(98, 226, 255);
-  color: black;
-  cursor: pointer;
-  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
 }
-
-.status:focus{
-  border: 2px solid rgb(253, 87, 214);
-}
-
 
 .cloudinary {
   background-color: transparent;
@@ -88,4 +87,25 @@
 
 .input {
   padding-left: 1em;
+}
+
+.tallaycantidad {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.season select,
+.status select {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: .3em;
+}
+
+.tallaycantidad select {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: .3em 0;
+  padding: 0 .3em;
 }

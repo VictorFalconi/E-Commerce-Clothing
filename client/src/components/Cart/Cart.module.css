@@ -27,9 +27,10 @@
   background: rgb(255 255 255 / 50%);
 }
 
+.redirec:hover,
 .confirmarcompra:hover,
 .remove:hover {
-  background: rgba(255, 231, 247, 0.75);
+  background: rgba(220, 220, 220, 0.75);
 }
 
 .confirmarcompra:active,
@@ -37,6 +38,7 @@
   transform: scale(0.8);
 }
 
+.redirec,
 .total,
 .item {
   display: flex;
@@ -52,8 +54,36 @@
   padding: 1em;
 }
 
-/* .total {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-} */
+.redirec {
+  justify-content: center;
+  gap: 1em;
+  text-transform: uppercase;
+}
+
+.arrowiconright {
+  animation: animateright .7s linear infinite alternate;
+}
+
+@keyframes animateright {
+  0% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.arrowiconleft {
+  animation: animateleft .7s linear infinite alternate;
+}
+
+@keyframes animateleft {
+  0% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(10px);
+  }
+}
