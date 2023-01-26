@@ -16,6 +16,7 @@ import {
     PhoneInTalk,
     AccountBox,
 } from '@mui/icons-material'
+import ProductCards from '../ProductCards/ProductCards'
 
 export default function UserProfile() {
 
@@ -27,6 +28,8 @@ export default function UserProfile() {
     const buggies = useSelector((state) => state.history)
     const users = useSelector(state => state.users);
     const email = user?.email;
+    const favorites = useSelector(state => state.favorites);
+    const products = useSelector(state => state.allClothes);
     
     // const userInfo = users?.filter((u) => u.email === user?.email);
     //console.log(user)
@@ -113,8 +116,12 @@ export default function UserProfile() {
                     <UserProfileEdit changePage={changePage} editMode={editMode}/>
                 </div>
             }
+            <h2><strong>Favorites</strong></h2>
+            <div style={{width: '98%'}}>
+                <ProductCards products={products.filter(p => favorites[email].includes(p._id))}/>
+            </div>
             <div>
-                <h2><strong>Esto es el historial de compra</strong></h2>
+                <h2><strong>Purchase History</strong></h2>
                 {buggies?.map((b)=>{
                 return (<h4 key={b._id}>{b.products.map((p)=>{
                         return (p.name)
