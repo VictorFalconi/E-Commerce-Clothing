@@ -79,7 +79,7 @@ const updateUsersProfile = async (req, res, next) => {
     try {
         const { id } = req.params
         let {
-            fullName,
+            name,
             email,
             image,
         } = req.body
@@ -87,7 +87,7 @@ const updateUsersProfile = async (req, res, next) => {
         await userModel.findByIdAndUpdate(
             id,
             {
-                fullName: fullName,
+                name: name,
                 email: email,
                 image: image,
             },
