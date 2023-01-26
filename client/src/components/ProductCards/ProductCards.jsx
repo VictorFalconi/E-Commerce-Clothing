@@ -105,9 +105,9 @@ const ProductCards = ({ products }) => {
               onClick={_ => {userFavorites.includes(p?._id) ? dispatch(removeFavorite(user?.email || 'invitado', p?._id)) : dispatch(addFavorite(user?.email || 'invitado', p?._id))}}
             />
             <Link className={styles.card} to={`/` + p?._id}>
-              {typeof p.image[0] !== "string" ? (
+              {typeof p?.image[0] !== "string" ? (
                 <div>
-                  {p.image.map((e) => (
+                  {p?.image.map((e) => (
                     <img
                       className={styles.cardIMG}
                       key={e.public_id}
@@ -141,7 +141,7 @@ const ProductCards = ({ products }) => {
               }):''}</p>
           </div>
         );
-      }) : <p>There is no products that match the selected filters</p>}
+      }) : <p>There is no products</p>}
     </div>
   );
 };
