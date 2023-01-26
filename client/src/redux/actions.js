@@ -108,6 +108,10 @@ export function filter(payload) {
   return { type: 'FILTER', payload }
 }
 
+export function filterFav(payload) {
+  return { type: 'FILTER_FAV', payload }
+}
+
 // ---------- users ---------------
 export const allUsers = () => {
   return async function (dispatch) {

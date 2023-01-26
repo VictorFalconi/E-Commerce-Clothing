@@ -82,12 +82,13 @@ const ProductCards = ({ products }) => {
 
   const { user } = useAuth0();
   const favorites = useSelector(state => state.favorites);
-  const userFavorites = favorites[user?._id || 'invitado'] || [];
+  const userFavorites = favorites[user?.email || 'invitado'] || [];
   const dispatch = useDispatch();
 
   return (
-    <div className={styles.productContainer}>
-      {products?.map((p, i) => {
+    <div className={styles.productContainer} style={{width: '100%'}}>
+      {products.length !== 0 ?
+      products?.map((p, i) => {
         return (
           <div
             key={i}
@@ -101,9 +102,9 @@ const ProductCards = ({ products }) => {
                 right: '10px', 
                 top: '10px',
               }}
-              onClick={_ => {userFavorites.includes(p._id) ? dispatch(removeFavorite(user?._id || 'invitado', p?._id)) : dispatch(addFavorite(user?._id || 'invitado', p?._id))}}
+              onClick={_ => {userFavorites.includes(p?._id) ? dispatch(removeFavorite(user?.email || 'invitado', p?._id)) : dispatch(addFavorite(user?.email || 'invitado', p?._id))}}
             />
-            <Link className={styles.card} to={`/` + p._id}>
+            <Link className={styles.card} to={`/` + p?._id}>
               {typeof p.image[0] !== "string" ? (
                 <div>
                   {p.image.map((e) => (
@@ -140,7 +141,7 @@ const ProductCards = ({ products }) => {
               }):''}</p>
           </div>
         );
-      })}
+      }) : <p>There is no products that match the selected filters</p>}
     </div>
   );
 };
