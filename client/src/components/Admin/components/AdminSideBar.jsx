@@ -79,12 +79,12 @@ export default function SideBar() {
                 <div className={st.sidebarMenu}>
                     <h3 className={st.sidebarTitle}>Notifications</h3>
                     <ul className={st.sidebarList}>
-                        <li className={st.sidebarListItem}>
+                        {/* <li className={st.sidebarListItem}>
                             <a href="mailto:https://outlook.live.com/mail/0/" className={st.link}>
                                 <MailOutline className={st.sidebarIcon} />
                                 Web Mail
                             </a>
-                        </li>
+                        </li> */}
                         <li className={st.sidebarListItem}>
                             <Link
                                 to="/admin/helpustoimprove"

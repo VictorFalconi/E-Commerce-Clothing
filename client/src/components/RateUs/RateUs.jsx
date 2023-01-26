@@ -2,9 +2,11 @@ import React, { useEffect, useState  } from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from 'react-redux'
 import { addRate,getUsersDetails } from '../../redux/actions';
+import { useNavigate } from 'react-router-dom';
 
 function RateUs() {
     const dispatch = useDispatch();   
+    const navigate = useNavigate();
     const use = useSelector(state => state.usersDetails);
     const [feedback, setFeedback] = useState({
         userId:use._id,
@@ -34,6 +36,7 @@ function RateUs() {
     function handleSubmit(e) {
         e.preventDefault()
        dispatch(addRate(feedback))
+       navigate('/')
     }
 
     

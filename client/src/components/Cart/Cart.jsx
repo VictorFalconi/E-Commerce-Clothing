@@ -35,7 +35,7 @@ function Cart() {
   function calculateTotal() {
     let total = 0;
     cart.forEach(function (item) {
-      total += item.price;
+      total += item.price * item.quantity;
     });
     return total;
   }
@@ -73,8 +73,8 @@ function Cart() {
       <ul>
         {cart?.map((item) => (
           <li key={item.name} className={styles.item}>
-            {item.name} - ${item.price}
-            <button
+            {item.name} - ${item.price} x {item.quantity} u
+            <button 
               className={styles.remove}
               onClick={() => removeFromCart(item)}
             >

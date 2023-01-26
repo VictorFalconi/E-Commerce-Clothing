@@ -63,7 +63,11 @@ function ClothingDetail(product) {
     }
   };
   function handleCant(e) {
+    if(e.target.value > 0){
     setCantidad(parseInt(e.target.value));
+    } else{
+      alert('min quantity is 1')
+    }
   }
   function handleSelect(e) {
     setTalleCondicional(e.target.value);
